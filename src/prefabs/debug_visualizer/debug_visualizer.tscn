@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbnakwfvnxgvn"]
+
+[ext_resource type="Script" uid="uid://dkqjnxrunieu4" path="res://prefabs/debug_visualizer/debug_visualizer.gd" id="1_bftm5"]
+
+[node name="Debug Visualizer" type="Node2D"]
+script = ExtResource("1_bftm5")

@@ -20,3 +20,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func walls_to_int() -> int:
+	var wall_config = 0
+	if n_wall == true:
+		wall_config |= Globals.NORTH
+	if s_wall == true:
+		wall_config |= Globals.SOUTH
+	if w_wall == true:
+		wall_config |= Globals.WEST
+	if e_wall == true:
+		wall_config |= Globals.EAST
+	return wall_config

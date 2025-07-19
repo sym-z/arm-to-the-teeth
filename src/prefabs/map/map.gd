@@ -2,13 +2,15 @@ extends Node
 
 var world_map : Dictionary[Vector2i,Cell]
 var frontier : Array[Cell]
-const ROWS = 3
-const COLS = 3
-enum DIR{N=1,S=2,W=4,E=8}
+@export var rows : int = 10
+@export var cols : int = 10
+
+## Used to ensure visualization after computation
+signal map_generated
 func _ready():
-	create_map(ROWS,COLS)
+	create_map(rows,cols)
 	generate_maze()
-	print_map()
+	#print_map()
 
 ## Initialize Dictionary for world map
 func create_map(row,col):
@@ -35,6 +37,7 @@ func print_cell(c: Cell):
 	print("S: ", c.s_wall)
 	print("W: ", c.w_wall)
 	print("E: ", c.e_wall)
+	print("WALL NO: ", c.walls_to_int())
 
 func print_neighbors(c : Cell, neighbors : Array[Cell]):
 	print("PRINTING NEIGHBORS OF ", c.position, " THAT ARE IN THE MAP")
@@ -46,7 +49,7 @@ func print_neighbors(c : Cell, neighbors : Array[Cell]):
 # Used this site: https://weblog.jamisbuck.org/2011/1/10/maze-generation-prim-s-algorithm to help me learn how it is implemented, and built it in my own way.
 func generate_maze():
 	# Choose random cell
-	var rand_cell : Cell = world_map[Vector2i(randi_range(0,COLS-1), randi_range(0,ROWS-1))]
+	var rand_cell : Cell = world_map[Vector2i(randi_range(0,cols-1), randi_range(0,rows-1))]
 	# Add it to the maze (mark it)
 	mark(rand_cell)
 	while frontier.size() > 0:
@@ -59,6 +62,7 @@ func generate_maze():
 		connect_cells(curr_cell, rand_neighbor)
 		# Mark this frontier cell as in the maze and add its adjacent cells to the frontier
 		mark(curr_cell)
+	map_generated.emit()
 
 func mark(c : Cell):
 	c.in_maze = true
@@ -84,16 +88,16 @@ func connect_cells(from : Cell, to : Cell):
 	# Get from's direction in relation to to, and demolish their respective walls
 	match get_direction(from,to):
 		# From is north of To, destroy From's south wall, and To's north wall
-		DIR.N:
+		Globals.NORTH:
 			from.s_wall = false
 			to.n_wall = false
-		DIR.S:
+		Globals.SOUTH:
 			from.n_wall = false
 			to.s_wall = false
-		DIR.E:
+		Globals.EAST:
 			from.w_wall = false
 			to.e_wall = false
-		DIR.W:
+		Globals.WEST:
 			from.e_wall = false
 			to.w_wall = false
 
@@ -107,28 +111,28 @@ func get_adj_locs(c : Cell) -> Array[Vector2i]:
 
 ## Checks bounds of a location against map bounds
 func check_bounds(loc : Vector2i) -> bool:
-	if(loc.x >= 0 and loc.x < COLS and loc.y >= 0 and loc.y < ROWS):
+	if(loc.x >= 0 and loc.x < cols and loc.y >= 0 and loc.y < rows):
 		return true
 	return false
 
 ## Returns From's direction in relation to To, From must be adjacent to To
-func get_direction(from : Cell, to : Cell) -> DIR:
+func get_direction(from : Cell, to : Cell) -> int:
 	if from.position.x > to.position.x:
-		return DIR.E
+		return Globals.EAST
 	if from.position.x < to.position.x:
-		return DIR.W
+		return Globals.WEST
 	if from.position.y > to.position.y:
-		return DIR.S
-	return DIR.N
+		return Globals.SOUTH
+	return Globals.NORTH
 
 ## In case I need to get reverse directions
-func get_opposite_direction(d:DIR):
+func get_opposite_direction(d:int):
 	match d:
-		DIR.N:
-			return DIR.S
-		DIR.S:
-			return DIR.N
-		DIR.W:
-			return DIR.E
-		DIR.E:
-			return DIR.W
+		Globals.NORTH:
+			return Globals.SOUTH
+		Globals.SOUTH:
+			return Globals.NORTH
+		Globals.WEST:
+			return Globals.EAST
+		Globals.EAST:
+			return Globals.WEST

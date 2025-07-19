@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://sp88rewvevlj"]
+
+[ext_resource type="PackedScene" uid="uid://cnfsb3b13fx1v" path="res://prefabs/map/map.tscn" id="1_634d8"]
+[ext_resource type="Script" uid="uid://2ghmulmo5ff" path="res://scenes/testing_level/testing_level.gd" id="1_tt45j"]
+[ext_resource type="PackedScene" uid="uid://dbnakwfvnxgvn" path="res://prefabs/debug_visualizer/debug_visualizer.tscn" id="2_tt45j"]
+
+[node name="Testing Level" type="Node2D" node_paths=PackedStringArray("visualizer")]
+script = ExtResource("1_tt45j")
+visualizer = NodePath("Debug Visualizer")
+
+[node name="Map" parent="." instance=ExtResource("1_634d8")]
+
+[node name="Debug Visualizer" parent="." node_paths=PackedStringArray("map_node") instance=ExtResource("2_tt45j")]
+map_node = NodePath("../Map")
+
+[connection signal="map_generated" from="Map" to="." method="_on_map_map_generated"]
