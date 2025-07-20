@@ -16,7 +16,10 @@ scale = Vector2(4, 4)
 player = NodePath("../Player")
 map_node = NodePath("../Map")
 
-[node name="Player" parent="." instance=ExtResource("4_f1y3a")]
+[node name="Player" parent="." node_paths=PackedStringArray("map") instance=ExtResource("4_f1y3a")]
 position = Vector2i(9, 9)
+map = NodePath("../Map")
 
 [connection signal="map_generated" from="Map" to="." method="_on_map_map_generated"]
+[connection signal="change_facing" from="Player" to="Debug Visualizer" method="_on_player_change_facing"]
+[connection signal="change_position" from="Player" to="Debug Visualizer" method="_on_player_change_position"]

@@ -7,6 +7,7 @@ var world_map : Dictionary[Vector2i,Cell]
 
 var vis_sprite_frames : SpriteFrames = preload("uid://cbjh88qmpok43")
 var player_db_sprite_frames : SpriteFrames = preload("uid://b7xoyoeypo5ys")
+var player_db_sprite : Sprite2D
 const FRAME_SIZE = 8
 ## Converts bitwise representation of walls to a frame in the SpriteFrames object
 func int_to_sprite(walls : int) -> Texture2D:
@@ -29,12 +30,25 @@ func create_visualization():
 		curr_sprite.texture = curr_texture
 		curr_sprite.position = Vector2(world_map[key].position.x*FRAME_SIZE,world_map[key].position.y*FRAME_SIZE)
 		add_child(curr_sprite)
-	place_player(player.position, player.facing)
+	place_player()
 
-func place_player(coord : Vector2i, facing : int):
-	var player_db_sprite = Sprite2D.new()
+func place_player():
+	player_db_sprite = Sprite2D.new()
+	player_position_refresh()
+	player_direction_refresh()
+	add_child(player_db_sprite)
+
+func _on_player_change_facing():
+	player_direction_refresh()
+
+func _on_player_change_position():
+	player_position_refresh()
+	
+func player_position_refresh():
 	player_db_sprite.position = Vector2i(player.position.x*FRAME_SIZE,player.position.y*FRAME_SIZE)
-	match facing:
+	
+func player_direction_refresh():
+	match player.facing:
 		Globals.NORTH:
 			player_db_sprite.texture = player_db_sprite_frames.get_frame_texture("default", 0)
 		Globals.SOUTH:
@@ -43,4 +57,4 @@ func place_player(coord : Vector2i, facing : int):
 			player_db_sprite.texture = player_db_sprite_frames.get_frame_texture("default", 2)
 		Globals.EAST:
 			player_db_sprite.texture = player_db_sprite_frames.get_frame_texture("default", 3)
-	add_child(player_db_sprite)
+	

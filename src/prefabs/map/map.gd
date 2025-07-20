@@ -124,15 +124,3 @@ func get_direction(from : Cell, to : Cell) -> int:
 	if from.position.y > to.position.y:
 		return Globals.SOUTH
 	return Globals.NORTH
-
-## In case I need to get reverse directions
-func get_opposite_direction(d:int):
-	match d:
-		Globals.NORTH:
-			return Globals.SOUTH
-		Globals.SOUTH:
-			return Globals.NORTH
-		Globals.WEST:
-			return Globals.EAST
-		Globals.EAST:
-			return Globals.WEST
