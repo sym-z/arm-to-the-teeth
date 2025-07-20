@@ -21,17 +21,21 @@ var d0_walls : Dictionary[String,AnimatedSprite2D] = {
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_map_map_generated():
 	refresh_viewport()
 
+func _on_player_change_facing():
+	refresh_viewport()
+
+func _on_player_change_position():
+	refresh_viewport()
 
 func refresh_viewport():
+	#region D0 Render
 	# Is there a wall in front of us at d0:
 	# Get the cell the player is in
 	var curr_cell : Cell = map.world_map[player.position]
@@ -65,12 +69,4 @@ func refresh_viewport():
 			d0_right.frame = D0_SIDE.TURN
 		else:
 			d0_right.frame = D0_SIDE.EMPTY
-	pass
-
-func _on_player_change_facing():
-	refresh_viewport()
-
-
-
-func _on_player_change_position():
-	refresh_viewport()
+	#endregion
