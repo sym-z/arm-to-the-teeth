@@ -25,3 +25,28 @@ func get_opposite_direction(d:int):
 			return Globals.EAST
 		Globals.EAST:
 			return Globals.WEST
+
+func left_of(d:int):
+	match d:
+		Globals.NORTH:
+			return Globals.WEST
+		Globals.SOUTH:
+			return Globals.EAST
+		Globals.WEST:
+			return Globals.SOUTH
+		Globals.EAST:
+			return Globals.NORTH
+
+func right_of(d:int):
+	match d:
+		Globals.NORTH:
+			return Globals.EAST
+		Globals.SOUTH:
+			return Globals.WEST
+		Globals.WEST:
+			return Globals.NORTH
+		Globals.EAST:
+			return Globals.SOUTH
+			
+
+	

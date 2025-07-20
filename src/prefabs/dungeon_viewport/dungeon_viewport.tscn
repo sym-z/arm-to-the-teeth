@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5lskvgjumjn"]
+
+[ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
+[ext_resource type="Texture2D" uid="uid://by1dl3kscna6u" path="res://assets/visual/prototype_renderer/side_wall_d0.png" id="1_yqvim"]
+[ext_resource type="Texture2D" uid="uid://wkiscb54ntfj" path="res://assets/visual/prototype_renderer/front_wall_d0.png" id="2_x06gq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sishi"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(0, 0, 225, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wd0p"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(225, 0, 225, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0dob"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(450, 0, 225, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krg55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sishi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wd0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0dob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1322"]
+atlas = ExtResource("2_x06gq")
+region = Rect2(0, 0, 450, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b81m"]
+atlas = ExtResource("2_x06gq")
+region = Rect2(450, 0, 450, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57dgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1322")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b81m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4saro"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(0, 0, 225, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2325p"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(225, 0, 225, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugiy4"]
+atlas = ExtResource("1_yqvim")
+region = Rect2(450, 0, 225, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3d71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4saro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2325p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugiy4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dungeon Viewport" type="Node2D" node_paths=PackedStringArray("d0_left", "d0_center", "d0_right")]
+script = ExtResource("1_x06gq")
+d0_left = NodePath("Distance 0/Left Wall")
+d0_center = NodePath("Distance 0/Center Wall")
+d0_right = NodePath("Distance 0/Right Wall")
+
+[node name="Distance 0" type="Node2D" parent="."]
+
+[node name="Left Wall" type="AnimatedSprite2D" parent="Distance 0"]
+position = Vector2(510, 90)
+sprite_frames = SubResource("SpriteFrames_krg55")
+centered = false
+flip_h = true
+
+[node name="Center Wall" type="AnimatedSprite2D" parent="Distance 0"]
+position = Vector2(735, 90)
+sprite_frames = SubResource("SpriteFrames_57dgs")
+centered = false
+
+[node name="Right Wall" type="AnimatedSprite2D" parent="Distance 0"]
+position = Vector2(1185, 90)
+sprite_frames = SubResource("SpriteFrames_i3d71")
+centered = false

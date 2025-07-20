@@ -124,3 +124,27 @@ func get_direction(from : Cell, to : Cell) -> int:
 	if from.position.y > to.position.y:
 		return Globals.SOUTH
 	return Globals.NORTH
+
+# Returns a coord in a given direction
+func get_loc_in_dir(curr_loc : Vector2i, dir : int):
+	match dir:
+		Globals.NORTH:
+			return Vector2i(curr_loc.x,curr_loc.y-1)
+		Globals.SOUTH:
+			return Vector2i(curr_loc.x,curr_loc.y+1)
+		Globals.WEST:
+			return Vector2i(curr_loc.x-1,curr_loc.y)
+		Globals.EAST:
+			return Vector2i(curr_loc.x+1,curr_loc.y)
+
+# Returns the cell to the left of a current location, taking into account a facing direction
+func get_left_cell(curr_loc : Vector2i, facing : int):
+	var left_dir : int = Globals.left_of(facing)
+	if check_bounds(get_loc_in_dir(curr_loc,left_dir)):
+		return world_map[get_loc_in_dir(curr_loc,left_dir)]
+
+# Returns the cell to the right of a current location, taking into account a facing direction
+func get_right_cell(curr_loc : Vector2i, facing : int):
+	var right_dir : int = Globals.right_of(facing)
+	if check_bounds(get_loc_in_dir(curr_loc,right_dir)):
+		return world_map[get_loc_in_dir(curr_loc,right_dir)]

@@ -6,4 +6,5 @@
 - [x] Player Debug Sprite Movement
 
 ## First-Person Visualization
-- [ ] Only render considering the room that you are in *distance 0*
+- [x] Only render considering the room that you are in *distance 0*
+- [ ] Render at distance of 1
