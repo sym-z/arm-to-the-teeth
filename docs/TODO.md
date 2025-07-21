@@ -7,4 +7,6 @@
 
 ## First-Person Visualization
 - [x] Only render considering the room that you are in *distance 0*
-- [ ] Render at distance of 1
+- [x] Render at distance of 1
+- [ ] Distance of 2
+- [ ] At furthest distance behind all walls, put a mystery shadow texture to show that that is out of sight.

@@ -7,3 +7,4 @@
 
 ## 20 July 2025
 - Created a visualization at distance of 0 of the viewport the player will use.
+- Created visualuization at distance of 1 that the player will use. Sprites will be refined, there are some inconsistent line weights, but I'm refining down the logic.

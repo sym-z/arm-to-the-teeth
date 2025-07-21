@@ -1,6 +1,11 @@
 ## Renderer Sizing
 - Screen Size: 1920 x 1080
-- Dungeon Viewport Size: 900 x 900
+- Dungeon Viewport Size: 896 x 896
+  - D1 Viewport Piece (x2 (1 + 2 Halves)): 448 x 448
+  - D2 Viewport (x4 (3 + 2 Halves)): 224 x 224
 - Distance 0 Piece Sizing
-  - Side Wall: 225 x 900
-  - Front Wall: 450 x 900
+  - Side Wall: 224 x 896
+  - Front Wall: 448 x 896
+- Distance 1 Piece Sizing
+  - Side Wall: 112 x 448
+  - Front Wall: 448 x 896
