@@ -6,20 +6,11 @@ extends Node2D
 enum CENTER {WALL, EMPTY}
 enum SIDE {WALL, TURN, EMPTY}
 ## Wall Sprites
-## d0
-## TODO: DELETE THESE 2 LINES
-enum D0_CENTER {WALL,EMPTY}
-enum D0_SIDE {WALL, TURN, EMPTY}
-
 @export_category("D0 Walls")
 @export var d0_left : AnimatedSprite2D
 @export var d0_center : AnimatedSprite2D
 @export var d0_right : AnimatedSprite2D
-var d0_walls : Dictionary[String,AnimatedSprite2D] = {
-	"left" : d0_left,
-	"center" : d0_center,
-	"right" : d0_right,
-}
+
 @export_category("D1 Walls")
 @export var d1_f_left : AnimatedSprite2D
 @export var d1_l_center : AnimatedSprite2D
@@ -45,13 +36,6 @@ var d0_walls : Dictionary[String,AnimatedSprite2D] = {
 @export var d2_ff_right : AnimatedSprite2D
 @export var d2_ff_right_center : AnimatedSprite2D
 @export var d2_fff_right : AnimatedSprite2D
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_map_map_generated():
 	refresh_viewport_2()
@@ -276,18 +260,22 @@ func refresh_viewport_2():
 		d2_r_center.frame = d2_rc_draw_config[0]
 		d2_f_right.frame = d2_rc_draw_config[2]
 	# D2 Far Left Center Refresh (d2_f_left_center,d2_ff_left)
+	if d2_f_left_center_cell != null:
 		var d2_flc_draw_config = get_cell_draw_config(d2_f_left_center_cell, player.facing)
 		d2_f_left_center.frame = d2_flc_draw_config[0]
 		d2_ff_left.frame = d2_flc_draw_config[1]
 	# D2 Far Right Center Refresh (d2_f_right_center,d2_ff_right)
+	if d2_f_right_center_cell != null:
 		var d2_frc_draw_config = get_cell_draw_config(d2_f_right_center_cell, player.facing)
 		d2_f_right_center.frame = d2_frc_draw_config[0]
 		d2_ff_right.frame = d2_frc_draw_config[2]
 	# D2 Farther Left Center Refresh (d2_ff_left_center,d2_fff_left)
+	if d2_ff_left_center_cell != null:
 		var d2_fflc_draw_config = get_cell_draw_config(d2_ff_left_center_cell, player.facing)
 		d2_ff_left_center.frame = d2_fflc_draw_config[0]
 		d2_fff_left.frame = d2_fflc_draw_config[1]
 	# D2 Farther Right Center Refresh (d2_ff_right_center,d2_fff_right)
+	if d2_ff_right_center_cell != null:
 		var d2_ffrc_draw_config = get_cell_draw_config(d2_ff_right_center_cell, player.facing)
 		d2_ff_right_center.frame = d2_ffrc_draw_config[0]
 		d2_fff_right.frame = d2_ffrc_draw_config[2]
