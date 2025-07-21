@@ -8,5 +8,9 @@
 ## First-Person Visualization
 - [x] Only render considering the room that you are in *distance 0*
 - [x] Render at distance of 1
-- [ ] Distance of 2
-- [ ] At furthest distance behind all walls, put a mystery shadow texture to show that that is out of sight.
+- [x] Distance of 2
+- [x] At furthest distance behind all walls, put a mystery shadow texture to show that that is out of sight.
+
+## Gameplay
+- [ ] Cells can hold landmarks or items
+  - [ ] Cells can hold an exit

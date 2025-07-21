@@ -8,3 +8,8 @@
 ## 20 July 2025
 - Created a visualization at distance of 0 of the viewport the player will use.
 - Created visualuization at distance of 1 that the player will use. Sprites will be refined, there are some inconsistent line weights, but I'm refining down the logic.
+
+## 21 July 2025
+- Completed rendering at a distance of 2 cells
+- Added *fog of war* to show view distance cutoff
+- Reworked how the walls are rendered so that all cells in the viewable range will be updated regardless of if they are covered up by another wall, so long as the cell is within the bounds of the map.
