@@ -755,7 +755,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Dungeon Viewport" type="Node2D" node_paths=PackedStringArray("d0_left", "d0_center", "d0_right", "d1_f_left", "d1_l_center", "d1_left", "d1_center", "d1_r_center", "d1_right", "d1_f_right")]
+[node name="Dungeon Viewport" type="Node2D" node_paths=PackedStringArray("d0_left", "d0_center", "d0_right", "d1_f_left", "d1_l_center", "d1_left", "d1_center", "d1_r_center", "d1_right", "d1_f_right", "d2_left", "d2_center", "d2_right")]
 script = ExtResource("1_x06gq")
 d0_left = NodePath("Distance 0/Left Wall")
 d0_center = NodePath("Distance 0/Center Wall")
@@ -767,36 +767,45 @@ d1_center = NodePath("Distance 1/Center Wall")
 d1_r_center = NodePath("Distance 1/Right Center Wall")
 d1_right = NodePath("Distance 1/Right Wall")
 d1_f_right = NodePath("Distance 1/Far Right Wall")
+d2_left = NodePath("Distance 2/Left Wall")
+d2_center = NodePath("Distance 2/Center Wall")
+d2_right = NodePath("Distance 2/Right Wall")
 
 [node name="Vision Bounds" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_wqhcc")
 autoplay = "default"
 
 [node name="Distance 2" type="Node2D" parent="."]
+visible = false
 
 [node name="Farthest Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(540, 540)
 sprite_frames = SubResource("SpriteFrames_2qty0")
 
 [node name="Farther Left Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(624, 540)
 sprite_frames = SubResource("SpriteFrames_r04a5")
 
 [node name="Farther Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(596, 540)
 sprite_frames = SubResource("SpriteFrames_t381n")
 
 [node name="Far Left Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(736, 540)
 sprite_frames = SubResource("SpriteFrames_ruofl")
 
 [node name="Far Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(707, 540)
 sprite_frames = SubResource("SpriteFrames_i4kcg")
 
 [node name="Left Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(848, 540)
 sprite_frames = SubResource("SpriteFrames_v4nab")
 
@@ -809,6 +818,7 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_nppqe")
 
 [node name="Right Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1072, 540)
 sprite_frames = SubResource("SpriteFrames_hys4q")
 
@@ -818,32 +828,36 @@ sprite_frames = SubResource("SpriteFrames_fpch3")
 flip_h = true
 
 [node name="Far Right Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1184, 540)
 sprite_frames = SubResource("SpriteFrames_dyxka")
 flip_h = true
 
 [node name="Farther Right Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1296, 540)
 sprite_frames = SubResource("SpriteFrames_3gdbf")
 flip_h = true
 
 [node name="Farthest Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1380, 540)
 sprite_frames = SubResource("SpriteFrames_1u8wi")
 flip_h = true
 
 [node name="Farther Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1325, 540)
 sprite_frames = SubResource("SpriteFrames_yjh2r")
 flip_h = true
 
 [node name="Far Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
+visible = false
 position = Vector2(1213, 540)
 sprite_frames = SubResource("SpriteFrames_n2srb")
 flip_h = true
 
 [node name="Distance 1" type="Node2D" parent="."]
-visible = false
 
 [node name="Far Left Wall" type="AnimatedSprite2D" parent="Distance 1"]
 position = Vector2(568, 540)
@@ -876,7 +890,6 @@ sprite_frames = SubResource("SpriteFrames_rqcx1")
 flip_h = true
 
 [node name="Distance 0" type="Node2D" parent="."]
-visible = false
 
 [node name="Left Wall" type="AnimatedSprite2D" parent="Distance 0"]
 position = Vector2(512, 92)
@@ -886,7 +899,6 @@ centered = false
 [node name="Center Wall" type="AnimatedSprite2D" parent="Distance 0"]
 position = Vector2(736, 92)
 sprite_frames = SubResource("SpriteFrames_57dgs")
-frame = 1
 centered = false
 
 [node name="Right Wall" type="AnimatedSprite2D" parent="Distance 0"]

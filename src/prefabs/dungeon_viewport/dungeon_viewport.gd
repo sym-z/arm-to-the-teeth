@@ -28,6 +28,15 @@ var d0_walls : Dictionary[String,AnimatedSprite2D] = {
 @export var d1_r_center : AnimatedSprite2D
 @export var d1_right : AnimatedSprite2D
 @export var d1_f_right : AnimatedSprite2D
+
+@export_category("D2 Walls")
+@export var d2_f_left : AnimatedSprite2D
+@export var d2_l_center : AnimatedSprite2D
+@export var d2_left : AnimatedSprite2D
+@export var d2_center : AnimatedSprite2D
+@export var d2_r_center : AnimatedSprite2D
+@export var d2_right : AnimatedSprite2D
+@export var d2_f_right : AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -62,7 +71,16 @@ func refresh_viewport():
 		var d1_center_draw_config = get_cell_draw_config(map.get_forward_cell(player.position,player.facing), player.facing)
 		d1_center.frame = d1_center_draw_config[0]
 		d1_left.frame = d1_center_draw_config[1]
+		# If the side walls are empty, we need to see what lies beyond them.
+		if d1_left.frame == SIDE.EMPTY:
+			var d1_left_draw_config = get_cell_draw_config(map.get_forward_cell(map.get_left_cell(player.position,player.facing).position,player.facing), player.facing)
+			d1_l_center.frame = d1_left_draw_config[0]
+			d1_f_left.frame = d1_left_draw_config[1]
 		d1_right.frame = d1_center_draw_config[2]
+		if d1_right.frame == SIDE.EMPTY:
+			var d1_right_draw_config = get_cell_draw_config(map.get_forward_cell(map.get_right_cell(player.position,player.facing).position,player.facing), player.facing)
+			d1_r_center.frame = d1_right_draw_config[0]
+			d1_f_right.frame = d1_right_draw_config[2]
 	# If there is an empty left frame in d0, step forward from the player's adjacent left cell and get the draw config
 	if d0_left.frame == SIDE.EMPTY:
 		var d1_left_draw_config = get_cell_draw_config(map.get_forward_cell(map.get_left_cell(player.position,player.facing).position,player.facing), player.facing)
@@ -74,6 +92,18 @@ func refresh_viewport():
 		d1_r_center.frame = d1_right_draw_config[0]
 		d1_f_right.frame = d1_right_draw_config[2]
 	#endregion
+	#region D2 Render
+	# First do center piece
+	if d1_center.frame == CENTER.EMPTY:
+		# Get the draw config for the cell in front of the cell in front of the player
+		# First forward cell
+		var forward_cell : Cell = map.get_forward_cell(player.position,player.facing)
+		# Cell in front of d1 center
+		var forward_cell_2 : Cell = map.get_forward_cell(forward_cell.position,player.facing)
+		var d2_center_draw_config = get_cell_draw_config(forward_cell_2,player.facing)
+		d2_center.frame = d2_center_draw_config[0]
+		d2_left.frame = d2_center_draw_config[1]
+		d2_right.frame = d2_center_draw_config[2]
 
 # Passes back what is to the center, left, and right of a cell at a given direction
 func get_cell_draw_config(c : Cell, facing : int):
