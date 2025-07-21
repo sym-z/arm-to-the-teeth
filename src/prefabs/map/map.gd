@@ -148,3 +148,8 @@ func get_right_cell(curr_loc : Vector2i, facing : int):
 	var right_dir : int = Globals.right_of(facing)
 	if check_bounds(get_loc_in_dir(curr_loc,right_dir)):
 		return world_map[get_loc_in_dir(curr_loc,right_dir)]
+
+# Returns the cell one cell forward in the direction that the player is facing
+func get_forward_cell(curr_loc: Vector2i, facing: int):
+	if check_bounds(get_loc_in_dir(curr_loc,facing)):
+		return world_map[get_loc_in_dir(curr_loc,facing)]
