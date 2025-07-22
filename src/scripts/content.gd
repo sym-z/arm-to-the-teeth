@@ -1,10 +1,11 @@
 extends AnimatedSprite2D
 @export var wall_to_check : AnimatedSprite2D
-
+@export var root_parent : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	wall_to_check.connect("frame_changed", adjust_ordering)
+	root_parent.connect("refresh_ordering", adjust_ordering)
 	pass # Replace with function body.
 
 func adjust_ordering():

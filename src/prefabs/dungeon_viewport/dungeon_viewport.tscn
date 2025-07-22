@@ -1023,10 +1023,13 @@ sprite_frames = SubResource("SpriteFrames_2qty0")
 position = Vector2(624, 540)
 sprite_frames = SubResource("SpriteFrames_r04a5")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Left Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gv4ay")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Farther Left Wall")
+root_parent = NodePath("../../..")
 
 [node name="Farther Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(597, 540)
@@ -1036,10 +1039,13 @@ sprite_frames = SubResource("SpriteFrames_t381n")
 position = Vector2(736, 540)
 sprite_frames = SubResource("SpriteFrames_ruofl")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Far Left Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Far Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_nlr2u")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Far Left Wall")
+root_parent = NodePath("../../..")
 
 [node name="Far Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(707, 540)
@@ -1049,22 +1055,25 @@ sprite_frames = SubResource("SpriteFrames_i4kcg")
 position = Vector2(848, 540)
 sprite_frames = SubResource("SpriteFrames_v4nab")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Left Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_nmgve")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Left Wall")
+root_parent = NodePath("../../..")
 
 [node name="Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(876, 540)
 sprite_frames = SubResource("SpriteFrames_74po6")
+frame = 2
 
 [node name="Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_nppqe")
 
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Center Wall"]
-visible = false
 position = Vector2(1, 28)
 sprite_frames = SubResource("SpriteFrames_4tto7")
 animation = &"exit"
@@ -1073,11 +1082,14 @@ animation = &"exit"
 position = Vector2(1072, 540)
 sprite_frames = SubResource("SpriteFrames_hys4q")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Right Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Right Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 position = Vector2(-2, 28)
 sprite_frames = SubResource("SpriteFrames_orjpd")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Right Wall")
+root_parent = NodePath("../../..")
 
 [node name="Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(1044, 540)
@@ -1089,21 +1101,27 @@ position = Vector2(1184, 540)
 sprite_frames = SubResource("SpriteFrames_dyxka")
 flip_h = true
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Far Right Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Far Right Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_0fugf")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Far Right Wall")
+root_parent = NodePath("../../..")
 
 [node name="Farther Right Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(1296, 540)
 sprite_frames = SubResource("SpriteFrames_3gdbf")
 flip_h = true
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Right Center Wall"]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Right Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_tsqxy")
 animation = &"exit"
+script = ExtResource("14_2bd64")
+wall_to_check = NodePath("../../Farther Right Wall")
+root_parent = NodePath("../../..")
 
 [node name="Farthest Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(1380, 540)
@@ -1131,13 +1149,14 @@ sprite_frames = SubResource("SpriteFrames_kb4cg")
 position = Vector2(736, 540)
 sprite_frames = SubResource("SpriteFrames_hwm0v")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Left Center Wall" node_paths=PackedStringArray("wall_to_check")]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 position = Vector2(-2, 69)
 sprite_frames = SubResource("SpriteFrames_5csd1")
 animation = &"exit"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Left Wall")
+root_parent = NodePath("../../..")
 
 [node name="Left Wall" type="AnimatedSprite2D" parent="Distance 1"]
 position = Vector2(792, 540)
@@ -1148,7 +1167,6 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_x06gq")
 
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Center Wall"]
-visible = false
 position = Vector2(-4, 75)
 sprite_frames = SubResource("SpriteFrames_b80o7")
 animation = &"exit"
@@ -1157,13 +1175,14 @@ animation = &"exit"
 position = Vector2(1184, 540)
 sprite_frames = SubResource("SpriteFrames_b4v8s")
 
-[node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Right Center Wall" node_paths=PackedStringArray("wall_to_check")]
+[node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Right Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 position = Vector2(-4, 75)
 sprite_frames = SubResource("SpriteFrames_blei6")
 animation = &"exit"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Right Wall")
+root_parent = NodePath("../../..")
 
 [node name="Right Wall" type="AnimatedSprite2D" parent="Distance 1"]
 position = Vector2(1128, 540)

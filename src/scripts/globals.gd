@@ -1,6 +1,6 @@
 extends Node
 
-var debug : bool = true
+var debug : bool = false
 
 const NORTH : int = 8
 const SOUTH : int = 4
