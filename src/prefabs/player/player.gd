@@ -69,6 +69,20 @@ func move(distance : int = 1):
 		Globals.EAST:
 			position = Vector2i(position.x+distance, position.y)
 	change_position.emit()
+	check_cell_content()
+
+# Sees if the player is standing on anything, enemy, exit, etc.
+func check_cell_content():
+	var curr_cell : Cell = map.world_map[position]
+	match curr_cell.contents:
+		Cell.TYPE.EMPTY:
+			return
+		Cell.TYPE.EXIT:
+			print("PLAYER ON EXIT!")
+		Cell.TYPE.SPAWN:
+			print("PLAYER ON SPAWN!")
+	
+	
 
 # After the map has been generated, mark the player's starting position as their spawn point.
 func _on_map_map_generated():
