@@ -4,6 +4,8 @@
 - [x] Debug visualizer (Top Down)
 - [x] Player Scene and Debug Player Sprite Drawn
 - [x] Player Debug Sprite Movement
+- [ ] Randomized exit spawn
+- [ ] Randomized landmark placement
 
 ## First-Person Visualization
 - [x] Only render considering the room that you are in *distance 0*
@@ -15,7 +17,14 @@
 ## Gameplay
 - [x] Cells can hold landmarks or items
   - [x] Cells can hold an exit
+- [ ] Player has an inventory
 - [ ] Player can pick up teeth
 - [ ] Player can pick up arms
+- [ ] Enemies Spawn
+- [ ] Player vs Enemy Combat
+
+## Tools
 - [ ] Debug mini-map shows landmarks
+
+## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
