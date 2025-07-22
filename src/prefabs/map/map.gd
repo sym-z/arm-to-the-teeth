@@ -218,6 +218,11 @@ func place_exit():
 	var exit_chosen : bool = false
 	while exit_chosen == false:
 		var rand_loc : Vector2i = Vector2i(randi_range(0,rows-1), randi_range(0,cols-1))
+		# TESTING
+		rand_loc = Vector2i(8,9)
+		if Globals.debug == true:
+			rand_loc = Vector2i(4,5)
 		if world_map[rand_loc].contents == Cell.TYPE.EMPTY:
 			world_map[rand_loc].contents = Cell.TYPE.EXIT
 			exit_chosen = true
+			print("EXIT AT: ", rand_loc)

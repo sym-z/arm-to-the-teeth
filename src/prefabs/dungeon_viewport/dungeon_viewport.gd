@@ -223,63 +223,88 @@ func refresh_viewport_2():
 		d2_ff_right_center_cell = map.world_map[d2_ff_right_center_loc]
 	#endregion
 	# At this point, all valid cells will not be null
-	#region Get Draw Config of All Cells that are Valid, and Apply it to the Animated Sprites
+	#region Get Draw Config of All Cells that are Valid, and Apply it to the Animated Sprites, and reveal contents
 	# D0 Center Refresh (d0_center,d0_left,d0_right)
 	if d0_center_cell != null:
 		var d0_c_draw_config = get_cell_draw_config(d0_center_cell,player.facing)
 		d0_center.frame = d0_c_draw_config[0]
+		reveal_cell_contents(d0_center_cell,d0_center)
 		d0_left.frame = d0_c_draw_config[1]
 		d0_right.frame = d0_c_draw_config[2]
 	# D1 Center Refresh (d1_center,d1_left,d1_right)
 	if d1_center_cell != null:
 		var d1_c_draw_config = get_cell_draw_config(d1_center_cell,player.facing)
 		d1_center.frame = d1_c_draw_config[0]
+		reveal_cell_contents(d1_center_cell,d1_center)
 		d1_left.frame = d1_c_draw_config[1]
 		d1_right.frame = d1_c_draw_config[2]
 	# D1 Left Center Refresh (d1_l_center, d1_f_left)
 	if d1_left_center_cell != null:
 		var d1_lc_draw_config = get_cell_draw_config(d1_left_center_cell,player.facing)
 		d1_l_center.frame = d1_lc_draw_config[0]
+		reveal_cell_contents(d1_left_center_cell,d1_l_center)
 		d1_f_left.frame = d1_lc_draw_config[1]
 	# D1 Right Center Refresh (d1_r_center, d1_f_right)
 	if d1_right_center_cell != null:
 		var d1_rc_draw_config = get_cell_draw_config(d1_right_center_cell,player.facing)
 		d1_r_center.frame = d1_rc_draw_config[0]
+		reveal_cell_contents(d1_right_center_cell,d1_r_center)
 		d1_f_right.frame = d1_rc_draw_config[2]
 	# D2 Center Refresh (d2_center,d2_left,d2_right)
 	if d2_center_cell != null:
 		var d2_c_draw_config = get_cell_draw_config(d2_center_cell,player.facing)
 		d2_center.frame = d2_c_draw_config[0]
+		reveal_cell_contents(d2_center_cell,d2_center)
 		d2_left.frame = d2_c_draw_config[1]
 		d2_right.frame = d2_c_draw_config[2]
 	# D2 Left Center Refresh (d2_l_center, d2_f_left)
 	if d2_left_center_cell != null:
 		var d2_lc_draw_config = get_cell_draw_config(d2_left_center_cell,player.facing)
 		d2_l_center.frame = d2_lc_draw_config[0]
+		reveal_cell_contents(d2_left_center_cell,d2_l_center)
 		d2_f_left.frame = d2_lc_draw_config[1]
 	# D2 Right Center Refresh (d2_r_center, d2_f_right)
 	if d2_right_center_cell != null:
 		var d2_rc_draw_config = get_cell_draw_config(d2_right_center_cell,player.facing)
 		d2_r_center.frame = d2_rc_draw_config[0]
+		reveal_cell_contents(d2_right_center_cell,d2_r_center)
 		d2_f_right.frame = d2_rc_draw_config[2]
 	# D2 Far Left Center Refresh (d2_f_left_center,d2_ff_left)
 	if d2_f_left_center_cell != null:
 		var d2_flc_draw_config = get_cell_draw_config(d2_f_left_center_cell, player.facing)
 		d2_f_left_center.frame = d2_flc_draw_config[0]
+		reveal_cell_contents(d2_f_left_center_cell,d2_f_left_center)
 		d2_ff_left.frame = d2_flc_draw_config[1]
 	# D2 Far Right Center Refresh (d2_f_right_center,d2_ff_right)
 	if d2_f_right_center_cell != null:
 		var d2_frc_draw_config = get_cell_draw_config(d2_f_right_center_cell, player.facing)
 		d2_f_right_center.frame = d2_frc_draw_config[0]
+		reveal_cell_contents(d2_f_right_center_cell,d2_f_right_center)
 		d2_ff_right.frame = d2_frc_draw_config[2]
 	# D2 Farther Left Center Refresh (d2_ff_left_center,d2_fff_left)
 	if d2_ff_left_center_cell != null:
 		var d2_fflc_draw_config = get_cell_draw_config(d2_ff_left_center_cell, player.facing)
 		d2_ff_left_center.frame = d2_fflc_draw_config[0]
+		reveal_cell_contents(d2_ff_left_center_cell,d2_ff_left_center)
 		d2_fff_left.frame = d2_fflc_draw_config[1]
 	# D2 Farther Right Center Refresh (d2_ff_right_center,d2_fff_right)
 	if d2_ff_right_center_cell != null:
 		var d2_ffrc_draw_config = get_cell_draw_config(d2_ff_right_center_cell, player.facing)
 		d2_ff_right_center.frame = d2_ffrc_draw_config[0]
+		reveal_cell_contents(d2_ff_right_center_cell,d2_ff_right_center)
 		d2_fff_right.frame = d2_ffrc_draw_config[2]
 	#endregion
+
+# Reveals content of "c" using the child of the sprite, "sprite"
+func reveal_cell_contents(c : Cell, sprite : AnimatedSprite2D):
+	if sprite.get_children().size() == 0:
+		push_error("Attempted to reveal content of non-applicable sprite in dungeon_viewport, reveal_cell_contents()")
+		return
+	var content_sprite : AnimatedSprite2D = sprite.get_child(0)
+	match c.contents:
+		Cell.TYPE.EXIT:
+			content_sprite.animation = "exit"
+			content_sprite.visible = true
+			content_sprite.play()
+		_:
+			content_sprite.visible = false
