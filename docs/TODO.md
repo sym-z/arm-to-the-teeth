@@ -10,6 +10,7 @@
 - [x] Render at distance of 1
 - [x] Distance of 2
 - [x] At furthest distance behind all walls, put a mystery shadow texture to show that that is out of sight.
+- [x] Debug Map to Test Rendering
 
 ## Gameplay
 - [ ] Cells can hold landmarks or items

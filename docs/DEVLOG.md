@@ -13,3 +13,4 @@
 - Completed rendering at a distance of 2 cells
 - Added *fog of war* to show view distance cutoff
 - Reworked how the walls are rendered so that all cells in the viewable range will be updated regardless of if they are covered up by another wall, so long as the cell is within the bounds of the map.
+- Built a testing map to show that I am rendering things correctly.

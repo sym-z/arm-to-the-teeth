@@ -8,8 +8,11 @@ var frontier : Array[Cell]
 ## Used to ensure visualization after computation
 signal map_generated
 func _ready():
-	create_map(rows,cols)
-	generate_maze()
+	if Globals.debug == false:
+		create_map(rows,cols)
+		generate_maze()
+	else:
+		create_debug_map(rows,cols)
 	#print_map()
 
 ## Initialize Dictionary for world map
@@ -19,6 +22,46 @@ func create_map(row,col):
 			var curr_cell = Cell.new()
 			curr_cell.position = Vector2i(j,i)
 			world_map[curr_cell.position] = curr_cell
+
+func create_debug_map(row, col):
+	# Remember to send map generated signal
+	# Creates a map with walls around the boundaries, with a single pillar in the middle
+	var center_loc : Vector2i = Vector2i(row/2,col/2)
+	var left_loc : Vector2i = Vector2i(center_loc.x-1,center_loc.y)
+	var right_loc : Vector2i = Vector2i(center_loc.x+1,center_loc.y)
+	var up_loc : Vector2i = Vector2i(center_loc.x,center_loc.y-1)
+	var down_loc : Vector2i = Vector2i(center_loc.x,center_loc.y+1)
+	for i in range(row):
+		for j in range(col):
+			var curr_cell = Cell.new()
+			curr_cell.e_wall = false
+			curr_cell.w_wall = false
+			curr_cell.n_wall = false
+			curr_cell.s_wall = false
+			curr_cell.position = Vector2i(j,i)
+			if curr_cell.position == center_loc:
+				curr_cell.e_wall = true
+				curr_cell.w_wall = true
+				curr_cell.n_wall = true
+				curr_cell.s_wall = true
+			elif curr_cell.position == left_loc:
+				curr_cell.e_wall = true
+			elif curr_cell.position == right_loc:
+				curr_cell.w_wall = true
+			elif curr_cell.position == up_loc:
+				curr_cell.s_wall = true
+			elif curr_cell.position == down_loc:
+				curr_cell.n_wall = true
+			if curr_cell.position.y == 0:
+				curr_cell.n_wall = true
+			if curr_cell.position.y == row-1:
+				curr_cell.s_wall = true
+			if curr_cell.position.x == 0:
+				curr_cell.w_wall = true
+			if curr_cell.position.x == col-1:
+				curr_cell.e_wall = true 
+			world_map[curr_cell.position] = curr_cell
+	map_generated.emit()
 
 #region Printing Functions
 func print_map():
