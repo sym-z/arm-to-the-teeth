@@ -6,6 +6,8 @@ extends Node
 
 signal change_facing
 signal change_position
+# Allows items/landmarks to be set after the player has spawned.
+signal player_spawned
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -67,3 +69,8 @@ func move(distance : int = 1):
 		Globals.EAST:
 			position = Vector2i(position.x+distance, position.y)
 	change_position.emit()
+
+# After the map has been generated, mark the player's starting position as their spawn point.
+func _on_map_map_generated():
+	map.world_map[position].contents = Cell.TYPE.SPAWN
+	player_spawned.emit()

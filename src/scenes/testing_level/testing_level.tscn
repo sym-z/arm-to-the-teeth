@@ -26,9 +26,13 @@ map = NodePath("../Map")
 map = NodePath("../Map")
 player = NodePath("../Player")
 
+[connection signal="map_filled" from="Map" to="Debug Visualizer" method="_on_map_map_filled"]
+[connection signal="map_filled" from="Map" to="Dungeon Viewport" method="_on_map_map_filled"]
 [connection signal="map_generated" from="Map" to="." method="_on_map_map_generated"]
+[connection signal="map_generated" from="Map" to="Player" method="_on_map_map_generated"]
 [connection signal="map_generated" from="Map" to="Dungeon Viewport" method="_on_map_map_generated"]
 [connection signal="change_facing" from="Player" to="Debug Visualizer" method="_on_player_change_facing"]
 [connection signal="change_facing" from="Player" to="Dungeon Viewport" method="_on_player_change_facing"]
 [connection signal="change_position" from="Player" to="Debug Visualizer" method="_on_player_change_position"]
 [connection signal="change_position" from="Player" to="Dungeon Viewport" method="_on_player_change_position"]
+[connection signal="player_spawned" from="Player" to="Map" method="_on_player_player_spawned"]

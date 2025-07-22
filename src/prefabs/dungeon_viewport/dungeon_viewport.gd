@@ -37,13 +37,16 @@ enum SIDE {WALL, TURN, EMPTY}
 @export var d2_ff_right_center : AnimatedSprite2D
 @export var d2_fff_right : AnimatedSprite2D
 
-func _on_map_map_generated():
-	refresh_viewport_2()
+#func _on_map_map_generated():
+	#refresh_viewport_2()
 
 func _on_player_change_facing():
 	refresh_viewport_2()
 
 func _on_player_change_position():
+	refresh_viewport_2()
+
+func _on_map_map_filled():
 	refresh_viewport_2()
 
 func refresh_viewport():

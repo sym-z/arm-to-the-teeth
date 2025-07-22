@@ -22,6 +22,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func _on_map_map_filled():
+	create_visualization()
+
 func create_visualization():
 	world_map = map_node.world_map
 	for key in world_map.keys():

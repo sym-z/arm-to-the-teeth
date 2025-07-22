@@ -11,6 +11,6 @@ func _process(delta):
 	pass
 
 
-func _on_map_map_generated():
-	visualizer.create_visualization()
-	pass # Replace with function body.
+#func _on_map_map_generated():
+	#visualizer.create_visualization()
+	#pass # Replace with function body.

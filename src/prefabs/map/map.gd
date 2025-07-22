@@ -7,6 +7,8 @@ var frontier : Array[Cell]
 
 ## Used to ensure visualization after computation
 signal map_generated
+## Ensure visualization after finalization of item dispersion.
+signal map_filled
 func _ready():
 	if Globals.debug == false:
 		create_map(rows,cols)
@@ -87,7 +89,7 @@ func print_neighbors(c : Cell, neighbors : Array[Cell]):
 	for n in neighbors:
 		print(n.position)
 #endregion
-
+#region Prim's Algorithm
 # Prim's Algorithm
 # Used this site: https://weblog.jamisbuck.org/2011/1/10/maze-generation-prim-s-algorithm to help me learn how it is implemented, and built it in my own way.
 func generate_maze():
@@ -143,7 +145,8 @@ func connect_cells(from : Cell, to : Cell):
 		Globals.WEST:
 			from.e_wall = false
 			to.w_wall = false
-
+#endregion
+#region Grabbing Cells and Checking Locations
 ## Returns array of adjacent Cell locations
 func get_adj_locs(c : Cell) -> Array[Vector2i]:
 	var top_loc : Vector2i = Vector2i(c.position.x,c.position.y-1)
@@ -202,3 +205,19 @@ func get_forward_cell(curr_loc: Vector2i, facing: int):
 		return world_map[get_loc_in_dir(curr_loc,facing)]
 	else:
 		return null
+#endregion
+# Once the player spawns, items/landmarks can be generated.
+func _on_player_player_spawned():
+	place_exit()
+	# Place Items
+	# Place Enemies
+	map_filled.emit()
+
+func place_exit():
+	# Grab a random spot on the map, and mark it as an exit.
+	var exit_chosen : bool = false
+	while exit_chosen == false:
+		var rand_loc : Vector2i = Vector2i(randi_range(0,rows-1), randi_range(0,cols-1))
+		if world_map[rand_loc].contents == Cell.TYPE.EMPTY:
+			world_map[rand_loc].contents = Cell.TYPE.EXIT
+			exit_chosen = true
