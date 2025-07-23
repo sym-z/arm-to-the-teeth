@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://b5lskvgjumjn"]
+[gd_scene load_steps=171 format=3 uid="uid://b5lskvgjumjn"]
 
 [ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
 [ext_resource type="Texture2D" uid="uid://w2eanj3ry2qn" path="res://assets/visual/prototype_renderer/d2_farthest_side.png" id="2_4saro"]
@@ -10,14 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://b6fxor673oi5f" path="res://assets/visual/prototype_renderer/d0_center_v2.png" id="3_sishi"]
 [ext_resource type="Texture2D" uid="uid://crop653noayvo" path="res://assets/visual/prototype_renderer/d2_farther_center.png" id="3_ugiy4"]
 [ext_resource type="Texture2D" uid="uid://csflha2hpbi3f" path="res://assets/visual/prototype_renderer/d1_side.png" id="4_o1322"]
+[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="5_2qty0"]
 [ext_resource type="Texture2D" uid="uid://b3abvs1kf6ff4" path="res://assets/visual/prototype_items/exit_d2.png" id="5_catg2"]
 [ext_resource type="Texture2D" uid="uid://beuabijdjaxqw" path="res://assets/visual/prototype_renderer/d2_far_center.png" id="5_erokt"]
 [ext_resource type="Texture2D" uid="uid://5dtis4bcqvb6" path="res://assets/visual/prototype_renderer/d2_big_farther.png" id="5_i3d71"]
 [ext_resource type="Texture2D" uid="uid://drdm7bjxyj6cq" path="res://assets/visual/prototype_renderer/d2_side.png" id="6_erokt"]
+[ext_resource type="Texture2D" uid="uid://cojclurpl4y7n" path="res://assets/visual/prototype_items/tooth_d2.png" id="7_edhwo"]
 [ext_resource type="Texture2D" uid="uid://5bhwdtvrlgug" path="res://assets/visual/prototype_renderer/d2_big_far.png" id="7_erokt"]
 [ext_resource type="Texture2D" uid="uid://h0i2h8gqprh7" path="res://assets/visual/prototype_items/exit_d1.png" id="12_kb4cg"]
 [ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="14_2bd64"]
+[ext_resource type="Texture2D" uid="uid://b2qt2hc7kvpnm" path="res://assets/visual/prototype_items/arm_d1.png" id="16_3rmra"]
 [ext_resource type="Texture2D" uid="uid://dveclwb1d1orr" path="res://assets/visual/prototype_items/exit_d0.png" id="16_catg2"]
+[ext_resource type="Texture2D" uid="uid://bpler3spyuok4" path="res://assets/visual/prototype_items/tooth_d1.png" id="18_n4cni"]
+[ext_resource type="Texture2D" uid="uid://c84jggsyj8q8v" path="res://assets/visual/prototype_items/arm_d0.png" id="22_b4v8s"]
+[ext_resource type="Texture2D" uid="uid://bmklroogj3q51" path="res://assets/visual/prototype_items/tooth_d0.png" id="24_ffc3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74po6"]
 atlas = ExtResource("2_i3d71")
@@ -190,12 +196,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlr2u"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b80o7"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmgve"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gv4ay"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlr2u")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -207,6 +229,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmgve")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -257,12 +287,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tto7"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1j6k"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_orjpd"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlr2u"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tto7")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -274,6 +320,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orjpd")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -324,12 +378,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fugf"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptbe1"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsqxy"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nmgve"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fugf")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -341,6 +411,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsqxy")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -395,12 +473,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjitn"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7y45n"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f7n4"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4tto7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjitn")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -412,6 +506,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f7n4")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -437,12 +539,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5xsy"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l633t"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_44qtu"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_orjpd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5xsy")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -454,6 +572,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44qtu")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -508,12 +634,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6up5"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5grxc"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei3xp"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0fugf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6up5")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -525,6 +667,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei3xp")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -550,12 +700,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_772ba"]
+atlas = ExtResource("5_2qty0")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6dn1y"]
 atlas = ExtResource("5_catg2")
 region = Rect2(0, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ig7"]
+atlas = ExtResource("7_edhwo")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tsqxy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_772ba")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -567,6 +733,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ig7")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -700,12 +874,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfil6"]
+atlas = ExtResource("16_3rmra")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptq6m"]
 atlas = ExtResource("12_kb4cg")
 region = Rect2(0, 0, 224, 224)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt6tg"]
+atlas = ExtResource("18_n4cni")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5csd1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfil6")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -717,6 +907,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt6tg")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -771,12 +969,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p14pd"]
+atlas = ExtResource("16_3rmra")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l75dw"]
 atlas = ExtResource("12_kb4cg")
 region = Rect2(0, 0, 224, 224)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w656i"]
+atlas = ExtResource("18_n4cni")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_b80o7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p14pd")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -788,6 +1002,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w656i")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -813,12 +1035,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r624c"]
+atlas = ExtResource("16_3rmra")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv4ay"]
 atlas = ExtResource("12_kb4cg")
 region = Rect2(0, 0, 224, 224)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkjgg"]
+atlas = ExtResource("18_n4cni")
+region = Rect2(0, 0, 224, 224)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_blei6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r624c")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -830,6 +1068,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkjgg")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -942,12 +1188,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tojyx"]
+atlas = ExtResource("22_b4v8s")
+region = Rect2(0, 0, 448, 448)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqhcc"]
 atlas = ExtResource("16_catg2")
 region = Rect2(0, 0, 448, 448)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_khymf"]
+atlas = ExtResource("24_ffc3i")
+region = Rect2(0, 0, 448, 448)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_m1j6k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tojyx")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -959,6 +1221,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khymf")
+}],
+"loop": true,
+"name": &"tooth",
 "speed": 5.0
 }]
 
@@ -1038,7 +1308,7 @@ sprite_frames = SubResource("SpriteFrames_r04a5")
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gv4ay")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Farther Left Wall")
 root_parent = NodePath("../../..")
@@ -1054,7 +1324,7 @@ sprite_frames = SubResource("SpriteFrames_ruofl")
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Far Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_nlr2u")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Far Left Wall")
 root_parent = NodePath("../../..")
@@ -1071,7 +1341,7 @@ sprite_frames = SubResource("SpriteFrames_v4nab")
 visible = false
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_nmgve")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Left Wall")
 root_parent = NodePath("../../..")
@@ -1086,9 +1356,10 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_nppqe")
 
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Center Wall"]
+visible = false
 position = Vector2(1, 28)
 sprite_frames = SubResource("SpriteFrames_4tto7")
-animation = &"exit"
+animation = &"tooth"
 
 [node name="Right Center Wall" type="AnimatedSprite2D" parent="Distance 2"]
 position = Vector2(1072, 540)
@@ -1098,7 +1369,7 @@ sprite_frames = SubResource("SpriteFrames_hys4q")
 visible = false
 position = Vector2(-2, 28)
 sprite_frames = SubResource("SpriteFrames_orjpd")
-animation = &"exit"
+animation = &"arm"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Right Wall")
 root_parent = NodePath("../../..")
@@ -1117,7 +1388,7 @@ flip_h = true
 visible = false
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_0fugf")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Far Right Wall")
 root_parent = NodePath("../../..")
@@ -1130,7 +1401,7 @@ flip_h = true
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 2/Farther Right Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent")]
 visible = false
 sprite_frames = SubResource("SpriteFrames_tsqxy")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Farther Right Wall")
 root_parent = NodePath("../../..")
@@ -1165,7 +1436,7 @@ sprite_frames = SubResource("SpriteFrames_hwm0v")
 visible = false
 position = Vector2(-2, 69)
 sprite_frames = SubResource("SpriteFrames_5csd1")
-animation = &"exit"
+animation = &"tooth"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Left Wall")
 root_parent = NodePath("../../..")
@@ -1179,9 +1450,10 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_x06gq")
 
 [node name="Contents" type="AnimatedSprite2D" parent="Distance 1/Center Wall"]
+visible = false
 position = Vector2(-4, 75)
 sprite_frames = SubResource("SpriteFrames_b80o7")
-animation = &"exit"
+animation = &"tooth"
 
 [node name="Right Center Wall" type="AnimatedSprite2D" parent="Distance 1"]
 position = Vector2(1184, 540)
@@ -1191,7 +1463,7 @@ sprite_frames = SubResource("SpriteFrames_b4v8s")
 visible = false
 position = Vector2(-4, 75)
 sprite_frames = SubResource("SpriteFrames_blei6")
-animation = &"exit"
+animation = &"arm"
 script = ExtResource("14_2bd64")
 wall_to_check = NodePath("../../Right Wall")
 root_parent = NodePath("../../..")
@@ -1223,7 +1495,7 @@ centered = false
 visible = false
 position = Vector2(204, 570)
 sprite_frames = SubResource("SpriteFrames_m1j6k")
-animation = &"exit"
+animation = &"tooth"
 
 [node name="Right Wall" type="AnimatedSprite2D" parent="Distance 0"]
 position = Vector2(1184, 92)
