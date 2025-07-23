@@ -1330,6 +1330,7 @@ wall_to_check = NodePath("../../Far Left Wall")
 root_parent = NodePath("../../..")
 
 [node name="Far Left Wall" type="AnimatedSprite2D" parent="Distance 2"]
+z_index = 1
 position = Vector2(707, 540)
 sprite_frames = SubResource("SpriteFrames_i4kcg")
 
@@ -1417,6 +1418,7 @@ sprite_frames = SubResource("SpriteFrames_yjh2r")
 flip_h = true
 
 [node name="Far Right Wall" type="AnimatedSprite2D" parent="Distance 2"]
+z_index = 1
 position = Vector2(1213, 540)
 sprite_frames = SubResource("SpriteFrames_n2srb")
 flip_h = true

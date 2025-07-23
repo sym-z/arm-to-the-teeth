@@ -211,6 +211,8 @@ func get_forward_cell(curr_loc: Vector2i, facing: int):
 	else:
 		return null
 #endregion
+
+#region Item/Landmark Placement
 # Once the player spawns, items/landmarks can be generated.
 func _on_player_player_spawned():
 	# Remove player's spawn from empty cells array
@@ -219,6 +221,8 @@ func _on_player_player_spawned():
 	mark_surrounding(player.position, Cell.TYPE.SPAWN)
 	place_exit()
 	# Place Items
+	place_items_randomly(Cell.TYPE.TOOTH,10)
+	place_items_randomly(Cell.TYPE.ARM,2)
 	# Place Enemies
 	map_filled.emit()
 
@@ -241,6 +245,9 @@ func mark_surrounding(pos : Vector2i, mark : Cell.TYPE):
 						empty_cells.append(iter_pos)
 
 func place_exit():
+	if is_map_full() == true:
+		push_error("Attempting to create exit on full map in place_exit() in map.gd")
+		return
 	## Grab a random spot from the array of empty cells, add the exit and remove it from empties
 	var rand_loc : Vector2i
 	if Globals.debug == false:
@@ -261,7 +268,31 @@ func place_exit():
 			#world_map[rand_loc].contents = Cell.TYPE.EXIT
 			#exit_chosen = true
 			#print("EXIT AT: ", rand_loc)
+
+func is_map_full() -> bool:
+	if empty_cells.size() == 0:
+		return true
+	return false
+
 ## Used when picking up items
 func make_cell_empty(c: Cell):
-	empty_cells.erase(c)
-	c.contents = Cell.TYPE.EMPTY	
+	if empty_cells.find(c.position) == -1:
+		empty_cells.append(c)
+		c.contents = Cell.TYPE.EMPTY
+	else:
+		push_error("Attempted to make an empty cell empty in make_cell_empty() in map.gd")
+
+## Places a given quantity of type items on the map
+func place_items_randomly(type : Cell.TYPE, quantity : int):
+	while quantity > 0 and is_map_full() == false:
+		place_item_at_loc(empty_cells.pick_random(), type)
+		quantity -= 1
+
+func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
+	if type != Cell.TYPE.EMPTY:
+		world_map[loc].contents = type
+		empty_cells.erase(loc)
+		print("Placing ", type, " at ", loc)
+	else:
+		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")
+#endregion
