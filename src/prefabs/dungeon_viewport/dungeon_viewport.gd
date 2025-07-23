@@ -309,5 +309,13 @@ func reveal_cell_contents(c : Cell, sprite : AnimatedSprite2D):
 			content_sprite.animation = "exit"
 			content_sprite.visible = true
 			content_sprite.play()
+		Cell.TYPE.ARM:
+			content_sprite.animation = "arm"
+			content_sprite.visible = true
+			content_sprite.play()
+		Cell.TYPE.TOOTH:
+			content_sprite.animation = "tooth"
+			content_sprite.visible = true
+			content_sprite.play
 		_:
 			content_sprite.visible = false
