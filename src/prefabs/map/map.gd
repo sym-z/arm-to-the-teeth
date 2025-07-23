@@ -1,9 +1,12 @@
 extends Node
 
 var world_map : Dictionary[Vector2i,Cell]
+## To find spots to place new items, starts with all cells, which are removed as new items are added to map.
+var empty_cells : Array[Vector2i]
 var frontier : Array[Cell]
 @export var rows : int = 10
 @export var cols : int = 10
+@export var player : Node
 
 ## Used to ensure visualization after computation
 signal map_generated
@@ -24,6 +27,7 @@ func create_map(row,col):
 			var curr_cell = Cell.new()
 			curr_cell.position = Vector2i(j,i)
 			world_map[curr_cell.position] = curr_cell
+			empty_cells.append(curr_cell.position)
 
 func create_debug_map(row, col):
 	# Remember to send map generated signal
@@ -63,6 +67,7 @@ func create_debug_map(row, col):
 			if curr_cell.position.x == col-1:
 				curr_cell.e_wall = true 
 			world_map[curr_cell.position] = curr_cell
+			empty_cells.append(curr_cell.position)
 	map_generated.emit()
 
 #region Printing Functions
@@ -208,21 +213,51 @@ func get_forward_cell(curr_loc: Vector2i, facing: int):
 #endregion
 # Once the player spawns, items/landmarks can be generated.
 func _on_player_player_spawned():
+	# Remove player's spawn from empty cells array
+	empty_cells.erase(player.position)
+	# Mark surrounding cells as spawn type and remove from empty cells array
+	mark_surrounding(player.position, Cell.TYPE.SPAWN)
 	place_exit()
 	# Place Items
 	# Place Enemies
 	map_filled.emit()
 
+# Marks all surrounding cells as a type. (Including diagonals)
+func mark_surrounding(pos : Vector2i, mark : Cell.TYPE):
+	var iter_pos : Vector2i
+	for x in range(pos.x-1, pos.x+1,1):
+		iter_pos.x = x
+		for y in range(pos.y-1,pos.y+1,1):
+			iter_pos.y = y
+			if check_bounds(iter_pos) == true and iter_pos != pos:
+				if mark != Cell.TYPE.EMPTY:
+					# Remove from empties if this cell was an empty cell
+					if world_map[iter_pos].contents == Cell.TYPE.EMPTY:
+						empty_cells.erase(iter_pos)
+					world_map[iter_pos].contents = mark
+				else:
+					# Prevent duplicates in the empty cells array
+					if empty_cells.find(iter_pos) == -1:
+						empty_cells.append(iter_pos)
+
 func place_exit():
-	# Grab a random spot on the map, and mark it as an exit.
-	var exit_chosen : bool = false
-	while exit_chosen == false:
-		var rand_loc : Vector2i = Vector2i(randi_range(0,rows-1), randi_range(0,cols-1))
-		# TESTING
-		rand_loc = Vector2i(8,9)
-		if Globals.debug == true:
-			rand_loc = Vector2i(4,5)
-		if world_map[rand_loc].contents == Cell.TYPE.EMPTY:
-			world_map[rand_loc].contents = Cell.TYPE.EXIT
-			exit_chosen = true
-			print("EXIT AT: ", rand_loc)
+	## Grab a random spot from the array of empty cells, add the exit and remove it from empties
+	var rand_loc : Vector2i
+	if Globals.debug == false:
+		rand_loc = empty_cells.pop_at(randi_range(0,empty_cells.size()-1))
+	else:
+		rand_loc = Vector2i(4,5)
+		empty_cells.erase(rand_loc)
+	world_map[rand_loc].contents = Cell.TYPE.EXIT
+	print("Exit at: ", rand_loc)
+	#var exit_chosen : bool = false
+	#while exit_chosen == false:
+		#var rand_loc : Vector2i = Vector2i(randi_range(0,rows-1), randi_range(0,cols-1))
+		## TESTING
+		#rand_loc = Vector2i(8,9)
+		#if Globals.debug == true:
+			#rand_loc = Vector2i(4,5)
+		#if world_map[rand_loc].contents == Cell.TYPE.EMPTY:
+			#world_map[rand_loc].contents = Cell.TYPE.EXIT
+			#exit_chosen = true
+			#print("EXIT AT: ", rand_loc)

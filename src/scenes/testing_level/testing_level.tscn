@@ -10,7 +10,8 @@
 script = ExtResource("1_tt45j")
 visualizer = NodePath("Debug Visualizer")
 
-[node name="Map" parent="." instance=ExtResource("1_634d8")]
+[node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_634d8")]
+player = NodePath("../Player")
 
 [node name="Debug Visualizer" parent="." node_paths=PackedStringArray("player", "map_node") instance=ExtResource("2_tt45j")]
 position = Vector2(96, 181)
