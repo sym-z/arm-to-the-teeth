@@ -277,7 +277,7 @@ func is_map_full() -> bool:
 ## Used when picking up items
 func make_cell_empty(c: Cell):
 	if empty_cells.find(c.position) == -1:
-		empty_cells.append(c)
+		empty_cells.append(c.position)
 		c.contents = Cell.TYPE.EMPTY
 	else:
 		push_error("Attempted to make an empty cell empty in make_cell_empty() in map.gd")

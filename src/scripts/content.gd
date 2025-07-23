@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# When the state of the world changes, make sure that items are layered properly
 	wall_to_check.connect("frame_changed", adjust_ordering)
 	root_parent.connect("refresh_ordering", adjust_ordering)
 	pass # Replace with function body.

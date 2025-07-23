@@ -42,15 +42,20 @@ signal refresh_ordering
 	#refresh_viewport_2()
 
 func _on_player_change_facing():
-	refresh_viewport_2()
-	refresh_ordering.emit()
+	refresh()
 
 func _on_player_change_position():
-	refresh_viewport_2()
-	refresh_ordering.emit()
+	refresh()
+
+func _on_player_item_picked_up():
+	refresh()
 
 func _on_map_map_filled():
+	refresh()
+
+func refresh():
 	refresh_viewport_2()
+	refresh_ordering.emit()
 
 func refresh_viewport():
 	#region D0 Render

@@ -6,6 +6,7 @@ extends Node
 
 signal change_facing
 signal change_position
+signal item_picked_up
 # Allows items/landmarks to be set after the player has spawned.
 signal player_spawned
 
@@ -90,6 +91,13 @@ func check_cell_content():
 			print("PLAYER ON ARM!")
 		Cell.TYPE.TOOTH:
 			print("PLAYER ON TOOTH!")
+			# Check if the player has room
+			# Add to inventory
+			# TODO: Make this a random amount of teeth and give the player the option of picking up
+			tooth_count += 1
+			map.make_cell_empty(curr_cell)
+			item_picked_up.emit()
+			print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
 	
 
 # After the map has been generated, mark the player's starting position as their spawn point.

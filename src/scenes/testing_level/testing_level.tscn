@@ -36,4 +36,5 @@ player = NodePath("../Player")
 [connection signal="change_facing" from="Player" to="Dungeon Viewport" method="_on_player_change_facing"]
 [connection signal="change_position" from="Player" to="Debug Visualizer" method="_on_player_change_position"]
 [connection signal="change_position" from="Player" to="Dungeon Viewport" method="_on_player_change_position"]
+[connection signal="item_picked_up" from="Player" to="Dungeon Viewport" method="_on_player_item_picked_up"]
 [connection signal="player_spawned" from="Player" to="Map" method="_on_player_player_spawned"]
