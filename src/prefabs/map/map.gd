@@ -261,3 +261,7 @@ func place_exit():
 			#world_map[rand_loc].contents = Cell.TYPE.EXIT
 			#exit_chosen = true
 			#print("EXIT AT: ", rand_loc)
+## Used when picking up items
+func make_cell_empty(c: Cell):
+	empty_cells.erase(c)
+	c.contents = Cell.TYPE.EMPTY	

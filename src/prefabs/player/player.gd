@@ -8,6 +8,11 @@ signal change_facing
 signal change_position
 # Allows items/landmarks to be set after the player has spawned.
 signal player_spawned
+
+# Inventory
+@export var tooth_count : int = 3
+@export var arm_count : int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -81,7 +86,10 @@ func check_cell_content():
 			print("PLAYER ON EXIT!")
 		Cell.TYPE.SPAWN:
 			print("PLAYER ON SPAWN!")
-	
+		Cell.TYPE.ARM:
+			print("PLAYER ON ARM!")
+		Cell.TYPE.TOOTH:
+			print("PLAYER ON TOOTH!")
 	
 
 # After the map has been generated, mark the player's starting position as their spawn point.
