@@ -21,3 +21,11 @@
 - Player can detect the content of the cell that they are standing on
 - Adjustments made to ensure correct ordering of sprites for the content of cells so that their sprites are obscured properly when walls are over them and revealed when they are not.
 - Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though. This has been also copied over to `TODO.md`.
+
+## 23 July 2025
+- Cells can now hold "arms" and "teeth"
+- The map now keeps track of empty cells to improve performance when looking for places to set down items
+- The cells surrounding the player are marked as spawning cells, to prevent being surrounded by enemies when the player spawns
+- Temporary art imported for cells and teeth
+- Dungeon exit now randomly spawns
+- Fixed possible future undefined behavior by making sure all side walls have 3 frames of animation
