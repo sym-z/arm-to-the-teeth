@@ -29,3 +29,8 @@
 - Temporary art imported for cells and teeth
 - Dungeon exit now randomly spawns
 - Fixed possible future undefined behavior by making sure all side walls have 3 frames of animation
+- Teeth and arms can now be picked up to a certain maximum, and the viewport is refreshed to show that it has been picked up
+- Pickups happen automatically, but in the future when the UI is being programmed, I want to make it optional.
+- Fixed weird ordering problem by setting the Far Right and Far Left walls in d2 to have a higher ordering priority, because they were unintentionally covering up certain items as shown in `error_tracking/rendering_issue.png`. This may end up looking weird with the red line "pillars" that hold up each cube, but I dont think it will matter later because I can always just not draw those lines when there is no wall.
+- May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
+ - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
