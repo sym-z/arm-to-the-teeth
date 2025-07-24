@@ -20,7 +20,7 @@
   - [x] Cells can hold an exit
 - [x] Player has an inventory
 - [x] Player can pick up teeth
-- [ ] When a player picks up teeth, it can be 1 or more teeth in that spot (5)
+- [ ] When a player picks up teeth, it can be 1 or more teeth in that spot
 - [x] Player can pick up arms
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`
 - [ ] Make arm and tooth pickup optional, this will come when UI starts being programmed
@@ -28,7 +28,7 @@
 - [ ] Player vs Enemy Combat
 
 ## Tools
-- [ ] Debug mini-map shows landmarks (4)
+- [x] Debug mini-map shows landmarks
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
