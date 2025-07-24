@@ -2,19 +2,16 @@ extends AnimatedSprite2D
 @export var wall_to_check : AnimatedSprite2D
 @export var root_parent : Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	# When the state of the world changes, make sure that items are layered properly
 	wall_to_check.connect("frame_changed", adjust_ordering)
 	root_parent.connect("refresh_ordering", adjust_ordering)
-	pass # Replace with function body.
 
 func adjust_ordering():
 	if wall_to_check.frame != 0:
-		z_index = 1
+		#z_index = wall_to_check.z_index (This would make the z_index = parent z + wall to check z which is too much
+		# Adding 1 makes the ordering effectively be the same z_index as the wall it is checking
+		# 0 = same z as parent, 1 = same z as wall to check, 2 = one above the z_index of wall to check
+		z_index = 2
 	else:
 		z_index = 0
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
