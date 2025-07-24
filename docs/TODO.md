@@ -5,7 +5,7 @@
 - [x] Player Scene and Debug Player Sprite Drawn
 - [x] Player Debug Sprite Movement
 - [x] Randomized exit spawn
-- [ ] Randomized landmark/item placement (1)
+- [x] Randomized landmark/item placement
 
 ## First-Person Visualization
 - [x] Only render considering the room that you are in *distance 0*
@@ -18,9 +18,10 @@
 - [x] Cells can hold landmarks or items
   - [x] Cells can hold an exit
 - [x] Player has an inventory
-- [ ] Player can pick up teeth (2)
+- [x] Player can pick up teeth
 - [ ] When a player picks up teeth, it can be 1 or more teeth in that spot (5)
-- [ ] Player can pick up arms (3)
+- [x] Player can pick up arms
+- [ ] Make arm and tooth pickup optional, this will come when UI starts being programmed
 - [ ] Enemies Spawn
 - [ ] Player vs Enemy Combat
 

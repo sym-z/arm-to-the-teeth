@@ -13,7 +13,8 @@ signal player_spawned
 # Inventory
 @export var tooth_count : int = 3
 @export var arm_count : int = 1
-
+const ARM_MAX : int = 2
+const TOOTH_MAX : int = 32
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -89,15 +90,21 @@ func check_cell_content():
 			print("PLAYER ON SPAWN!")
 		Cell.TYPE.ARM:
 			print("PLAYER ON ARM!")
+			if arm_count < ARM_MAX:
+				arm_count += 1
+				map.make_cell_empty(curr_cell)
+				item_picked_up.emit()
+				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 		Cell.TYPE.TOOTH:
 			print("PLAYER ON TOOTH!")
 			# Check if the player has room
-			# Add to inventory
-			# TODO: Make this a random amount of teeth and give the player the option of picking up
-			tooth_count += 1
-			map.make_cell_empty(curr_cell)
-			item_picked_up.emit()
-			print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
+			if tooth_count < TOOTH_MAX:
+				# Add to inventory
+				# TODO: Make this a random amount of teeth and give the player the option of picking up
+				tooth_count += 1
+				map.make_cell_empty(curr_cell)
+				item_picked_up.emit()
+				print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
 	
 
 # After the map has been generated, mark the player's starting position as their spawn point.
