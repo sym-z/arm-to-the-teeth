@@ -217,8 +217,8 @@ func get_forward_cell(curr_loc: Vector2i, facing: int):
 func _on_player_player_spawned():
 	# Remove player's spawn from empty cells array
 	empty_cells.erase(player.position)
-	# Mark surrounding cells as spawn type and remove from empty cells array
-	mark_surrounding(player.position, Cell.TYPE.SPAWN)
+	# Type surrounding cells as spawn type and remove from empty cells array
+	type_surrounding(player.position, Cell.TYPE.SPAWN)
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)
@@ -226,19 +226,19 @@ func _on_player_player_spawned():
 	# Place Enemies
 	map_filled.emit()
 
-# Marks all surrounding cells as a type. (Including diagonals)
-func mark_surrounding(pos : Vector2i, mark : Cell.TYPE):
+# Set all surrounding cells to a type. (Including diagonals)
+func type_surrounding(pos : Vector2i, type : Cell.TYPE):
 	var iter_pos : Vector2i
 	for x in range(pos.x-1, pos.x+1,1):
 		iter_pos.x = x
 		for y in range(pos.y-1,pos.y+1,1):
 			iter_pos.y = y
 			if check_bounds(iter_pos) == true and iter_pos != pos:
-				if mark != Cell.TYPE.EMPTY:
+				if type != Cell.TYPE.EMPTY:
 					# Remove from empties if this cell was an empty cell
 					if world_map[iter_pos].contents == Cell.TYPE.EMPTY:
 						empty_cells.erase(iter_pos)
-					world_map[iter_pos].contents = mark
+					world_map[iter_pos].contents = type
 				else:
 					# Prevent duplicates in the empty cells array
 					if empty_cells.find(iter_pos) == -1:
