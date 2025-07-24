@@ -224,6 +224,7 @@ func _on_player_player_spawned():
 	place_items_randomly(Cell.TYPE.TOOTH,10)
 	place_items_randomly(Cell.TYPE.ARM,2)
 	# Place Enemies
+	place_items_randomly(Cell.TYPE.ENEMY, 5)
 	map_filled.emit()
 
 # Set all surrounding cells to a type. (Including diagonals)
@@ -257,17 +258,6 @@ func place_exit():
 		empty_cells.erase(rand_loc)
 	world_map[rand_loc].contents = Cell.TYPE.EXIT
 	print("Exit at: ", rand_loc)
-	#var exit_chosen : bool = false
-	#while exit_chosen == false:
-		#var rand_loc : Vector2i = Vector2i(randi_range(0,rows-1), randi_range(0,cols-1))
-		## TESTING
-		#rand_loc = Vector2i(8,9)
-		#if Globals.debug == true:
-			#rand_loc = Vector2i(4,5)
-		#if world_map[rand_loc].contents == Cell.TYPE.EMPTY:
-			#world_map[rand_loc].contents = Cell.TYPE.EXIT
-			#exit_chosen = true
-			#print("EXIT AT: ", rand_loc)
 
 func is_map_full() -> bool:
 	if empty_cells.size() == 0:

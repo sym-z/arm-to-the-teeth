@@ -12,6 +12,7 @@ var exit_icon : Texture2D = preload("uid://dya7m2106hkvd")
 var spawn_icon : Texture2D = preload("uid://c1luniab6md7i")
 var arm_icon : Texture2D = preload("uid://ya10rgihl35a")
 var tooth_icon : Texture2D = preload("uid://m1kguw4tngc6")
+var enemy_icon : Texture2D = preload("uid://dw3dir653odkp")
 var player_db_sprite : Sprite2D
 const FRAME_SIZE = 8
 ## Converts bitwise representation of walls to a frame in the SpriteFrames object
@@ -54,7 +55,9 @@ func create_visualization():
 				Cell.TYPE.TOOTH:
 					icon_sprite.texture = tooth_icon
 					icons[world_map[key].position] = icon_sprite
-			#icon_sprite.position = curr_sprite.position
+				Cell.TYPE.ENEMY:
+					icon_sprite.texture = enemy_icon
+					icons[world_map[key].position] = icon_sprite
 			curr_sprite.add_child(icon_sprite)
 		add_child(curr_sprite)
 	place_player()

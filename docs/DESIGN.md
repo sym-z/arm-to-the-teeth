@@ -43,3 +43,5 @@
   - Forces you to eat your arms
   - Pushes player to combat
 - Both the player and enemy need a chance to miss.
+- Enemies could teleport to random empty cells by merging with the dungeon of flesh
+- I am kinda liking the dungeon of flesh idea

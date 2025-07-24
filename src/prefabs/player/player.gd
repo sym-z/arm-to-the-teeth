@@ -105,6 +105,8 @@ func check_cell_content():
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
+		Cell.TYPE.ENEMY:
+			print("PLAYER ON ENEMY!")
 	
 
 # After the map has been generated, mark the player's starting position as their spawn point.
