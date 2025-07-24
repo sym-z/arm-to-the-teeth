@@ -36,3 +36,4 @@
  - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
  - An easy way to do this would be to start on the farthest walls and increase the ordering starting by 1 from 0. The far left and far right walls will need to be adjusted because of the fix mentioned previously.
 - Debug map now shows icons for the different types of cells and they are hidden when the player picks them up.
+- Reworked the layering so now specific walls closer to the player have higher priority of layering. Makes positioning sprites for the content of cells easier.

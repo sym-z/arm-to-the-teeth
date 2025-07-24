@@ -12,3 +12,8 @@
 - Distance 2 Piece Sizing
   - Front Wall: 112 x 224
   - Side Wall: Unique to whether it is a *Far*, *Farther* or *Farthest* wall because of perspective 
+
+## Renderer Ordering
+- D0 Base Z: 40
+- D1 Base Z: 20
+- D2 Base Z: 1
