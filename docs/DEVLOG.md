@@ -37,3 +37,11 @@
  - An easy way to do this would be to start on the farthest walls and increase the ordering starting by 1 from 0. The far left and far right walls will need to be adjusted because of the fix mentioned previously.
 - Debug map now shows icons for the different types of cells and they are hidden when the player picks them up.
 - Reworked the layering so now specific walls closer to the player have higher priority of layering. Makes positioning sprites for the content of cells easier.
+  - D0, D1 and D2 all have base ordering that the child nodes build upon. This is detailed in `REFERENCE.md`
+
+## 24 July 2025
+- Enemy type cell drawn
+- Enemy type cell shows in mini-map
+- Enemy type cell spawns randomly and is shown to and detected by the player
+- Sketched up reference of sizing for UI
+- Adjusted placement of icons in viewport

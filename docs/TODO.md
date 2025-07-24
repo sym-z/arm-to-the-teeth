@@ -24,14 +24,18 @@
 - [x] Player can pick up arms
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [ ] Make arm and tooth pickup optional, this will come when UI starts being programmed
-- [ ] Enemies Spawn
-- [ ] Player vs Enemy Combat
+- [x] Enemies Spawn
+- [ ] Player vs Enemy Combat (After UI decisions)
 
 ## Tools
 - [x] Debug mini-map shows landmarks
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
+- [ ] Prototype font
+
+## UI
+- [ ] Show tooth and arm count
 
 ## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
