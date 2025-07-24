@@ -3,7 +3,7 @@ class_name Cell extends Node
 var position : Vector2i
 
 ## What is stored in this cell?
-enum TYPE {EMPTY, SPAWN, EXIT, ARM, TOOTH}
+enum TYPE {EMPTY, SPAWN, EXIT, ARM, TOOTH, ENEMY}
 var contents : TYPE = TYPE.EMPTY
 
 ## Wall Configuration

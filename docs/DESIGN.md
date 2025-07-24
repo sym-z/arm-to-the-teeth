@@ -37,4 +37,9 @@
 	- ROUTING PAIN RECEPTORS
 - There can be "Quality" of arms (Stretch goal)
 - There can be different types of teeth (Stretch Goal)
-- 
+
+## New Ideas
+- Hunger forces you to try to kill and eat enemies
+  - Forces you to eat your arms
+  - Pushes player to combat
+- Both the player and enemy need a chance to miss.
