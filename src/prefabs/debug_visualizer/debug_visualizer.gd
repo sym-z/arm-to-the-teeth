@@ -32,6 +32,9 @@ func create_visualization():
 		var curr_sprite : Sprite2D = Sprite2D.new()
 		curr_sprite.texture = curr_texture
 		curr_sprite.position = Vector2(world_map[key].position.x*FRAME_SIZE,world_map[key].position.y*FRAME_SIZE)
+		if world_map[key].contents != Cell.TYPE.EMPTY:
+			# Overlay proper mini icon on map
+			pass
 		add_child(curr_sprite)
 	place_player()
 
