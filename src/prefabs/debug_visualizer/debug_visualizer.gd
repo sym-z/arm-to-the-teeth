@@ -3,10 +3,15 @@ extends Node2D
 @export var player : Node
 @export var map_node : Node
 
+# Alias for the map's world map
 var world_map : Dictionary[Vector2i,Cell]
-
+var icons : Dictionary[Vector2i, Sprite2D]
 var vis_sprite_frames : SpriteFrames = preload("uid://cbjh88qmpok43")
 var player_db_sprite_frames : SpriteFrames = preload("uid://b7xoyoeypo5ys")
+var exit_icon : Texture2D = preload("uid://dya7m2106hkvd")
+var spawn_icon : Texture2D = preload("uid://c1luniab6md7i")
+var arm_icon : Texture2D = preload("uid://ya10rgihl35a")
+var tooth_icon : Texture2D = preload("uid://m1kguw4tngc6")
 var player_db_sprite : Sprite2D
 const FRAME_SIZE = 8
 ## Converts bitwise representation of walls to a frame in the SpriteFrames object
@@ -34,7 +39,23 @@ func create_visualization():
 		curr_sprite.position = Vector2(world_map[key].position.x*FRAME_SIZE,world_map[key].position.y*FRAME_SIZE)
 		if world_map[key].contents != Cell.TYPE.EMPTY:
 			# Overlay proper mini icon on map
-			pass
+			var icon_sprite : Sprite2D = Sprite2D.new()
+			match world_map[key].contents:
+				Cell.TYPE.EXIT:
+					icon_sprite.texture = exit_icon
+					# Assign this sprite to be owned at the position of the cell it is meant to represent
+					icons[world_map[key].position] = icon_sprite
+				Cell.TYPE.SPAWN:
+					icon_sprite.texture = spawn_icon
+					icons[world_map[key].position] = icon_sprite
+				Cell.TYPE.ARM:
+					icon_sprite.texture = arm_icon
+					icons[world_map[key].position] = icon_sprite
+				Cell.TYPE.TOOTH:
+					icon_sprite.texture = tooth_icon
+					icons[world_map[key].position] = icon_sprite
+			#icon_sprite.position = curr_sprite.position
+			curr_sprite.add_child(icon_sprite)
 		add_child(curr_sprite)
 	place_player()
 
@@ -43,6 +64,11 @@ func place_player():
 	player_position_refresh()
 	player_direction_refresh()
 	add_child(player_db_sprite)
+
+
+func _on_player_item_picked_up():
+	icons[player.position].visible = false
+	pass # Replace with function body.
 
 func _on_player_change_facing():
 	player_direction_refresh()
