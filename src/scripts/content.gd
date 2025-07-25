@@ -6,6 +6,7 @@ func _ready():
 	# When the state of the world changes, make sure that items are layered properly
 	wall_to_check.connect("frame_changed", adjust_ordering)
 	root_parent.connect("refresh_ordering", adjust_ordering)
+	adjust_ordering()
 
 func adjust_ordering():
 	if wall_to_check.frame != 0:

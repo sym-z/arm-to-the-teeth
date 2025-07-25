@@ -12,6 +12,8 @@ var frontier : Array[Cell]
 signal map_generated
 ## Ensure visualization after finalization of item dispersion.
 signal map_filled
+## Clears other nodes when new level is generated
+signal level_clear
 func _ready():
 	if Globals.debug == false:
 		create_map(rows,cols)
@@ -20,6 +22,18 @@ func _ready():
 		create_debug_map(rows,cols)
 	#print_map()
 
+func new_level():
+	print("BUILDING NEW LEVEL!")
+	level_clear.emit()
+	world_map.clear()
+	empty_cells.clear()
+	Globals.curr_floor += 1
+	_ready()
+	pass
+
+func _input(event):
+	if event.is_action_pressed("debug_new_level"):
+		new_level()
 ## Initialize Dictionary for world map
 func create_map(row,col):
 	for i in range(row):
@@ -231,9 +245,9 @@ func _on_player_player_spawned():
 # Set all surrounding cells to a type. (Including diagonals)
 func type_surrounding(pos : Vector2i, type : Cell.TYPE):
 	var iter_pos : Vector2i
-	for x in range(pos.x-1, pos.x+1,1):
+	for x in range(pos.x-1, pos.x+2,1):
 		iter_pos.x = x
-		for y in range(pos.y-1,pos.y+1,1):
+		for y in range(pos.y-1,pos.y+2,1):
 			iter_pos.y = y
 			if check_bounds(iter_pos) == true and iter_pos != pos:
 				if type != Cell.TYPE.EMPTY:

@@ -28,6 +28,7 @@ func _ready():
 func _process(delta):
 	pass
 
+
 func _on_map_map_filled():
 	create_visualization()
 
@@ -62,6 +63,12 @@ func create_visualization():
 		add_child(curr_sprite)
 	place_player()
 
+func _on_map_level_clear():
+	clear_visualization()
+func clear_visualization():
+	for child in get_children():
+		child.call_deferred("queue_free")
+		
 func place_player():
 	player_db_sprite = Sprite2D.new()
 	player_position_refresh()

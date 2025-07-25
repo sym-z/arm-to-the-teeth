@@ -32,6 +32,7 @@ player = NodePath("../Player")
 player = NodePath("../Player")
 map = NodePath("../Map")
 
+[connection signal="level_clear" from="Map" to="Debug Visualizer" method="_on_map_level_clear"]
 [connection signal="map_filled" from="Map" to="Debug Visualizer" method="_on_map_map_filled"]
 [connection signal="map_filled" from="Map" to="Dungeon Viewport" method="_on_map_map_filled"]
 [connection signal="map_filled" from="Map" to="UI" method="_on_map_map_filled"]
