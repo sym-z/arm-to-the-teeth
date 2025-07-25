@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceq7clgkyer44"]
+
+[ext_resource type="Texture2D" uid="uid://d1kgxu002itbw" path="res://assets/visual/ui/prototype_ui.png" id="1_tlstp"]
+[ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
+[ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://Themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
+[ext_resource type="Theme" uid="uid://damqods5iq1r8" path="res://Themes/context_menu/margin_container/button/context_menu_button_theme.tres" id="4_htiv7"]
+
+[node name="UI" type="CanvasLayer"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_tlstp")
+
+[node name="Context Menu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4ieor")
+
+[node name="Style Box" type="Panel" parent="Context Menu"]
+layout_mode = 2
+theme = ExtResource("3_htiv7")
+
+[node name="Button Container" type="VBoxContainer" parent="Context Menu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Pick Up" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "PICK UP"
+
+[node name="Inventory" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "INVENTORY"
+
+[node name="Attack" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "ATTACK"
+
+[node name="Run" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "RUN"
+
+[node name="Options" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "OPTIONS"
+
+[node name="Quit" type="Button" parent="Context Menu/Button Container"]
+layout_mode = 2
+theme = ExtResource("4_htiv7")
+text = "QUIT"
