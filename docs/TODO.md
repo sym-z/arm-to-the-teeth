@@ -29,6 +29,7 @@
   - [ ] Enemies can drop items (Teeth/Arms)
 - [ ] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
+    - Need to leave the option to have the map be fully revealed to keep it applicable for debugging
 - [ ] Player's arms, teeth, and head all have separate health
   - [x] Arm
   - [x] Teeth
