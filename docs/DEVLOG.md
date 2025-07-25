@@ -46,3 +46,4 @@
 - Sketched up reference of sizing for UI
 - Adjusted placement of icons in viewport
 - Created font to be used for prototyping UI
+- Came up with an idea of what the UI will look like, and what picking up items and attacking an enemy may look like as well.
