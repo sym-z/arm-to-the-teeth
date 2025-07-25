@@ -26,16 +26,21 @@
 - [ ] Make arm and tooth pickup optional, this will come when UI starts being programmed
 - [x] Enemies Spawn
 - [ ] Player vs Enemy Combat (After UI decisions)
-
+- [ ] Map reveals itself after player moves
 ## Tools
 - [x] Debug mini-map shows landmarks
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [ ] Prototype font
+- [x] Prototype font
 
 ## UI
 - [ ] Show tooth and arm count
+- [ ] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
+- [ ] Log window
+- [ ] Tooth Indication
+- [ ] Arm indication
+- [ ] Head indication
 
 ## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.

@@ -45,3 +45,29 @@
 - Both the player and enemy need a chance to miss.
 - Enemies could teleport to random empty cells by merging with the dungeon of flesh
 - I am kinda liking the dungeon of flesh idea
+
+## UI Layout
+- UI consists of distinct parts
+  - Viewport
+    - First person view of the dungeon
+  - Log
+    - Constantly updating at the bottom of the screen. Ex: "IT PICKS UP 2 TEETH", "IT CANNOT PICK UP THE ARM WHILE IT HAS 2 ARMS"
+  - Map
+    - Reveals itself as the player walks around
+  - Head, Arm, and Teeth status
+    - Takes up one whole side of the UI
+	- Detailed head, arms and teeth that are damaged and disappear as damage is dealt
+  - Context Menu (Possibly instead of hiding and revealing options, it dims and brightens the text)
+    - Inventory
+	  - Allows player to choose to eat or drop their arms
+	  - Stores additional arms and possibly keys later.
+	- Pick Up
+	  - This may only reveal when the player is standing over an item that can be picked up.
+	- Options
+	- Quit
+	- Attack (Battle Only)
+	- Run (Battle Only)
+  - Game Status
+    - What floor the player is on
+	- Possibly playtime and high score
+- Notifications can be displayed to the user like in IMP when it is pressing, like choosing where to take damage.
