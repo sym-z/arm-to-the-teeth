@@ -13,15 +13,35 @@ signal player_spawned
 signal item_detected(item : Cell.TYPE, loc : Vector2i)
 # Inventory
 @export var tooth_count : int = 3
-@export var arm_count : int = 1
+# How many arms are equipped
+var arm_count : int = 0
 const ARM_MAX : int = 2
 const TOOTH_MAX : int = 32
+var arm_inventory : Array[Arm]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-# After the map has been generated, mark the player's starting position as their spawn point.
+func give_starting_loadout():
+	var starting_arm : Arm = Arm.new()
+	# TODO: Randomize
+	starting_arm.strength = 1
+	starting_arm.condition = 5
+	starting_arm.equipped = true
+	arm_count += 1
+	arm_inventory.append(starting_arm)
+func debug_print_inventory():
+	print("INVENTORY")
+	for i in range(arm_inventory.size()):
+		print("ARM ", i+1)
+		arm_inventory[i].debug_print()
+
+# After the map has been generated, mark the player's starting position as their spawn point, and give their starting loadout, if it is the first floor.
 func _on_map_map_generated():
+	if Globals.curr_floor == 0:
+		give_starting_loadout()
+		debug_print_inventory()
 	map.world_map[position].contents = Cell.TYPE.SPAWN
 	player_spawned.emit()
 
@@ -83,7 +103,7 @@ func move(distance : int = 1):
 	change_position.emit()
 	check_cell_content()
 
-#region Cell Types and Detection
+#region Detecting Cell Types, and Cell Content Interaction
 # Sees if the player is standing on anything, enemy, exit, etc.
 func check_cell_content() -> Cell.TYPE:
 	var curr_cell : Cell = map.world_map[position]
@@ -120,10 +140,19 @@ func pick_up(type : Cell.TYPE):
 	match type:
 		Cell.TYPE.ARM:
 			if arm_count < ARM_MAX:
+				var new_arm : Arm = Arm.new()
+				# TODO: Derive from map's arm spawn list
+				new_arm.strength = 1
+				new_arm.condition = 5
+				new_arm.equipped = true
+				arm_inventory.append(new_arm)
+				# TODO: Remove from map's tracker of arm inventory
+				# NOTE: Automatically equips, may change this later
 				arm_count += 1
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
+				debug_print_inventory()
 		Cell.TYPE.TOOTH:
 			# Check if the player has room
 			if tooth_count < TOOTH_MAX:

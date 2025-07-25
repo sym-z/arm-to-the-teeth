@@ -29,6 +29,7 @@ func create_map(row,col):
 			world_map[curr_cell.position] = curr_cell
 			empty_cells.append(curr_cell.position)
 
+
 func create_debug_map(row, col):
 	# Remember to send map generated signal
 	# Creates a map with walls around the boundaries, with a single pillar in the middle
@@ -257,7 +258,7 @@ func place_exit():
 		rand_loc = Vector2i(4,5)
 		empty_cells.erase(rand_loc)
 	world_map[rand_loc].contents = Cell.TYPE.EXIT
-	print("Exit at: ", rand_loc)
+	#print("Exit at: ", rand_loc)
 
 func is_map_full() -> bool:
 	if empty_cells.size() == 0:
@@ -282,7 +283,7 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 	if type != Cell.TYPE.EMPTY:
 		world_map[loc].contents = type
 		empty_cells.erase(loc)
-		print("Placing ", type, " at ", loc)
+		#print("Placing ", type, " at ", loc)
 	else:
 		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")
 #endregion

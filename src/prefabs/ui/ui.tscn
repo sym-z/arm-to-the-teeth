@@ -6,10 +6,12 @@
 [ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://Themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
 [ext_resource type="Theme" uid="uid://damqods5iq1r8" path="res://Themes/context_menu/margin_container/button/context_menu_button_theme.tres" id="4_htiv7"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button", "tooth_label", "arm_label")]
 layer = -1
 script = ExtResource("1_gxjsb")
 pickup_button = NodePath("Context Menu/Button Container/Pick Up")
+tooth_label = NodePath("TEMP TEETH")
+arm_label = NodePath("TEMP ARMS")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -61,5 +63,22 @@ text = "OPTIONS"
 layout_mode = 2
 theme = ExtResource("4_htiv7")
 text = "QUIT"
+
+[node name="TEMP TEETH" type="Label" parent="."]
+offset_left = 1561.0
+offset_top = 139.0
+offset_right = 1601.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 31
+text = "TOOTH COUNT: X"
+horizontal_alignment = 1
+
+[node name="TEMP ARMS" type="Label" parent="."]
+offset_left = 1576.0
+offset_top = 210.0
+offset_right = 1691.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 31
+text = "ARM COUNT: X"
 
 [connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]

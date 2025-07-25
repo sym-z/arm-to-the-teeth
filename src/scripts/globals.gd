@@ -7,6 +7,8 @@ const SOUTH : int = 4
 const WEST : int = 2
 const EAST : int = 1
 
+# What floor is the player on?
+var curr_floor = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

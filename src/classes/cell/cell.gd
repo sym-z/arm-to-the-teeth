@@ -1,4 +1,4 @@
-class_name Cell extends Node
+class_name Cell extends Resource
 
 var position : Vector2i
 
