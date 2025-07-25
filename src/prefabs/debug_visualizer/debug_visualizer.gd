@@ -60,6 +60,7 @@ func create_visualization():
 					icon_sprite.texture = enemy_icon
 					icons[world_map[key].position] = icon_sprite
 			curr_sprite.add_child(icon_sprite)
+		#TODO: Eventually hide this sprite until it is walked on!
 		add_child(curr_sprite)
 	place_player()
 
@@ -88,6 +89,7 @@ func _on_player_change_position():
 	
 func player_position_refresh():
 	player_db_sprite.position = Vector2i(player.position.x*FRAME_SIZE,player.position.y*FRAME_SIZE)
+	# TODO: Eventually reveal part of map here
 	
 func player_direction_refresh():
 	match player.facing:

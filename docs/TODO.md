@@ -26,6 +26,7 @@
 - [x] Make arm and tooth pickup optional, this will come when UI starts being programmed
 - [x] Enemies Spawn
 - [ ] Player vs Enemy Combat (After UI decisions)
+  - [ ] Enemies can drop items (Teeth/Arms)
 - [ ] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
 - [ ] Player's arms, teeth, and head all have separate health
@@ -47,19 +48,19 @@
 - [x] Show tooth and arm count
 - [ ] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
 - [ ] Log window
-- [ ] Tooth Indication
+- [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
-- [ ] Arm indication
+- [ ] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
   - [x] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
-- [ ] Head indication
+- [ ] Head indication (Frame = Head Health)
   - [ ] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
-- [ ] Hunger indication
+- [ ] Hunger indication (Stomach animation in between arms. Frame = Hunger level)
   - [ ] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art

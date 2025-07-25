@@ -54,9 +54,9 @@
     - Constantly updating at the bottom of the screen. Ex: "IT PICKS UP 2 TEETH", "IT CANNOT PICK UP THE ARM WHILE IT HAS 2 ARMS"
   - Map
     - Reveals itself as the player walks around
-  - Head, Arm, and Teeth status
+  - Head, Arm, Hunger, and Teeth status
     - Takes up one whole side of the UI
-	- Detailed head, arms and teeth that are damaged and disappear as damage is dealt
+	- Detailed head, arms, stomach and teeth that are damaged and disappear as damage is dealt/ hunger is incurred
   - Context Menu (Possibly instead of hiding and revealing options, it dims and brightens the text)
     - Inventory
 	  - Allows player to choose to eat or drop their arms
