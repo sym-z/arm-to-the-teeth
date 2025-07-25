@@ -47,3 +47,12 @@
 - Adjusted placement of icons in viewport
 - Created font to be used for prototyping UI
 - Came up with an idea of what the UI will look like, and what picking up items and attacking an enemy may look like as well.
+
+## 25 July 2025
+- Added context menu to border around viewport
+- Added UI bordering
+- Teeth and Arms can be picked up using context menu
+- Arms are unique, and picking them up adds them to your inventory and equips them
+  - Not sure if I want the player to hold multiple arms or be able to drop/swap arms yet. I'll work that out after combat and into balancing systems.
+- Map can be regenerated using the `G` key, and is automatically regenerated when the player touches an exit. This increases a floor counter in `Globals.gd`
+- UI displays teeth and arm count

@@ -29,8 +29,12 @@
 - [ ] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
 - [ ] Player's arms, teeth, and head all have separate health
-- [ ] Assure that a new map can be generated keeping the parts consistent that are needed.
-- [ ] Derive arm pickup stats from list held in `map.gd`
+  - [x] Arm
+  - [x] Teeth
+  - [ ] Head
+- [x] Assure that a new map can be generated keeping the parts consistent that are needed.
+- [x] Derive arm pickup stats from list held in `map.gd`
+- [ ] Hunger grows during movement, which can be replenished by eating arms
 
 ## Tools
 - [x] Debug mini-map shows landmarks
@@ -40,24 +44,31 @@
 - [x] Prototype font
 
 ## UI
-- [ ] Show tooth and arm count
+- [x] Show tooth and arm count
 - [ ] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
 - [ ] Log window
 - [ ] Tooth Indication
-  - [ ] Temporary label
+  - [x] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
 - [ ] Arm indication
-  - [ ] Temporary label
+  - [x] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
 - [ ] Head indication
   - [ ] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
+- [ ] Hunger indication
+  - [ ] Temporary label
+  - [ ] Prototype Art
+  - [ ] Final Art
 - [ ] Separate button theme for buttons that can be disabled or enabled.
 - [ ] Figure out how exits are used
+  - [x] Automatic
+  - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
+- [ ] Floor number at top of viewport
 
 ## Cleanup
 - [ ] Remove signal connections that are not being used.

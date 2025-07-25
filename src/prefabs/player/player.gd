@@ -154,6 +154,9 @@ func pick_up(type : Cell.TYPE):
 				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 				debug_print_inventory()
 				map.print_arm_atlas()
+			else:
+				# When the player has 2 arms equipped already. To let the player hold arms that are unequipped, add code here.
+				pass
 		Cell.TYPE.TOOTH:
 			# Check if the player has room
 			if tooth_count < TOOTH_MAX:
