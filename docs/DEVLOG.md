@@ -45,3 +45,4 @@
 - Enemy type cell spawns randomly and is shown to and detected by the player
 - Sketched up reference of sizing for UI
 - Adjusted placement of icons in viewport
+- Created font to be used for prototyping UI
