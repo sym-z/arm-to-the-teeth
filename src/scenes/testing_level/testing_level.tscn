@@ -15,7 +15,7 @@ visualizer = NodePath("Debug Visualizer")
 player = NodePath("../Player")
 
 [node name="Debug Visualizer" parent="." node_paths=PackedStringArray("player", "map_node") instance=ExtResource("2_tt45j")]
-position = Vector2(96, 181)
+position = Vector2(96, 650)
 scale = Vector2(4, 4)
 player = NodePath("../Player")
 map_node = NodePath("../Map")
@@ -28,10 +28,13 @@ map = NodePath("../Map")
 map = NodePath("../Map")
 player = NodePath("../Player")
 
-[node name="UI" parent="." instance=ExtResource("6_ped82")]
+[node name="UI" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("6_ped82")]
+player = NodePath("../Player")
+map = NodePath("../Map")
 
 [connection signal="map_filled" from="Map" to="Debug Visualizer" method="_on_map_map_filled"]
 [connection signal="map_filled" from="Map" to="Dungeon Viewport" method="_on_map_map_filled"]
+[connection signal="map_filled" from="Map" to="UI" method="_on_map_map_filled"]
 [connection signal="map_generated" from="Map" to="." method="_on_map_map_generated"]
 [connection signal="map_generated" from="Map" to="Player" method="_on_map_map_generated"]
 [connection signal="map_generated" from="Map" to="Dungeon Viewport" method="_on_map_map_generated"]
@@ -39,6 +42,8 @@ player = NodePath("../Player")
 [connection signal="change_facing" from="Player" to="Dungeon Viewport" method="_on_player_change_facing"]
 [connection signal="change_position" from="Player" to="Debug Visualizer" method="_on_player_change_position"]
 [connection signal="change_position" from="Player" to="Dungeon Viewport" method="_on_player_change_position"]
+[connection signal="item_detected" from="Player" to="UI" method="_on_player_item_detected"]
 [connection signal="item_picked_up" from="Player" to="Debug Visualizer" method="_on_player_item_picked_up"]
 [connection signal="item_picked_up" from="Player" to="Dungeon Viewport" method="_on_player_item_picked_up"]
+[connection signal="item_picked_up" from="Player" to="UI" method="_on_player_item_picked_up"]
 [connection signal="player_spawned" from="Player" to="Map" method="_on_player_player_spawned"]

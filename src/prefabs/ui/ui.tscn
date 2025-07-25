@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=6 format=3 uid="uid://ceq7clgkyer44"]
 
+[ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Texture2D" uid="uid://d1kgxu002itbw" path="res://assets/visual/ui/prototype_ui.png" id="1_tlstp"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
 [ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://Themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
 [ext_resource type="Theme" uid="uid://damqods5iq1r8" path="res://Themes/context_menu/margin_container/button/context_menu_button_theme.tres" id="4_htiv7"]
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button")]
 layer = -1
+script = ExtResource("1_gxjsb")
+pickup_button = NodePath("Context Menu/Button Container/Pick Up")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -58,3 +61,5 @@ text = "OPTIONS"
 layout_mode = 2
 theme = ExtResource("4_htiv7")
 text = "QUIT"
+
+[connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]

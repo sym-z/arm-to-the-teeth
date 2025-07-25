@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+UI="*res://prefabs/ui/ui.gd"
 
 [display]
 

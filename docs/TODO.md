@@ -27,6 +27,7 @@
 - [x] Enemies Spawn
 - [ ] Player vs Enemy Combat (After UI decisions)
 - [ ] Map reveals itself after player moves
+
 ## Tools
 - [x] Debug mini-map shows landmarks
 
@@ -41,6 +42,10 @@
 - [ ] Tooth Indication
 - [ ] Arm indication
 - [ ] Head indication
+
+## Cleanup
+- [ ] Remove signal connections that are not being used.
+- [ ] Remove old `refresh_viewport()`
 
 ## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
