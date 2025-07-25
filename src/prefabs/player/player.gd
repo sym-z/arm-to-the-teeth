@@ -141,19 +141,19 @@ func pick_up(type : Cell.TYPE):
 	match type:
 		Cell.TYPE.ARM:
 			if arm_count < ARM_MAX:
-				var new_arm : Arm = Arm.new()
-				# TODO: Derive from map's arm spawn list
-				new_arm.strength = 1
-				new_arm.condition = 5
+				# Use the map's list of arms to pick up the arm.
+				var new_arm : Arm = map.arm_atlas[position]
 				new_arm.equipped = true
 				arm_inventory.append(new_arm)
-				# TODO: Remove from map's tracker of arm inventory
+				# Remove from map's tracker of arm inventory
+				map.arm_atlas.erase(position)
 				# NOTE: Automatically equips, may change this later
 				arm_count += 1
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 				debug_print_inventory()
+				map.print_arm_atlas()
 		Cell.TYPE.TOOTH:
 			# Check if the player has room
 			if tooth_count < TOOTH_MAX:

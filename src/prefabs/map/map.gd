@@ -3,6 +3,9 @@ extends Node
 var world_map : Dictionary[Vector2i,Cell]
 ## To find spots to place new items, starts with all cells, which are removed as new items are added to map.
 var empty_cells : Array[Vector2i]
+## To keep track of unique Arm objects
+var arm_atlas : Dictionary[Vector2i, Arm]
+
 var frontier : Array[Cell]
 @export var rows : int = 10
 @export var cols : int = 10
@@ -20,13 +23,14 @@ func _ready():
 		generate_maze()
 	else:
 		create_debug_map(rows,cols)
-	#print_map()
+
 
 func new_level():
 	print("BUILDING NEW LEVEL!")
 	level_clear.emit()
 	world_map.clear()
 	empty_cells.clear()
+	arm_atlas.clear()
 	Globals.curr_floor += 1
 	_ready()
 	pass
@@ -108,6 +112,12 @@ func print_neighbors(c : Cell, neighbors : Array[Cell]):
 	print("PRINTING NEIGHBORS OF ", c.position, " THAT ARE IN THE MAP")
 	for n in neighbors:
 		print(n.position)
+
+func print_arm_atlas():
+	print("ARM ATLAS")
+	for arm_loc in arm_atlas.keys():
+		print(arm_loc)
+		arm_atlas[arm_loc].debug_print()
 #endregion
 #region Prim's Algorithm
 # Prim's Algorithm
@@ -297,6 +307,13 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 	if type != Cell.TYPE.EMPTY:
 		world_map[loc].contents = type
 		empty_cells.erase(loc)
+		if type == Cell.TYPE.ARM:
+			var arm_drop : Arm = Arm.new()
+			#TODO: Randomize
+			arm_drop.strength = 2
+			arm_drop.condition = 6
+			arm_drop.equipped = false
+			arm_atlas[loc] = arm_drop
 		#print("Placing ", type, " at ", loc)
 	else:
 		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")
