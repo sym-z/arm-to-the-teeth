@@ -174,3 +174,19 @@ func pick_up(type : Cell.TYPE):
 				print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
 	
 #endregion
+
+#region Arm Consumption and Manipulation
+func remove_arm(a : Arm):
+	arm_inventory.erase(a)
+	arm_count -= 1
+	debug_print_inventory()
+
+# Apply conditions to hunger, tooth count, and health
+func arm_bitten():
+	#TODO: Randomize and check max and minimums
+	hunger -= 1
+	tooth_count -= 1
+	head_health += 1
+
+#endregion
+	

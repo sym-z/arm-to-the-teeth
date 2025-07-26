@@ -103,7 +103,22 @@ func change_inventory_visibility(new_vis : bool):
 func add_arm_to_inventory(a : Arm, number : int):
 	var new_arm_item = arm_item_scene.instantiate()
 	new_arm_item.set_text_to_arm(a, number)
+	new_arm_item.connect("eat_pressed", arm_eaten)
+	new_arm_item.connect("arm_fully_eaten", arm_fully_eaten)
 	item_container.add_child(new_arm_item)
+
+func arm_eaten(arm_object : Arm):
+	# Check tooth count to see if it is possible
+	if player.tooth_count > 0:
+		arm_object.condition -= 1
+		# Adjust hunger, health, arm count etc.
+		player.arm_bitten()
+		refresh_temp_labels()
+
+func arm_fully_eaten(arm_object : Arm):
+	player.remove_arm(arm_object)
+	refresh_temp_labels()
+	pass
 
 func _on_back_button_pressed():
 	change_inventory_visibility(false)
