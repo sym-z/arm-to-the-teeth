@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dinequvservm1"]
+
+[ext_resource type="FontFile" uid="uid://d22avmrynvyyh" path="res://assets/visual/ui/ui_font_0.png" id="1_jlmu1"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_jlmu1")

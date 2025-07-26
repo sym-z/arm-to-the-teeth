@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp85jko1wcurv"]
+
+[ext_resource type="Theme" uid="uid://qr7ym3w7kd8x" path="res://themes/log/full_window_log_label.tres" id="1_8xgtq"]
+
+[node name="Full Window Log Label" type="RichTextLabel"]
+clip_contents = false
+custom_minimum_size = Vector2(1430, 62.94)
+theme = ExtResource("1_8xgtq")
+text = "THIS IS SAMPLE TEXT BLAH"
+horizontal_alignment = 1
+vertical_alignment = 1

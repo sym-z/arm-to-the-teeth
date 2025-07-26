@@ -59,7 +59,7 @@
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
 - [x] Log window
-- [ ] Expanded log window on click that is scrollable.
+- [x] Expanded log window on click that is scrollable.
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [ ] Prototype Art

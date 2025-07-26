@@ -29,13 +29,25 @@ var arm_item_scene : PackedScene = preload("uid://cs01wd2aki26b")
 
 @export_category("Log")
 @export var log_line_label : RichTextLabel 
+## What holds the logs
+@export var full_log_container : VBoxContainer
+## What holds the whole window
+@export var full_log_window_container : MarginContainer
+## Scroller
+@export var full_log_scroller : ScrollContainer
+## Back button for full window
+@export var full_log_back_button : Button
+
+var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 func _ready():
 	Log.connect("new_log", update_log_line)
+	Log.connect("new_log", update_full_log)
 	pass # Replace with function body.
 
 # Work should start only when the map is done filling.
 func _on_map_map_filled():
 	change_inventory_visibility(false)
+	change_full_log_window_visibility(false)
 	pickup_button.disabled = true
 	refresh_temp_labels()
 	# Run initial setup if this is the beginning of play.
@@ -113,6 +125,9 @@ func _on_inventory_pressed():
 func change_inventory_visibility(new_vis : bool):
 	inventory_container.visible = new_vis
 	inv_back_button.visible = new_vis
+	# Hide log window
+	if new_vis == true:
+		change_full_log_window_visibility(false)
 
 func arm_eaten(arm_object : Arm):
 	# Check tooth count to see if it is possible
@@ -141,6 +156,25 @@ func enable_combat_buttons():
 #endregion
 
 #region Log Window
+func change_full_log_window_visibility(new_vis : bool):
+	full_log_window_container.visible = new_vis
+	full_log_back_button.visible = new_vis
+	# Hide inventory
+	if new_vis == true:
+		change_inventory_visibility(false)
 func update_log_line():
 	log_line_label.text = Log.log_messages.back()
+func update_full_log():
+	var new_log_msg = full_log_label_scene.instantiate()
+	new_log_msg.text = Log.log_messages.back()
+	full_log_container.add_child(new_log_msg)
+	full_log_container.move_child(new_log_msg,0)
+func _on_log_line_window_gui_input(event):
+	if event is InputEventMouseButton and event.button_index ==1 and event.pressed == true:
+		change_full_log_window_visibility(not full_log_window_container.visible)
+	pass # Replace with function body.
+
+func _on_full_window_back_button_pressed():
+	change_full_log_window_visibility(false)
+	pass # Replace with function body.
 #endregion

@@ -75,3 +75,5 @@
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
 - Added in a global script, `log.gd` which keeps track of messages sent to it and emits a signal when a new message is added.
 - Added a log window to the UI which displays the most recent log message.
+- Log line window can be clicked to reveal all of the log messages that have been sent since the start, and scroll through them
+  - It is impossible to have the inventory and log window open at the same time
