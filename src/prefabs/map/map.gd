@@ -27,11 +27,12 @@ func _ready():
 
 func new_level():
 	print("BUILDING NEW LEVEL!")
+	Globals.curr_floor += 1
+	Log.add_log_message("IT HAS ENTERED FLOOR " + str(Globals.curr_floor) + ".")
 	level_clear.emit()
 	world_map.clear()
 	empty_cells.clear()
 	arm_atlas.clear()
-	Globals.curr_floor += 1
 	_ready()
 	pass
 

@@ -172,10 +172,13 @@ func pick_up(type : Cell.TYPE):
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
+				Log.add_log_message("PICKED UP ARM! IT NOW HOLDS " + str(arm_count) + " ARMS!")
 				debug_print_inventory()
 				map.print_arm_atlas()
 			else:
 				# When the player has 2 arms equipped already. To let the player hold arms that are unequipped, add code here.
+				# For now, I am only allowing 2 arms to be picked up.
+				Log.add_log_message("IT TRIED TO PICK UP AN ARM, BUT IT ALREADY HAS 2 ARMS.")
 				pass
 		Cell.TYPE.TOOTH:
 			# Check if the player has room
@@ -186,6 +189,7 @@ func pick_up(type : Cell.TYPE):
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
+				Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(tooth_count) + " TEETH!")
 	
 #endregion
 
@@ -193,6 +197,7 @@ func pick_up(type : Cell.TYPE):
 func remove_arm(a : Arm):
 	arm_inventory.erase(a)
 	arm_count -= 1
+	Log.add_log_message("IT HAS LOST ONE OF ITS ARMS, IT NOW HAS " + str(arm_count) + " ARMS.")
 	debug_print_inventory()
 
 # Apply conditions to hunger, tooth count, and health
@@ -201,6 +206,7 @@ func arm_bitten():
 	hunger -= 1
 	tooth_count -= 1
 	head_health += 1
+	Log.add_log_message("IT HAS TAKEN A BITE FROM ONE OF ITS ARMS.")
 	set_hunger_state()
 
 #endregion
@@ -226,10 +232,14 @@ func set_hunger_state():
 		match hunger_state:
 			HUNGER_LEVEL.SATISFIED:
 				hunger_satisfied.emit()
+				Log.add_log_message("ITS HUNGER IS NOW SATISFIED.")
 			HUNGER_LEVEL.HUNGRY:
 				hunger_hungry.emit()
+				Log.add_log_message("IT IS NOW HUNGRY.")
 			HUNGER_LEVEL.STARVING:
 				hunger_starving.emit()
+				Log.add_log_message("IT IS NOW STARVING.")
 			HUNGER_LEVEL.DEAD:
 				hunger_dead.emit()
+				Log.add_log_message("IT IS NOW DYING OF HUNGER.")
 #endregion

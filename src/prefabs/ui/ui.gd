@@ -27,7 +27,10 @@ var item_to_pick : Cell.TYPE = Cell.TYPE.EMPTY
 @export var inv_back_button : Button
 var arm_item_scene : PackedScene = preload("uid://cs01wd2aki26b")
 
+@export_category("Log")
+@export var log_line_label : RichTextLabel 
 func _ready():
+	Log.connect("new_log", update_log_line)
 	pass # Replace with function body.
 
 # Work should start only when the map is done filling.
@@ -92,6 +95,13 @@ func _on_player_item_picked_up():
 	pickup_button.disabled = true
 	item_to_pick = Cell.TYPE.EMPTY
 	refresh_temp_labels()
+
+func add_arm_to_inventory(a : Arm, number : int):
+	var new_arm_item = arm_item_scene.instantiate()
+	new_arm_item.set_text_to_arm(a, number)
+	new_arm_item.connect("eat_pressed", arm_eaten)
+	new_arm_item.connect("arm_fully_eaten", arm_fully_eaten)
+	item_container.add_child(new_arm_item)
 #endregion
 #region Context Menu Button Presses
 func _on_pick_up_pressed():
@@ -103,13 +113,6 @@ func _on_inventory_pressed():
 func change_inventory_visibility(new_vis : bool):
 	inventory_container.visible = new_vis
 	inv_back_button.visible = new_vis
-
-func add_arm_to_inventory(a : Arm, number : int):
-	var new_arm_item = arm_item_scene.instantiate()
-	new_arm_item.set_text_to_arm(a, number)
-	new_arm_item.connect("eat_pressed", arm_eaten)
-	new_arm_item.connect("arm_fully_eaten", arm_fully_eaten)
-	item_container.add_child(new_arm_item)
 
 func arm_eaten(arm_object : Arm):
 	# Check tooth count to see if it is possible
@@ -135,4 +138,9 @@ func disable_combat_buttons():
 func enable_combat_buttons():
 	attack_button.disabled = false
 	run_button.disabled = false
+#endregion
+
+#region Log Window
+func update_log_line():
+	log_line_label.text = Log.log_messages.back()
 #endregion

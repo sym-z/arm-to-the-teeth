@@ -73,3 +73,5 @@
   - Transitions the player through states of hunger which emit signals when they switch to a new state
   - Eating arms can lower the player through a state
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
+- Added in a global script, `log.gd` which keeps track of messages sent to it and emits a signal when a new message is added.
+- Added a log window to the UI which displays the most recent log message.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=10 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Texture2D" uid="uid://d1kgxu002itbw" path="res://assets/visual/ui/prototype_ui.png" id="1_tlstp"]
@@ -8,8 +8,9 @@
 [ext_resource type="Theme" uid="uid://bn3i6d6cugm34" path="res://themes/context_menu/margin_container/button/context_menu_disablable_button_theme.tres" id="5_cllw1"]
 [ext_resource type="Theme" uid="uid://b4r4mirjty34t" path="res://themes/inventory/inventory_margin_container_theme.tres" id="6_mbf2n"]
 [ext_resource type="Theme" uid="uid://cfkrwy0lnfu1n" path="res://themes/inventory/inventory_button.tres" id="7_lntee"]
+[ext_resource type="Theme" uid="uid://bikqjqnnew2tq" path="res://themes/log/log_line_label.tres" id="9_sidkk"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button", "inventory_button", "attack_button", "run_button", "options_button", "quit_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button", "inventory_button", "attack_button", "run_button", "options_button", "quit_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button", "log_line_label")]
 script = ExtResource("1_gxjsb")
 pickup_button = NodePath("Context Menu/Button Container/Pick Up")
 inventory_button = NodePath("Context Menu/Button Container/Inventory")
@@ -24,6 +25,7 @@ hunger_label = NodePath("TEMP HUNGER")
 inventory_container = NodePath("Inventory/Inventory Window")
 item_container = NodePath("Inventory/Inventory Window/Item Container")
 inv_back_button = NodePath("Inventory/Back Button")
+log_line_label = NodePath("Log Line Window/Log Line Label")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -144,6 +146,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("7_lntee")
 text = "BACK"
+
+[node name="Log" type="Node" parent="."]
+
+[node name="Log Line Window" type="PanelContainer" parent="."]
+offset_left = 7.0
+offset_top = 1003.0
+offset_right = 1910.0
+offset_bottom = 1071.0
+
+[node name="Log Line Label" type="RichTextLabel" parent="Log Line Window"]
+layout_mode = 2
+theme = ExtResource("9_sidkk")
+bbcode_enabled = true
+text = "THIS IS A TEST LINE OF DIALOG FOR THE GAME AT3"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]
 [connection signal="pressed" from="Context Menu/Button Container/Inventory" to="." method="_on_inventory_pressed"]
