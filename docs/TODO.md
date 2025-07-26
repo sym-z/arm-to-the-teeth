@@ -82,7 +82,7 @@
   - [x] Automatic
   - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
-- [ ] Floor number at top of viewport
+- [x] Floor number at top of viewport
 - [ ] Better StyleBoxes for inventory and arm items
 
 ## Cleanup

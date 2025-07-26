@@ -77,3 +77,4 @@
 - Added a log window to the UI which displays the most recent log message.
 - Log line window can be clicked to reveal all of the log messages that have been sent since the start, and scroll through them
   - It is impossible to have the inventory and log window open at the same time
+- The viewport has a header label that keeps track of what floor the player is on.

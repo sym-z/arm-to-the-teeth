@@ -35,6 +35,7 @@ scale = Vector2(4, 4)
 player = NodePath("../../Player")
 map_node = NodePath("../../Map")
 
+[connection signal="level_clear" from="Map" to="UI" method="_on_map_level_clear"]
 [connection signal="level_clear" from="Map" to="Minimap Layer/Debug Visualizer" method="_on_map_level_clear"]
 [connection signal="map_filled" from="Map" to="Dungeon Viewport" method="_on_map_map_filled"]
 [connection signal="map_filled" from="Map" to="UI" method="_on_map_map_filled"]

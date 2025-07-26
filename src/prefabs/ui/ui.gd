@@ -37,12 +37,15 @@ var arm_item_scene : PackedScene = preload("uid://cs01wd2aki26b")
 @export var full_log_scroller : ScrollContainer
 ## Back button for full window
 @export var full_log_back_button : Button
-
 var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
+
+@export_category("Viewport Header")
+@export var viewport_header_label : RichTextLabel
 func _ready():
 	Log.connect("new_log", update_log_line)
 	Log.connect("new_log", update_full_log)
-	pass # Replace with function body.
+	# Initialize viewport header label
+	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)
 
 # Work should start only when the map is done filling.
 func _on_map_map_filled():
@@ -63,6 +66,11 @@ func initial_setup():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+#region Viewport Header
+func _on_map_level_clear():
+	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)
+#endregion
 
 func refresh_temp_labels():
 	tooth_label.text = "TOOTH COUNT: " + str(player.tooth_count)
@@ -172,9 +180,6 @@ func update_full_log():
 func _on_log_line_window_gui_input(event):
 	if event is InputEventMouseButton and event.button_index ==1 and event.pressed == true:
 		change_full_log_window_visibility(not full_log_window_container.visible)
-	pass # Replace with function body.
-
 func _on_full_window_back_button_pressed():
 	change_full_log_window_visibility(false)
-	pass # Replace with function body.
 #endregion
