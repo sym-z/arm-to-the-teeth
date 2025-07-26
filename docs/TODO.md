@@ -30,6 +30,7 @@
 - [ ] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
     - Need to leave the option to have the map be fully revealed to keep it applicable for debugging
+  - May also remake the debug visualizer as part of the UI and just apply the same tactics used to it
 - [ ] Player's arms, teeth, and head all have separate health
   - [x] Arm
   - [x] Teeth
@@ -37,6 +38,8 @@
 - [x] Assure that a new map can be generated keeping the parts consistent that are needed.
 - [x] Derive arm pickup stats from list held in `map.gd`
 - [ ] Hunger grows during movement, which can be replenished by eating arms
+- [ ] The map's arm drops are randomized
+  - [ ] They are also influenced by the floor that the player is on.
 
 ## Tools
 - [x] Debug mini-map shows landmarks

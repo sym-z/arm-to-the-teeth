@@ -33,8 +33,8 @@
 - Pickups happen automatically, but in the future when the UI is being programmed, I want to make it optional.
 - Fixed weird ordering problem by setting the Far Right and Far Left walls in d2 to have a higher ordering priority, because they were unintentionally covering up certain items as shown in `error_tracking/rendering_issue.png`. This may end up looking weird with the red line "pillars" that hold up each cube, but I dont think it will matter later because I can always just not draw those lines when there is no wall.
 - May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
- - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
- - An easy way to do this would be to start on the farthest walls and increase the ordering starting by 1 from 0. The far left and far right walls will need to be adjusted because of the fix mentioned previously.
+  - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
+  - An easy way to do this would be to start on the farthest walls and increase the ordering starting by 1 from 0. The far left and far right walls will need to be adjusted because of the fix mentioned previously.
 - Debug map now shows icons for the different types of cells and they are hidden when the player picks them up.
 - Reworked the layering so now specific walls closer to the player have higher priority of layering. Makes positioning sprites for the content of cells easier.
   - D0, D1 and D2 all have base ordering that the child nodes build upon. This is detailed in `REFERENCE.md`
@@ -54,5 +54,11 @@
 - Teeth and Arms can be picked up using context menu
 - Arms are unique, and picking them up adds them to your inventory and equips them
   - Not sure if I want the player to hold multiple arms or be able to drop/swap arms yet. I'll work that out after combat and into balancing systems.
+- Map keeps track of unique arm drops with its `arm_atlas`
 - Map can be regenerated using the `G` key, and is automatically regenerated when the player touches an exit. This increases a floor counter in `Globals.gd`
 - UI displays teeth and arm count
+- Inventory can be revealed and hidden using context menu
+- Inventory displays the arms that the player picks up, which includes their strength, condition, and if they are equipped
+- Started the base work for hunger and head health
+- UI is now on top of viewport and has the center transparent
+- UI displays hunger and head health
