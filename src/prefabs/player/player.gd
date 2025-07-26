@@ -12,7 +12,7 @@ signal item_picked_up
 signal player_spawned
 # Sends signal to UI to activate buttons and/or start battle.
 signal item_detected(item : Cell.TYPE, loc : Vector2i)
-# Inventory
+#region Inventory and Stat Variables
 @export var tooth_count : int = 3
 # How many arms are equipped
 var arm_count : int = 0
@@ -22,7 +22,16 @@ var arm_inventory : Array[Arm]
 var head_health : int = 5
 ## Hunger Stats
 var hunger : int = 0
-enum HUNGER_LEVEL {HUNGRY = 20, STARVING = 40, DEAD = 60}
+enum HUNGER_LEVEL {SATISFIED = 0,HUNGRY = 20, STARVING = 40, DEAD = 60}
+var hunger_state : HUNGER_LEVEL = HUNGER_LEVEL.SATISFIED
+signal hunger_ticked
+# For connecting the UI in the future to show specific states of hunger.
+signal hunger_satisfied
+signal hunger_hungry
+signal hunger_starving
+signal hunger_dead
+#endregion
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -98,12 +107,17 @@ func move(distance : int = 1):
 	match facing:
 		Globals.NORTH:
 			position = Vector2i(position.x,position.y-distance)
+			tick_hunger()
 		Globals.SOUTH:
 			position = Vector2i(position.x,position.y+distance)
+			tick_hunger()
 		Globals.WEST:
 			position = Vector2i(position.x-distance, position.y)
+			tick_hunger()
 		Globals.EAST:
 			position = Vector2i(position.x+distance, position.y)
+			tick_hunger()
+	#NOTE: This fires even if the player does not move, not sure if that matters.
 	change_position.emit()
 	check_cell_content()
 
@@ -187,6 +201,35 @@ func arm_bitten():
 	hunger -= 1
 	tooth_count -= 1
 	head_health += 1
+	set_hunger_state()
 
 #endregion
 	
+#region Hunger Management
+func tick_hunger():
+	hunger += 1
+	hunger_ticked.emit()
+	set_hunger_state()
+func set_hunger_state():
+	var before_state : HUNGER_LEVEL = hunger_state
+	if hunger >= HUNGER_LEVEL.DEAD:
+		hunger_state = HUNGER_LEVEL.DEAD
+	elif hunger >= HUNGER_LEVEL.STARVING:
+		hunger_state = HUNGER_LEVEL.STARVING
+	elif hunger >= HUNGER_LEVEL.HUNGRY:
+		hunger_state = HUNGER_LEVEL.HUNGRY
+	elif hunger >= HUNGER_LEVEL.SATISFIED:
+		hunger_state = HUNGER_LEVEL.SATISFIED
+	var after_state : HUNGER_LEVEL = hunger_state
+	if(before_state != after_state):
+		print("STATE SWITCH")
+		match hunger_state:
+			HUNGER_LEVEL.SATISFIED:
+				hunger_satisfied.emit()
+			HUNGER_LEVEL.HUNGRY:
+				hunger_hungry.emit()
+			HUNGER_LEVEL.STARVING:
+				hunger_starving.emit()
+			HUNGER_LEVEL.DEAD:
+				hunger_dead.emit()
+#endregion

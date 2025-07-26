@@ -69,3 +69,7 @@
   - Player loses hunger, teeth, and the arm's condition when arms are eaten, and gains head health
   - Eventually I want to make it a gamble whether or not teeth are even lost when arms are eaten, or multiple teeth can be lost
   - Fully eating an arm removes it from the player's inventory, and from the inventory window
+- Hunger grows as the player moves
+  - Transitions the player through states of hunger which emit signals when they switch to a new state
+  - Eating arms can lower the player through a state
+- When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations

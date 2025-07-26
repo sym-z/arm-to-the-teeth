@@ -55,6 +55,10 @@ func refresh_temp_labels():
 	head_label.text = "HEAD HEALTH: " + str(player.head_health)
 	hunger_label.text = "HUNGER LEVEL: " + str(player.hunger)
 
+func _on_player_hunger_ticked():
+	refresh_temp_labels()
+
+#region Item Pickup and Detection
 # Preps the UI to pick up what is at the feet of the player
 func _on_player_item_detected(item, loc):
 	match item:
@@ -88,7 +92,7 @@ func _on_player_item_picked_up():
 	pickup_button.disabled = true
 	item_to_pick = Cell.TYPE.EMPTY
 	refresh_temp_labels()
-	
+#endregion
 #region Context Menu Button Presses
 func _on_pick_up_pressed():
 	player.pick_up(item_to_pick)
