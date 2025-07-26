@@ -21,6 +21,8 @@
 - [x] Player has an inventory
 - [x] Player can pick up teeth
 - [ ] When a player picks up teeth, it can be 1 or more teeth in that spot
+  - [ ] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
+    - [ ] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
 - [x] Player can pick up arms
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [x] Make arm and tooth pickup optional, this will come when UI starts being programmed
