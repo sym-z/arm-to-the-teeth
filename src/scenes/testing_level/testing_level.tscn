@@ -9,20 +9,15 @@
 
 [node name="Testing Level" type="Node2D" node_paths=PackedStringArray("visualizer")]
 script = ExtResource("1_tt45j")
-visualizer = NodePath("Debug Visualizer")
+visualizer = NodePath("Minimap Layer/Debug Visualizer")
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_634d8")]
 player = NodePath("../Player")
 
-[node name="Debug Visualizer" parent="." node_paths=PackedStringArray("player", "map_node") instance=ExtResource("2_tt45j")]
-position = Vector2(96, 650)
-scale = Vector2(4, 4)
-player = NodePath("../Player")
-map_node = NodePath("../Map")
-
-[node name="Player" parent="." node_paths=PackedStringArray("map") instance=ExtResource("4_f1y3a")]
+[node name="Player" parent="." node_paths=PackedStringArray("map", "ui") instance=ExtResource("4_f1y3a")]
 position = Vector2i(9, 9)
 map = NodePath("../Map")
+ui = NodePath("../UI")
 
 [node name="Dungeon Viewport" parent="." node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]
 map = NodePath("../Map")
@@ -32,19 +27,27 @@ player = NodePath("../Player")
 player = NodePath("../Player")
 map = NodePath("../Map")
 
-[connection signal="level_clear" from="Map" to="Debug Visualizer" method="_on_map_level_clear"]
-[connection signal="map_filled" from="Map" to="Debug Visualizer" method="_on_map_map_filled"]
+[node name="Minimap Layer" type="CanvasLayer" parent="."]
+
+[node name="Debug Visualizer" parent="Minimap Layer" node_paths=PackedStringArray("player", "map_node") instance=ExtResource("2_tt45j")]
+position = Vector2(96, 650)
+scale = Vector2(4, 4)
+player = NodePath("../../Player")
+map_node = NodePath("../../Map")
+
+[connection signal="level_clear" from="Map" to="Minimap Layer/Debug Visualizer" method="_on_map_level_clear"]
 [connection signal="map_filled" from="Map" to="Dungeon Viewport" method="_on_map_map_filled"]
 [connection signal="map_filled" from="Map" to="UI" method="_on_map_map_filled"]
+[connection signal="map_filled" from="Map" to="Minimap Layer/Debug Visualizer" method="_on_map_map_filled"]
 [connection signal="map_generated" from="Map" to="." method="_on_map_map_generated"]
 [connection signal="map_generated" from="Map" to="Player" method="_on_map_map_generated"]
 [connection signal="map_generated" from="Map" to="Dungeon Viewport" method="_on_map_map_generated"]
-[connection signal="change_facing" from="Player" to="Debug Visualizer" method="_on_player_change_facing"]
 [connection signal="change_facing" from="Player" to="Dungeon Viewport" method="_on_player_change_facing"]
-[connection signal="change_position" from="Player" to="Debug Visualizer" method="_on_player_change_position"]
+[connection signal="change_facing" from="Player" to="Minimap Layer/Debug Visualizer" method="_on_player_change_facing"]
 [connection signal="change_position" from="Player" to="Dungeon Viewport" method="_on_player_change_position"]
+[connection signal="change_position" from="Player" to="Minimap Layer/Debug Visualizer" method="_on_player_change_position"]
 [connection signal="item_detected" from="Player" to="UI" method="_on_player_item_detected"]
-[connection signal="item_picked_up" from="Player" to="Debug Visualizer" method="_on_player_item_picked_up"]
 [connection signal="item_picked_up" from="Player" to="Dungeon Viewport" method="_on_player_item_picked_up"]
 [connection signal="item_picked_up" from="Player" to="UI" method="_on_player_item_picked_up"]
+[connection signal="item_picked_up" from="Player" to="Minimap Layer/Debug Visualizer" method="_on_player_item_picked_up"]
 [connection signal="player_spawned" from="Player" to="Map" method="_on_player_player_spawned"]

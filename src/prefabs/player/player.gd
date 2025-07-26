@@ -3,6 +3,7 @@ extends Node
 @export var position : Vector2i = Vector2i(0,0)
 @export var facing : int = Globals.NORTH
 @export var map : Node 
+@export var ui : CanvasLayer
 
 signal change_facing
 signal change_position
@@ -18,7 +19,10 @@ var arm_count : int = 0
 const ARM_MAX : int = 2
 const TOOTH_MAX : int = 32
 var arm_inventory : Array[Arm]
-
+var head_health : int = 5
+## Hunger Stats
+var hunger : int = 0
+enum HUNGER_LEVEL {HUNGRY = 20, STARVING = 40, DEAD = 60}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -144,11 +148,13 @@ func pick_up(type : Cell.TYPE):
 				# Use the map's list of arms to pick up the arm.
 				var new_arm : Arm = map.arm_atlas[position]
 				new_arm.equipped = true
-				arm_inventory.append(new_arm)
-				# Remove from map's tracker of arm inventory
-				map.arm_atlas.erase(position)
 				# NOTE: Automatically equips, may change this later
 				arm_count += 1
+				arm_inventory.append(new_arm)
+				# Add this arm to the inventory UI
+				ui.add_arm_to_inventory(arm_inventory[arm_inventory.size()-1],arm_count)
+				# Remove from map's tracker of arm inventory
+				map.arm_atlas.erase(position)
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")

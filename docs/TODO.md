@@ -65,12 +65,14 @@
   - [ ] Temporary label
   - [ ] Prototype Art
   - [ ] Final Art
-- [ ] Separate button theme for buttons that can be disabled or enabled.
+- [x] Create separate button theme for buttons that can be disabled or enabled.
+  - [ ] Build out theme for disablable buttons
 - [ ] Figure out how exits are used
   - [x] Automatic
   - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Floor number at top of viewport
+- [ ] Better StyleBoxes for inventory and arm items
 
 ## Cleanup
 - [ ] Remove signal connections that are not being used.
@@ -78,6 +80,7 @@
 
 ## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
+  - Will be under the UI's CanvasLayer now.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
  - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.

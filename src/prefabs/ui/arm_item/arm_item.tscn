@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs01wd2aki26b"]
+
+[ext_resource type="Script" uid="uid://brbjch41e3lmw" path="res://prefabs/ui/arm_item/arm_item.gd" id="1_0djgg"]
+[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="1_ayt4m"]
+[ext_resource type="Theme" uid="uid://b3vpgrqtsod14" path="res://themes/inventory/arm_item_label.tres" id="3_2e60w"]
+
+[node name="Arm Item" type="PanelContainer" node_paths=PackedStringArray("title", "strength", "condition", "equipped")]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0djgg")
+title = NodePath("HBoxContainer/Stat Container/Title")
+strength = NodePath("HBoxContainer/Stat Container/Strength")
+condition = NodePath("HBoxContainer/Stat Container/Condition")
+equipped = NodePath("HBoxContainer/Stat Container/Equipped")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Arm Icon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ayt4m")
+expand_mode = 3
+
+[node name="Stat Container" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Stat Container"]
+layout_mode = 2
+theme = ExtResource("3_2e60w")
+text = "ARM NUMBER: X"
+
+[node name="Strength" type="Label" parent="HBoxContainer/Stat Container"]
+layout_mode = 2
+theme = ExtResource("3_2e60w")
+text = "STRENGTH: X"
+
+[node name="Condition" type="Label" parent="HBoxContainer/Stat Container"]
+layout_mode = 2
+theme = ExtResource("3_2e60w")
+text = "ARM NUMBER: X"
+
+[node name="Equipped" type="Label" parent="HBoxContainer/Stat Container"]
+layout_mode = 2
+theme = ExtResource("3_2e60w")
+text = "EQUIPPED?: X"
