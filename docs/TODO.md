@@ -27,7 +27,6 @@
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [x] Make arm and tooth pickup optional, this will come when UI starts being programmed
 - [x] Enemies Spawn
-- [ ] Player vs Enemy Combat (After UI decisions)
   - [ ] Enemies can drop items (Teeth/Arms)
 - [ ] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
@@ -46,7 +45,11 @@
 - [ ] Refine Arm Eating
   - [ ] Check mins and maxes of the stats that it affects for the player
 - [ ] Refine hunger growth
+- [ ] Figure out if hunger kills you or hurts your head
 
+## Player vs Enemy Combat 
+  - [ ] When combat starts, everything but the enemy goes black
+  - [ ] Combat dice roll can involve the player clicking to stop the spinning dice
 
 ## Tools
 - [x] Debug mini-map shows landmarks
@@ -54,6 +57,7 @@
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
 - [x] Prototype font
+  - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 
 ## UI
 - [x] Show tooth and arm count
@@ -94,4 +98,8 @@
   - Will be under the UI's CanvasLayer now.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
- - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
+  - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
+- [ ] Turn off arrow key input for Context menu
+
+## Keep in Mind
+- The `arm_item` is stopping GUI events
