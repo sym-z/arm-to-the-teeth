@@ -62,3 +62,10 @@
 - Started the base work for hunger and head health
 - UI is now on top of viewport and has the center transparent
 - UI displays hunger and head health
+
+## 26 July 2025
+- Player can eat their arms
+  - Player can only eat their arms if they have at least 1 tooth
+  - Player loses hunger, teeth, and the arm's condition when arms are eaten, and gains head health
+  - Eventually I want to make it a gamble whether or not teeth are even lost when arms are eaten, or multiple teeth can be lost
+  - Fully eating an arm removes it from the player's inventory, and from the inventory window

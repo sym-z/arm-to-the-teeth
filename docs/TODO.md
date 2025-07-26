@@ -42,6 +42,10 @@
 - [ ] Hunger grows during movement, which can be replenished by eating arms
 - [ ] The map's arm drops are randomized
   - [ ] They are also influenced by the floor that the player is on.
+- [x] Player can eat their arms
+- [ ] Refine Arm Eating
+  - [ ] Check mins and maxes of the stats that it affects for the player
+
 
 ## Tools
 - [x] Debug mini-map shows landmarks
