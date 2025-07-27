@@ -79,3 +79,5 @@
   - It is impossible to have the inventory and log window open at the same time
 - The viewport has a header label that keeps track of what floor the player is on.
 - Created a new item for the UI, the Mini Map. It is nearly identical to the `debug_visualizer` except that it is invisible 'til the player starts walking around on it.
+- Log window in the UI has a better looking `StyleBox`
+- Node groups in `ui.tscn` now have `CanvasLayer` parents instead of `Node` parents
