@@ -23,13 +23,19 @@
     - [ ] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [x] Enemies Spawn
-  - [ ] Enemies can drop items (Teeth/Arms)
 - [ ] The map's arm drops are randomized
   - [ ] They are also influenced by the floor that the player is on.
 - [ ] Refine Arm Eating
   - [ ] Check mins and maxes of the stats that it affects for the player
+  - [ ] Player can use the same spinning die roll to see how much teeth is lost when eating and possibly how much benefit they gain
 - [ ] Refine hunger growth
 - [ ] Figure out if hunger kills you or hurts your head
+- [ ] Multi-Arm Storage
+  - [ ] Ability to store extra arms in inventory
+  - [ ] Ability to swap between arms
+  - [ ] Ability to drop arm on free tile
+  - [ ] Ability to swap arms in combat
+
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
@@ -51,8 +57,9 @@
 - [x] Player can pick up teeth
 
 ## Player vs Enemy Combat 
-  - [ ] When combat starts, everything but the enemy goes black
-  - [ ] Combat dice roll can involve the player clicking to stop the spinning dice
+- [ ] When combat starts, everything but the enemy goes black
+- [ ] Combat dice roll can involve the player clicking to stop the spinning dice
+- [ ] Enemies can drop items (Teeth/Arms)
 
 ## Tools
 ### DONE
