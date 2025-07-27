@@ -19,6 +19,7 @@
 - D2 Base Z: 1
 
 ## UI Ordering
-- Everything but the Combat Viewport: 2
+- Everything but the Combat Viewport and Minimap: 2
 - Combat Viewport: 0
   - Combat Viewport Dialog Box: 1
+- Mini Map: 1

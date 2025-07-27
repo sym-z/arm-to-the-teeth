@@ -41,15 +41,16 @@ func _on_mouse_handler_gui_input(event):
 			roll_die()
 			print("DIE ROLLING STARTED")
 		else:
-			print("DIE ROLLING STOPPED")
-			pause()
-			roll_finished = true
-			var result : int = frame + 1
-			if result >= difficulty_class:
-				roll_passed = true
-			else:
-				roll_passed = false
-			roll_results_ready.emit(roll_passed, result)
+			if roll_finished == false:
+				print("DIE ROLLING STOPPED")
+				pause()
+				roll_finished = true
+				var result : int = frame + 1
+				if result >= difficulty_class:
+					roll_passed = true
+				else:
+					roll_passed = false
+				roll_results_ready.emit(roll_passed, result)
 			
 		
 
