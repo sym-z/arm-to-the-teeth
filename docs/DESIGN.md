@@ -72,6 +72,10 @@
 	- Possibly playtime and high score
 - Notifications can be displayed to the user like in IMP when it is pressing, like choosing where to take damage.
 
-## Enemy Movement
+## Enemy Movement (STRETCH GOAL)
 - Start out immobile, then enemies can choose a spot to move when the player moves, in cardinal directions, as long as there is not an item blocking them.
   - As the player clears out itmes they are in turn opening the possibilities for greater enemy movement
+
+## Die Rolls
+- Could mimick spinning light game from arcade, slot machines, cup and ball game, or just a regular die roll
+- STRETCH GOAL: Buffs can change the distribution of numbers in the roll

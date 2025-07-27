@@ -35,6 +35,7 @@
   - [ ] Ability to swap between arms
   - [ ] Ability to drop arm on free tile
   - [ ] Ability to swap arms in combat
+- [ ] Enemy Movement (STRETCH GOAL)
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
