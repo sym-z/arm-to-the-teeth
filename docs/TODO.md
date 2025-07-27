@@ -35,7 +35,6 @@
   - [ ] Ability to swap between arms
   - [ ] Ability to drop arm on free tile
   - [ ] Ability to swap arms in combat
-
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
@@ -60,6 +59,7 @@
 - [ ] When combat starts, everything but the enemy goes black
 - [ ] Combat dice roll can involve the player clicking to stop the spinning dice
 - [ ] Enemies can drop items (Teeth/Arms)
+### DONE
 
 ## Tools
 ### DONE
@@ -72,6 +72,7 @@
 ### DONE
 
 ## UI
+- When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [ ] Prototype Art
