@@ -5,6 +5,11 @@ extends Node
 @export var map : Node 
 @export var ui : CanvasLayer
 
+## Will the player enter the battle scene when they step on a space with an enemy
+@export var ignore_combat : bool = false
+## Is the player currently in combat
+var in_battle : bool = false
+
 signal change_facing
 signal change_position
 signal item_picked_up
@@ -61,34 +66,35 @@ func _on_map_map_generated():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+#region Player Movement
 func _input(event):
-	if event.is_action_pressed("move_forward"):
-		move()
-	if event.is_action_pressed("move_back"):
-		move(-1)
-	if event.is_action_pressed("turn_left"):
-		match facing:
-			Globals.NORTH:
-				facing = Globals.WEST
-			Globals.SOUTH:
-				facing = Globals.EAST
-			Globals.WEST:
-				facing = Globals.SOUTH
-			Globals.EAST:
-				facing = Globals.NORTH
-		change_facing.emit()
-	if event.is_action_pressed("turn_right"):
-		match facing:
-			Globals.NORTH:
-				facing = Globals.EAST
-			Globals.SOUTH:
-				facing = Globals.WEST
-			Globals.WEST:
-				facing = Globals.NORTH
-			Globals.EAST:
-				facing = Globals.SOUTH
-		change_facing.emit()
+	if in_battle == false:
+		if event.is_action_pressed("move_forward"):
+			move()
+		if event.is_action_pressed("move_back"):
+			move(-1)
+		if event.is_action_pressed("turn_left"):
+			match facing:
+				Globals.NORTH:
+					facing = Globals.WEST
+				Globals.SOUTH:
+					facing = Globals.EAST
+				Globals.WEST:
+					facing = Globals.SOUTH
+				Globals.EAST:
+					facing = Globals.NORTH
+			change_facing.emit()
+		if event.is_action_pressed("turn_right"):
+			match facing:
+				Globals.NORTH:
+					facing = Globals.EAST
+				Globals.SOUTH:
+					facing = Globals.WEST
+				Globals.WEST:
+					facing = Globals.NORTH
+				Globals.EAST:
+					facing = Globals.SOUTH
+			change_facing.emit()
 
 ## Attempts to move in the direwaaction facing, opposite if is_backward is true
 func move(distance : int = 1):
@@ -120,6 +126,7 @@ func move(distance : int = 1):
 	#NOTE: This fires even if the player does not move, not sure if that matters.
 	change_position.emit()
 	check_cell_content()
+#endregion
 
 #region Detecting Cell Types, and Cell Content Interaction
 # Sees if the player is standing on anything, enemy, exit, etc.
@@ -149,6 +156,9 @@ func check_cell_content() -> Cell.TYPE:
 		Cell.TYPE.ENEMY:
 			print("PLAYER ON ENEMY!")
 			item_detected.emit(Cell.TYPE.ENEMY, position)
+			# Begin combat
+			if ignore_combat == false:
+				in_battle = true
 			return Cell.TYPE.ENEMY
 	push_error("Current cell does not have detectable type in check_cell_type() in player.gd")
 	item_detected.emit(Cell.TYPE.EMPTY, position)
