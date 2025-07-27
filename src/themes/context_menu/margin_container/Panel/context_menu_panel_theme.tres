@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2mywnu4h8hvj"]
 
-[ext_resource type="StyleBox" uid="uid://m7rati33l4e6" path="res://Themes/context_menu/margin_container/Panel/context_menu_panel_stylebox.tres" id="1_l7mth"]
+[ext_resource type="StyleBox" uid="uid://m7rati33l4e6" path="res://themes/context_menu/margin_container/Panel/context_menu_panel_stylebox.tres" id="1_l7mth"]
 
 [resource]
 Panel/styles/panel = ExtResource("1_l7mth")

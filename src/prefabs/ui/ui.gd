@@ -41,6 +41,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Viewport Header")
 @export var viewport_header_label : RichTextLabel
+
+@export_category("Mini Map")
+@export var mini_map : Node2D
 func _ready():
 	Log.connect("new_log", update_log_line)
 	Log.connect("new_log", update_full_log)
@@ -63,6 +66,10 @@ func initial_setup():
 	for i in range(player.arm_inventory.size()):
 		add_arm_to_inventory(player.arm_inventory[i], i+1)
 
+#region Mini Map
+func _on_mini_map_mini_map_ready():
+	mini_map.create_visualization()
+#endregion
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

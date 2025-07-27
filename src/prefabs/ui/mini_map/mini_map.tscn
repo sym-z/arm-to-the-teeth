@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2f1a8763qesj"]
+
+[ext_resource type="Script" uid="uid://gvho0fo8hbp5" path="res://prefabs/ui/mini_map/mini_map.gd" id="1_1vaeb"]
+
+[node name="Mini Map" type="Node2D"]
+script = ExtResource("1_1vaeb")

@@ -28,7 +28,7 @@
 - [x] Make arm and tooth pickup optional, this will come when UI starts being programmed
 - [x] Enemies Spawn
   - [ ] Enemies can drop items (Teeth/Arms)
-- [ ] Map reveals itself after player moves
+- [x] Map reveals itself after player moves
   - Could use same debug mini map starting with every sprite hidden, and then when the player moves set the Sprite to visible at that position.
     - Need to leave the option to have the map be fully revealed to keep it applicable for debugging
   - May also remake the debug visualizer as part of the UI and just apply the same tactics used to it
@@ -100,6 +100,11 @@
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
   - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
 - [ ] Turn off arrow key input for Context menu
+
+## Optimization
+- [ ] Some Objects are being spawned, ~5 when the map is regenerated. Where and why?
+## Test
+- [ ] What happens if you make the map 15x15?
 
 ## Keep in Mind
 - The `arm_item` is stopping GUI events
