@@ -81,3 +81,6 @@
 - Created a new item for the UI, the Mini Map. It is nearly identical to the `debug_visualizer` except that it is invisible 'til the player starts walking around on it.
 - Log window in the UI has a better looking `StyleBox`
 - Node groups in `ui.tscn` now have `CanvasLayer` parents instead of `Node` parents
+
+## 27 July 2025
+- Changed parents for node groups in `ui.tscn` back to `Node` from `CanvasLayer`s because it didn't have much benefit and was causing issues.

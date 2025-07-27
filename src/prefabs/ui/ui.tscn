@@ -95,7 +95,7 @@ layout_mode = 2
 theme = ExtResource("5_cllw1")
 text = "QUIT"
 
-[node name="Temporary Labels" type="CanvasLayer" parent="."]
+[node name="Temporary Labels" type="Node" parent="."]
 
 [node name="TEMP TEETH" type="Label" parent="Temporary Labels"]
 offset_left = 1437.0
@@ -107,30 +107,30 @@ text = "TOOTH COUNT: X"
 horizontal_alignment = 1
 
 [node name="TEMP ARMS" type="Label" parent="Temporary Labels"]
-offset_left = 1452.0
-offset_top = 215.0
-offset_right = 1836.0
-offset_bottom = 259.0
+offset_left = 1489.0
+offset_top = 188.0
+offset_right = 1873.0
+offset_bottom = 232.0
 theme = ExtResource("7_1is0v")
 text = "ARM COUNT: X"
 
 [node name="TEMP HEAD" type="Label" parent="Temporary Labels"]
-offset_left = 1441.0
-offset_top = 281.0
-offset_right = 1889.0
-offset_bottom = 325.0
+offset_left = 1485.0
+offset_top = 229.0
+offset_right = 1933.0
+offset_bottom = 273.0
 theme = ExtResource("7_1is0v")
 text = "HEAD HEALTH: X"
 
 [node name="TEMP HUNGER" type="Label" parent="Temporary Labels"]
-offset_left = 1434.0
-offset_top = 341.0
-offset_right = 1914.0
-offset_bottom = 385.0
+offset_left = 1470.0
+offset_top = 270.0
+offset_right = 1950.0
+offset_bottom = 314.0
 theme = ExtResource("7_1is0v")
 text = "HUNGER LEVEL: X"
 
-[node name="Inventory" type="CanvasLayer" parent="."]
+[node name="Inventory" type="Node" parent="."]
 
 [node name="Inventory Window" type="MarginContainer" parent="Inventory"]
 visible = false
@@ -161,7 +161,7 @@ size_flags_vertical = 4
 theme = ExtResource("7_lntee")
 text = "BACK"
 
-[node name="Log" type="CanvasLayer" parent="."]
+[node name="Log" type="Node" parent="."]
 
 [node name="Log Line Window" type="PanelContainer" parent="Log"]
 offset_left = 7.0
