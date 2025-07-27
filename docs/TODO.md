@@ -57,15 +57,20 @@
 - [x] Player can pick up teeth
 
 ## Player vs Enemy Combat 
-- [ ] Combat dice roll can involve the player clicking to stop the spinning dice
+- [x] Combat dice roll can involve the player clicking to stop the spinning dice
 - [ ] Enemies can drop items (Teeth/Arms)
-- [ ] Combat scene show enemy health and damage
+- [x] Combat scene show enemy health and damage
 - [ ] Enemy Animates
   - [ ] Prototype
   - [ ] Final
 - [ ] Player Animates
   - [ ] Prototype
   - [ ] Final
+- [ ] Player chooses what arm to attack with
+- [ ] Enemy attacks back
+- [ ] Player chooses where the damage hits and suffers consequences
+- [ ] Consistent cyclical battle
+- [ ] Battle can end
 ### DONE
 - [x] When combat starts, everything but the enemy goes black
 

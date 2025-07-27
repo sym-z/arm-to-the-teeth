@@ -258,7 +258,7 @@ func _on_player_player_spawned():
 	place_items_randomly(Cell.TYPE.TOOTH,10)
 	place_items_randomly(Cell.TYPE.ARM,2)
 	# Place Enemies
-	place_items_randomly(Cell.TYPE.ENEMY, 5)
+	place_items_randomly(Cell.TYPE.ENEMY, 10)
 	map_filled.emit()
 
 # Set all surrounding cells to a type. (Including diagonals)
@@ -314,6 +314,10 @@ func place_items_randomly(type : Cell.TYPE, quantity : int):
 
 func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 	if type != Cell.TYPE.EMPTY:
+		#NOTE: If I want to make enemies overwrite cell contents sometime, this is what I would need to change.
+		if world_map[loc].contents != Cell.TYPE.EMPTY:
+			push_error("Attempted to place an item on top of a non-empty cell in place_item_at_loc() in map.gd")
+			return
 		world_map[loc].contents = type
 		empty_cells.erase(loc)
 		if type == Cell.TYPE.ARM:

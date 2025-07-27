@@ -17,3 +17,8 @@
 - D0 Base Z: 40
 - D1 Base Z: 20
 - D2 Base Z: 1
+
+## UI Ordering
+- Everything but the Combat Viewport: 2
+- Combat Viewport: 0
+  - Combat Viewport Dialog Box: 1

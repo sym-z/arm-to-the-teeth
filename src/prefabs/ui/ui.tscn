@@ -47,6 +47,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_tlstp")
 
 [node name="Context Menu" type="MarginContainer" parent="."]
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,7 +125,7 @@ text = "HUNGER LEVEL: X"
 
 [node name="Inventory Window" type="MarginContainer" parent="Inventory"]
 visible = false
-z_index = 1
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -156,7 +157,7 @@ text = "BACK"
 [node name="Log" type="Node" parent="."]
 
 [node name="Log Line Window" type="PanelContainer" parent="Log"]
-z_index = 1
+z_index = 2
 offset_left = 7.0
 offset_top = 1003.0
 offset_right = 1910.0
@@ -175,7 +176,7 @@ vertical_alignment = 1
 
 [node name="Log Full Window" type="MarginContainer" parent="Log"]
 visible = false
-z_index = 1
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,7 +203,7 @@ layout_mode = 2
 
 [node name="Full Window Back Button" type="Button" parent="Log"]
 visible = false
-z_index = 1
+z_index = 2
 offset_left = 893.0
 offset_top = 944.0
 offset_right = 1029.0
@@ -231,11 +232,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Mini Map" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("15_gtvwi")]
+z_index = 2
 position = Vector2(91, 602)
 scale = Vector2(4, 4)
 root_ui = NodePath("..")
 
 [node name="Combat Viewport" parent="." instance=ExtResource("18_hvfel")]
+visible = false
 
 [connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]
 [connection signal="pressed" from="Context Menu/Button Container/Inventory" to="." method="_on_inventory_pressed"]

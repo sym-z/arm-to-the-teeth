@@ -90,3 +90,10 @@
 - Created a new class, `Enemy` that has unique damage, current health, max health, and `SpriteFrames`
 - The map now creates the `Enemy` resource and keeps track of them in its `enemy_atlas`
 - It is possible for the player to ignore combat for debugging purposes by setting the export variable `ignore_combat` to true in the inspector
+- Added die roller scene that can be given an upper and lower limit and a difficulty class, and will fire a signal with the results when the player stops it by clicking. The die can be rolled by clicking it.
+- Added a difficulty class property to enemies
+- For now, the player always does 1 damage per hit, but I am going to first prompt the player for an arm choice before they attack
+- As of right now, I am using a separate die for attacking than I will be for running, just so the signals do not get confused and I can have a better concept of state. I may change that in the future.
+- Started the process of changing the turn back over to the enemy.
+- Temporarily added more enemies to the floor to aid in debugging.
+- Made sure that cell content can only be added if the cell was empty to start.

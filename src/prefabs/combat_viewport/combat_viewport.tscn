@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=14 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://bwh30wttiv88h" path="res://themes/combat_viewport/db_margin_container.tres" id="4_j2lbb"]
 [ext_resource type="Theme" uid="uid://buown6vatfsa6" path="res://themes/combat_viewport/db_buttons.tres" id="5_0i4k7"]
 [ext_resource type="Texture2D" uid="uid://usv74cjcjiqn" path="res://assets/visual/prototype_items/enemy_d1.png" id="8_704d3"]
+[ext_resource type="PackedScene" uid="uid://wwoi8jwh6ncu" path="res://prefabs/ui/die_roller/die_roller.tscn" id="8_guh7h"]
 [ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="9_guh7h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
@@ -36,7 +37,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("attack_button", "run_button", "player_anim", "enemy_anim", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,8 +46,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_tr6sk")
 script = ExtResource("2_1vvdr")
+button_container = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices")
 attack_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Attack")
 run_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Run")
+att_die_roller = NodePath("Dialog Box/Dialog Box Panel Container/Attacking Die Roller")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
 temp_e_health = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY HEALTH")
@@ -85,6 +88,10 @@ layout_mode = 2
 theme = ExtResource("5_0i4k7")
 text = "RUN"
 
+[node name="Attacking Die Roller" parent="Dialog Box/Dialog Box Panel Container" instance=ExtResource("8_guh7h")]
+visible = false
+position = Vector2(407, 48)
+
 [node name="Enemy Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1226, 293)
 scale = Vector2(1.54775, 1.58149)
@@ -97,6 +104,7 @@ sprite_frames = SubResource("SpriteFrames_6poga")
 
 [node name="TEMP ENEMY STATS" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 210
 theme_override_constants/margin_top = 175
 theme_override_constants/margin_right = 0
@@ -104,6 +112,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TEMP ENEMY STATS"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TEMP ENEMY HEALTH" type="Label" parent="TEMP ENEMY STATS/VBoxContainer"]
 layout_mode = 2
@@ -114,3 +123,6 @@ text = "HEALTH: "
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "DAMAGE: "
+
+[connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Attack" to="." method="_on_attack_pressed"]
+[connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]

@@ -8,6 +8,9 @@ var damage : int = 1
 
 var anim : SpriteFrames
 
+## Minimum roll to hit
+var difficulty_class : int = 5
+
 #TODO: Possibly item drop?
 
 func debug_print():
