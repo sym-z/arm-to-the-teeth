@@ -84,3 +84,9 @@
 
 ## 27 July 2025
 - Changed parents for node groups in `ui.tscn` back to `Node` from `CanvasLayer`s because it didn't have much benefit and was causing issues.
+- Created `combat_viewport.tscn`, an overlay in the UI scene that creates a JRPG style combat scene overlaying the dungeon viewport
+- Removed the *ATTACK* and *RUN* buttons from the UI and put them into the combat viewport
+- Made sure that the ordering in the UI scene was capable of allowing the player to access their inventory and the log window while in combat
+- Created a new class, `Enemy` that has unique damage, current health, max health, and `SpriteFrames`
+- The map now creates the `Enemy` resource and keeps track of them in its `enemy_atlas`
+- It is possible for the player to ignore combat for debugging purposes by setting the export variable `ignore_combat` to true in the inspector

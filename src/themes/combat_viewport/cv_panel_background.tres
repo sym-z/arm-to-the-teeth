@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8yc44w3kkyyv"]
+
+[ext_resource type="StyleBox" uid="uid://4hn6jtup50uf" path="res://themes/combat_viewport/cv_panel_background_style_box.tres" id="1_er12b"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_er12b")

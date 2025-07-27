@@ -56,10 +56,17 @@
 - [x] Player can pick up teeth
 
 ## Player vs Enemy Combat 
-- [ ] When combat starts, everything but the enemy goes black
 - [ ] Combat dice roll can involve the player clicking to stop the spinning dice
 - [ ] Enemies can drop items (Teeth/Arms)
+- [ ] Combat scene show enemy health and damage
+- [ ] Enemy Animates
+  - [ ] Prototype
+  - [ ] Final
+- [ ] Player Animates
+  - [ ] Prototype
+  - [ ] Final
 ### DONE
+- [x] When combat starts, everything but the enemy goes black
 
 ## Tools
 ### DONE

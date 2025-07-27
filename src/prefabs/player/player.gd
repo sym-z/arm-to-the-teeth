@@ -8,15 +8,16 @@ extends Node
 ## Will the player enter the battle scene when they step on a space with an enemy
 @export var ignore_combat : bool = false
 ## Is the player currently in combat
-var in_battle : bool = false
+var in_combat : bool = false
 
 signal change_facing
 signal change_position
 signal item_picked_up
 # Allows items/landmarks to be set after the player has spawned.
 signal player_spawned
-# Sends signal to UI to activate buttons and/or start battle.
+# Sends signal to UI to activate buttons
 signal item_detected(item : Cell.TYPE, loc : Vector2i)
+signal combat_started(enemy: Enemy, loc : Vector2i)
 #region Inventory and Stat Variables
 @export var tooth_count : int = 3
 # How many arms are equipped
@@ -68,7 +69,7 @@ func _process(delta):
 	pass
 #region Player Movement
 func _input(event):
-	if in_battle == false:
+	if in_combat == false:
 		if event.is_action_pressed("move_forward"):
 			move()
 		if event.is_action_pressed("move_back"):
@@ -158,7 +159,8 @@ func check_cell_content() -> Cell.TYPE:
 			item_detected.emit(Cell.TYPE.ENEMY, position)
 			# Begin combat
 			if ignore_combat == false:
-				in_battle = true
+				in_combat = true
+				combat_started.emit(map.enemy_atlas[position], position)
 			return Cell.TYPE.ENEMY
 	push_error("Current cell does not have detectable type in check_cell_type() in player.gd")
 	item_detected.emit(Cell.TYPE.EMPTY, position)

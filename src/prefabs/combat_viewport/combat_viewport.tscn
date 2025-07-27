@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://bg56n8dk3bo32"]
+
+[ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
+[ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
+[ext_resource type="Theme" uid="uid://b8yc44w3kkyyv" path="res://themes/combat_viewport/cv_panel_background.tres" id="2_l6kcl"]
+[ext_resource type="Theme" uid="uid://b0247qwjlu8lv" path="res://themes/combat_viewport/dialog_box_panel_container.tres" id="3_s7sq0"]
+[ext_resource type="Theme" uid="uid://cy0kpb306vpwj" path="res://themes/combat_viewport/db_button_choices_hbox.tres" id="4_1vvdr"]
+[ext_resource type="Theme" uid="uid://bwh30wttiv88h" path="res://themes/combat_viewport/db_margin_container.tres" id="4_j2lbb"]
+[ext_resource type="Theme" uid="uid://buown6vatfsa6" path="res://themes/combat_viewport/db_buttons.tres" id="5_0i4k7"]
+[ext_resource type="Texture2D" uid="uid://usv74cjcjiqn" path="res://assets/visual/prototype_items/enemy_d1.png" id="8_704d3"]
+[ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="9_guh7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
+atlas = ExtResource("8_704d3")
+region = Rect2(0, 0, 224, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6m76e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d03b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6poga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_guh7h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("attack_button", "run_button", "player_anim", "enemy_anim", "temp_e_health", "temp_e_damage")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_tr6sk")
+script = ExtResource("2_1vvdr")
+attack_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Attack")
+run_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Run")
+player_anim = NodePath("Player Sprite")
+enemy_anim = NodePath("Enemy Sprite")
+temp_e_health = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY HEALTH")
+temp_e_damage = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY DAMAGE")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_l6kcl")
+
+[node name="Dialog Box" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_j2lbb")
+theme_override_constants/margin_top = 696
+
+[node name="Dialog Box Panel Container" type="PanelContainer" parent="Dialog Box"]
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_s7sq0")
+
+[node name="Button Choices" type="HBoxContainer" parent="Dialog Box/Dialog Box Panel Container"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_1vvdr")
+alignment = 1
+
+[node name="Attack" type="Button" parent="Dialog Box/Dialog Box Panel Container/Button Choices"]
+layout_mode = 2
+theme = ExtResource("5_0i4k7")
+text = "ATTACK"
+
+[node name="Run" type="Button" parent="Dialog Box/Dialog Box Panel Container/Button Choices"]
+layout_mode = 2
+theme = ExtResource("5_0i4k7")
+text = "RUN"
+
+[node name="Enemy Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1226, 293)
+scale = Vector2(1.54775, 1.58149)
+sprite_frames = SubResource("SpriteFrames_6m76e")
+
+[node name="Player Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(704, 725)
+scale = Vector2(2.71238, 2.97792)
+sprite_frames = SubResource("SpriteFrames_6poga")
+
+[node name="TEMP ENEMY STATS" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 210
+theme_override_constants/margin_top = 175
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TEMP ENEMY STATS"]
+layout_mode = 2
+
+[node name="TEMP ENEMY HEALTH" type="Label" parent="TEMP ENEMY STATS/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HEALTH: "
+
+[node name="TEMP ENEMY DAMAGE" type="Label" parent="TEMP ENEMY STATS/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "DAMAGE: "

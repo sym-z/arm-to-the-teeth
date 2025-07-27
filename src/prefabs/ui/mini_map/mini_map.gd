@@ -23,7 +23,6 @@ signal mini_map_ready
 func _ready():
 	player = root_ui.player
 	map = root_ui.map
-	print(map)
 	player.connect("change_facing", player_direction_refresh)
 	player.connect("change_position", player_position_refresh)
 	player.connect("item_picked_up", item_picked_up)
@@ -39,7 +38,6 @@ func int_to_sprite(walls : int) -> Texture2D:
 	return mini_map_tiles.get_frame_texture("default", walls)
 	
 func create_visualization():
-	print("POGGY")
 	var world_map : Dictionary[Vector2i,Cell] = map.world_map
 	for key in world_map.keys():
 		var curr_texture : Texture2D = int_to_sprite(world_map[key].walls_to_int())

@@ -1,13 +1,12 @@
 extends CanvasLayer
 
+#region Initializations and Export Variables
 @export var player : Node 
 @export var map : Node
 
 @export_category("Context Menu Buttons")
 @export var pickup_button : Button
 @export var inventory_button : Button
-@export var attack_button : Button
-@export var run_button : Button
 @export var options_button : Button
 @export var quit_button : Button
 
@@ -18,9 +17,9 @@ extends CanvasLayer
 @export var head_label : Label
 @export var hunger_label : Label
 
-var item_to_pick : Cell.TYPE = Cell.TYPE.EMPTY
 
 # For adding arms to the inventory
+var item_to_pick : Cell.TYPE = Cell.TYPE.EMPTY
 @export_category("Inventory")
 @export var inventory_container : MarginContainer
 @export var item_container : VBoxContainer
@@ -44,6 +43,10 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Mini Map")
 @export var mini_map : Node2D
+
+@export_category("Combat Viewport")
+@export var combat_viewport : MarginContainer
+#endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
 	Log.connect("new_log", update_full_log)
@@ -94,27 +97,21 @@ func _on_player_item_detected(item, loc):
 	match item:
 		Cell.TYPE.EMPTY:
 			pickup_button.disabled = true
-			disable_combat_buttons()
 			item_to_pick = Cell.TYPE.EMPTY
 		Cell.TYPE.SPAWN:
 			pickup_button.disabled = true
-			disable_combat_buttons()
 			item_to_pick = Cell.TYPE.SPAWN
 		Cell.TYPE.EXIT:
 			pickup_button.disabled = true
-			disable_combat_buttons()
 			item_to_pick = Cell.TYPE.EXIT
 		Cell.TYPE.ARM:
 			pickup_button.disabled = false
-			disable_combat_buttons()
 			item_to_pick = Cell.TYPE.ARM
 		Cell.TYPE.TOOTH:
 			pickup_button.disabled = false
-			disable_combat_buttons()
 			item_to_pick = Cell.TYPE.TOOTH
 		Cell.TYPE.ENEMY:
 			pickup_button.disabled = true
-			enable_combat_buttons()
 			item_to_pick = Cell.TYPE.ENEMY
 			
 # When the player picks up what is at their feet, set the UI to the correct state.
@@ -161,15 +158,6 @@ func _on_back_button_pressed():
 	change_inventory_visibility(false)
 #endregion
 
-#region Combat Buttons
-func disable_combat_buttons():
-	attack_button.disabled = true
-	run_button.disabled = true
-func enable_combat_buttons():
-	attack_button.disabled = false
-	run_button.disabled = false
-#endregion
-
 #region Log Window
 func change_full_log_window_visibility(new_vis : bool):
 	full_log_window_container.visible = new_vis
@@ -189,4 +177,9 @@ func _on_log_line_window_gui_input(event):
 		change_full_log_window_visibility(not full_log_window_container.visible)
 func _on_full_window_back_button_pressed():
 	change_full_log_window_visibility(false)
+#endregion
+
+#region Combat Handling
+func _on_player_combat_started(enemy, loc):
+	combat_viewport.begin_combat(enemy,loc)
 #endregion

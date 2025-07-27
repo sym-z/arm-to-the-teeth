@@ -5,6 +5,8 @@ var world_map : Dictionary[Vector2i,Cell]
 var empty_cells : Array[Vector2i]
 ## To keep track of unique Arm objects
 var arm_atlas : Dictionary[Vector2i, Arm]
+## To keep track of unique Enemy objects
+var enemy_atlas : Dictionary[Vector2i, Enemy]
 
 var frontier : Array[Cell]
 @export var rows : int = 10
@@ -119,6 +121,12 @@ func print_arm_atlas():
 	for arm_loc in arm_atlas.keys():
 		print(arm_loc)
 		arm_atlas[arm_loc].debug_print()
+		
+func print_enemy_atlas():
+	print("ENEMY ATLAS")
+	for enemy_loc in enemy_atlas.keys():
+		print(enemy_loc)
+		enemy_atlas[enemy_loc].debug_print()
 #endregion
 #region Prim's Algorithm
 # Prim's Algorithm
@@ -315,6 +323,12 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 			arm_drop.condition = 6
 			arm_drop.equipped = false
 			arm_atlas[loc] = arm_drop
+		elif type == Cell.TYPE.ENEMY:
+			var new_enemy : Enemy = Enemy.new()
+			#TODO: Randomize stats, but influence based off of floor level
+			# Keeping defaults for now
+			#TODO: GIVE UNIQUE SPRITEFRAMES!
+			enemy_atlas[loc] = new_enemy
 		#print("Placing ", type, " at ", loc)
 	else:
 		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")
