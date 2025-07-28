@@ -105,3 +105,5 @@
 - Created a mode for debugging combat where the player starts surrounded by enemies
 - Creaded a flag in `globals.gd` called `verbose_console` that includes all the random print statements around the code.
 - I found out that for some reason the dice roller's gui_event will supercede any of the other gui events that are on top of it, i.e. hitting back on the inventory button. To fix this, I made the Combat Viewport be drawn first in the order of the UI but I wasn't able to narrow down exactly why. It is good to keep in mind for the future to not create a die roller on top of anything in the node hierarchy that would need to be accessed
+- I have figured out that by changing the `Node` parent of the inventory to `CanvasLayer`s and increasing the ordering it fixes the issue.
+- Not sure if I want to change it back fully to all `CanvasLayer` parents, because of the issue at the beginning of this devlog entry, but I can't remember the problems that it was causing that made me want to switch it back. I might try it tomorrow, because for now I am fairly tired.
