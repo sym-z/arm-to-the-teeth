@@ -25,7 +25,8 @@ var arm_count : int = 0
 const ARM_MAX : int = 2
 const TOOTH_MAX : int = 32
 var arm_inventory : Array[Arm]
-var head_health : int = 5
+var head : Head 
+#var head_health : int = 5
 ## Hunger Stats
 var hunger : int = 0
 enum HUNGER_LEVEL {SATISFIED = 0,HUNGRY = 20, STARVING = 40, DEAD = 60}
@@ -43,6 +44,7 @@ func _ready():
 	pass # Replace with function body.
 
 func give_starting_loadout():
+	head = Head.new()
 	var starting_arm : Arm = Arm.new()
 	# TODO: Randomize
 	starting_arm.strength = 1
@@ -234,7 +236,8 @@ func arm_bitten():
 	#TODO: Randomize and check max and minimums
 	hunger -= 1
 	tooth_count -= 1
-	head_health += 1
+	#head_health += 1
+	head.health += 1
 	Log.add_log_message("IT HAS TAKEN A BITE FROM ONE OF ITS ARMS.")
 	set_hunger_state()
 

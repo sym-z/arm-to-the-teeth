@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=18 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -9,10 +9,11 @@
 [ext_resource type="Theme" uid="uid://buown6vatfsa6" path="res://themes/combat_viewport/db_buttons.tres" id="5_0i4k7"]
 [ext_resource type="Texture2D" uid="uid://usv74cjcjiqn" path="res://assets/visual/prototype_items/enemy_d1.png" id="8_704d3"]
 [ext_resource type="PackedScene" uid="uid://wwoi8jwh6ncu" path="res://prefabs/ui/die_roller/die_roller.tscn" id="8_guh7h"]
-[ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="9_guh7h"]
+[ext_resource type="Texture2D" uid="uid://dja1fke8bwqgh" path="res://assets/visual/prototype_items/head_icon_0_back.png" id="10_dfnbh"]
 [ext_resource type="Theme" uid="uid://db0krltjp1fvu" path="res://themes/combat_viewport/att_arm_select_margin_container.tres" id="11_guh7h"]
 [ext_resource type="Theme" uid="uid://dcrr47tdwur0b" path="res://themes/combat_viewport/att_arm_select_panel.tres" id="12_ho6fy"]
 [ext_resource type="PackedScene" uid="uid://dljmxwj6vs50b" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.tscn" id="12_ud8o6"]
+[ext_resource type="PackedScene" uid="uid://n07t7fqqy66w" path="res://prefabs/ui/combat_viewport/attacking_head_object/attacking_head_object.tscn" id="14_dfnbh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
 atlas = ExtResource("8_704d3")
@@ -33,7 +34,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_guh7h")
+"texture": ExtResource("10_dfnbh")
 }],
 "loop": true,
 "name": &"default",
@@ -104,8 +105,8 @@ scale = Vector2(1.54775, 1.58149)
 sprite_frames = SubResource("SpriteFrames_6m76e")
 
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(704, 725)
-scale = Vector2(2.71238, 2.97792)
+position = Vector2(704, 682)
+scale = Vector2(3.85, 3.85)
 sprite_frames = SubResource("SpriteFrames_6poga")
 
 [node name="TEMP ENEMY STATS" type="MarginContainer" parent="."]
@@ -131,6 +132,7 @@ theme_override_font_sizes/font_size = 32
 text = "DAMAGE: "
 
 [node name="Attacking Arm Selection" type="MarginContainer" parent="."]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -147,6 +149,10 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Attacking Arm Object" parent="Attacking Arm Selection/Arm Container" instance=ExtResource("12_ud8o6")]
+visible = false
+layout_mode = 2
+
+[node name="Attacking Head Object" parent="Attacking Arm Selection/Arm Container" instance=ExtResource("14_dfnbh")]
 visible = false
 layout_mode = 2
 

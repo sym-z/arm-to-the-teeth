@@ -85,7 +85,7 @@ func _on_map_level_clear():
 func refresh_temp_labels():
 	tooth_label.text = "TOOTH COUNT: " + str(player.tooth_count)
 	arm_label.text = "ARM COUNT: " + str(player.arm_count)
-	head_label.text = "HEAD HEALTH: " + str(player.head_health)
+	head_label.text = "HEAD HEALTH: " + str(player.head.health)
 	hunger_label.text = "HUNGER LEVEL: " + str(player.hunger)
 
 func _on_player_hunger_ticked():

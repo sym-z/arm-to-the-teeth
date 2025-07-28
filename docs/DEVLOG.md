@@ -110,3 +110,11 @@
 
 ## 28 July 2025
 - Arm management is now disabled when rolling an attacking die in combat.
+- New class `Head` that controls player head health
+- Head can now be selected in combat to attack with
+- Rolling under the DC hurts your head and will eventually deduct teeth
+  - I am waiting to implement this because I am not sure if I want to have teeth be a part of the head object's inventory, because that is starting to make sense to me.
+- Created a temporary head sprite for head selection.
+- Created a temporary head sprite for the combat viewport.
+  - Added head sprite to combat viewport.
+- UI now gets the head health amount from the player's `Head` object.

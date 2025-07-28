@@ -24,8 +24,11 @@ var opponent : Enemy
 @export var arm_selection_window : MarginContainer
 @export var arm_container : HBoxContainer
 var attacking_arm_object_scene : PackedScene = preload("uid://dljmxwj6vs50b")
+var attacking_head_object_scene : PackedScene = preload("uid://n07t7fqqy66w")
 # What arm is currently selected to attack with.
 var attacking_arm : Arm
+# Flag set when attacking with head to give proper damage and consequences on roll
+var attacking_with_head : bool
 
 @export_category("TEMP ENEMY STATS")
 @export var temp_e_health : Label
@@ -72,11 +75,17 @@ func _on_attack_pressed():
 	refresh_arm_selections()
 	change_arm_select_vis(true)
 
+# Refresh arm (and head) selections for combat
 func refresh_arm_selections():
 	#TODO: Call this function when an arm is fully eaten
 	# Clear out all children, if any
 	for child in arm_container.get_children():
 		child.call_deferred("queue_free")
+	# Add head of player first
+	var new_head_obj = attacking_head_object_scene.instantiate()
+	new_head_obj.input_head(player.head)
+	new_head_obj.connect("attacking_head_selected", attacking_head_selected)
+	arm_container.add_child(new_head_obj)
 	# Refill with current arm inventory state
 	for arm in player.arm_inventory:
 		# Not necessary now, but will be helpful later.
@@ -89,6 +98,7 @@ func refresh_arm_selections():
 func attacking_arm_selected(a : Arm):
 	## Step 2: Using the stats of the arm, let the player roll a die to attempt to hit the monster
 	attacking_arm = a
+	attacking_with_head = false
 	## TODO: Eventually, rolls considerably under the DC will hurt the arm, for now, it just misses
 	# Switch from viewing the arm selection screen, to the die roll screen and bring back the dialog box
 	change_arm_select_vis(false)
@@ -104,37 +114,75 @@ func attacking_arm_selected(a : Arm):
 		# Impossible roll to test arm getting hurt
 		att_die_roller.set_die(1,20,20)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
-
+func attacking_head_selected(h : Head):
+	## Step 2b: Using the stats of the head, let the player roll a die to attempt to hit the monster
+	#attacking_arm = a
+	attacking_with_head = true
+	## TODO: Eventually, rolls considerably under the DC will hurt the head or kill the player, for now, it just misses
+	# Switch from viewing the arm selection screen, to the die roll screen and bring back the dialog box
+	change_arm_select_vis(false)
+	change_att_die_roller_vis(true)
+	# Disable the ability to check and modify inventory during a roll
+	root_ui.inventory_button.disabled = true
+	Log.add_log_message("IT CHOSE TO ATTACK WITH ITS HEAD, ARM MANAGEMENT TEMPORARILY DISABLED")
+	#TODO: Adjust bounds depending on head health etc.
+	if Globals.debug_combat == false:
+		att_die_roller.set_die(1,20,opponent.difficulty_class)
+	else:
+		att_die_roller.set_die(1,20,20)
+	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
+	#TODO: MAKE THIS WORK IF HEAD IS SELECTED
 	if Globals.verbose_console == true:
 		print("DIE RESULTS READY")
 	# Activate the ability for the player to check their inventory now that the roll has finished
 	root_ui.inventory_button.disabled = false
-	## Player Hit
-	if passed == true:
-		# Deal damage according to arm's strength
-		opponent.curr_health -= attacking_arm.strength
-		#TODO: Maybe bonus damage for high rolls?
-		Log.add_log_message("IT DEALT " + str(attacking_arm.strength) + " DAMAGE.")
-		#TODO: Check for enemy death
-		refresh_temp_labels()
-	## Player Miss
-	else:
-		#TODO: Apply damage to condition, update inventory menu, update arm selection screen
-		# Apply damage to arm's condition equal to how far the roll was under half the dc
-			# Ex: Roll = 2, DC = 10, damage_to_apply = floor(DC/2)-Roll = floor(10/2)-2 = 5-2 = 3 
-		if number_rolled < floor(dc/2):
-			var damage_to_apply : int = floor(dc/2) - number_rolled
-			attacking_arm.condition -= damage_to_apply
-			# Check if arm was destroyed
-			if attacking_arm.condition <= 0:
-				Log.add_log_message("IT MISSED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
-				root_ui.arm_fully_eaten(attacking_arm)
-			else:
-				Log.add_log_message("IT MISSED ITS ATTACK GOT HURT, ARM LOST " + str(damage_to_apply) + " CONDITION.")
+	if attacking_with_head == false:
+		## Player Hit
+		if passed == true:
+			# Deal damage according to arm's strength
+			opponent.curr_health -= attacking_arm.strength
+			#TODO: Maybe bonus damage for high rolls?
+			Log.add_log_message("IT DEALT " + str(attacking_arm.strength) + " DAMAGE.")
+			#TODO: Check for enemy death
+			refresh_temp_labels()
+		## Player Miss
 		else:
-			Log.add_log_message("IT MISSED ITS ATTACK.")
+			#TODO: Apply damage to condition, update inventory menu, update arm selection screen
+			# Apply damage to arm's condition equal to how far the roll was under half the dc
+				# Ex: Roll = 2, DC = 10, damage_to_apply = floor(DC/2)-Roll = floor(10/2)-2 = 5-2 = 3 
+			if number_rolled < floor(dc/2):
+				var damage_to_apply : int = floor(dc/2) - number_rolled
+				attacking_arm.condition -= damage_to_apply
+				# Check if arm was destroyed
+				if attacking_arm.condition <= 0:
+					Log.add_log_message("IT MISSED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
+					root_ui.arm_fully_eaten(attacking_arm)
+				else:
+					Log.add_log_message("IT MISSED ITS ATTACK GOT HURT, ARM LOST " + str(damage_to_apply) + " CONDITION.")
+			else:
+				Log.add_log_message("IT MISSED ITS ATTACK.")
+	else:
+		# Head Attack
+		## Player hit
+		if passed == true:
+			# Deal damage according to head's strength
+			opponent.curr_health -= player.head.strength
+			#TODO: Possible bonus damage for high rolls/teeth count?
+			Log.add_log_message("IT BIT FURIOUSLY AND DEALT " + str(player.head.strength) + " DAMAGE.")
+			#TODO: Deduct teeth, perhaps with a roll, would need to refresh root_ui's labels
+			#TODO: Check for enemy death
+			refresh_temp_labels()
+		else:
+			## Player missed
+			# Head loses health, and teeth are lost. Possibly roll for teeth lost.
+			#TODO: Have low rolls factor into more health and teeth lost
+			player.head.health -= 1
+			# Refresh root_ui's labels
+			root_ui.refresh_temp_labels()
+			#TODO: Check for player death.
+			Log.add_log_message("IT MISSED ITS BITE, HURTING ITS HEAD IN THE PROCESS.")
 	#TODO: Could set a timer, and then show enemy's attack
 	curr_turn = TURN.ENEMY
 
