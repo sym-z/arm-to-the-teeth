@@ -118,3 +118,6 @@
 - Created a temporary head sprite for the combat viewport.
   - Added head sprite to combat viewport.
 - UI now gets the head health amount from the player's `Head` object.
+- Enemy rolls to attack back
+- Made a simple function to create a timer that calls a callback function and destroys itself when its `wait_time` hits 0.
+- After the player attacks, there is a slight pause, then the enemy attacks, then a slight pause.

@@ -67,6 +67,7 @@ func refresh_temp_labels():
 	pass
 
 #region Combat Loop
+#region Player's Turn
 func _on_attack_pressed():
 	# Hide dialog box and buttons
 	change_attack_run_vis(false)
@@ -183,10 +184,38 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			root_ui.refresh_temp_labels()
 			#TODO: Check for player death.
 			Log.add_log_message("IT MISSED ITS BITE, HURTING ITS HEAD IN THE PROCESS.")
-	#TODO: Could set a timer, and then show enemy's attack
 	curr_turn = TURN.ENEMY
+	#TODO: Later this could be attached to the player's attack animation as well
+	create_timer(3.5, enemy_attack_roll)
+#endregion
+#region Enemy's Turn
+# Enemy rolls to attempt to attack player
+func enemy_attack_roll():
+	# Hide player's die roll screen
+	change_att_die_roller_vis(false)
+	# Player's DC is dependent on head health.
+	var enemy_attack_roll = randi_range(1,20)
+	if Globals.debug_combat == true:
+		#enemy_attack_roll = 
+		pass
+	if enemy_attack_roll < player.head.health:
+		# Enemy Miss
+		Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
+	else:
+		# Enemy Hit
+		#TODO: Possibly extra damage for high roll?
+		Log.add_log_message("THE ENEMY'S ATTACK HITS!")
+		#TODO: Later this could be attached to the enemy's attack animation as well
+		create_timer(3.5, player_damage_selection)
 
-
+## Player decides what body part receives damage
+func player_damage_selection():
+	# Reveal body part selection screen
+	if Globals.verbose_console == true:
+		print("PLAYER DAMAGE SELECTION TIME")
+	## Damage selection window should clear out all children, if any, then build from the current state of the player
+	pass
+#endregion
 
 #endregion
 #region Group Visibility Switching Functions
@@ -198,4 +227,16 @@ func change_arm_select_vis(new_vis : bool):
 func change_att_die_roller_vis(new_vis : bool):
 	dialog_box.visible = new_vis
 	att_die_roller.visible = new_vis
+#endregion
+
+#region Tools
+## Create a timer that after "duration" seconds calls "callback" and destroys itself
+func create_timer(duration : float, callback: Callable):
+	var t : Timer = Timer.new()
+	t.connect("timeout", callback)
+	t.connect("timeout", t.queue_free)
+	t.one_shot = true
+	t.wait_time = duration
+	add_child(t)
+	t.start()
 #endregion
