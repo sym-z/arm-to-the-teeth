@@ -93,6 +93,9 @@ func attacking_arm_selected(a : Arm):
 	# Switch from viewing the arm selection screen, to the die roll screen and bring back the dialog box
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(true)
+	# Disable the ability to check and modify inventory during a roll
+	root_ui.inventory_button.disabled = true
+	Log.add_log_message("ARM SELECTION MADE, ARM MANAGEMENT TEMPORARILY DISABLED")
 	
 	#TODO: Adjust bounds depending on arm conditions etc.
 	if Globals.debug_combat == false:
@@ -106,6 +109,8 @@ func attacking_arm_selected(a : Arm):
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 	if Globals.verbose_console == true:
 		print("DIE RESULTS READY")
+	# Activate the ability for the player to check their inventory now that the roll has finished
+	root_ui.inventory_button.disabled = false
 	## Player Hit
 	if passed == true:
 		# Deal damage according to arm's strength
