@@ -60,7 +60,8 @@ func debug_print_inventory():
 func _on_map_map_generated():
 	if Globals.curr_floor == 0:
 		give_starting_loadout()
-		debug_print_inventory()
+		if Globals.verbose_console == true:
+			debug_print_inventory()
 	map.world_map[position].contents = Cell.TYPE.SPAWN
 	player_spawned.emit()
 
@@ -138,24 +139,29 @@ func check_cell_content() -> Cell.TYPE:
 			item_detected.emit(Cell.TYPE.EMPTY, position)
 			return Cell.TYPE.EMPTY
 		Cell.TYPE.EXIT:
-			print("PLAYER ON EXIT!")
+			if Globals.verbose_console == true:
+				print("PLAYER ON EXIT!")
 			item_detected.emit(Cell.TYPE.EXIT, position)
 			map.new_level()
 			return Cell.TYPE.EXIT
 		Cell.TYPE.SPAWN:
-			print("PLAYER ON SPAWN!")
+			if Globals.verbose_console == true:
+				print("PLAYER ON SPAWN!")
 			item_detected.emit(Cell.TYPE.SPAWN, position)
 			return Cell.TYPE.SPAWN
 		Cell.TYPE.ARM:
-			print("PLAYER ON ARM!")
+			if Globals.verbose_console == true:
+				print("PLAYER ON ARM!")
 			item_detected.emit(Cell.TYPE.ARM, position)
 			return Cell.TYPE.ARM
 		Cell.TYPE.TOOTH:
-			print("PLAYER ON TOOTH!")
+			if Globals.verbose_console == true:
+				print("PLAYER ON TOOTH!")
 			item_detected.emit(Cell.TYPE.TOOTH, position)
 			return Cell.TYPE.TOOTH
 		Cell.TYPE.ENEMY:
-			print("PLAYER ON ENEMY!")
+			if Globals.verbose_console == true:
+				print("PLAYER ON ENEMY!")
 			item_detected.emit(Cell.TYPE.ENEMY, position)
 			# Begin combat
 			if ignore_combat == false:
@@ -183,9 +189,11 @@ func pick_up(type : Cell.TYPE):
 				map.arm_atlas.erase(position)
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
-				print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
+				if Globals.verbose_console == true:
+					print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 				Log.add_log_message("PICKED UP ARM! IT NOW HOLDS " + str(arm_count) + " ARMS!")
-				debug_print_inventory()
+				if Globals.verbose_console == true:
+					debug_print_inventory()
 				map.print_arm_atlas()
 			else:
 				# When the player has 2 arms equipped already. To let the player hold arms that are unequipped, add code here.
@@ -200,7 +208,8 @@ func pick_up(type : Cell.TYPE):
 				tooth_count += 1
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
-				print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
+				if Globals.verbose_console == true:
+					print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
 				Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(tooth_count) + " TEETH!")
 	
 #endregion
@@ -210,7 +219,8 @@ func remove_arm(a : Arm):
 	arm_inventory.erase(a)
 	arm_count -= 1
 	Log.add_log_message("IT HAS LOST ONE OF ITS ARMS, IT NOW HAS " + str(arm_count) + " ARMS.")
-	debug_print_inventory()
+	if Globals.verbose_console == true:
+		debug_print_inventory()
 
 # Apply conditions to hunger, tooth count, and health
 func arm_bitten():

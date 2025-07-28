@@ -21,6 +21,7 @@ var opponent : Enemy
 @export var enemy_anim : AnimatedSprite2D
 
 @export_category("Attacking Arm Selection")
+@export var arm_selection_window : MarginContainer
 @export var arm_container : HBoxContainer
 var attacking_arm_object_scene : PackedScene = preload("uid://dljmxwj6vs50b")
 # What arm is currently selected to attack with.
@@ -45,10 +46,13 @@ func _process(delta):
 func begin_combat(e : Enemy, loc : Vector2i):
 	Log.add_log_message("IT HAS ENTERED COMBAT")
 	visible = true
-	att_die_roller.visible = false
-	print("COMBAT BEGAN WITH ")
-	e.debug_print()
-	print("AT ", loc)
+	change_arm_select_vis(false)
+	change_att_die_roller_vis(false)
+	change_attack_run_vis(true)
+	if Globals.verbose_console == true:
+		print("COMBAT BEGAN WITH ")
+		e.debug_print()
+		print("AT ", loc)
 	opponent = e
 	refresh_temp_labels()
 	if e.anim != null:
@@ -96,7 +100,8 @@ func attacking_arm_selected(a : Arm):
 
 
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled):
-	print("DIE RESULTS READY")
+	if Globals.verbose_console == true:
+		print("DIE RESULTS READY")
 	if passed == true:
 		# Deal damage according to arm's strength
 		opponent.curr_health -= attacking_arm.strength
@@ -116,7 +121,7 @@ func change_attack_run_vis(new_vis : bool):
 	dialog_box.visible = new_vis
 	button_container.visible = new_vis
 func change_arm_select_vis(new_vis : bool):
-	arm_container.visible = new_vis
+	arm_selection_window.visible = new_vis
 func change_att_die_roller_vis(new_vis : bool):
 	dialog_box.visible = new_vis
 	att_die_roller.visible = new_vis

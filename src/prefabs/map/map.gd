@@ -28,7 +28,8 @@ func _ready():
 
 
 func new_level():
-	print("BUILDING NEW LEVEL!")
+	if Globals.verbose_console == true:
+		print("BUILDING NEW LEVEL!")
 	Globals.curr_floor += 1
 	Log.add_log_message("IT HAS ENTERED FLOOR " + str(Globals.curr_floor) + ".")
 	level_clear.emit()
@@ -255,7 +256,7 @@ func _on_player_player_spawned():
 	if Globals.debug_combat == false:
 		type_surrounding(player.position, Cell.TYPE.SPAWN)
 	else:
-		type_surrounding(player.position, Cell.TYPE.SPAWN)
+		type_surrounding(player.position, Cell.TYPE.ENEMY)
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)
@@ -276,7 +277,7 @@ func type_surrounding(pos : Vector2i, type : Cell.TYPE):
 					# Remove from empties if this cell was an empty cell
 					if world_map[iter_pos].contents == Cell.TYPE.EMPTY:
 						empty_cells.erase(iter_pos)
-					world_map[iter_pos].contents = type
+					place_item_at_loc(iter_pos, type)
 				else:
 					# Prevent duplicates in the empty cells array
 					if empty_cells.find(iter_pos) == -1:

@@ -40,7 +40,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_container", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -56,6 +56,7 @@ run_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Run"
 att_die_roller = NodePath("Dialog Box/Dialog Box Panel Container/Attacking Die Roller")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
+arm_selection_window = NodePath("Attacking Arm Selection")
 arm_container = NodePath("Attacking Arm Selection/Arm Container")
 temp_e_health = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY HEALTH")
 temp_e_damage = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY DAMAGE")
