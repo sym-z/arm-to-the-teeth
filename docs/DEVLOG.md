@@ -104,4 +104,4 @@
 - Player can eat arms in combat, playing into the risk of them losing the arm itself.
 - Created a mode for debugging combat where the player starts surrounded by enemies
 - Creaded a flag in `globals.gd` called `verbose_console` that includes all the random print statements around the code.
-- Due to finding out a bug with the ordering of the Inventory Back Button and the Attack Dice Roller in the Combat Viewport, I realized that by having the parents of the node groups be `Node`s, it is keeping them from using the relative z_index of the main CanvasLayer parent 
+- I found out that for some reason the dice roller's gui_event will supercede any of the other gui events that are on top of it, i.e. hitting back on the inventory button. To fix this, I made the Combat Viewport be drawn first in the order of the UI but I wasn't able to narrow down exactly why. It is good to keep in mind for the future to not create a die roller on top of anything in the node hierarchy that would need to be accessed

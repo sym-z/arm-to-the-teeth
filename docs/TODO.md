@@ -149,4 +149,5 @@
 ## Keep in Mind
 - The `arm_item` is stopping GUI events
 - If I ever want to do swapping, remember to trigger a refresh to the inventory and the arm_selection screen.
+- Die rollers will supercede any gui_events underneath them in the node hierarchy for some reason. Keep this in mind when looking to add die rollers to the game in the future.
 ### DONE
