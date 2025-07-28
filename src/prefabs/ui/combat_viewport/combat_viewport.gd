@@ -95,21 +95,41 @@ func attacking_arm_selected(a : Arm):
 	change_att_die_roller_vis(true)
 	
 	#TODO: Adjust bounds depending on arm conditions etc.
-	att_die_roller.set_die(1,20,opponent.difficulty_class)
+	if Globals.debug_combat == false:
+		att_die_roller.set_die(1,20,opponent.difficulty_class)
+	else:
+		# Impossible roll to test arm getting hurt
+		att_die_roller.set_die(1,20,20)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 
 
-func _on_attacking_die_roller_roll_results_ready(passed, number_rolled):
+func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 	if Globals.verbose_console == true:
 		print("DIE RESULTS READY")
+	## Player Hit
 	if passed == true:
 		# Deal damage according to arm's strength
 		opponent.curr_health -= attacking_arm.strength
-		#TODO: Check for death
+		#TODO: Maybe bonus damage for high rolls?
+		Log.add_log_message("IT DEALT " + str(attacking_arm.strength) + " DAMAGE.")
+		#TODO: Check for enemy death
 		refresh_temp_labels()
+	## Player Miss
 	else:
 		#TODO: Apply damage to condition, update inventory menu, update arm selection screen
-		pass
+		# Apply damage to arm's condition equal to how far the roll was under half the dc
+			# Ex: Roll = 2, DC = 10, damage_to_apply = floor(DC/2)-Roll = floor(10/2)-2 = 5-2 = 3 
+		if number_rolled < floor(dc/2):
+			var damage_to_apply : int = floor(dc/2) - number_rolled
+			attacking_arm.condition -= damage_to_apply
+			# Check if arm was destroyed
+			if attacking_arm.condition <= 0:
+				Log.add_log_message("IT MISSED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
+				root_ui.arm_fully_eaten(attacking_arm)
+			else:
+				Log.add_log_message("IT MISSED ITS ATTACK GOT HURT, ARM LOST " + str(damage_to_apply) + " CONDITION.")
+		else:
+			Log.add_log_message("IT MISSED ITS ATTACK.")
 	#TODO: Could set a timer, and then show enemy's attack
 	curr_turn = TURN.ENEMY
 

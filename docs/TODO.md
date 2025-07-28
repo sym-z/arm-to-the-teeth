@@ -70,6 +70,8 @@
 - [ ] Player chooses where the damage hits and suffers consequences
 - [ ] Consistent cyclical battle
 - [ ] Battle can end
+- [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
+- [ ] Add player head to list of arms to select in arm selection screen
 ### DONE
 - [x] When combat starts, everything but the enemy goes black
 - [x] Combat dice roll can involve the player clicking to stop the spinning dice
@@ -110,6 +112,7 @@
   - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
+- [ ] Log window changes stylebox on hover and click
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"

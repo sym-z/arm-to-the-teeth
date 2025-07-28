@@ -144,7 +144,7 @@ alignment = 1
 
 [node name="Back Button" type="Button" parent="Inventory"]
 visible = false
-z_index = 1
+z_index = 2
 offset_left = 892.0
 offset_top = 893.0
 offset_right = 1028.0

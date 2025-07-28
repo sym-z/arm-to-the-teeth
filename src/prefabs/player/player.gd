@@ -53,7 +53,7 @@ func give_starting_loadout():
 	if Globals.debug_combat:
 		var power_arm : Arm = Arm.new()
 		power_arm.strength = 3
-		power_arm.condition = 10
+		power_arm.condition = 1
 		power_arm.equipped = true
 		arm_count += 1
 		arm_inventory.append(power_arm)
@@ -191,7 +191,7 @@ func pick_up(type : Cell.TYPE):
 				arm_count += 1
 				arm_inventory.append(new_arm)
 				# Add this arm to the inventory UI
-				ui.add_arm_to_inventory(arm_inventory[arm_inventory.size()-1],arm_count)
+				#ui.add_arm_to_inventory(arm_inventory[arm_inventory.size()-1],arm_count)
 				# Remove from map's tracker of arm inventory
 				map.arm_atlas.erase(position)
 				map.make_cell_empty(curr_cell)
@@ -257,7 +257,8 @@ func set_hunger_state():
 		hunger_state = HUNGER_LEVEL.SATISFIED
 	var after_state : HUNGER_LEVEL = hunger_state
 	if(before_state != after_state):
-		print("STATE SWITCH")
+		if Globals.verbose_console == true:
+			print("STATE SWITCH")
 		match hunger_state:
 			HUNGER_LEVEL.SATISFIED:
 				hunger_satisfied.emit()

@@ -13,7 +13,7 @@ var is_rolling : bool = false
 ## Prevents multiple rolls
 var roll_finished : bool = false
 
-signal roll_results_ready(passed: bool, number_rolled: int)
+signal roll_results_ready(passed: bool, number_rolled: int, dc: int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	frame = lower_limit -1
@@ -54,7 +54,7 @@ func _on_mouse_handler_gui_input(event):
 					roll_passed = true
 				else:
 					roll_passed = false
-				roll_results_ready.emit(roll_passed, result)
+				roll_results_ready.emit(roll_passed, result, difficulty_class)
 			
 		
 
