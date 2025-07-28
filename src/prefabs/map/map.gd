@@ -252,7 +252,10 @@ func _on_player_player_spawned():
 	# Remove player's spawn from empty cells array
 	empty_cells.erase(player.position)
 	# Type surrounding cells as spawn type and remove from empty cells array
-	type_surrounding(player.position, Cell.TYPE.SPAWN)
+	if Globals.debug_combat == false:
+		type_surrounding(player.position, Cell.TYPE.SPAWN)
+	else:
+		type_surrounding(player.position, Cell.TYPE.SPAWN)
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)

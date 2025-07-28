@@ -132,6 +132,7 @@ func _on_pick_up_pressed():
 	player.pick_up(item_to_pick)
 func _on_inventory_pressed():
 	change_inventory_visibility(not inventory_container.visible)
+	#TODO: Possibly use the same method as arm_selection where the menu is built when the button is pressed
 #endregion
 #region Inventory Window
 func change_inventory_visibility(new_vis : bool):
@@ -148,11 +149,12 @@ func arm_eaten(arm_object : Arm):
 		# Adjust hunger, health, arm count etc.
 		player.arm_bitten()
 		refresh_temp_labels()
+		# TODO: UPDATE ATT ARM SELECTION
 
 func arm_fully_eaten(arm_object : Arm):
 	player.remove_arm(arm_object)
 	refresh_temp_labels()
-	pass
+	#TODO: UPDATE ATT ARM SELECTION IF FULL REFRESH IS NOT BEING USED
 
 func _on_back_button_pressed():
 	change_inventory_visibility(false)

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dcrr47tdwur0b"]
+
+[ext_resource type="StyleBox" uid="uid://b1mv8pdp2pnqu" path="res://themes/combat_viewport/att_arm_select_panel_style_box.tres" id="1_7pbgg"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_7pbgg")

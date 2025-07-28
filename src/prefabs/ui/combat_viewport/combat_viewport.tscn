@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=17 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
-[ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
+[ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
 [ext_resource type="Theme" uid="uid://b8yc44w3kkyyv" path="res://themes/combat_viewport/cv_panel_background.tres" id="2_l6kcl"]
 [ext_resource type="Theme" uid="uid://b0247qwjlu8lv" path="res://themes/combat_viewport/dialog_box_panel_container.tres" id="3_s7sq0"]
 [ext_resource type="Theme" uid="uid://cy0kpb306vpwj" path="res://themes/combat_viewport/db_button_choices_hbox.tres" id="4_1vvdr"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://usv74cjcjiqn" path="res://assets/visual/prototype_items/enemy_d1.png" id="8_704d3"]
 [ext_resource type="PackedScene" uid="uid://wwoi8jwh6ncu" path="res://prefabs/ui/die_roller/die_roller.tscn" id="8_guh7h"]
 [ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="9_guh7h"]
+[ext_resource type="Theme" uid="uid://db0krltjp1fvu" path="res://themes/combat_viewport/att_arm_select_margin_container.tres" id="11_guh7h"]
+[ext_resource type="Theme" uid="uid://dcrr47tdwur0b" path="res://themes/combat_viewport/att_arm_select_panel.tres" id="12_ho6fy"]
+[ext_resource type="PackedScene" uid="uid://dljmxwj6vs50b" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.tscn" id="12_ud8o6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
 atlas = ExtResource("8_704d3")
@@ -37,7 +40,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_container", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,12 +49,14 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_tr6sk")
 script = ExtResource("2_1vvdr")
+dialog_box = NodePath("Dialog Box")
 button_container = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices")
 attack_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Attack")
 run_button = NodePath("Dialog Box/Dialog Box Panel Container/Button Choices/Run")
 att_die_roller = NodePath("Dialog Box/Dialog Box Panel Container/Attacking Die Roller")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
+arm_container = NodePath("Attacking Arm Selection/Arm Container")
 temp_e_health = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY HEALTH")
 temp_e_damage = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY DAMAGE")
 
@@ -123,6 +128,23 @@ text = "HEALTH: "
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "DAMAGE: "
+
+[node name="Attacking Arm Selection" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("11_guh7h")
+
+[node name="Attacking Arm Background" type="Panel" parent="Attacking Arm Selection"]
+layout_mode = 2
+theme = ExtResource("12_ho6fy")
+
+[node name="Arm Container" type="HBoxContainer" parent="Attacking Arm Selection"]
+layout_mode = 2
+alignment = 1
+
+[node name="Attacking Arm Object" parent="Attacking Arm Selection/Arm Container" instance=ExtResource("12_ud8o6")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]
