@@ -133,14 +133,17 @@ text = "DAMAGE: "
 [node name="Attacking Arm Selection" type="MarginContainer" parent="."]
 z_index = 1
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("11_guh7h")
 
 [node name="Attacking Arm Background" type="Panel" parent="Attacking Arm Selection"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("12_ho6fy")
 
 [node name="Arm Container" type="HBoxContainer" parent="Attacking Arm Selection"]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="Attacking Arm Object" parent="Attacking Arm Selection/Arm Container" instance=ExtResource("12_ud8o6")]

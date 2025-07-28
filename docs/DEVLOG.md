@@ -97,3 +97,11 @@
 - Started the process of changing the turn back over to the enemy.
 - Temporarily added more enemies to the floor to aid in debugging.
 - Made sure that cell content can only be added if the cell was empty to start.
+- Integrated an arm selection window that appears before the die roll
+- Player is prompted to select an arm and that amount of damage is applied to the enemy if the roll succeeds
+- If the player fails massively, their arm could take damage or be destroyed
+- The inventory was refactored to update as combat was going on in the background.
+- Player can eat arms in combat, playing into the risk of them losing the arm itself.
+- Created a mode for debugging combat where the player starts surrounded by enemies
+- Creaded a flag in `globals.gd` called `verbose_console` that includes all the random print statements around the code.
+- Due to finding out a bug with the ordering of the Inventory Back Button and the Attack Dice Roller in the Combat Viewport, I realized that by having the parents of the node groups be `Node`s, it is keeping them from using the relative z_index of the main CanvasLayer parent 

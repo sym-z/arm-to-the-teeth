@@ -46,6 +46,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_tlstp")
 
+[node name="Combat Viewport" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
+visible = false
+root_ui = NodePath("..")
+
 [node name="Context Menu" type="MarginContainer" parent="."]
 z_index = 2
 anchors_preset = 15
@@ -235,10 +239,6 @@ vertical_alignment = 1
 z_index = 1
 position = Vector2(91, 602)
 scale = Vector2(4, 4)
-root_ui = NodePath("..")
-
-[node name="Combat Viewport" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
-visible = false
 root_ui = NodePath("..")
 
 [connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]

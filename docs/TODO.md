@@ -22,13 +22,13 @@
   - [ ] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
     - [ ] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
-- [x] Enemies Spawn
 - [ ] The map's arm drops are randomized
   - [ ] They are also influenced by the floor that the player is on.
 - [ ] Refine Arm Eating
   - [ ] Check mins and maxes of the stats that it affects for the player
   - [ ] Player can use the same spinning die roll to see how much teeth is lost when eating and possibly how much benefit they gain
 - [ ] Refine hunger growth
+- [ ] Make eating heal your head a little but improve your hunger a lot
 - [ ] Figure out if hunger kills you or hurts your head
 - [ ] Multi-Arm Storage
   - [ ] Ability to store extra arms in inventory
@@ -55,6 +55,7 @@
   - [x] Cells can hold an exit
 - [x] Player has an inventory
 - [x] Player can pick up teeth
+- [x] Enemies Spawn
 
 ## Player vs Enemy Combat 
 - [ ] Windows have titles and instructions
@@ -65,7 +66,6 @@
 - [ ] Player Animates
   - [ ] Prototype
   - [ ] Final
-- [ ] Player chooses what arm to attack with
 - [ ] Enemy attacks back
 - [ ] Player chooses where the damage hits and suffers consequences
 - [ ] Consistent cyclical battle
@@ -76,6 +76,7 @@
 - [x] When combat starts, everything but the enemy goes black
 - [x] Combat dice roll can involve the player clicking to stop the spinning dice
 - [x] Combat scene show enemy health and damage
+- [x] Player chooses what arm to attack with
 
 ## Tools
 ### DONE
@@ -89,6 +90,8 @@
 
 ## UI
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
+- [ ] Inventory Window Title
+- [ ] Log Window Title
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [ ] Prototype Art
@@ -139,9 +142,11 @@
 ### DONE
 
 ## Test
-- [ ] What happens if you make the map 15x15?
 ### DONE
+- [x] What happens if you make the map 15x15?
+  - Seems to be fine, but I'd keep testing this in the future.
 
 ## Keep in Mind
 - The `arm_item` is stopping GUI events
+- If I ever want to do swapping, remember to trigger a refresh to the inventory and the arm_selection screen.
 ### DONE
