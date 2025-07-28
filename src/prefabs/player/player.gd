@@ -50,6 +50,13 @@ func give_starting_loadout():
 	starting_arm.equipped = true
 	arm_count += 1
 	arm_inventory.append(starting_arm)
+	if Globals.debug_combat:
+		var power_arm : Arm = Arm.new()
+		power_arm.strength = 3
+		power_arm.condition = 10
+		power_arm.equipped = true
+		arm_count += 1
+		arm_inventory.append(power_arm)
 func debug_print_inventory():
 	print("INVENTORY")
 	for i in range(arm_inventory.size()):

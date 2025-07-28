@@ -24,7 +24,8 @@ func _process(delta):
 		frame = lower_limit -1
 
 func roll_die():
-	print("ROLLING")
+	if Globals.verbose_console == true:
+		print("ROLLING")
 	play()
 	is_rolling = true
 
@@ -33,16 +34,19 @@ func set_die(lower : int = lower_limit, upper : int = upper_limit, dc : int = di
 	upper_limit = upper
 	lower_limit = lower
 	difficulty_class = dc
-	print("DIE SET")
+	if Globals.verbose_console == true:
+		print("DIE SET")
 
 func _on_mouse_handler_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed == true:
 		if is_rolling == false and roll_finished == false:
 			roll_die()
-			print("DIE ROLLING STARTED")
+			if Globals.verbose_console == true:
+				print("DIE ROLLING STARTED")
 		else:
 			if roll_finished == false:
-				print("DIE ROLLING STOPPED")
+				if Globals.verbose_console == true:
+					print("DIE ROLLING STOPPED")
 				pause()
 				roll_finished = true
 				var result : int = frame + 1
@@ -58,6 +62,7 @@ func _on_mouse_handler_gui_input(event):
 
 
 func _on_animation_finished():
-	print("ANIM FINISHED")
+	if Globals.verbose_console == true:
+		print("ANIM FINISHED")
 	frame =lower_limit -1
 	play()

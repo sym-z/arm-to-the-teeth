@@ -21,7 +21,7 @@ texture = ExtResource("2_6uige")
 expand_mode = 4
 
 [node name="Strength Label" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_5y5fn")
@@ -30,7 +30,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Condition Label" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_5y5fn")
