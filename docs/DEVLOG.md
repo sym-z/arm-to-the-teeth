@@ -124,3 +124,5 @@
 - Player can select a limb to apply damage to
 - Damage is applied to limb, and can cause the player to lose their arm.
 - After the player makes a limb selection, or if the enemy misses their attack, the cycle begins again and the player is given the option to attack or run.
+- Added a function to the Die Roller that allows it to be reset back to its original state.
+- Combat needs heaaaavy testing, but it has now made its first loop!
