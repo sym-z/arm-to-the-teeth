@@ -84,7 +84,20 @@ func _on_attack_pressed():
 	# Gather and display the player's currently equipped arms
 	refresh_arm_selections()
 	change_arm_select_vis(true)
-
+func _on_run_pressed():
+	# Gather the directions that the player could run in. There is at least one guaranteed direction the player can run in.
+	var forward_cell = map.get_forward_cell(player.position, player.facing)
+	# Backward loc isn't *always* going to be a valid choice, because a player could back into an enemy.
+	var backward_cell = map.get_backward_cell(player.position, player.facing)
+	var left_cell = map.get_left_cell(player.position, player.facing)
+	var right_cell = map.get_right_cell(player.position, player.facing)
+	var possible_directions = [forward_cell,backward_cell,left_cell,right_cell]
+	for d in possible_directions:
+		if d != null:
+			if Globals.verbose_console == true:
+				print("PLAYER CAN RUN TO ", d.position)
+			pass
+	pass
 # Refresh arm (and head) selections for combat
 func refresh_arm_selections():
 	#TODO: Call this function when an arm is fully eaten

@@ -182,4 +182,5 @@ layout_mode = 2
 mouse_filter = 2
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Run" to="." method="_on_run_pressed"]
 [connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]

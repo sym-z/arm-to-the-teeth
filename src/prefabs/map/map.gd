@@ -245,6 +245,14 @@ func get_forward_cell(curr_loc: Vector2i, facing: int):
 		return world_map[get_loc_in_dir(curr_loc,facing)]
 	else:
 		return null
+
+# Returns the cell behind "curr_loc", i.e. to the right of its right cell
+func get_backward_cell(curr_loc: Vector2i, facing: int):
+	var back_dir : int = Globals.right_of(Globals.right_of(facing))
+	if check_bounds(get_loc_in_dir(curr_loc,back_dir)):
+		return world_map[get_loc_in_dir(curr_loc,back_dir)]
+	else:
+		return null
 #endregion
 
 #region Item/Landmark Placement

@@ -137,3 +137,4 @@
   - Eventually I would have the game disable input, cause a pause, then transition to a death scene/game over scene.
 - Created a global script based off of one that I created for I.M.P. called `scene_transition.gd`.
   - Handles transitioning scenes in an elegant way that is easy to use from anywhere in the code base.
+- Possible directions are correctly gathered before running.
