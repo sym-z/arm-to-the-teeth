@@ -54,8 +54,8 @@ func give_starting_loadout():
 	arm_inventory.append(starting_arm)
 	if Globals.debug_combat:
 		var power_arm : Arm = Arm.new()
-		power_arm.strength = 3
-		power_arm.condition = 1
+		power_arm.strength = 100
+		power_arm.condition = 100
 		power_arm.equipped = true
 		arm_count += 1
 		arm_inventory.append(power_arm)
@@ -198,12 +198,11 @@ func pick_up(type : Cell.TYPE):
 				map.arm_atlas.erase(position)
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
-				if Globals.verbose_console == true:
-					print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 				Log.add_log_message("PICKED UP ARM! IT NOW HOLDS " + str(arm_count) + " ARMS!")
 				if Globals.verbose_console == true:
 					debug_print_inventory()
-				map.print_arm_atlas()
+					map.print_arm_atlas()
+					print("PICKED UP ARM! PLAYER NOW HOLDS ", arm_count, " ARMS!")
 			else:
 				# When the player has 2 arms equipped already. To let the player hold arms that are unequipped, add code here.
 				# For now, I am only allowing 2 arms to be picked up.

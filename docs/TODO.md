@@ -147,6 +147,7 @@
 ### DONE
 - [x] What happens if you make the map 15x15?
   - Seems to be fine, but I'd keep testing this in the future.
+- [ ] Make sure that the cell is added to empty cells after killing an enemy.
 
 ## Keep in Mind
 - The `arm_item` is stopping GUI events

@@ -127,3 +127,8 @@
 - Added a function to the Die Roller that allows it to be reset back to its original state.
 - Combat needs heaaaavy testing, but it has now made its first loop!
 - Combat can correctly determine when the player or enemy dies
+- Player can go back to game after killing an enemy.
+  - Dungeon viewport removes them from sight
+  - Map removes them from `enemy_atlas`
+  - Minimap removes their icon
+  - Fires signal that the player has "picked up" the item that was in that space, which causes the refresh of the viewport, and the cell to be marked as empty.

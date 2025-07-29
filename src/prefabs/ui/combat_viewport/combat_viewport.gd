@@ -4,6 +4,9 @@ extends MarginContainer
 var player : Node
 var map : Node
 var opponent : Enemy 
+var combat_location : Vector2i
+var player_dead : bool = false
+var enemy_dead : bool = false
 
 
 @export_category("Main Dialog Box")
@@ -53,18 +56,16 @@ func _process(delta):
 	pass
 
 func begin_combat(e : Enemy, loc : Vector2i):
-	Log.add_log_message("IT HAS ENTERED COMBAT")
-	visible = true
-	#change_arm_select_vis(false)
-	#change_att_die_roller_vis(false)
-	#change_player_damage_selection_vis(false)
-	#change_attack_run_vis(true)
-	show_player_turn_start()
 	if Globals.verbose_console == true:
 		print("COMBAT BEGAN WITH ")
 		e.debug_print()
 		print("AT ", loc)
+	Log.add_log_message("IT HAS ENTERED COMBAT")
+	visible = true
+	enemy_dead = false
+	show_player_turn_start()
 	opponent = e
+	combat_location = loc
 	refresh_temp_labels()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
@@ -122,8 +123,8 @@ func attacking_arm_selected(a : Arm):
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	else:
 		# Impossible roll to test arm getting hurt
-		#att_die_roller.set_die(1,20,20)
-		att_die_roller.set_die(1,20,opponent.difficulty_class)
+		att_die_roller.set_die(1,20,1)
+		#att_die_roller.set_die(1,20,opponent.difficulty_class)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 func attacking_head_selected(h : Head):
 	## Step 2b: Using the stats of the head, let the player roll a die to attempt to hit the monster
@@ -207,24 +208,25 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 #region Enemy's Turn
 # Enemy rolls to attempt to attack player
 func enemy_attack_roll():
-	# Hide player's die roll screen
-	change_att_die_roller_vis(false)
-	# Player's DC is dependent on head health.
-	var enemy_attack_roll = randi_range(1,20)
-	if Globals.debug_combat == true:
-		#enemy_attack_roll = 1 
-		pass
-	if enemy_attack_roll < player.head.health:
-		# Enemy Miss
-		Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
-		#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
-		create_timer(3.5, show_player_turn_start)
-	else:
-		# Enemy Hit
-		#TODO: Possibly extra damage for high roll?
-		Log.add_log_message("THE ENEMY'S ATTACK HITS!")
-		#TODO: Later this could be attached to the enemy's attack animation as well
-		create_timer(3.5, player_damage_selection)
+	if enemy_dead == false:
+		# Hide player's die roll screen
+		change_att_die_roller_vis(false)
+		# Player's DC is dependent on head health.
+		var enemy_attack_roll = randi_range(1,20)
+		if Globals.debug_combat == true:
+			#enemy_attack_roll = 1 
+			pass
+		if enemy_attack_roll < player.head.health:
+			# Enemy Miss
+			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
+			#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
+			create_timer(3.5, show_player_turn_start)
+		else:
+			# Enemy Hit
+			#TODO: Possibly extra damage for high roll?
+			Log.add_log_message("THE ENEMY'S ATTACK HITS!")
+			#TODO: Later this could be attached to the enemy's attack animation as well
+			create_timer(3.5, player_damage_selection)
 
 ## Player decides what body part receives damage
 func player_damage_selection():
@@ -280,15 +282,31 @@ func check_player_death():
 	if player.head.health <= 0:
 		if Globals.verbose_console == true:
 			print("PLAYER HAS DIED")
+		player_dead = true
 		Log.add_log_message("IT HAS PERISHED.")
 
-	pass
 func check_enemy_death():
 	if opponent.curr_health <= 0:
+		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
+		# Set flag
+		enemy_dead = true
+		# Hide combat viewport
+		visible = false
+		# Get cell that combat is taking place in
+		var map_cell : Cell = map.world_map[combat_location]
+		# Remove enemy from map's atlas at combat_location
+		map.enemy_atlas.erase(combat_location)
+		# Make the cell empty at that location
+		map.make_cell_empty(map_cell)
+		# This signal tells the viewport to refresh, tells the UI that the cell is empty, and tells the minimap to get rid of the icon at this location.
+		player.item_picked_up.emit()
+		# Allow the player to move
+		player.in_combat = false
 		if Globals.verbose_console == true:
 			print("ENEMY KILLED")
-		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
-	pass
+			map.print_enemy_atlas()
+			print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
+
 #endregion
 #endregion
 #region Group Visibility Switching Functions
