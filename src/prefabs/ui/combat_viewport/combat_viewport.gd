@@ -55,10 +55,11 @@ func _process(delta):
 func begin_combat(e : Enemy, loc : Vector2i):
 	Log.add_log_message("IT HAS ENTERED COMBAT")
 	visible = true
-	change_arm_select_vis(false)
-	change_att_die_roller_vis(false)
-	change_player_damage_selection_vis(false)
-	change_attack_run_vis(true)
+	#change_arm_select_vis(false)
+	#change_att_die_roller_vis(false)
+	#change_player_damage_selection_vis(false)
+	#change_attack_run_vis(true)
+	show_player_turn_start()
 	if Globals.verbose_console == true:
 		print("COMBAT BEGAN WITH ")
 		e.debug_print()
@@ -206,7 +207,7 @@ func enemy_attack_roll():
 	# Player's DC is dependent on head health.
 	var enemy_attack_roll = randi_range(1,20)
 	if Globals.debug_combat == true:
-		enemy_attack_roll = 1 
+		#enemy_attack_roll = 1 
 		pass
 	if enemy_attack_roll < player.head.health:
 		# Enemy Miss
@@ -269,6 +270,20 @@ func damage_arm(a: Arm):
 	create_timer(3.5, show_player_turn_start)
 #endregion
 #region Combat Ending State
+func check_player_death():
+	if player.head.health <= 0:
+		if Globals.verbose_console == true:
+			print("PLAYER HAS DIED")
+		Log.add_log_message("IT HAS PERISHED.")
+		pass
+
+	pass
+func check_enemy_death():
+	if opponent.curr_health <= 0:
+		if Globals.verbose_console == true:
+			print("ENEMY KILLED")
+		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
+	pass
 #endregion
 #endregion
 #region Group Visibility Switching Functions
