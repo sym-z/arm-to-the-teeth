@@ -58,6 +58,13 @@ func _on_mouse_handler_gui_input(event):
 			
 		
 
+func reset_die():
+	## Did the player roll higher than the DC
+	roll_passed = false
+	## Allows for stopping the die by clicking
+	is_rolling = false
+	## Prevents multiple rolls
+	roll_finished = false
 
 
 

@@ -30,6 +30,12 @@ var attacking_arm : Arm
 # Flag set when attacking with head to give proper damage and consequences on roll
 var attacking_with_head : bool
 
+@export_category("Player Damage Selection")
+@export var player_damage_selection_window : MarginContainer
+@export var damage_limb_container : HBoxContainer
+var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
+
+
 @export_category("TEMP ENEMY STATS")
 @export var temp_e_health : Label
 @export var temp_e_damage : Label
@@ -51,6 +57,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	visible = true
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(false)
+	change_player_damage_selection_vis(false)
 	change_attack_run_vis(true)
 	if Globals.verbose_console == true:
 		print("COMBAT BEGAN WITH ")
@@ -107,7 +114,8 @@ func attacking_arm_selected(a : Arm):
 	# Disable the ability to check and modify inventory during a roll
 	root_ui.inventory_button.disabled = true
 	Log.add_log_message("ARM SELECTION MADE, ARM MANAGEMENT TEMPORARILY DISABLED")
-	
+	# Reset Die Roller
+	att_die_roller.reset_die()
 	#TODO: Adjust bounds depending on arm conditions etc.
 	if Globals.debug_combat == false:
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
@@ -126,6 +134,7 @@ func attacking_head_selected(h : Head):
 	# Disable the ability to check and modify inventory during a roll
 	root_ui.inventory_button.disabled = true
 	Log.add_log_message("IT CHOSE TO ATTACK WITH ITS HEAD, ARM MANAGEMENT TEMPORARILY DISABLED")
+	att_die_roller.reset_die()
 	#TODO: Adjust bounds depending on head health etc.
 	if Globals.debug_combat == false:
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
@@ -157,6 +166,7 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 				var damage_to_apply : int = floor(dc/2) - number_rolled
 				attacking_arm.condition -= damage_to_apply
 				# Check if arm was destroyed
+				#TODO: WHEN ARMS ARE IN UI ADJUST FRAMING BASED ON CONDITION
 				if attacking_arm.condition <= 0:
 					Log.add_log_message("IT MISSED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
 					root_ui.arm_fully_eaten(attacking_arm)
@@ -196,11 +206,13 @@ func enemy_attack_roll():
 	# Player's DC is dependent on head health.
 	var enemy_attack_roll = randi_range(1,20)
 	if Globals.debug_combat == true:
-		#enemy_attack_roll = 
+		enemy_attack_roll = 1 
 		pass
 	if enemy_attack_roll < player.head.health:
 		# Enemy Miss
 		Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
+		#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
+		create_timer(3.5, show_player_turn_start)
 	else:
 		# Enemy Hit
 		#TODO: Possibly extra damage for high roll?
@@ -213,10 +225,51 @@ func player_damage_selection():
 	# Reveal body part selection screen
 	if Globals.verbose_console == true:
 		print("PLAYER DAMAGE SELECTION TIME")
-	## Damage selection window should clear out all children, if any, then build from the current state of the player
-	pass
-#endregion
+	change_player_damage_selection_vis(true)
+	# Disable the ability to check and modify inventory during damage selection
+	root_ui.inventory_button.disabled = true
+	## Limb container should clear out all children, if any, then build from the current state of the player
+	for child in damage_limb_container.get_children():
+		child.call_deferred("queue_free")
+	# Add player head
+	var new_head_limb = damagable_limb_scene.instantiate()
+	new_head_limb.input_head(player.head)
+	new_head_limb.connect("damage_head", damage_head)
+	damage_limb_container.add_child(new_head_limb)
+	# Add player's equipped arms
+	for arm in player.arm_inventory:
+		if arm.equipped == true:
+			var new_arm_limb = damagable_limb_scene.instantiate()
+			new_arm_limb.input_arm(arm)
+			new_arm_limb.connect("damage_arm", damage_arm)
+			damage_limb_container.add_child(new_arm_limb)
 
+func damage_head(h: Head):
+	if Globals.verbose_console:
+		print("DAMAGING HEAD")
+	#TODO: Factor in teeth lost, critical hits
+	h.health -= opponent.damage
+	# Update status in UI of head
+	root_ui.refresh_temp_labels()
+	# Re-Enable inventory use after damage is applied
+	root_ui.inventory_button.disabled = false
+	#TODO: Check player death
+	#TODO: Use timer, then go to attack/run
+	create_timer(3.5, show_player_turn_start)
+	
+func damage_arm(a: Arm):
+	if Globals.verbose_console:
+		print("DAMAGING ARM")
+	a.condition -= opponent.damage
+	if a.condition <= 0:
+		root_ui.arm_fully_eaten(a)
+	# Re-Enable inventory use after damage is applied
+	root_ui.inventory_button.disabled = false
+	#TODO: Use timer, then go to attack/run
+	create_timer(3.5, show_player_turn_start)
+#endregion
+#region Combat Ending State
+#endregion
 #endregion
 #region Group Visibility Switching Functions
 func change_attack_run_vis(new_vis : bool):
@@ -227,11 +280,21 @@ func change_arm_select_vis(new_vis : bool):
 func change_att_die_roller_vis(new_vis : bool):
 	dialog_box.visible = new_vis
 	att_die_roller.visible = new_vis
+func change_player_damage_selection_vis(new_vis : bool):
+	player_damage_selection_window.visible = new_vis
+func show_player_turn_start():
+	change_arm_select_vis(false)
+	change_att_die_roller_vis(false)
+	change_player_damage_selection_vis(false)
+	change_attack_run_vis(true)
 #endregion
+
 
 #region Tools
 ## Create a timer that after "duration" seconds calls "callback" and destroys itself
 func create_timer(duration : float, callback: Callable):
+	if Globals.debug_combat == true:
+		duration = 0.1
 	var t : Timer = Timer.new()
 	t.connect("timeout", callback)
 	t.connect("timeout", t.queue_free)

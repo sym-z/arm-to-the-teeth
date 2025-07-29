@@ -121,3 +121,6 @@
 - Enemy rolls to attack back
 - Made a simple function to create a timer that calls a callback function and destroys itself when its `wait_time` hits 0.
 - After the player attacks, there is a slight pause, then the enemy attacks, then a slight pause.
+- Player can select a limb to apply damage to
+- Damage is applied to limb, and can cause the player to lose their arm.
+- After the player makes a limb selection, or if the enemy misses their attack, the cycle begins again and the player is given the option to attack or run.

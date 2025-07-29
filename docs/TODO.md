@@ -116,6 +116,7 @@
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
 - [ ] Log window changes stylebox on hover and click
+- [ ] Text speed choice in options menu that effects battle speed
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"

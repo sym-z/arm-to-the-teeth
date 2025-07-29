@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bmsfnogygnl6q"]
+
+[ext_resource type="StyleBox" uid="uid://bjuxysextgcgm" path="res://themes/combat_viewport/player_dam_sel_panel_style_box.tres" id="1_p8am7"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_p8am7")

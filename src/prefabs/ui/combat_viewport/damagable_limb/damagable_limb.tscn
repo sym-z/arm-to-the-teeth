@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c20d3pqcgllt8"]
+
+[ext_resource type="Script" uid="uid://cgxhrx7nt88uc" path="res://prefabs/ui/combat_viewport/damagable_limb/damagable_limb.gd" id="1_1yei0"]
+[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="2_chakb"]
+[ext_resource type="Theme" uid="uid://du5aum1xk741y" path="res://themes/combat_viewport/dam_limb_label.tres" id="3_u1o8d"]
+[ext_resource type="Theme" uid="uid://820qq2m7fm60" path="res://themes/combat_viewport/dam_limb_button.tres" id="4_eyb72"]
+
+[node name="Damagable Limb" type="VBoxContainer" node_paths=PackedStringArray("icon", "health_label")]
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+script = ExtResource("1_1yei0")
+icon = NodePath("Icon")
+health_label = NodePath("Health Label")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_chakb")
+expand_mode = 4
+
+[node name="Health Label" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme = ExtResource("3_u1o8d")
+text = "HEALTH: X"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage Button" type="Button" parent="."]
+layout_mode = 2
+theme = ExtResource("4_eyb72")
+text = "DAMAGE"
+
+[connection signal="pressed" from="Damage Button" to="." method="_on_damage_button_pressed"]
