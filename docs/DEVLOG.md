@@ -132,3 +132,8 @@
   - Map removes them from `enemy_atlas`
   - Minimap removes their icon
   - Fires signal that the player has "picked up" the item that was in that space, which causes the refresh of the viewport, and the cell to be marked as empty.
+- Player can die in combat
+  - As of right now, this causes the `testing_level` scene to restart, as if it were the start of play.
+  - Eventually I would have the game disable input, cause a pause, then transition to a death scene/game over scene.
+- Created a global script based off of one that I created for I.M.P. called `scene_transition.gd`.
+  - Handles transitioning scenes in an elegant way that is easy to use from anywhere in the code base.

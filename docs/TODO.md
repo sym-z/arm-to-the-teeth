@@ -67,8 +67,8 @@
   - [x] Prototype
   - [ ] Final
 - [ ] Battle can end
-  - [ ] Enemy Death
-  - [ ] Player Death
+  - [x] Enemy Death
+  - [x] Player Death
   - [ ] Player Flees
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
 ### DONE

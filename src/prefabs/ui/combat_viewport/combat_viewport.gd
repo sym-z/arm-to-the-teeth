@@ -214,7 +214,7 @@ func enemy_attack_roll():
 		# Player's DC is dependent on head health.
 		var enemy_attack_roll = randi_range(1,20)
 		if Globals.debug_combat == true:
-			#enemy_attack_roll = 1 
+			enemy_attack_roll = 20 
 			pass
 		if enemy_attack_roll < player.head.health:
 			# Enemy Miss
@@ -256,15 +256,18 @@ func damage_head(h: Head):
 	if Globals.verbose_console:
 		print("DAMAGING HEAD")
 	#TODO: Factor in teeth lost, critical hits
-	h.health -= opponent.damage
+	if Globals.debug_combat == true:
+		h.health -= h.health
+	else:
+		h.health -= opponent.damage
 	# Update status in UI of head
 	root_ui.refresh_temp_labels()
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
-	#TODO: Check player death
 	check_player_death()
 	#TODO: Use timer, then go to attack/run
-	create_timer(3.5, show_player_turn_start)
+	if player_dead == false:
+		create_timer(3.5, show_player_turn_start)
 	
 func damage_arm(a: Arm):
 	if Globals.verbose_console:
@@ -284,6 +287,8 @@ func check_player_death():
 			print("PLAYER HAS DIED")
 		player_dead = true
 		Log.add_log_message("IT HAS PERISHED.")
+		#TODO: Stop all player input, pause, then transition to death scene
+		SceneTransition.testing_level()
 
 func check_enemy_death():
 	if opponent.curr_health <= 0:
