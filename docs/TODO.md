@@ -71,6 +71,10 @@
   - [x] Player Death
   - [ ] Player Flees
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
+- [ ] Higher damage for crit rolls
+  - [ ] For enemy
+  - [ ] For player
+- [ ] A lot more log messages about how much damage is dealt and where.
 ### DONE
 - [x] Add player head to list of arms to select in arm selection screen
 - [x] When combat starts, everything but the enemy goes black
@@ -80,6 +84,10 @@
 - [x] Combat dice roll can involve the player clicking to stop the spinning dice
 - [x] Combat scene show enemy health and damage
 - [x] Player chooses what arm to attack with
+
+## Balance
+- [ ] More arm spawns with weirder stats.
+### DONE
 
 ## Tools
 ### DONE

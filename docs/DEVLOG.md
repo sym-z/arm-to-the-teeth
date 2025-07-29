@@ -140,3 +140,4 @@
 - Possible directions are correctly gathered before running.
 - Created temporary sprites for directions player can run in, and they display accordingly to the possible directions that are available to flee in.
 - Set up the signal connection between the directional buttons and wrote pseudocode for how damage should be applied. 
+- Took off wait time after player selects what limb they want to damage.
