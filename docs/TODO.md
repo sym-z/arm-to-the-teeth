@@ -61,19 +61,22 @@
 - [ ] Windows have titles and instructions
 - [ ] Enemies can drop items (Teeth/Arms)
 - [ ] Enemy Animates
-  - [ ] Prototype
+  - [x] Prototype
   - [ ] Final
 - [ ] Player Animates
-  - [ ] Prototype
+  - [x] Prototype
   - [ ] Final
-- [ ] Enemy attacks back
-- [ ] Player chooses where the damage hits and suffers consequences
-- [ ] Consistent cyclical battle
 - [ ] Battle can end
+  - [ ] Enemy Death
+  - [ ] Player Death
+  - [ ] Player Flees
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
-- [ ] Add player head to list of arms to select in arm selection screen
 ### DONE
+- [x] Add player head to list of arms to select in arm selection screen
 - [x] When combat starts, everything but the enemy goes black
+- [x] Enemy attacks back
+- [x] Player chooses where the damage hits and suffers consequences
+- [x] Consistent cyclical battle
 - [x] Combat dice roll can involve the player clicking to stop the spinning dice
 - [x] Combat scene show enemy health and damage
 - [x] Player chooses what arm to attack with
@@ -84,9 +87,9 @@
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [x] Prototype font
-  - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
+- [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 ### DONE
+- [x] Prototype font
 
 ## UI
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
@@ -117,6 +120,7 @@
 - [ ] Better StyleBoxes for inventory and arm items
 - [ ] Log window changes stylebox on hover and click
 - [ ] Text speed choice in options menu that effects battle speed
+- [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
@@ -133,21 +137,21 @@
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
   - Will be under the UI's CanvasLayer now.
 - [ ] Turn off arrow key input for Context menu
+- [ ] Try to make the `CanvasLayer` parent thing work in the UI scene.
 ### DONE
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
   - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
-- [ ] Try to make the `CanvasLayer` parent thing work in the UI scene.
 
 ## Optimization
 - [ ] Some Objects are being spawned, ~5 when the map is regenerated. Where and why?
 ### DONE
 
 ## Test
+- [ ] Make sure that the cell is added to empty cells after killing an enemy.
 ### DONE
 - [x] What happens if you make the map 15x15?
   - Seems to be fine, but I'd keep testing this in the future.
-- [ ] Make sure that the cell is added to empty cells after killing an enemy.
 
 ## Keep in Mind
 - The `arm_item` is stopping GUI events
