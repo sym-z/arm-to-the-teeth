@@ -1,7 +1,7 @@
 extends Node
 
 var debug : bool = false
-var debug_combat : bool = true
+var debug_combat : bool = false
 var verbose_console : bool = true
 
 const NORTH : int = 8

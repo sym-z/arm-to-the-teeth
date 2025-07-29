@@ -344,9 +344,10 @@ func damage_head(h: Head):
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
 	check_player_death()
-	#TODO: Use timer, then go to attack/run
+	# Go to attack/run right after damage application
 	if player_dead == false:
-		create_timer(3.5, show_player_turn_start)
+		#create_timer(3.5, show_player_turn_start)
+		show_player_turn_start()
 	
 func damage_arm(a: Arm):
 	if Globals.verbose_console:
@@ -356,8 +357,8 @@ func damage_arm(a: Arm):
 		root_ui.arm_fully_eaten(a)
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
-	#TODO: Use timer, then go to attack/run
-	create_timer(3.5, show_player_turn_start)
+	# Go to attack/run right after damage application
+	show_player_turn_start()
 	#endregion
 	#region Combat Ending State
 func check_player_death():
