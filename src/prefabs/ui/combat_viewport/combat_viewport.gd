@@ -122,7 +122,8 @@ func attacking_arm_selected(a : Arm):
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	else:
 		# Impossible roll to test arm getting hurt
-		att_die_roller.set_die(1,20,20)
+		#att_die_roller.set_die(1,20,20)
+		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 func attacking_head_selected(h : Head):
 	## Step 2b: Using the stats of the head, let the player roll a die to attempt to hit the monster
@@ -140,7 +141,8 @@ func attacking_head_selected(h : Head):
 	if Globals.debug_combat == false:
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	else:
-		att_die_roller.set_die(1,20,20)
+		#att_die_roller.set_die(1,20,20)
+		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
@@ -156,8 +158,9 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			opponent.curr_health -= attacking_arm.strength
 			#TODO: Maybe bonus damage for high rolls?
 			Log.add_log_message("IT DEALT " + str(attacking_arm.strength) + " DAMAGE.")
-			#TODO: Check for enemy death
 			refresh_temp_labels()
+			# Check for enemy death
+			check_enemy_death()
 		## Player Miss
 		else:
 			#TODO: Apply damage to condition, update inventory menu, update arm selection screen
@@ -184,8 +187,9 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			#TODO: Possible bonus damage for high rolls/teeth count?
 			Log.add_log_message("IT BIT FURIOUSLY AND DEALT " + str(player.head.strength) + " DAMAGE.")
 			#TODO: Deduct teeth, perhaps with a roll, would need to refresh root_ui's labels
-			#TODO: Check for enemy death
 			refresh_temp_labels()
+			# Check for enemy death
+			check_enemy_death()
 		else:
 			## Player missed
 			# Head loses health, and teeth are lost. Possibly roll for teeth lost.
@@ -193,7 +197,8 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			player.head.health -= 1
 			# Refresh root_ui's labels
 			root_ui.refresh_temp_labels()
-			#TODO: Check for player death.
+			# Check for player death.
+			check_player_death()
 			Log.add_log_message("IT MISSED ITS BITE, HURTING ITS HEAD IN THE PROCESS.")
 	curr_turn = TURN.ENEMY
 	#TODO: Later this could be attached to the player's attack animation as well
@@ -255,6 +260,7 @@ func damage_head(h: Head):
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
 	#TODO: Check player death
+	check_player_death()
 	#TODO: Use timer, then go to attack/run
 	create_timer(3.5, show_player_turn_start)
 	
@@ -275,7 +281,6 @@ func check_player_death():
 		if Globals.verbose_console == true:
 			print("PLAYER HAS DIED")
 		Log.add_log_message("IT HAS PERISHED.")
-		pass
 
 	pass
 func check_enemy_death():
