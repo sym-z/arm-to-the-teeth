@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=27 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -17,6 +17,12 @@
 [ext_resource type="Theme" uid="uid://c364n1ul3h4tq" path="res://themes/combat_viewport/player_dam_sel_margin_container.tres" id="15_4wnak"]
 [ext_resource type="Theme" uid="uid://bmsfnogygnl6q" path="res://themes/combat_viewport/player_dam_sel_panel.tres" id="16_eckmk"]
 [ext_resource type="PackedScene" uid="uid://c20d3pqcgllt8" path="res://prefabs/ui/combat_viewport/damagable_limb/damagable_limb.tscn" id="17_xkj7y"]
+[ext_resource type="Theme" uid="uid://b2ycv3walgxhg" path="res://themes/combat_viewport/run_dir_margin_container.tres" id="18_8xoyx"]
+[ext_resource type="Theme" uid="uid://cq8ao4feimsfo" path="res://themes/combat_viewport/run_dir_panel_background.tres" id="19_k7xhf"]
+[ext_resource type="Texture2D" uid="uid://c7t55p6ho3c7" path="res://assets/visual/ui/run_window/run_dirs_0_1.png" id="20_ir4bk"]
+[ext_resource type="Texture2D" uid="uid://l66eqfhvqoha" path="res://assets/visual/ui/run_window/run_dirs_0_4.png" id="21_q6axe"]
+[ext_resource type="Texture2D" uid="uid://cq2bcl4kph0v0" path="res://assets/visual/ui/run_window/run_dirs_0_3.png" id="22_nqaus"]
+[ext_resource type="Texture2D" uid="uid://bcnpot0nlt6xp" path="res://assets/visual/ui/run_window/run_dirs_0_2.png" id="23_2uckp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
 atlas = ExtResource("8_704d3")
@@ -44,7 +50,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,6 +70,11 @@ arm_selection_window = NodePath("Attacking Arm Selection")
 arm_container = NodePath("Attacking Arm Selection/Arm Container")
 player_damage_selection_window = NodePath("Player Damage Selection")
 damage_limb_container = NodePath("Player Damage Selection/Limb Container")
+run_direction_selection_window = NodePath("Run Direction Selection")
+up_button = NodePath("Run Direction Selection/Direction Buttons/Up Container/Up Button")
+down_button = NodePath("Run Direction Selection/Direction Buttons/Down Container/Down Button")
+left_button = NodePath("Run Direction Selection/Direction Buttons/Left Right Container/Left Button")
+right_button = NodePath("Run Direction Selection/Direction Buttons/Left Right Container/Right Button")
 temp_e_health = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY HEALTH")
 temp_e_damage = NodePath("TEMP ENEMY STATS/VBoxContainer/TEMP ENEMY DAMAGE")
 
@@ -76,7 +87,6 @@ theme = ExtResource("2_l6kcl")
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("4_j2lbb")
-theme_override_constants/margin_top = 696
 
 [node name="Dialog Box Panel Container" type="PanelContainer" parent="Dialog Box"]
 z_index = 1
@@ -162,6 +172,7 @@ visible = false
 layout_mode = 2
 
 [node name="Player Damage Selection" type="MarginContainer" parent="."]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -181,6 +192,58 @@ alignment = 1
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Run Direction Selection" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("18_8xoyx")
+
+[node name="Background" type="Panel" parent="Run Direction Selection"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("19_k7xhf")
+
+[node name="Direction Buttons" type="VBoxContainer" parent="Run Direction Selection"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Up Container" type="HBoxContainer" parent="Run Direction Selection/Direction Buttons"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Up Button" type="TextureButton" parent="Run Direction Selection/Direction Buttons/Up Container"]
+layout_mode = 2
+texture_normal = ExtResource("20_ir4bk")
+
+[node name="Left Right Container" type="HBoxContainer" parent="Run Direction Selection/Direction Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 112
+alignment = 1
+
+[node name="Left Button" type="TextureButton" parent="Run Direction Selection/Direction Buttons/Left Right Container"]
+layout_mode = 2
+texture_normal = ExtResource("21_q6axe")
+
+[node name="Right Button" type="TextureButton" parent="Run Direction Selection/Direction Buttons/Left Right Container"]
+layout_mode = 2
+texture_normal = ExtResource("22_nqaus")
+
+[node name="Down Container" type="HBoxContainer" parent="Run Direction Selection/Direction Buttons"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Down Button" type="TextureButton" parent="Run Direction Selection/Direction Buttons/Down Container"]
+layout_mode = 2
+texture_normal = ExtResource("23_2uckp")
+
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/Button Choices/Run" to="." method="_on_run_pressed"]
 [connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]
+[connection signal="pressed" from="Run Direction Selection/Direction Buttons/Up Container/Up Button" to="." method="up_button_chosen"]
+[connection signal="pressed" from="Run Direction Selection/Direction Buttons/Left Right Container/Left Button" to="." method="left_button_chosen"]
+[connection signal="pressed" from="Run Direction Selection/Direction Buttons/Left Right Container/Right Button" to="." method="right_button_chosen"]
+[connection signal="pressed" from="Run Direction Selection/Direction Buttons/Down Container/Down Button" to="." method="down_button_chosen"]

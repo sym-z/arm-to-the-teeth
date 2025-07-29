@@ -138,3 +138,5 @@
 - Created a global script based off of one that I created for I.M.P. called `scene_transition.gd`.
   - Handles transitioning scenes in an elegant way that is easy to use from anywhere in the code base.
 - Possible directions are correctly gathered before running.
+- Created temporary sprites for directions player can run in, and they display accordingly to the possible directions that are available to flee in.
+- Set up the signal connection between the directional buttons and wrote pseudocode for how damage should be applied. 

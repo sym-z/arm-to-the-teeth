@@ -38,6 +38,13 @@ var attacking_with_head : bool
 @export var damage_limb_container : HBoxContainer
 var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 
+@export_category("Run Direction Selection")
+@export var run_direction_selection_window : MarginContainer
+@export var up_button : TextureButton
+@export var down_button : TextureButton
+@export var left_button : TextureButton
+@export var right_button : TextureButton
+
 
 @export_category("TEMP ENEMY STATS")
 @export var temp_e_health : Label
@@ -76,15 +83,11 @@ func refresh_temp_labels():
 	pass
 
 #region Combat Loop
-#region Player's Turn
-func _on_attack_pressed():
-	# Hide dialog box and buttons
-	change_attack_run_vis(false)
-	## Step 1: Let the player choose which arm they want to attack with
-	# Gather and display the player's currently equipped arms
-	refresh_arm_selections()
-	change_arm_select_vis(true)
+	#region Player's Turn
+		#region Run Option
 func _on_run_pressed():
+	# Show window
+	change_run_direction_selection_vis(true)
 	# Gather the directions that the player could run in. There is at least one guaranteed direction the player can run in.
 	var forward_cell = map.get_forward_cell(player.position, player.facing)
 	# Backward loc isn't *always* going to be a valid choice, because a player could back into an enemy.
@@ -97,7 +100,69 @@ func _on_run_pressed():
 			if Globals.verbose_console == true:
 				print("PLAYER CAN RUN TO ", d.position)
 			pass
+	if forward_cell != null:
+		up_button.visible = true
+	if backward_cell != null:
+		down_button.visible = true
+	if left_cell != null:
+		left_button.visible = true
+	if right_cell != null:
+		right_button.visible = true
+func up_button_chosen():
+	if Globals.verbose_console:
+		print("PLAYER CHOSE TO RUN FORWARD")
+	var forward_cell = map.get_forward_cell(player.position, player.facing)
+	# Apply damage
+	runaway_damage()
+	if player_dead == false:
+		pass
 	pass
+func down_button_chosen():
+	if Globals.verbose_console:
+		print("PLAYER CHOSE TO RUN BACKWARD")
+	var backward_cell = map.get_backward_cell(player.position, player.facing)
+	# Apply damage
+	runaway_damage()
+	if player_dead == false:
+		pass
+	pass
+func left_button_chosen():
+	if Globals.verbose_console:
+		print("PLAYER CHOSE TO RUN TO THE LEFT")
+	var left_cell = map.get_left_cell(player.position, player.facing)
+	# Apply damage
+	runaway_damage()
+	if player_dead == false:
+		pass
+	pass
+func right_button_chosen():
+	if Globals.verbose_console:
+		print("PLAYER CHOSE TO RUN TO THE RIGHT")
+	var right_cell = map.get_right_cell(player.position, player.facing)
+	# Apply damage
+	runaway_damage()
+	if player_dead == false:
+		pass
+	pass
+# Have the enemy roll to see if they will hit the player, where, and for how much damage. Sets player_dead on death.
+func runaway_damage():
+	if Globals.verbose_console:
+		print("APPLYING RUNAWAY DAMAGE")
+	# Disable inventory management
+	# Choose where to hit player, may default to head
+	# Roll using player's health as DC
+	# Apply damage
+	# Check for death or arm destruction
+	pass
+		#endregion
+		#region Attack Option
+func _on_attack_pressed():
+	# Hide dialog box and buttons
+	change_attack_run_vis(false)
+	## Step 1: Let the player choose which arm they want to attack with
+	# Gather and display the player's currently equipped arms
+	refresh_arm_selections()
+	change_arm_select_vis(true)
 # Refresh arm (and head) selections for combat
 func refresh_arm_selections():
 	#TODO: Call this function when an arm is fully eaten
@@ -217,8 +282,9 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 	curr_turn = TURN.ENEMY
 	#TODO: Later this could be attached to the player's attack animation as well
 	create_timer(3.5, enemy_attack_roll)
-#endregion
-#region Enemy's Turn
+		#endregion
+	#endregion
+	#region Enemy's Turn
 # Enemy rolls to attempt to attack player
 func enemy_attack_roll():
 	if enemy_dead == false:
@@ -292,8 +358,8 @@ func damage_arm(a: Arm):
 	root_ui.inventory_button.disabled = false
 	#TODO: Use timer, then go to attack/run
 	create_timer(3.5, show_player_turn_start)
-#endregion
-#region Combat Ending State
+	#endregion
+	#region Combat Ending State
 func check_player_death():
 	if player.head.health <= 0:
 		if Globals.verbose_console == true:
@@ -324,8 +390,7 @@ func check_enemy_death():
 			print("ENEMY KILLED")
 			map.print_enemy_atlas()
 			print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
-
-#endregion
+	#endregion
 #endregion
 #region Group Visibility Switching Functions
 func change_attack_run_vis(new_vis : bool):
@@ -338,10 +403,19 @@ func change_att_die_roller_vis(new_vis : bool):
 	att_die_roller.visible = new_vis
 func change_player_damage_selection_vis(new_vis : bool):
 	player_damage_selection_window.visible = new_vis
+func change_run_direction_selection_vis(new_vis : bool):
+	run_direction_selection_window.visible = new_vis
+	change_attack_run_vis(false)
+	# Start with all buttons invisible
+	up_button.visible = false
+	down_button.visible = false
+	left_button.visible = false
+	right_button.visible = false
 func show_player_turn_start():
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(false)
 	change_player_damage_selection_vis(false)
+	change_run_direction_selection_vis(false)
 	change_attack_run_vis(true)
 #endregion
 
