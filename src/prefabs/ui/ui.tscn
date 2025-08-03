@@ -90,7 +90,7 @@ layout_mode = 2
 theme = ExtResource("5_cllw1")
 text = "QUIT"
 
-[node name="Temporary Labels" type="Node" parent="."]
+[node name="Temporary Labels" type="CanvasLayer" parent="."]
 
 [node name="TEMP TEETH" type="Label" parent="Temporary Labels"]
 offset_left = 1437.0
@@ -128,7 +128,8 @@ theme = ExtResource("7_1is0v")
 text = "HUNGER LEVEL: X"
 horizontal_alignment = 1
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Inventory Window" type="MarginContainer" parent="Inventory"]
 visible = false
@@ -161,7 +162,8 @@ size_flags_vertical = 4
 theme = ExtResource("7_lntee")
 text = "BACK"
 
-[node name="Log" type="Node" parent="."]
+[node name="Log" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Log Line Window" type="PanelContainer" parent="Log"]
 z_index = 2
