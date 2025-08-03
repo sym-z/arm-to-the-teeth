@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dljmxwj6vs50b"]
 
 [ext_resource type="Script" uid="uid://wslwcbi41a7x" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.gd" id="1_l2ca3"]
-[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="2_6uige"]
+[ext_resource type="Texture2D" uid="uid://bcef8a1s3erho" path="res://assets/visual/prototype_items/v2/arm_prototype_0.png" id="2_6uige"]
 [ext_resource type="Theme" uid="uid://cyhb63ciusi3p" path="res://themes/combat_viewport/att_arm_obj_label.tres" id="3_5y5fn"]
 [ext_resource type="Theme" uid="uid://by2sn6e3qpnon" path="res://themes/combat_viewport/att_arm_obj_button.tres" id="4_6uige"]
 
@@ -18,7 +18,7 @@ con_label = NodePath("Condition Label")
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_6uige")
-expand_mode = 4
+expand_mode = 5
 
 [node name="Strength Label" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(240, 20)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs01wd2aki26b"]
 
 [ext_resource type="Script" uid="uid://brbjch41e3lmw" path="res://prefabs/ui/arm_item/arm_item.gd" id="1_0djgg"]
-[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="1_ayt4m"]
+[ext_resource type="Texture2D" uid="uid://bcef8a1s3erho" path="res://assets/visual/prototype_items/v2/arm_prototype_0.png" id="2_qdlwk"]
 [ext_resource type="Theme" uid="uid://b3vpgrqtsod14" path="res://themes/inventory/arm_item_label.tres" id="3_2e60w"]
 [ext_resource type="Theme" uid="uid://bw38ek4svmtns" path="res://themes/inventory/arm_item_eat_button.tres" id="4_qdlwk"]
 
@@ -21,7 +21,7 @@ layout_mode = 2
 
 [node name="Arm Icon" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ayt4m")
+texture = ExtResource("2_qdlwk")
 expand_mode = 3
 
 [node name="Stat Container" type="GridContainer" parent="HBoxContainer"]
