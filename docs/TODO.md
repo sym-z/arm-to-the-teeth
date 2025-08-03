@@ -109,7 +109,8 @@
 - [ ] Add in Arm animation to stat showcase
 - [ ] Add in Tooth animation to stat showcase
 - [ ] Add in Stomach animation to stat showcase
-- [ ] Adjust 3 to resemble an 8 less.
+- [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
+- [ ] Make better vision bounds animation
 ### DONE
 - [x] Prototype font
 
