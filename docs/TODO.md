@@ -96,6 +96,7 @@
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
 - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
+- [ ] Arm sprite adjustment
 ### DONE
 - [x] Prototype font
 

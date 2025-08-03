@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://oklkbnqj2iia" path="res://assets/visual/prototype_items/v2/arm_prototype_0_content.png" id="1_nu0kk"]
 [ext_resource type="Texture2D" uid="uid://cua6phyg5xd7m" path="res://assets/visual/prototype_items/v2/enemy_prototype_1.png" id="2_hht5d"]
-[ext_resource type="Texture2D" uid="uid://b3abvs1kf6ff4" path="res://assets/visual/prototype_items/exit_d2.png" id="3_88kct"]
+[ext_resource type="Texture2D" uid="uid://dwv4bmn2gaunn" path="res://assets/visual/prototype_items/v2/exit_prototype_0.png" id="3_nu0kk"]
 [ext_resource type="Texture2D" uid="uid://ddwi0ur4oibae" path="res://assets/visual/prototype_items/v2/tooth_prototype_1.png" id="4_j4umy"]
 [ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="5_1pvci"]
 
@@ -14,8 +14,8 @@ region = Rect2(0, 0, 112, 264)
 atlas = ExtResource("2_hht5d")
 region = Rect2(0, 0, 112, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b80o7"]
-atlas = ExtResource("3_88kct")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hht5d"]
+atlas = ExtResource("3_nu0kk")
 region = Rect2(0, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmgve"]
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b80o7")
+"texture": SubResource("AtlasTexture_hht5d")
 }],
 "loop": true,
 "name": &"exit",
@@ -65,5 +65,5 @@ animations = [{
 [node name="Contents" type="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gv4ay")
-animation = &"arm"
+animation = &"exit"
 script = ExtResource("5_1pvci")
