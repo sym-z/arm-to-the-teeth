@@ -104,6 +104,7 @@
 - [ ] Inventory items need better styleboxes
 - [ ] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
   - [ ] D1 left, left side and right right side
+  - [ ] Could use outline tool in Aseprite!
 - [ ] Add in Head animation to stat showcase
 - [ ] Add in Arm animation to stat showcase
 - [ ] Add in Tooth animation to stat showcase
