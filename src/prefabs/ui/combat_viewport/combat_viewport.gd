@@ -52,6 +52,8 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 
 enum TURN {PLAYER,ENEMY}
 var curr_turn : TURN = TURN.PLAYER
+
+var pause_time : float = 2.5
 func _ready():
 	visible = false
 	player = root_ui.player
@@ -313,7 +315,7 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			Log.add_log_message("IT MISSED ITS BITE, HURTING ITS HEAD IN THE PROCESS.")
 	curr_turn = TURN.ENEMY
 	#TODO: Later this could be attached to the player's attack animation as well
-	create_timer(3.5, enemy_attack_roll)
+	create_timer(pause_time, enemy_attack_roll)
 		#endregion
 	#endregion
 	#region Enemy's Turn
@@ -331,13 +333,13 @@ func enemy_attack_roll():
 			# Enemy Miss
 			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
 			#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
-			create_timer(3.5, show_player_turn_start)
+			create_timer(pause_time, show_player_turn_start)
 		else:
 			# Enemy Hit
 			#TODO: Possibly extra damage for high roll?
 			Log.add_log_message("THE ENEMY'S ATTACK HITS!")
 			#TODO: Later this could be attached to the enemy's attack animation as well
-			create_timer(3.5, player_damage_selection)
+			create_timer(pause_time, player_damage_selection)
 
 ## Player decides what body part receives damage
 func player_damage_selection():

@@ -102,7 +102,7 @@
 - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [ ] Arm sprite adjustment
 - [ ] Inventory items need better styleboxes
-- [ ] Add more detailed lines to the walls. Specifically the inside portion of the left and right walls.
+- [ ] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
   - [ ] D1 left, left side and right right side
 - [ ] Add in Head animation to stat showcase
 - [ ] Add in Arm animation to stat showcase
@@ -152,6 +152,7 @@
 ## Cleanup
 - [ ] Remove signal connections that are not being used.
 - [ ] Remove old `refresh_viewport()`
+- [ ] Get rid of "Turn" enum and code in `combat_viewport.gd`
 ### DONE
 
 ## Fixes
