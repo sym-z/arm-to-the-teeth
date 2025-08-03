@@ -291,11 +291,11 @@ func enemy_attack_roll():
 		# Hide player's die roll screen
 		change_att_die_roller_vis(false)
 		# Player's DC is dependent on head health.
-		var enemy_attack_roll = randi_range(1,20)
+		var enemy_roll = randi_range(1,20)
 		if Globals.debug_combat == true:
-			enemy_attack_roll = 20 
+			enemy_roll = 20 
 			pass
-		if enemy_attack_roll < player.head.health:
+		if enemy_roll < player.head.health:
 			# Enemy Miss
 			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
 			#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
