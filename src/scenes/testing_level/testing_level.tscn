@@ -18,7 +18,6 @@ player = NodePath("../Player")
 position = Vector2i(9, 9)
 map = NodePath("../Map")
 ui = NodePath("../UI")
-ignore_combat = false
 tooth_count = 6
 
 [node name="Dungeon Viewport" parent="." node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]

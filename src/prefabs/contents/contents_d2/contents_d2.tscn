@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://m0ggohtumqml"]
+
+[ext_resource type="Texture2D" uid="uid://oklkbnqj2iia" path="res://assets/visual/prototype_items/v2/arm_prototype_0_content.png" id="1_nu0kk"]
+[ext_resource type="Texture2D" uid="uid://cua6phyg5xd7m" path="res://assets/visual/prototype_items/v2/enemy_prototype_1.png" id="2_hht5d"]
+[ext_resource type="Texture2D" uid="uid://b3abvs1kf6ff4" path="res://assets/visual/prototype_items/exit_d2.png" id="3_88kct"]
+[ext_resource type="Texture2D" uid="uid://ddwi0ur4oibae" path="res://assets/visual/prototype_items/v2/tooth_prototype_1.png" id="4_j4umy"]
+[ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="5_1pvci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlr2u"]
+atlas = ExtResource("1_nu0kk")
+region = Rect2(0, 0, 112, 264)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q21tx"]
+atlas = ExtResource("2_hht5d")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b80o7"]
+atlas = ExtResource("3_88kct")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmgve"]
+atlas = ExtResource("4_j4umy")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gv4ay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlr2u")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q21tx")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b80o7")
+}],
+"loop": true,
+"name": &"exit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmgve")
+}],
+"loop": true,
+"name": &"tooth",
+"speed": 5.0
+}]
+
+[node name="Contents" type="AnimatedSprite2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_gv4ay")
+animation = &"arm"
+script = ExtResource("5_1pvci")
