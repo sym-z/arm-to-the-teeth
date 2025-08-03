@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b3vpgrqtsod14"]
 
-[ext_resource type="FontFile" uid="uid://d22avmrynvyyh" path="res://assets/visual/ui/ui_font_0.png" id="1_uplad"]
+[ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_uplad"]
 
 [resource]
 Label/font_sizes/font_size = 32

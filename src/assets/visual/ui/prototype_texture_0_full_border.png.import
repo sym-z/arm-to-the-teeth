@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1l20xw7bpj7b"
-path="res://.godot/imported/prototype_stomach_0.png-b6ff8656075c6dc2d94d0529ff8d4b8f.ctex"
+uid="uid://di01mum33xdma"
+path="res://.godot/imported/prototype_texture_0_full_border.png-3658817eed1f6dadd005c65e3f2b965a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visual/prototype_items/v2/prototype_stomach_0.png"
-dest_files=["res://.godot/imported/prototype_stomach_0.png-b6ff8656075c6dc2d94d0529ff8d4b8f.ctex"]
+source_file="res://assets/visual/ui/prototype_texture_0_full_border.png"
+dest_files=["res://.godot/imported/prototype_texture_0_full_border.png-3658817eed1f6dadd005c65e3f2b965a.ctex"]
 
 [params]
 

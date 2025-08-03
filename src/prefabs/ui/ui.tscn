@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
-[ext_resource type="Texture2D" uid="uid://d1kgxu002itbw" path="res://assets/visual/ui/prototype_ui.png" id="1_tlstp"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
+[ext_resource type="Texture2D" uid="uid://di01mum33xdma" path="res://assets/visual/ui/prototype_texture_0_full_border.png" id="2_hvfel"]
 [ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
 [ext_resource type="Theme" uid="uid://damqods5iq1r8" path="res://themes/context_menu/margin_container/button/context_menu_button_theme.tres" id="4_htiv7"]
 [ext_resource type="Theme" uid="uid://bn3i6d6cugm34" path="res://themes/context_menu/margin_container/button/context_menu_disablable_button_theme.tres" id="5_cllw1"]
@@ -44,7 +44,7 @@ combat_viewport = NodePath("Combat Viewport")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_tlstp")
+texture = ExtResource("2_hvfel")
 
 [node name="Combat Viewport" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
 visible = false
@@ -108,6 +108,7 @@ offset_right = 1873.0
 offset_bottom = 232.0
 theme = ExtResource("7_1is0v")
 text = "ARM COUNT: X"
+horizontal_alignment = 1
 
 [node name="TEMP HEAD" type="Label" parent="Temporary Labels"]
 offset_left = 1485.0
@@ -116,6 +117,7 @@ offset_right = 1933.0
 offset_bottom = 273.0
 theme = ExtResource("7_1is0v")
 text = "HEAD HEALTH: X"
+horizontal_alignment = 1
 
 [node name="TEMP HUNGER" type="Label" parent="Temporary Labels"]
 offset_left = 1470.0
@@ -124,6 +126,7 @@ offset_right = 1950.0
 offset_bottom = 314.0
 theme = ExtResource("7_1is0v")
 text = "HUNGER LEVEL: X"
+horizontal_alignment = 1
 
 [node name="Inventory" type="Node" parent="."]
 
