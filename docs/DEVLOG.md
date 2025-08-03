@@ -141,3 +141,18 @@
 - Created temporary sprites for directions player can run in, and they display accordingly to the possible directions that are available to flee in.
 - Set up the signal connection between the directional buttons and wrote pseudocode for how damage should be applied. 
 - Took off wait time after player selects what limb they want to damage.
+
+## 2 August 2025
+- Created a new branch, "art-revamp" to add in new art assets.
+- Importing assets that I had made during a time where I wasn't able to program
+  - New assets
+    - Head sprite
+    - Enemy sprite
+    - UI font
+    - Stomach sprite
+    - Background texture
+    - Exit sprite
+- Created new wall sprites and imported them to replace the previous wall sprites
+  - There will need to be a lot of adjusting in the future for them because some edge lines look funky, but it is a start.
+- Created a new scene that governs "Content" at d0, d1, and d2
+  - Created so minor adjustments to sprites of items can override all content at that level.
