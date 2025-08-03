@@ -98,6 +98,11 @@
 - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [ ] Arm sprite adjustment
 - [ ] Inventory items need better styleboxes
+- [ ] Add more detailed lines to the walls. Specifically the inside portion of the left and right walls.
+- [ ] Add in Head animation to stat showcase
+- [ ] Add in Arm animation to stat showcase
+- [ ] Add in Tooth animation to stat showcase
+- [ ] Add in Stomach animation to stat showcase
 ### DONE
 - [x] Prototype font
 
