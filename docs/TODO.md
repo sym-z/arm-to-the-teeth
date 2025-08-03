@@ -75,6 +75,8 @@
   - [ ] For enemy
   - [ ] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
+- [ ] Tune pauses between hits
+- [ ] Die rolls faster, or randomizes number.
 ### DONE
 - [x] Add player head to list of arms to select in arm selection screen
 - [x] When combat starts, everything but the enemy goes black

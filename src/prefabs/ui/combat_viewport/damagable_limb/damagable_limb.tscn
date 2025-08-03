@@ -16,7 +16,7 @@ health_label = NodePath("Health Label")
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_chakb")
-expand_mode = 4
+expand_mode = 5
 
 [node name="Health Label" type="RichTextLabel" parent="."]
 layout_mode = 2
