@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cua6phyg5xd7m"
-path="res://.godot/imported/enemy_prototype_1.png-665ba240ba2b18c28821b40a7f669fc6.ctex"
+uid="uid://b7w0rx6tyyawv"
+path="res://.godot/imported/tooth_prototype_1_x4.png-9933716b2e82860047cdab2740cc073d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visual/ui/enemy_prototype_1.png"
-dest_files=["res://.godot/imported/enemy_prototype_1.png-665ba240ba2b18c28821b40a7f669fc6.ctex"]
+source_file="res://assets/visual/prototype_items/v2/tooth_prototype_1_x4.png"
+dest_files=["res://.godot/imported/tooth_prototype_1_x4.png-9933716b2e82860047cdab2740cc073d.ctex"]
 
 [params]
 

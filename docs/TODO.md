@@ -153,6 +153,7 @@
 
 ## Optimization
 - [ ] Some Objects are being spawned, ~5 when the map is regenerated. Where and why?
+- [ ] Make "Content" at each distance its own unique scene.
 ### DONE
 
 ## Test

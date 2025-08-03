@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcef8a1s3erho"
-path="res://.godot/imported/arm_prototype_0.png-f7165a4151e9f7f273092a413f20086c.ctex"
+uid="uid://dtf56fwydwglo"
+path="res://.godot/imported/tooth_prototype_1_x2.png-2ce2348526d2d2cf5dbf811184b339b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visual/ui/arm_prototype_0.png"
-dest_files=["res://.godot/imported/arm_prototype_0.png-f7165a4151e9f7f273092a413f20086c.ctex"]
+source_file="res://assets/visual/prototype_items/v2/tooth_prototype_1_x2.png"
+dest_files=["res://.godot/imported/tooth_prototype_1_x2.png-2ce2348526d2d2cf5dbf811184b339b3.ctex"]
 
 [params]
 
