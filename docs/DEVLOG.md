@@ -156,3 +156,9 @@
   - There will need to be a lot of adjusting in the future for them because some edge lines look funky, but it is a start.
 - Created a new scene that governs "Content" at d0, d1, and d2
   - Created so minor adjustments to sprites of items can override all content at that level.
+
+## 3 August 2025
+- Added new font and background sprite
+- Added a new texture for vision bounds
+- Integrated all of the new icons and the font into the existing scenes
+  - Still need to add their representation into the stat showcase
