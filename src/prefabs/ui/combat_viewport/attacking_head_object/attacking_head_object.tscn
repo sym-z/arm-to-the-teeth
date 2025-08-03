@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://n07t7fqqy66w"]
 
 [ext_resource type="Script" uid="uid://c3we5vfrrd1mt" path="res://prefabs/ui/combat_viewport/attacking_head_object/attacking_head_object.gd" id="1_ey84f"]
-[ext_resource type="Texture2D" uid="uid://dksmf7an78qta" path="res://assets/visual/prototype_items/head_icon_0.png" id="2_yi3p8"]
+[ext_resource type="Texture2D" uid="uid://2vw2q80oajo3" path="res://assets/visual/prototype_items/v2/head_prototype_1B.png" id="2_ey84f"]
 [ext_resource type="Theme" uid="uid://frl37suyd3ud" path="res://themes/combat_viewport/att_head_obj_label.tres" id="3_ldpa5"]
 [ext_resource type="Theme" uid="uid://dey1i4cpbo2g6" path="res://themes/combat_viewport/att_head_obj_button.tres" id="4_n2rmt"]
 
@@ -15,7 +15,7 @@ health_label = NodePath("Health Label")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_yi3p8")
+texture = ExtResource("2_ey84f")
 expand_mode = 4
 
 [node name="Strength Label" type="RichTextLabel" parent="."]

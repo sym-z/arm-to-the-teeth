@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-var arm_texture : Texture2D = preload("uid://cwgd7txw32px1")
-var head_texture : Texture2D = preload("uid://dksmf7an78qta")
+var arm_texture : Texture2D = preload("uid://bcef8a1s3erho")
+var head_texture : Texture2D = preload("uid://2vw2q80oajo3")
 
 @export var icon : TextureRect
 @export var health_label : RichTextLabel
