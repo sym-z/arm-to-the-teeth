@@ -166,3 +166,5 @@
   - Player can now flee in any direction so long as the space is available
   - Fleeing into an enemy space will retrigger combat
   - Fleeing into an exit will automatically transition to the next floor
+- Parents of UI elements are now `CanvasLayer`s instead of `Node`s
+- Pause timing between moves in combat is now a variable in `combat_viewport.gd` called `pause_time`
