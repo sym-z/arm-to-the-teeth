@@ -106,7 +106,31 @@ func _input(event):
 				Globals.EAST:
 					facing = Globals.SOUTH
 			change_facing.emit()
-
+			
+func force_turn_left():
+	match facing:
+		Globals.NORTH:
+			facing = Globals.WEST
+		Globals.SOUTH:
+			facing = Globals.EAST
+		Globals.WEST:
+			facing = Globals.SOUTH
+		Globals.EAST:
+			facing = Globals.NORTH
+	change_facing.emit()
+	
+func force_turn_right():
+	match facing:
+		Globals.NORTH:
+			facing = Globals.EAST
+		Globals.SOUTH:
+			facing = Globals.WEST
+		Globals.WEST:
+			facing = Globals.NORTH
+		Globals.EAST:
+			facing = Globals.SOUTH
+	change_facing.emit()
+	pass
 ## Attempts to move in the direwaaction facing, opposite if is_backward is true
 func move(distance : int = 1):
 	var curr_cell : Cell = map.world_map[position]

@@ -162,3 +162,7 @@
 - Added a new texture for vision bounds
 - Integrated all of the new icons and the font into the existing scenes
   - Still need to add their representation into the stat showcase
+- Finished flee behavior
+  - Player can now flee in any direction so long as the space is available
+  - Fleeing into an enemy space will retrigger combat
+  - Fleeing into an exit will automatically transition to the next floor

@@ -36,3 +36,15 @@ func walls_to_int() -> int:
 	if e_wall == true:
 		wall_config |= Globals.EAST
 	return wall_config
+
+func dir_to_wall(d : int) -> bool:
+	match d:
+		Globals.NORTH:
+			return n_wall
+		Globals.SOUTH:
+			return s_wall
+		Globals.WEST:
+			return w_wall
+		Globals.EAST:
+			return e_wall
+	return false

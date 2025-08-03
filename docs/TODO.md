@@ -77,6 +77,8 @@
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] Tune pauses between hits
 - [ ] Die rolls faster, or randomizes number.
+- [ ] Pause after death before transition
+- [ ] Running may damage your arms
 ### DONE
 - [x] Add player head to list of arms to select in arm selection screen
 - [x] When combat starts, everything but the enemy goes black
@@ -106,6 +108,7 @@
 - [ ] Add in Arm animation to stat showcase
 - [ ] Add in Tooth animation to stat showcase
 - [ ] Add in Stomach animation to stat showcase
+- [ ] Adjust 3 to resemble an 8 less.
 ### DONE
 - [x] Prototype font
 
@@ -176,4 +179,5 @@
 - The `arm_item` is stopping GUI events
 - If I ever want to do swapping, remember to trigger a refresh to the inventory and the arm_selection screen.
 - Die rollers will supercede any gui_events underneath them in the node hierarchy for some reason. Keep this in mind when looking to add die rollers to the game in the future.
+- Adjusted d1 far left and far right wall to be 5 pixels lower because the added pixels to the top and bottom of certain adjacent sprites threw off its positioning
 ### DONE

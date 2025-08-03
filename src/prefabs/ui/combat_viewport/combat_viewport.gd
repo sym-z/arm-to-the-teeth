@@ -100,13 +100,14 @@ func _on_run_pressed():
 			if Globals.verbose_console == true:
 				print("PLAYER CAN RUN TO ", d.position)
 			pass
-	if forward_cell != null:
+	# The cells that exist need to be verified as a possible route of transportation
+	if forward_cell != null and forward_cell.dir_to_wall(Globals.get_opposite_direction(player.facing))== false:
 		up_button.visible = true
-	if backward_cell != null:
+	if backward_cell != null and backward_cell.dir_to_wall(player.facing) == false:
 		down_button.visible = true
-	if left_cell != null:
+	if left_cell != null and left_cell.dir_to_wall(Globals.right_of(player.facing)) == false:
 		left_button.visible = true
-	if right_cell != null:
+	if right_cell != null and right_cell.dir_to_wall(Globals.left_of(player.facing)) == false:
 		right_button.visible = true
 func up_button_chosen():
 	if Globals.verbose_console:
@@ -115,6 +116,10 @@ func up_button_chosen():
 	# Apply damage
 	runaway_damage()
 	if player_dead == false:
+		visible = false
+		Log.add_log_message("IT FLED AND RAN FORWARD")
+		player.move()
+		player.in_combat = false
 		pass
 	pass
 func down_button_chosen():
@@ -124,6 +129,10 @@ func down_button_chosen():
 	# Apply damage
 	runaway_damage()
 	if player_dead == false:
+		visible = false
+		Log.add_log_message("IT FLED AND RAN BACKWARD")
+		player.move(-1)
+		player.in_combat = false
 		pass
 	pass
 func left_button_chosen():
@@ -133,6 +142,12 @@ func left_button_chosen():
 	# Apply damage
 	runaway_damage()
 	if player_dead == false:
+		visible = false
+		Log.add_log_message("IT FLED AND RAN TO THE LEFT")
+		player.force_turn_left()
+		player.move()
+		player.force_turn_right()
+		player.in_combat = false
 		pass
 	pass
 func right_button_chosen():
@@ -142,6 +157,12 @@ func right_button_chosen():
 	# Apply damage
 	runaway_damage()
 	if player_dead == false:
+		visible = false
+		Log.add_log_message("IT FLED AND RAN TO THE RIGHT")
+		player.force_turn_right()
+		player.move()
+		player.force_turn_left()
+		player.in_combat = false
 		pass
 	pass
 # Have the enemy roll to see if they will hit the player, where, and for how much damage. Sets player_dead on death.
@@ -149,10 +170,21 @@ func runaway_damage():
 	if Globals.verbose_console:
 		print("APPLYING RUNAWAY DAMAGE")
 	# Disable inventory management
+	root_ui.inventory_button.disabled = true
 	# Choose where to hit player, may default to head
-	# Roll using player's health as DC
-	# Apply damage
+	# Temporarily always chooses head
+	# Roll using player's head health as DC / head health + teeth
+	var enemy_roll : int = randi_range(0,20)
+	if enemy_roll > player.head.health:
+		# Apply damage
+		player.head.health -= opponent.damage
+		Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
+	else:
+		Log.add_log_message("IT MANAGED TO FLEE AND TAKE NO DAMAGE")
 	# Check for death or arm destruction
+	check_player_death()
+	# Enable inventory management
+	root_ui.inventory_button.disabled = false
 	pass
 		#endregion
 		#region Attack Option
