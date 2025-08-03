@@ -7,8 +7,8 @@
 [ext_resource type="Theme" uid="uid://cy0kpb306vpwj" path="res://themes/combat_viewport/db_button_choices_hbox.tres" id="4_1vvdr"]
 [ext_resource type="Theme" uid="uid://bwh30wttiv88h" path="res://themes/combat_viewport/db_margin_container.tres" id="4_j2lbb"]
 [ext_resource type="Theme" uid="uid://buown6vatfsa6" path="res://themes/combat_viewport/db_buttons.tres" id="5_0i4k7"]
-[ext_resource type="Texture2D" uid="uid://usv74cjcjiqn" path="res://assets/visual/prototype_items/enemy_d1.png" id="8_704d3"]
 [ext_resource type="PackedScene" uid="uid://wwoi8jwh6ncu" path="res://prefabs/ui/die_roller/die_roller.tscn" id="8_guh7h"]
+[ext_resource type="Texture2D" uid="uid://cojykr6pxe0cr" path="res://assets/visual/ui/enemy_prototype_1_x2.png" id="9_8xoyx"]
 [ext_resource type="Texture2D" uid="uid://dja1fke8bwqgh" path="res://assets/visual/prototype_items/head_icon_0_back.png" id="10_dfnbh"]
 [ext_resource type="Theme" uid="uid://db0krltjp1fvu" path="res://themes/combat_viewport/att_arm_select_margin_container.tres" id="11_guh7h"]
 [ext_resource type="Theme" uid="uid://dcrr47tdwur0b" path="res://themes/combat_viewport/att_arm_select_panel.tres" id="12_ho6fy"]
@@ -24,15 +24,15 @@
 [ext_resource type="Texture2D" uid="uid://cq2bcl4kph0v0" path="res://assets/visual/ui/run_window/run_dirs_0_3.png" id="22_nqaus"]
 [ext_resource type="Texture2D" uid="uid://bcnpot0nlt6xp" path="res://assets/visual/ui/run_window/run_dirs_0_2.png" id="23_2uckp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0d03b"]
-atlas = ExtResource("8_704d3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7xhf"]
+atlas = ExtResource("9_8xoyx")
 region = Rect2(0, 0, 224, 224)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6m76e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0d03b")
+"texture": SubResource("AtlasTexture_k7xhf")
 }],
 "loop": true,
 "name": &"default",
