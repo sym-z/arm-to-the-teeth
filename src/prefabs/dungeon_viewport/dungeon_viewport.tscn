@@ -835,7 +835,7 @@ sprite_frames = SubResource("SpriteFrames_hwm0v")
 
 [node name="Contents" parent="Distance 1/Left Center Wall" node_paths=PackedStringArray("wall_to_check", "root_parent") instance=ExtResource("13_catg2")]
 visible = true
-position = Vector2(-72, 66)
+position = Vector2(-28.19, 66)
 animation = &"enemy"
 wall_to_check = NodePath("../../Left Wall")
 root_parent = NodePath("../../..")
