@@ -36,6 +36,9 @@
   - [ ] Ability to drop arm on free tile
   - [ ] Ability to swap arms in combat
 - [ ] Enemy Movement (STRETCH GOAL)
+- [ ] Swapping arm with arm on the ground
+  - [ ] Player can see stats of arm on the ground before adding it to inventory
+- [ ] Text speed choice in options menu that effects battle speed
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
@@ -66,10 +69,6 @@
 - [ ] Player Animates
   - [x] Prototype
   - [ ] Final
-- [ ] Battle can end
-  - [x] Enemy Death
-  - [x] Player Death
-  - [ ] Player Flees
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
 - [ ] Higher damage for crit rolls
   - [ ] For enemy
@@ -80,6 +79,10 @@
 - [ ] Pause after death before transition
 - [ ] Running may damage your arms
 ### DONE
+- [x] Battle can end
+  - [x] Enemy Death
+  - [x] Player Death
+  - [x] Player Flees
 - [x] Add player head to list of arms to select in arm selection screen
 - [x] When combat starts, everything but the enemy goes black
 - [x] Enemy attacks back
@@ -102,9 +105,9 @@
 - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [ ] Arm sprite adjustment
 - [ ] Inventory items need better styleboxes
-- [ ] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
-  - [ ] D1 left, left side and right right side
-  - [ ] Could use outline tool in Aseprite!
+- [x] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
+  - [x] D1 left, left side and right right side
+  - [x] Could use outline tool in Aseprite!
 - [ ] Add in Head animation to stat showcase
 - [ ] Add in Arm animation to stat showcase
 - [ ] Add in Tooth animation to stat showcase
@@ -142,8 +145,10 @@
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
 - [ ] Log window changes stylebox on hover and click
-- [ ] Text speed choice in options menu that effects battle speed
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
+- [ ] Make sure that the UI only uses the AT3 palette
+  - [ ] Green-white color for stylebox borders
+  - [ ] Can use texture stylebox to make more stylized boxes
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
@@ -161,20 +166,20 @@
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
   - Will be under the UI's CanvasLayer now.
 - [ ] Turn off arrow key input for Context menu
-- [ ] Try to make the `CanvasLayer` parent thing work in the UI scene.
 ### DONE
+- [x] Try to make the `CanvasLayer` parent thing work in the UI scene.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
   - The ordering of layers would go center, left/right, left center/right center, far left/right, far left center/far right center, farther left center/farther right center, farthest left/farthest right side. I'll need to edit `content.gd` to have an export variable for its default ordering that it can go back to when it needs to.
 
 ## Optimization
 - [ ] Some Objects are being spawned, ~5 when the map is regenerated. Where and why?
-- [ ] Make "Content" at each distance its own unique scene.
 ### DONE
+- [x] Make "Content" at each distance its own unique scene.
 
 ## Test
-- [ ] Make sure that the cell is added to empty cells after killing an enemy.
 ### DONE
+- [x] Make sure that the cell is added to empty cells after killing an enemy.
 - [x] What happens if you make the map 15x15?
   - Seems to be fine, but I'd keep testing this in the future.
 
@@ -183,4 +188,3 @@
 - If I ever want to do swapping, remember to trigger a refresh to the inventory and the arm_selection screen.
 - Die rollers will supercede any gui_events underneath them in the node hierarchy for some reason. Keep this in mind when looking to add die rollers to the game in the future.
 - Adjusted d1 far left and far right wall to be 5 pixels lower because the added pixels to the top and bottom of certain adjacent sprites threw off its positioning
-### DONE
