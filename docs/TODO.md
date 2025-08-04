@@ -39,6 +39,7 @@
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
 - [ ] Text speed choice in options menu that effects battle speed
+- [ ] Content animates in map
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
@@ -78,6 +79,14 @@
 - [ ] Die rolls faster, or randomizes number.
 - [ ] Pause after death before transition
 - [ ] Running may damage your arms
+- [ ] Enemy animation
+  - [ ] Attack
+  - [ ] Hurt
+  - [ ] Death
+- [ ] Player animation
+  - [ ] Attack
+  - [ ] Hurt
+  - [ ] Death
 ### DONE
 - [x] Battle can end
   - [x] Enemy Death
