@@ -168,3 +168,8 @@
   - Fleeing into an exit will automatically transition to the next floor
 - Parents of UI elements are now `CanvasLayer`s instead of `Node`s
 - Pause timing between moves in combat is now a variable in `combat_viewport.gd` called `pause_time`
+- Started experimenting with dimming the color of more distant rooms
+
+## 4 August 2025
+- As rooms become more distanced, their colors become dimmer and dimmer
+- Contents in further rooms are more dim than rooms that are closer to the player
