@@ -64,6 +64,7 @@ animations = [{
 
 [node name="Contents" type="AnimatedSprite2D"]
 visible = false
+modulate = Color(0.5, 0.5, 0.5, 1)
 sprite_frames = SubResource("SpriteFrames_gv4ay")
 animation = &"exit"
 script = ExtResource("5_1pvci")
