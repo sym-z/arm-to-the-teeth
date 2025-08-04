@@ -46,6 +46,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Combat Viewport")
 @export var combat_viewport : MarginContainer
+
+@export_category("Stat Showcase")
+@export var head_anim : AnimatedSprite2D
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -68,6 +71,8 @@ func initial_setup():
 	# Add initial arms to inventory
 	for i in range(player.arm_inventory.size()):
 		add_arm_to_inventory(player.arm_inventory[i], i+1)
+	player.connect("stat_change", refresh_stat_showcase)
+	player.connect("item_picked_up", refresh_stat_showcase)
 
 #region Mini Map
 func _on_mini_map_mini_map_ready():
@@ -197,4 +202,18 @@ func _on_full_window_back_button_pressed():
 #region Combat Handling
 func _on_player_combat_started(enemy, loc):
 	combat_viewport.begin_combat(enemy,loc)
+#endregion
+
+#region Stat Showcase
+func refresh_stat_showcase():
+	# Refresh head anim
+	# Get frame size, zero-indexed
+	var total_head_frames = head_anim.sprite_frames.get_frame_count("default") -1
+	# Calculate percentage of player health, using floats
+	var health : float = player.head.health
+	var max_hp : float = player.head.max_health
+	var health_percent : float = health/max_hp
+	# Apply this percentage to the total frames of the head animation
+	var frame_num = floor((total_head_frames) * health_percent)
+	head_anim.frame = total_head_frames - frame_num
 #endregion

@@ -181,6 +181,7 @@ func runaway_damage():
 		# Apply damage
 		player.head.health -= opponent.damage
 		Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
+		player.stat_change.emit()
 	else:
 		Log.add_log_message("IT MANAGED TO FLEE AND TAKE NO DAMAGE")
 	# Check for death or arm destruction
@@ -289,6 +290,8 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 					root_ui.arm_fully_eaten(attacking_arm)
 				else:
 					Log.add_log_message("IT MISSED ITS ATTACK GOT HURT, ARM LOST " + str(damage_to_apply) + " CONDITION.")
+					# Only emitting here because when an arm is fully eaten the signal will fire.
+					player.stat_change.emit()
 			else:
 				Log.add_log_message("IT MISSED ITS ATTACK.")
 	else:
@@ -308,6 +311,7 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			# Head loses health, and teeth are lost. Possibly roll for teeth lost.
 			#TODO: Have low rolls factor into more health and teeth lost
 			player.head.health -= 1
+			player.stat_change.emit()
 			# Refresh root_ui's labels
 			root_ui.refresh_temp_labels()
 			# Check for player death.
@@ -373,6 +377,7 @@ func damage_head(h: Head):
 		h.health -= h.health
 	else:
 		h.health -= opponent.damage
+	player.stat_change.emit()
 	# Update status in UI of head
 	root_ui.refresh_temp_labels()
 	# Re-Enable inventory use after damage is applied
@@ -389,6 +394,8 @@ func damage_arm(a: Arm):
 	a.condition -= opponent.damage
 	if a.condition <= 0:
 		root_ui.arm_fully_eaten(a)
+	else:
+		player.stat_change.emit()
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
 	# Go to attack/run right after damage application

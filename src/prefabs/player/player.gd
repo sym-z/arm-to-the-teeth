@@ -37,6 +37,8 @@ signal hunger_satisfied
 signal hunger_hungry
 signal hunger_starving
 signal hunger_dead
+# For refreshing UI
+signal stat_change
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -251,6 +253,7 @@ func remove_arm(a : Arm):
 	arm_inventory.erase(a)
 	arm_count -= 1
 	Log.add_log_message("IT HAS LOST ONE OF ITS ARMS, IT NOW HAS " + str(arm_count) + " ARMS.")
+	stat_change.emit()
 	if Globals.verbose_console == true:
 		debug_print_inventory()
 
@@ -262,6 +265,7 @@ func arm_bitten():
 	#head_health += 1
 	head.health += 1
 	Log.add_log_message("IT HAS TAKEN A BITE FROM ONE OF ITS ARMS.")
+	stat_change.emit()
 	set_hunger_state()
 
 #endregion
@@ -298,4 +302,5 @@ func set_hunger_state():
 			HUNGER_LEVEL.DEAD:
 				hunger_dead.emit()
 				Log.add_log_message("IT IS NOW DYING OF HUNGER.")
+		stat_change.emit()
 #endregion
