@@ -201,3 +201,5 @@
 - Arm items have cleaner UI
 - Inventory has better stylebox
 - Inventory buttons use one theme
+- Ownership of teeth management is now delgated to the head
+- After dying, log messages are preserved into the next run.

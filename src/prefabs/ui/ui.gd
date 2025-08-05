@@ -57,6 +57,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 func _ready():
 	Log.connect("new_log", update_log_line)
 	Log.connect("new_log", update_full_log)
+	# If the player died, allow them to still access their logs from the previous run
+	if Log.log_messages.size() > 0:
+		post_death_log_transfer()
 	# Initialize viewport header label
 	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)
 
@@ -93,7 +96,7 @@ func _on_map_level_clear():
 #endregion
 
 func refresh_temp_labels():
-	tooth_label.text = "TOOTH COUNT: " + str(player.tooth_count)
+	tooth_label.text = "TOOTH COUNT: " + str(player.head.tooth_count)
 	arm_label.text = "ARM COUNT: " + str(player.arm_count)
 	head_label.text = "HEAD HEALTH: " + str(player.head.health)
 	hunger_label.text = "HUNGER LEVEL: " + str(player.hunger)
@@ -141,7 +144,6 @@ func add_arm_to_inventory(a : Arm, number : int):
 func _on_pick_up_pressed():
 	player.pick_up(item_to_pick)
 func _on_inventory_pressed():
-	print("GOOG")
 	change_inventory_visibility(not inventory_container.visible)
 	# Refresh inventory when the window is pulled up, rather than relying on other parts of the code to update it
 	if inventory_container.visible == true:
@@ -164,7 +166,7 @@ func change_inventory_visibility(new_vis : bool):
 
 func arm_eaten(arm_object : Arm):
 	# Check tooth count to see if it is possible
-	if player.tooth_count > 0:
+	if player.head.tooth_count > 0:
 		arm_object.condition -= 1
 		# Adjust hunger, health, arm count etc.
 		player.arm_bitten()
@@ -203,6 +205,13 @@ func _on_log_line_window_gui_input(event):
 		change_full_log_window_visibility(not full_log_window_container.visible)
 func _on_full_window_back_button_pressed():
 	change_full_log_window_visibility(false)
+func post_death_log_transfer():
+	for log in Log.log_messages:
+		var new_log_msg = full_log_label_scene.instantiate()
+		new_log_msg.text = log
+		full_log_container.add_child(new_log_msg)
+		full_log_container.move_child(new_log_msg,0)
+	pass
 #endregion
 
 #region Combat Handling
@@ -218,8 +227,8 @@ func refresh_stat_showcase():
 	refresh_tooth_stat()
 
 func refresh_tooth_stat():
-	if player.tooth_count >= 0 and player.tooth_count <= player.TOOTH_MAX:
-		tooth_anim.frame = player.tooth_count
+	if player.head.tooth_count >= 0 and player.head.tooth_count <= player.head.TOOTH_MAX:
+		tooth_anim.frame = player.head.tooth_count
 	else:
 		push_error("In refresh_stat_showcase in ui.gd, tooth count set to either negative or above possible value")
 		

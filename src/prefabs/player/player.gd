@@ -19,14 +19,11 @@ signal player_spawned
 signal item_detected(item : Cell.TYPE, loc : Vector2i)
 signal combat_started(enemy: Enemy, loc : Vector2i)
 #region Inventory and Stat Variables
-@export var tooth_count : int = 3
 # How many arms are equipped
 var arm_count : int = 0
 const ARM_MAX : int = 2
-const TOOTH_MAX : int = 32
 var arm_inventory : Array[Arm]
 var head : Head 
-#var head_health : int = 5
 ## Hunger Stats
 var hunger : int = 0
 enum HUNGER_LEVEL {SATISFIED = 0,HUNGRY = 20, STARVING = 40, DEAD = 60}
@@ -162,7 +159,7 @@ func move(distance : int = 1):
 		Globals.EAST:
 			position = Vector2i(position.x+distance, position.y)
 			tick_hunger()
-	#NOTE: This fires even if the player does not move, not sure if that matters.
+	#NOTE: This fires even if the player is blocked by a wall, not sure if that matters.
 	change_position.emit()
 	check_cell_content()
 #endregion
@@ -238,15 +235,15 @@ func pick_up(type : Cell.TYPE):
 				pass
 		Cell.TYPE.TOOTH:
 			# Check if the player has room
-			if tooth_count < TOOTH_MAX:
+			if head.tooth_count < head.TOOTH_MAX:
 				# Add to inventory
-				# TODO: Make this a random amount of teeth and give the player the option of picking up
-				tooth_count += 1
+				# TODO: Make this tied to how much teeth the cell has
+				head.add_teeth(1)
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				if Globals.verbose_console == true:
-					print("PICKED UP TOOTH! PLAYER NOW HOLDS ", tooth_count, " TEETH!")
-				Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(tooth_count) + " TEETH!")
+					print("PICKED UP TOOTH! PLAYER NOW HOLDS ", head.tooth_count, " TEETH!")
+				Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(head.tooth_count) + " TEETH!")
 	
 #endregion
 
@@ -263,8 +260,7 @@ func remove_arm(a : Arm):
 func arm_bitten():
 	#TODO: Randomize and check max and minimums
 	hunger -= 1
-	tooth_count -= 1
-	#head_health += 1
+	head.remove_teeth(1)
 	head.health += 1
 	Log.add_log_message("IT HAS TAKEN A BITE FROM ONE OF ITS ARMS.")
 	stat_change.emit()
