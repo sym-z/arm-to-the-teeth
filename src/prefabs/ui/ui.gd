@@ -52,6 +52,7 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 @export var stomach_anim : AnimatedSprite2D
 @export var equipped_arm_anim_1 : AnimatedSprite2D
 @export var equipped_arm_anim_2 : AnimatedSprite2D
+@export var tooth_anim : AnimatedSprite2D
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -213,7 +214,14 @@ func refresh_stat_showcase():
 	refresh_head_stat()
 	refresh_stomach_stat()
 	refresh_arm_stat()
-	
+	refresh_tooth_stat()
+
+func refresh_tooth_stat():
+	if player.tooth_count >= 0 and player.tooth_count <= player.TOOTH_MAX:
+		tooth_anim.frame = player.tooth_count
+	else:
+		push_error("In refresh_stat_showcase in ui.gd, tooth count set to either negative or above possible value")
+		
 func refresh_arm_stat():
 	# Index through inventory, and reveal an arm for each arm that is equipped. 
 	var equipped_count : int = 0

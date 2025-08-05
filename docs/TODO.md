@@ -159,6 +159,7 @@
 - [ ] Make sure that the UI only uses the AT3 palette
   - [ ] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
+- [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
@@ -177,6 +178,11 @@
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
   - Will be under the UI's CanvasLayer now.
 - [ ] Turn off arrow key input for Context menu
+- [ ] Prevent negative values for appearing for
+  - [ ] Teeth
+  - [ ] Arm condition
+  - [ ] Head health
+- [ ] Head should be in charge of tooth count
 ### DONE
 - [x] Try to make the `CanvasLayer` parent thing work in the UI scene.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 

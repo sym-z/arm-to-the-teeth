@@ -174,3 +174,6 @@
 - As rooms become more distanced, their colors become dimmer and dimmer
 - Contents in further rooms are more dim than rooms that are closer to the player
 - Stat showcase on the right side of the viewport now shows animations that change as the player changes the condition of arms, hunger, and their head health.
+- Stat showcase includes a simple tooth animation indicator
+- Player can lose teeth from damaging their head, and missing a bite
+  - Eventually the head will be in charge of tooth management, but for now I am implementing this code until I can work out the responsibility transfer of teeth from player to head on a new branch.

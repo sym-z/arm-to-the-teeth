@@ -311,6 +311,7 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			# Head loses health, and teeth are lost. Possibly roll for teeth lost.
 			#TODO: Have low rolls factor into more health and teeth lost
 			player.head.health -= 1
+			player.tooth_count -= 1
 			player.stat_change.emit()
 			# Refresh root_ui's labels
 			root_ui.refresh_temp_labels()
@@ -377,6 +378,8 @@ func damage_head(h: Head):
 		h.health -= h.health
 	else:
 		h.health -= opponent.damage
+		# TODO: Critical hit tooth loss
+		player.tooth_count -= 1
 	player.stat_change.emit()
 	# Update status in UI of head
 	root_ui.refresh_temp_labels()
