@@ -390,7 +390,7 @@ full_log_window_container = NodePath("Log/Log Full Window")
 full_log_scroller = NodePath("Log/Log Full Window/Log Message Container/ScrollContainer")
 full_log_back_button = NodePath("Log/Full Window Back Button")
 viewport_header_label = NodePath("Viewport Header Container/Viewport Header Label")
-mini_map = NodePath("Mini Map")
+mini_map = NodePath("Mini Map Layer/Mini Map")
 combat_viewport = NodePath("Combat Viewport")
 head_anim = NodePath("Stat Showcase/Head")
 stomach_anim = NodePath("Stat Showcase/Stomach")
@@ -429,21 +429,25 @@ alignment = 1
 
 [node name="Pick Up" type="Button" parent="Context Menu/Button Container"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("5_cllw1")
 text = "PICK UP"
 
 [node name="Inventory" type="Button" parent="Context Menu/Button Container"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("4_htiv7")
 text = "INVENTORY"
 
 [node name="Options" type="Button" parent="Context Menu/Button Container"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("5_cllw1")
 text = "OPTIONS"
 
 [node name="Quit" type="Button" parent="Context Menu/Button Container"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("5_cllw1")
 text = "QUIT"
 
@@ -648,15 +652,28 @@ text = "FLOOR: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mini Map" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("15_gtvwi")]
+[node name="Mini Map Layer" type="CanvasLayer" parent="."]
+
+[node name="Header" type="Label" parent="Mini Map Layer"]
+offset_left = 211.0
+offset_top = 564.0
+offset_right = 291.0
+offset_bottom = 617.0
+theme_override_fonts/font = ExtResource("18_w51vb")
+theme_override_font_sizes/font_size = 53
+text = "MAP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mini Map" parent="Mini Map Layer" node_paths=PackedStringArray("root_ui") instance=ExtResource("15_gtvwi")]
 z_index = 1
-position = Vector2(91, 602)
+position = Vector2(91, 637)
 scale = Vector2(4, 4)
-root_ui = NodePath("..")
+root_ui = NodePath("../..")
 
 [connection signal="pressed" from="Context Menu/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]
 [connection signal="pressed" from="Context Menu/Button Container/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="Inventory/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="gui_input" from="Log/Log Line Window" to="." method="_on_log_line_window_gui_input"]
 [connection signal="pressed" from="Log/Full Window Back Button" to="." method="_on_full_window_back_button_pressed"]
-[connection signal="mini_map_ready" from="Mini Map" to="." method="_on_mini_map_mini_map_ready"]
+[connection signal="mini_map_ready" from="Mini Map Layer/Mini Map" to="." method="_on_mini_map_mini_map_ready"]
