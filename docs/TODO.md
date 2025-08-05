@@ -130,22 +130,22 @@
 ## UI
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
 - [ ] Inventory Window Title
-- [ ] Log Window Title
+- [x] Log Window Title
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
-  - [ ] Prototype Art
+  - [x] Prototype Art
   - [ ] Final Art
 - [ ] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
   - [x] Temporary label
-  - [ ] Prototype Art
+  - [x] Prototype Art
   - [ ] Final Art
 - [ ] Head indication (Frame = Head Health)
   - [x] Temporary label
-  - [ ] Prototype Art
+  - [x] Prototype Art
   - [ ] Final Art
 - [ ] Hunger indication (Stomach animation in between arms. Frame = Hunger level)
   - [x] Temporary label
-  - [ ] Prototype Art
+  - [x] Prototype Art
   - [ ] Final Art
 - [x] Create separate button theme for buttons that can be disabled or enabled.
   - [ ] Build out theme for disablable buttons
@@ -161,6 +161,8 @@
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 - [ ] Log messages have a number associated with them
+- [ ] Tooth icon for hud
+- [ ] Border around mini-map
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
