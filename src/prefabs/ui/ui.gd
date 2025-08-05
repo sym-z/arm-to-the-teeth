@@ -49,6 +49,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Stat Showcase")
 @export var head_anim : AnimatedSprite2D
+@export var stomach_anim : AnimatedSprite2D
+@export var equipped_arm_anim_1 : AnimatedSprite2D
+@export var equipped_arm_anim_2 : AnimatedSprite2D
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -73,6 +76,7 @@ func initial_setup():
 		add_arm_to_inventory(player.arm_inventory[i], i+1)
 	player.connect("stat_change", refresh_stat_showcase)
 	player.connect("item_picked_up", refresh_stat_showcase)
+	refresh_stat_showcase()
 
 #region Mini Map
 func _on_mini_map_mini_map_ready():
@@ -206,14 +210,62 @@ func _on_player_combat_started(enemy, loc):
 
 #region Stat Showcase
 func refresh_stat_showcase():
-	# Refresh head anim
+	refresh_head_stat()
+	refresh_stomach_stat()
+	refresh_arm_stat()
+	
+func refresh_arm_stat():
+	# Index through inventory, and reveal an arm for each arm that is equipped. 
+	var equipped_count : int = 0
+	var equipped_arms : Array[Arm] = []
+	for arm in player.arm_inventory:
+		if arm.equipped == true:
+			equipped_count += 1
+			equipped_arms.append(arm)
+	match equipped_count:
+		1:
+			equipped_arm_anim_1.visible = true
+			equipped_arm_anim_2.visible = false
+			# Apply same strategy used in head stat showcase
+			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
+		2:
+			equipped_arm_anim_1.visible = true
+			equipped_arm_anim_2.visible = true
+			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
+			set_arm_frame(equipped_arms[1], equipped_arm_anim_2)
+		_:
+			equipped_arm_anim_1.visible = false
+			equipped_arm_anim_2.visible = false
+	if equipped_count > 2:
+		push_error("Error in function refresh_stat_showcase in ui.gd, more than 2 arms are equipped when refreshing stat showcase.")
+
+func set_arm_frame(a : Arm, anim : AnimatedSprite2D):
+	var total_arm_frames = anim.sprite_frames.get_frame_count("default") - 1
+	var condition : float = a.condition
+	var max_condition : float = a.max_condition
+	var condition_percent : float = condition / max_condition
+	var frame_num = floor(total_arm_frames * condition_percent)
+	anim.frame = total_arm_frames - frame_num
+	
+func refresh_stomach_stat():
+	match player.hunger_state:
+		player.HUNGER_LEVEL.SATISFIED:
+			stomach_anim.frame = 0
+		player.HUNGER_LEVEL.HUNGRY:
+			stomach_anim.frame = 1
+		player.HUNGER_LEVEL.STARVING:
+			stomach_anim.frame = 2
+		player.HUNGER_LEVEL.DEAD:
+			stomach_anim.frame = 3
+			
+func refresh_head_stat():
 	# Get frame size, zero-indexed
-	var total_head_frames = head_anim.sprite_frames.get_frame_count("default") -1
+	var total_head_frames = head_anim.sprite_frames.get_frame_count("default") - 1
 	# Calculate percentage of player health, using floats
 	var health : float = player.head.health
 	var max_hp : float = player.head.max_health
-	var health_percent : float = health/max_hp
+	var health_percent : float = health / max_hp
 	# Apply this percentage to the total frames of the head animation
-	var frame_num = floor((total_head_frames) * health_percent)
+	var frame_num = floor(total_head_frames * health_percent)
 	head_anim.frame = total_head_frames - frame_num
 #endregion

@@ -173,3 +173,4 @@
 ## 4 August 2025
 - As rooms become more distanced, their colors become dimmer and dimmer
 - Contents in further rooms are more dim than rooms that are closer to the player
+- Stat showcase on the right side of the viewport now shows animations that change as the player changes the condition of arms, hunger, and their head health.

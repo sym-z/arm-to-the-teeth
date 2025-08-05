@@ -40,6 +40,7 @@
   - [ ] Player can see stats of arm on the ground before adding it to inventory
 - [ ] Text speed choice in options menu that effects battle speed
 - [ ] Content animates in map
+- [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 ### DONE
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
@@ -169,6 +170,7 @@
 - [ ] Remove signal connections that are not being used.
 - [ ] Remove old `refresh_viewport()`
 - [ ] Get rid of "Turn" enum and code in `combat_viewport.gd`
+- [ ] Change functions `damage_head` and `damage_arm` to be more specific, showing that this is taking place during the damage limb phase of combat
 ### DONE
 
 ## Fixes

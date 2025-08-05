@@ -336,7 +336,8 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 			var arm_drop : Arm = Arm.new()
 			#TODO: Randomize
 			arm_drop.strength = 2
-			arm_drop.condition = 6
+			arm_drop.max_condition = 6
+			arm_drop.condition = arm_drop.max_condition
 			arm_drop.equipped = false
 			arm_atlas[loc] = arm_drop
 		elif type == Cell.TYPE.ENEMY:

@@ -50,14 +50,16 @@ func give_starting_loadout():
 	var starting_arm : Arm = Arm.new()
 	# TODO: Randomize
 	starting_arm.strength = 1
-	starting_arm.condition = 5
+	starting_arm.max_condition = 5
+	starting_arm.condition = starting_arm.max_condition
 	starting_arm.equipped = true
 	arm_count += 1
 	arm_inventory.append(starting_arm)
 	if Globals.debug_combat:
 		var power_arm : Arm = Arm.new()
 		power_arm.strength = 100
-		power_arm.condition = 100
+		power_arm.max_condition = 100
+		power_arm.condition = power_arm.max_condition
 		power_arm.equipped = true
 		arm_count += 1
 		arm_inventory.append(power_arm)

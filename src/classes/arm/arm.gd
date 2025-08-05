@@ -8,15 +8,9 @@ var strength : int
 var condition : int
 # Is the player using this arm or not?
 var equipped : bool
+# What is the maximum condition that this arm can be in?
+var max_condition : int
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func debug_print():
 	print("STR: ", strength)
