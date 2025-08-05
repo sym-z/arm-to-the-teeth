@@ -200,3 +200,4 @@
 - Inventory has better labels
 - Arm items have cleaner UI
 - Inventory has better stylebox
+- Inventory buttons use one theme

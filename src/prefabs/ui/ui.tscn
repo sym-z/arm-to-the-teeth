@@ -1,10 +1,9 @@
-[gd_scene load_steps=76 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=75 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
 [ext_resource type="Texture2D" uid="uid://di01mum33xdma" path="res://assets/visual/ui/prototype_texture_0_full_border.png" id="2_hvfel"]
 [ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
-[ext_resource type="Theme" uid="uid://damqods5iq1r8" path="res://themes/context_menu/margin_container/button/context_menu_button_theme.tres" id="4_htiv7"]
 [ext_resource type="Theme" uid="uid://bn3i6d6cugm34" path="res://themes/context_menu/margin_container/button/context_menu_disablable_button_theme.tres" id="5_cllw1"]
 [ext_resource type="Theme" uid="uid://b4r4mirjty34t" path="res://themes/inventory/inventory_margin_container_theme.tres" id="6_mbf2n"]
 [ext_resource type="Theme" uid="uid://divs5bmwsxsso" path="res://themes/temp_labels/temporary_labels.tres" id="7_1is0v"]
@@ -461,7 +460,7 @@ text = "PICK UP"
 [node name="Inventory" type="Button" parent="Context Menu/Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("4_htiv7")
+theme = ExtResource("5_cllw1")
 text = "INVENTORY"
 
 [node name="Options" type="Button" parent="Context Menu/Button Container"]
