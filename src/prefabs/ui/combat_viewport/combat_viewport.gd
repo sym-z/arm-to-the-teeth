@@ -79,10 +79,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
-func refresh_temp_labels():
-	temp_e_health.text = "HEALTH: " + str(opponent.curr_health) + "/" + str(opponent.total_health)
-	temp_e_damage.text = "DAMAGE: " + str(opponent.damage)
-	pass
+
 
 #region Combat Loop
 	#region Player's Turn
@@ -435,8 +432,12 @@ func check_enemy_death():
 			print("ENEMY KILLED")
 			map.print_enemy_atlas()
 			print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
+
+func drop_loot():
+	pass
 	#endregion
 #endregion
+
 #region Group Visibility Switching Functions
 func change_attack_run_vis(new_vis : bool):
 	dialog_box.visible = new_vis
@@ -477,4 +478,9 @@ func create_timer(duration : float, callback: Callable):
 	t.wait_time = duration
 	add_child(t)
 	t.start()
+
+func refresh_temp_labels():
+	temp_e_health.text = "HEALTH: " + str(opponent.curr_health) + "/" + str(opponent.total_health)
+	temp_e_damage.text = "DAMAGE: " + str(opponent.damage)
+	pass
 #endregion
