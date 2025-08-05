@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c20d3pqcgllt8"]
 
 [ext_resource type="Script" uid="uid://cgxhrx7nt88uc" path="res://prefabs/ui/combat_viewport/damagable_limb/damagable_limb.gd" id="1_1yei0"]
-[ext_resource type="Texture2D" uid="uid://cwgd7txw32px1" path="res://assets/visual/prototype_items/arm_d2.png" id="2_chakb"]
+[ext_resource type="Texture2D" uid="uid://bcef8a1s3erho" path="res://assets/visual/prototype_items/v2/arm_prototype_0.png" id="2_u1o8d"]
 [ext_resource type="Theme" uid="uid://du5aum1xk741y" path="res://themes/combat_viewport/dam_limb_label.tres" id="3_u1o8d"]
 [ext_resource type="Theme" uid="uid://820qq2m7fm60" path="res://themes/combat_viewport/dam_limb_button.tres" id="4_eyb72"]
 
@@ -15,8 +15,8 @@ health_label = NodePath("Health Label")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_chakb")
-expand_mode = 5
+texture = ExtResource("2_u1o8d")
+stretch_mode = 3
 
 [node name="Health Label" type="RichTextLabel" parent="."]
 layout_mode = 2

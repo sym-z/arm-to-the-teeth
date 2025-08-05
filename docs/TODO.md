@@ -163,7 +163,9 @@
 - [ ] Log messages have a number associated with them
 - [ ] Tooth icon for hud
 - [ ] Border around mini-map
+  - 160 x 160px is the max size for map
 - [ ] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
+- [ ] Enemy name to combat window
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
@@ -187,6 +189,7 @@
   - [ ] Arm condition
   - [ ] Head health
 - [ ] Head should be in charge of tooth count
+- [ ] Add padding to font and re-export
 ### DONE
 - [x] Try to make the `CanvasLayer` parent thing work in the UI scene.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 

@@ -141,6 +141,7 @@ func add_arm_to_inventory(a : Arm, number : int):
 func _on_pick_up_pressed():
 	player.pick_up(item_to_pick)
 func _on_inventory_pressed():
+	print("GOOG")
 	change_inventory_visibility(not inventory_container.visible)
 	# Refresh inventory when the window is pulled up, rather than relying on other parts of the code to update it
 	if inventory_container.visible == true:

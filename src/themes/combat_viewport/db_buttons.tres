@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://buown6vatfsa6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://buown6vatfsa6"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_hx1q7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx1q7"]
+bg_color = Color(0.0156863, 0.00784314, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+
 [resource]
-Button/font_sizes/font_size = 32
+Button/font_sizes/font_size = 45
 Button/fonts/font = ExtResource("1_hx1q7")
+Button/styles/normal = SubResource("StyleBoxFlat_hx1q7")

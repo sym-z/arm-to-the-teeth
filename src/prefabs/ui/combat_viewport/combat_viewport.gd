@@ -104,13 +104,13 @@ func _on_run_pressed():
 			pass
 	# The cells that exist need to be verified as a possible route of transportation
 	if forward_cell != null and forward_cell.dir_to_wall(Globals.get_opposite_direction(player.facing))== false:
-		up_button.visible = true
+		up_button.disabled = false
 	if backward_cell != null and backward_cell.dir_to_wall(player.facing) == false:
-		down_button.visible = true
+		down_button.disabled = false
 	if left_cell != null and left_cell.dir_to_wall(Globals.right_of(player.facing)) == false:
-		left_button.visible = true
+		left_button.disabled = false
 	if right_cell != null and right_cell.dir_to_wall(Globals.left_of(player.facing)) == false:
-		right_button.visible = true
+		right_button.disabled = false
 func up_button_chosen():
 	if Globals.verbose_console:
 		print("PLAYER CHOSE TO RUN FORWARD")
@@ -451,11 +451,11 @@ func change_player_damage_selection_vis(new_vis : bool):
 func change_run_direction_selection_vis(new_vis : bool):
 	run_direction_selection_window.visible = new_vis
 	change_attack_run_vis(false)
-	# Start with all buttons invisible
-	up_button.visible = false
-	down_button.visible = false
-	left_button.visible = false
-	right_button.visible = false
+	# Start with all buttons disabled
+	up_button.disabled = true
+	down_button.disabled = true
+	left_button.disabled = true
+	right_button.disabled = true
 func show_player_turn_start():
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(false)

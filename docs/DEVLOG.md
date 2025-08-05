@@ -181,3 +181,22 @@
   - Log full window
   - Mini Map
 - Tuned the look of the context menu, made the font size bigger on the buttons and made them fill the container. I am planning on switching all of the context buttons over to one theme soon.
+
+## 5 August 2025
+- Combat window has better label
+- Better styleboxes for the attack and run buttons
+- Combat window uses proper white color for borders of styleboxes
+- Context menu border color change
+- Stylebox for enemy stats
+- Refined the look of the attacking limb selection
+  - Better sizing of icons
+  - Bigger fonts for labels and buttons
+  - Header
+  - Consistent border color
+- Run direction arrows are now disabled rather than invisible
+- Run direction arrows now have a disabled and hover texture
+- Run window has a better label 
+- Die roller has an instruction label
+- Inventory has better labels
+- Arm items have cleaner UI
+- Inventory has better stylebox
