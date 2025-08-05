@@ -177,3 +177,7 @@
 - Stat showcase includes a simple tooth animation indicator
 - Player can lose teeth from damaging their head, and missing a bite
   - Eventually the head will be in charge of tooth management, but for now I am implementing this code until I can work out the responsibility transfer of teeth from player to head on a new branch.
+- Labels for:
+  - Log full window
+  - Mini Map
+- Tuned the look of the context menu, made the font size bigger on the buttons and made them fill the container. I am planning on switching all of the context buttons over to one theme soon.
