@@ -479,9 +479,9 @@ text = "QUIT"
 
 [node name="TEMP TEETH" type="Label" parent="Temporary Labels"]
 offset_left = 1457.0
-offset_top = 456.0
+offset_top = 208.0
 offset_right = 1905.0
-offset_bottom = 500.0
+offset_bottom = 252.0
 theme = ExtResource("7_1is0v")
 text = "TOOTH COUNT: X"
 horizontal_alignment = 1
@@ -499,9 +499,9 @@ vertical_alignment = 1
 
 [node name="TEMP HEAD" type="Label" parent="Temporary Labels"]
 offset_left = 1451.0
-offset_top = 202.0
+offset_top = 455.0
 offset_right = 1899.0
-offset_bottom = 246.0
+offset_bottom = 499.0
 theme = ExtResource("7_1is0v")
 text = "HEAD HEALTH: X"
 horizontal_alignment = 1
