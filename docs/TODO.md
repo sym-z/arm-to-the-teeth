@@ -163,6 +163,7 @@
 - [ ] Log messages have a number associated with them
 - [ ] Tooth icon for hud
 - [ ] Border around mini-map
+- [ ] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
