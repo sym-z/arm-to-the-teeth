@@ -160,6 +160,7 @@
   - [ ] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
+- [ ] Log messages have a number associated with them
 ### DONE
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
