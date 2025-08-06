@@ -6,7 +6,7 @@ var log_messages : Array[String] = []
 
 func add_log_message(msg : String):
 	#TODO: Include index to give visual ordering to the player.
-	log_messages.append(msg)
+	log_messages.append("(" + str(log_messages.size()) + ") - " + msg)
 	new_log.emit()
 
 func clear_log():

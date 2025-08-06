@@ -116,7 +116,7 @@ func up_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
-		Log.add_log_message("IT FLED AND RAN FORWARD")
+		#Log.add_log_message("IT FLED AND RAN FORWARD")
 		player.move()
 		player.in_combat = false
 		pass
@@ -129,7 +129,7 @@ func down_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
-		Log.add_log_message("IT FLED AND RAN BACKWARD")
+		#Log.add_log_message("IT FLED AND RAN BACKWARD")
 		player.move(-1)
 		player.in_combat = false
 		pass
@@ -142,7 +142,7 @@ func left_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
-		Log.add_log_message("IT FLED AND RAN TO THE LEFT")
+		#Log.add_log_message("IT FLED AND RAN TO THE LEFT")
 		player.force_turn_left()
 		player.move()
 		player.force_turn_right()
@@ -157,7 +157,7 @@ func right_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
-		Log.add_log_message("IT FLED AND RAN TO THE RIGHT")
+		#Log.add_log_message("IT FLED AND RAN TO THE RIGHT")
 		player.force_turn_right()
 		player.move()
 		player.force_turn_left()
@@ -176,7 +176,7 @@ func runaway_damage():
 	var enemy_roll : int = randi_range(0,20)
 	if enemy_roll > player.head.health:
 		# Apply damage
-		player.head.health -= opponent.damage
+		player.head.damage(opponent.damage)
 		# TODO RANDOMIZE TEETH LOST
 		Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
 		player.stat_change.emit()
@@ -305,8 +305,8 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			## Player missed
 			# Head loses health, and teeth are lost. Possibly roll for teeth lost.
 			#TODO: Have low rolls factor into more health and teeth lost
-			player.head.health -= 1
-			player.head.remove_teeth(1)
+			player.head.damage(1)
+			#player.head.remove_teeth(1)
 			player.stat_change.emit()
 			# Refresh root_ui's labels
 			root_ui.refresh_temp_labels()
@@ -370,11 +370,11 @@ func damage_head(h: Head):
 		print("DAMAGING HEAD")
 	#TODO: Factor in teeth lost, critical hits
 	if Globals.debug_combat == true:
-		h.health -= h.health
+		h.damage(h.health)
 	else:
-		h.health -= opponent.damage
+		h.damage(opponent.damage)
 		# TODO: Critical hit tooth loss
-		player.head.remove_teeth(1)
+		#player.head.remove_teeth(1)
 	player.stat_change.emit()
 	# Update status in UI of head
 	root_ui.refresh_temp_labels()

@@ -26,5 +26,29 @@ func remove_teeth(num_teeth : int):
 			tooth_count -= 1
 		else:
 			# TODO: Log message about leftover teeth
+			if i == 0:
+				return
+			elif i == 1:
+				Log.add_log_message("IT LOST " + str(i) + " TOOTH.")
+			else:
+				Log.add_log_message("IT LOST " + str(i) + " TEETH.")
 			return
-			
+	if num_teeth > 1:
+		Log.add_log_message("IT LOST " + str(num_teeth) + " TEETH.")
+	else:
+		Log.add_log_message("IT LOST " + str(num_teeth) + " TOOTH.")
+func damage(amt : int):
+	print("YOLO")
+	if amt >= health:
+		health = 0
+	else:
+		health -= amt
+	# Roll for teeth lost
+	var roll : int = randi_range(1,20)
+	if roll >= 19:
+		remove_teeth(3)
+	elif roll >= 15:
+		remove_teeth(2)
+	elif roll > 10:
+		remove_teeth(1)
+	Log.add_log_message("IT WAS HIT FOR " + str(amt) + " DAMAGE.")

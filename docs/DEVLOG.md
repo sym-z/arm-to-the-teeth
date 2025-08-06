@@ -216,3 +216,5 @@
 ## 6 August 2025
 - Loot drops tested and functional
 - Clearing `enemy_atlas` seems to have no negative effect
+- Head is now in charge of when it is damaged, and deducts health accordingly
+- Log messages now have numbers included with them to assist in players understanding the order and how many have happened.

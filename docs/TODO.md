@@ -33,6 +33,7 @@
 - [ ] Refine hunger growth
 - [ ] Make eating heal your head a little but improve your hunger a lot
 - [ ] Figure out if hunger kills you or hurts your head
+  - If hunger removes head health, don't use `head.damage()` because it shouldn't cause teeth to be lost.
 - [ ] Multi-Arm Storage (STRETCH GOAL)
   - [ ] Ability to store extra arms in inventory
   - [ ] Ability to swap between arms
@@ -48,6 +49,8 @@
   - Remember to have `ui.gd` check if the button is disabled first
 - [ ] TAB for inventory
   - Remember to have `ui.gd` check if the button is disabled first
+- [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
+- [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
 ### DONE
 - [x] When a player picks up teeth, there can be 1 or more teeth in that spot
   - [x] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
@@ -166,18 +169,24 @@
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
 - [ ] Log window changes stylebox on hover and click
+  - [ ] Log window changes to hover stylebox for a certain amount of time when a log message goes through
+  - A little difficult, requires styleboxes to be switched in and out with code, and timers to be made for the log update
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 - [ ] Make sure that the UI only uses the AT3 palette
   - [x] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
-- [ ] Log messages have a number associated with them
 - [ ] Border around mini-map
   - 160 x 160px is the max size for map
 - [ ] Enemy name to combat window
 - [ ] Log line window label?
 - [ ] Stat showcase labelled with "STATS"
+- [ ] First log message is the default text for the log line window.
+- [ ] (STRETCH GOAL) Log messages have a timestamp
+- [ ] Panel container surrounds viewport instead of built in border
+  - Remember to ignore mouse input
 ### DONE
+- [x] Log messages have a number associated with them
 - [x] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
 - [x] Create separate button theme for buttons that can be disabled or enabled.
 - [x] Inventory Window Title
@@ -193,6 +202,7 @@
 - [ ] Remove old `refresh_viewport()`
 - [ ] Get rid of "Turn" enum and code in `combat_viewport.gd`
 - [ ] Change functions `damage_head` and `damage_arm` to be more specific, showing that this is taking place during the damage limb phase of combat
+- [ ] Clean up TODO's in `combat_viewport.gd`
 ### DONE
 
 ## Fixes
