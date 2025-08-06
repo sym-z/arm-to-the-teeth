@@ -198,7 +198,6 @@ func _on_attack_pressed():
 	change_arm_select_vis(true)
 # Refresh arm (and head) selections for combat
 func refresh_arm_selections():
-	#TODO: Call this function when an arm is fully eaten
 	# Clear out all children, if any
 	for child in arm_container.get_children():
 		child.call_deferred("queue_free")
@@ -220,7 +219,7 @@ func attacking_arm_selected(a : Arm):
 	## Step 2: Using the stats of the arm, let the player roll a die to attempt to hit the monster
 	attacking_arm = a
 	attacking_with_head = false
-	## TODO: Eventually, rolls considerably under the DC will hurt the arm, for now, it just misses
+	## Rolls considerably under the DC will hurt the arm
 	# Switch from viewing the arm selection screen, to the die roll screen and bring back the dialog box
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(true)
@@ -241,7 +240,7 @@ func attacking_head_selected(h : Head):
 	## Step 2b: Using the stats of the head, let the player roll a die to attempt to hit the monster
 	#attacking_arm = a
 	attacking_with_head = true
-	## TODO: Eventually, rolls considerably under the DC will hurt the head or kill the player, for now, it just misses
+	## Rolls considerably under the DC will hurt the head or kill the player
 	# Switch from viewing the arm selection screen, to the die roll screen and bring back the dialog box
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(true)
@@ -258,7 +257,6 @@ func attacking_head_selected(h : Head):
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
 
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
-	#TODO: MAKE THIS WORK IF HEAD IS SELECTED
 	if Globals.verbose_console == true:
 		print("DIE RESULTS READY")
 	# Activate the ability for the player to check their inventory now that the roll has finished
@@ -275,14 +273,13 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			check_enemy_death()
 		## Player Miss
 		else:
-			#TODO: Apply damage to condition, update inventory menu, update arm selection screen
+			## Apply damage to condition, update inventory menu, update arm selection screen
 			# Apply damage to arm's condition equal to how far the roll was under half the dc
 				# Ex: Roll = 2, DC = 10, damage_to_apply = floor(DC/2)-Roll = floor(10/2)-2 = 5-2 = 3 
 			if number_rolled < floor(dc/2):
 				var damage_to_apply : int = floor(dc/2) - number_rolled
 				attacking_arm.condition -= damage_to_apply
 				# Check if arm was destroyed
-				#TODO: WHEN ARMS ARE IN UI ADJUST FRAMING BASED ON CONDITION
 				if attacking_arm.condition <= 0:
 					Log.add_log_message("IT MISSED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
 					root_ui.arm_fully_eaten(attacking_arm)
@@ -293,14 +290,14 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 			else:
 				Log.add_log_message("IT MISSED ITS ATTACK.")
 	else:
-		# Head Attack
+		## Head Attack
 		## Player hit
 		if passed == true:
 			# Deal damage according to head's strength
 			opponent.curr_health -= player.head.strength
 			#TODO: Possible bonus damage for high rolls/teeth count?
 			Log.add_log_message("IT BIT FURIOUSLY AND DEALT " + str(player.head.strength) + " DAMAGE.")
-			#TODO: Deduct teeth, perhaps with a roll, would need to refresh root_ui's labels
+			#TODO: Deduct teeth, perhaps with a roll, would need to refresh root_ui's labels, and stat showcase
 			refresh_temp_labels()
 			# Check for enemy death
 			check_enemy_death()
@@ -423,19 +420,68 @@ func check_enemy_death():
 		var map_cell : Cell = map.world_map[combat_location]
 		# Remove enemy from map's atlas at combat_location
 		map.enemy_atlas.erase(combat_location)
+		
+		
 		# Make the cell empty at that location
-		map.make_cell_empty(map_cell)
+		#map.make_cell_empty(map_cell)
 		# This signal tells the viewport to refresh, tells the UI that the cell is empty, and tells the minimap to get rid of the icon at this location.
-		player.item_picked_up.emit()
+		#player.item_picked_up.emit()
+		
 		# Allow the player to move
 		player.in_combat = false
+		
+		drop_loot()
+		player.item_partial_pickup.emit()
+		
 		if Globals.verbose_console == true:
 			print("ENEMY KILLED")
 			map.print_enemy_atlas()
 			print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
 
 func drop_loot():
-	pass
+	#TODO: Eventually factor in enemy type and floor number
+	var curr_cell : Cell = map.world_map[combat_location]
+	var loot_roll : int = randi_range(1,20)
+	var coin_flip : int = randi_range(0,1)
+	if loot_roll >= 129:
+		# Rare
+		# Great Arm / 8 Teeth
+		if coin_flip == 1:
+			pass
+		else:
+			pass
+		Log.add_log_message("THE ENEMY DROPPED RARE LOOT")
+		pass
+	elif loot_roll >= 25:
+		# Uncommon
+		# Average Arm / 5 Teeth
+		if coin_flip == 1:
+			pass
+		else:
+			pass
+		Log.add_log_message("THE ENEMY DROPPED UNCOMMON LOOT")
+		pass
+	elif loot_roll >= 20:
+		# Commmon
+		# Bad Arm / 3 Teeth
+		if coin_flip == 1:
+			pass
+		else:
+			pass
+		Log.add_log_message("THE ENEMY DROPPED COMMON LOOT")
+		pass
+	else:
+		# Trivial
+		# 1 Tooth / 2 Teeth
+		curr_cell.contents = Cell.TYPE.TOOTH
+		if coin_flip == 1:
+			curr_cell.tooth_count = 2
+		else:
+			curr_cell.tooth_count = 1
+		root_ui.mini_map.set_icon(Cell.TYPE.TOOTH, curr_cell.position)
+		Log.add_log_message("THE ENEMY DROPPED LOOT")
+	# Refresh the player's understanding of what is on the ground in front of them
+	player.check_cell_content()
 	#endregion
 #endregion
 

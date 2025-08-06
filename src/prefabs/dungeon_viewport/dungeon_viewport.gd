@@ -53,6 +53,10 @@ func _on_player_item_picked_up():
 func _on_map_map_filled():
 	refresh()
 
+func _on_player_item_partial_pickup():
+	refresh()
+
+
 func refresh():
 	refresh_viewport_2()
 	refresh_ordering.emit()

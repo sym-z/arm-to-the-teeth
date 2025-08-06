@@ -71,6 +71,20 @@ func create_visualization():
 		add_child(curr_sprite)
 	place_player()
 
+func set_icon(type: Cell.TYPE, loc: Vector2i):
+	var icon_sprite = icons[loc]
+	match type:
+		Cell.TYPE.EXIT:
+			icon_sprite.texture = exit_icon
+		Cell.TYPE.SPAWN:
+			icon_sprite.texture = spawn_icon
+		Cell.TYPE.ARM:
+			icon_sprite.texture = arm_icon
+		Cell.TYPE.TOOTH:
+			icon_sprite.texture = tooth_icon
+		Cell.TYPE.ENEMY:
+			icon_sprite.texture = enemy_icon
+
 func clear_visualization():
 	tiles.clear()
 	icons.clear()
