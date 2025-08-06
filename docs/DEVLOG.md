@@ -211,4 +211,5 @@
   - There are 4 different categories of loot rarity
   - Eventually there are going to be loot stats dependent on floor level and monster type
   - The basic tooth drops have been tested but the other levels still need to be tested before I can mark this task as done. Saving that for tomorrow.
+- Made sure that the `enemy_atlas` was being cleared when there was a new level being created, because the function that runs when a new floor was generated was not doing that, which I think was keeping stale references to enemies in the `enemy_atlas` in `map.gd`.
 
