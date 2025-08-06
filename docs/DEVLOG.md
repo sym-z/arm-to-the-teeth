@@ -201,9 +201,14 @@
 - Arm items have cleaner UI
 - Inventory has better stylebox
 - Inventory buttons use one theme
+  - I decided to go against the idea of having differing themes for the disablable buttons because it didn't really make sense to me at this point
 - Ownership of teeth management is now delgated to the head
 - After dying, log messages are preserved into the next run.
 - Multiple teeth can spawn in the same place
   - The map will spawn 1-3 teeth in a spot when marking a tooth cell
   - When attempting to pick up more teeth than the player can hold, the remainder will be left on the ground.
-  
+- Enemies now drop loot when killed
+  - There are 4 different categories of loot rarity
+  - Eventually there are going to be loot stats dependent on floor level and monster type
+  - The basic tooth drops have been tested but the other levels still need to be tested before I can mark this task as done. Saving that for tomorrow.
+

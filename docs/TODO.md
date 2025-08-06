@@ -17,10 +17,13 @@
 - [x] At furthest distance behind all walls, put a mystery shadow texture to show that that is out of sight.
 - [x] Debug Map to Test Rendering
 
+## Outside of Gameplay
+- [ ] Main Menu
+- [ ] How to Play
+- [ ] Death Screen
+- [ ] Track highest floor achieved
+
 ## Gameplay
-- [ ] When a player picks up teeth, it can be 1 or more teeth in that spot
-  - [ ] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
-    - [ ] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [ ] The map's arm drops are randomized
   - [ ] They are also influenced by the floor that the player is on.
@@ -30,7 +33,7 @@
 - [ ] Refine hunger growth
 - [ ] Make eating heal your head a little but improve your hunger a lot
 - [ ] Figure out if hunger kills you or hurts your head
-- [ ] Multi-Arm Storage
+- [ ] Multi-Arm Storage (STRETCH GOAL)
   - [ ] Ability to store extra arms in inventory
   - [ ] Ability to swap between arms
   - [ ] Ability to drop arm on free tile
@@ -42,6 +45,9 @@
 - [ ] Content animates in map
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 ### DONE
+- [x] When a player picks up teeth, there can be 1 or more teeth in that spot
+  - [x] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
+    - [x] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
 - [x] Player's arms, teeth, and head all have separate health
   - [x] Arm
   - [x] Teeth
@@ -88,6 +94,10 @@
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
+- [ ] Loot drops are dependent on floor level
+- [ ] Loot drops are dependent on monster stats
+- [ ] Monster stats are depedent on floor level
+- [ ] More enemy types
 ### DONE
 - [x] Battle can end
   - [x] Enemy Death
@@ -112,23 +122,24 @@
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
-- [ ] Arm sprite adjustment
+- [ ] Arm sprite reduction to fit viewport
 - [ ] Inventory items need better styleboxes
-- [ ] Add in Head animation to stat showcase
-- [ ] Add in Arm animation to stat showcase
-- [ ] Add in Tooth animation to stat showcase
-- [ ] Add in Stomach animation to stat showcase
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
 - [ ] Make better vision bounds animation
+- [ ] Jaw-like tooth stat showcase animation
+- [ ] Tooth icon for hud
 ### DONE
+- [x] New font that doesn't have to be 32x32 and can be more vertical than horizontal
+- [x] Add in Head animation to stat showcase
+- [x] Add in Arm animation to stat showcase
+- [x] Add in Tooth animation to stat showcase
+- [x] Add in Stomach animation to stat showcase
 - [x] Prototype font
 - [x] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
   - [x] D1 left, left side and right right side
   - [x] Could use outline tool in Aseprite!
 
 ## UI
-- When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art
@@ -145,8 +156,6 @@
   - [x] Temporary label
   - [x] Prototype Art
   - [ ] Final Art
-- [x] Create separate button theme for buttons that can be disabled or enabled.
-  - [ ] Build out theme for disablable buttons
 - [ ] Figure out how exits are used
   - [x] Automatic
   - [ ] Dialog window pop-up
@@ -155,17 +164,18 @@
 - [ ] Log window changes stylebox on hover and click
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 - [ ] Make sure that the UI only uses the AT3 palette
-  - [ ] Green-white color for stylebox borders
+  - [x] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 - [ ] Log messages have a number associated with them
-- [ ] Tooth icon for hud
 - [ ] Border around mini-map
   - 160 x 160px is the max size for map
-- [ ] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
 - [ ] Enemy name to combat window
 - [ ] Log line window label?
+- [ ] Stat showcase labelled with "STATS"
 ### DONE
+- [x] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
+- [x] Create separate button theme for buttons that can be disabled or enabled.
 - [x] Inventory Window Title
 - [x] Log Window Title
 - [x] Show tooth and arm count
@@ -189,9 +199,9 @@
   - [ ] Teeth
   - [ ] Arm condition
   - [ ] Head health
-- [ ] Head should be in charge of tooth count
 - [ ] Add padding to font and re-export
 ### DONE
+- [x] Head should be in charge of tooth count
 - [x] Try to make the `CanvasLayer` parent thing work in the UI scene.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 
 - [x] May have to eventually manually set the ordering of each of the walls so that the closest walls are always drawn over the farthest, because contents are starting overlap with the walls behind them. I'll probably work on a separate branch to do this.
@@ -213,3 +223,4 @@
 - If I ever want to do swapping, remember to trigger a refresh to the inventory and the arm_selection screen.
 - Die rollers will supercede any gui_events underneath them in the node hierarchy for some reason. Keep this in mind when looking to add die rollers to the game in the future.
 - Adjusted d1 far left and far right wall to be 5 pixels lower because the added pixels to the top and bottom of certain adjacent sprites threw off its positioning
+- When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations

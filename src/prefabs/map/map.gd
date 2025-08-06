@@ -36,6 +36,7 @@ func new_level():
 	world_map.clear()
 	empty_cells.clear()
 	arm_atlas.clear()
+	enemy_atlas.clear()
 	_ready()
 	pass
 
@@ -270,6 +271,7 @@ func _on_player_player_spawned():
 	place_items_randomly(Cell.TYPE.TOOTH,10)
 	place_items_randomly(Cell.TYPE.ARM,2)
 	# Place Enemies
+	#TODO: Factor in floor level with enemy spawns
 	place_items_randomly(Cell.TYPE.ENEMY, 10)
 	map_filled.emit()
 
