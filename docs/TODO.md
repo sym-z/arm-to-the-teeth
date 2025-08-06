@@ -73,8 +73,6 @@
 - [x] Enemies Spawn
 
 ## Player vs Enemy Combat 
-- [ ] Windows have titles and instructions
-- [ ] Enemies can drop items (Teeth/Arms)
 - [ ] Enemy Animates
   - [x] Prototype
   - [ ] Final
@@ -103,6 +101,8 @@
 - [ ] Monster stats are depedent on floor level
 - [ ] More enemy types
 ### DONE
+- [x] Windows have titles and instructions
+- [x] Enemies can drop items (Teeth/Arms)
 - [x] Battle can end
   - [x] Enemy Death
   - [x] Player Death
