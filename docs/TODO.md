@@ -44,6 +44,10 @@
 - [ ] Text speed choice in options menu that effects battle speed
 - [ ] Content animates in map
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
+- [ ] SPACE to pick up
+  - Remember to have `ui.gd` check if the button is disabled first
+- [ ] TAB for inventory
+  - Remember to have `ui.gd` check if the button is disabled first
 ### DONE
 - [x] When a player picks up teeth, there can be 1 or more teeth in that spot
   - [x] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth

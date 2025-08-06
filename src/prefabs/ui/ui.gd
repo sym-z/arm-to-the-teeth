@@ -211,12 +211,11 @@ func _on_log_line_window_gui_input(event):
 func _on_full_window_back_button_pressed():
 	change_full_log_window_visibility(false)
 func post_death_log_transfer():
-	for log in Log.log_messages:
+	for msg in Log.log_messages:
 		var new_log_msg = full_log_label_scene.instantiate()
-		new_log_msg.text = log
+		new_log_msg.text = msg
 		full_log_container.add_child(new_log_msg)
 		full_log_container.move_child(new_log_msg,0)
-	pass
 #endregion
 
 #region Combat Handling
