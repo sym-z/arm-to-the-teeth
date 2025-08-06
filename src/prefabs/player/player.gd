@@ -13,6 +13,7 @@ var in_combat : bool = false
 signal change_facing
 signal change_position
 signal item_picked_up
+signal item_partial_pickup
 # Allows items/landmarks to be set after the player has spawned.
 signal player_spawned
 # Sends signal to UI to activate buttons
@@ -238,12 +239,20 @@ func pick_up(type : Cell.TYPE):
 			if head.tooth_count < head.TOOTH_MAX:
 				# Add to inventory
 				# TODO: Make this tied to how much teeth the cell has
-				head.add_teeth(1)
-				map.make_cell_empty(curr_cell)
-				item_picked_up.emit()
+				var leftover_teeth : int = head.add_teeth(curr_cell.tooth_count)
+				if leftover_teeth == 0:
+					map.make_cell_empty(curr_cell)
+					item_picked_up.emit()
+				else:
+					# Need to make sure that UI doesn't mark this spot as empty
+					item_partial_pickup.emit()
+					curr_cell.tooth_count = leftover_teeth
+				
 				if Globals.verbose_console == true:
 					print("PICKED UP TOOTH! PLAYER NOW HOLDS ", head.tooth_count, " TEETH!")
-				Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(head.tooth_count) + " TEETH!")
+				#Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(head.tooth_count) + " TEETH!")
+			else:
+				Log.add_log_message("IT TRIED TO PUSH TEETH INTO ITS HEAD, BUT ITS HEAD IS ALREADY FULL")
 	
 #endregion
 

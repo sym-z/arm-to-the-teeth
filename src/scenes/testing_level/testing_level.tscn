@@ -51,6 +51,7 @@ map_node = NodePath("../../Map")
 [connection signal="combat_started" from="Player" to="UI" method="_on_player_combat_started"]
 [connection signal="hunger_ticked" from="Player" to="UI" method="_on_player_hunger_ticked"]
 [connection signal="item_detected" from="Player" to="UI" method="_on_player_item_detected"]
+[connection signal="item_partial_pickup" from="Player" to="UI" method="_on_player_item_partial_pickup"]
 [connection signal="item_picked_up" from="Player" to="Dungeon Viewport" method="_on_player_item_picked_up"]
 [connection signal="item_picked_up" from="Player" to="UI" method="_on_player_item_picked_up"]
 [connection signal="item_picked_up" from="Player" to="Debug Visualizer Layer/Debug Visualizer" method="_on_player_item_picked_up"]

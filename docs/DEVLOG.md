@@ -203,3 +203,7 @@
 - Inventory buttons use one theme
 - Ownership of teeth management is now delgated to the head
 - After dying, log messages are preserved into the next run.
+- Multiple teeth can spawn in the same place
+  - The map will spawn 1-3 teeth in a spot when marking a tooth cell
+  - When attempting to pick up more teeth than the player can hold, the remainder will be left on the ground.
+  

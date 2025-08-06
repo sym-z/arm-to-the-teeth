@@ -80,6 +80,7 @@ func initial_setup():
 		add_arm_to_inventory(player.arm_inventory[i], i+1)
 	player.connect("stat_change", refresh_stat_showcase)
 	player.connect("item_picked_up", refresh_stat_showcase)
+	player.connect("item_partial_pickup", refresh_stat_showcase)
 	refresh_stat_showcase()
 
 #region Mini Map
@@ -133,6 +134,10 @@ func _on_player_item_picked_up():
 	item_to_pick = Cell.TYPE.EMPTY
 	refresh_temp_labels()
 
+func _on_player_item_partial_pickup():
+	refresh_temp_labels()
+	
+	
 func add_arm_to_inventory(a : Arm, number : int):
 	var new_arm_item = arm_item_scene.instantiate()
 	new_arm_item.set_text_to_arm(a, number)

@@ -346,6 +346,9 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 			# Keeping defaults for now
 			#TODO: GIVE UNIQUE SPRITEFRAMES!
 			enemy_atlas[loc] = new_enemy
+		elif type == Cell.TYPE.TOOTH:
+			# TODO: Balance
+			world_map[loc].tooth_count = randi_range(1,3)
 		#print("Placing ", type, " at ", loc)
 	else:
 		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")

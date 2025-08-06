@@ -115,9 +115,6 @@
 - [ ] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [ ] Arm sprite adjustment
 - [ ] Inventory items need better styleboxes
-- [x] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
-  - [x] D1 left, left side and right right side
-  - [x] Could use outline tool in Aseprite!
 - [ ] Add in Head animation to stat showcase
 - [ ] Add in Arm animation to stat showcase
 - [ ] Add in Tooth animation to stat showcase
@@ -126,11 +123,12 @@
 - [ ] Make better vision bounds animation
 ### DONE
 - [x] Prototype font
+- [x] Add more detailed, thicker lines to the walls. Specifically the inside portion of the left and right walls.
+  - [x] D1 left, left side and right right side
+  - [x] Could use outline tool in Aseprite!
 
 ## UI
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
-- [ ] Inventory Window Title
-- [x] Log Window Title
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art
@@ -166,7 +164,10 @@
   - 160 x 160px is the max size for map
 - [ ] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
 - [ ] Enemy name to combat window
+- [ ] Log line window label?
 ### DONE
+- [x] Inventory Window Title
+- [x] Log Window Title
 - [x] Show tooth and arm count
 - [x] Log of what has happened ex: "IT HAS TAKEN 2 DAMAGE TO LEFT ARM"
 - [x] Log window
