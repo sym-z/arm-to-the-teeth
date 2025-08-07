@@ -284,7 +284,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpe2p"]
@@ -689,7 +689,7 @@ mouse_filter = 2
 [node name="Clicker" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Clicker Container/Clicker Control"]
 sprite_frames = SubResource("SpriteFrames_65l4u")
 autoplay = "default"
-frame_progress = 0.539606
+frame_progress = 0.626969
 
 [node name="Header Container" type="MarginContainer" parent="Wheel Roller"]
 layout_mode = 2
