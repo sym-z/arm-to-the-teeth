@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=71 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://cy0id8vi086ow" path="res://assets/visual/ui/run_window/run_dirs_0_hover3.png" id="28_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://bt6qvfk08xwbs" path="res://assets/visual/ui/run_window/run_dirs_0_disabled2.png" id="28_xx2gd"]
 [ext_resource type="Texture2D" uid="uid://b1n1gq4258ycd" path="res://assets/visual/ui/run_window/run_dirs_0_hover2.png" id="31_bhhon"]
+[ext_resource type="Texture2D" uid="uid://4d7svxjvbrst" path="res://assets/visual/ui/wheel_roller/wheel_roller_0.png" id="33_pcqw8"]
+[ext_resource type="Texture2D" uid="uid://cdr3ouxfesibc" path="res://assets/visual/ui/wheel_roller/clicker_0.png" id="34_bhhon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7xhf"]
 atlas = ExtResource("9_8xoyx")
@@ -66,6 +68,247 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.984314, 0.980392, 0.898039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3v2j"]
+bg_color = Color(0.0156863, 0.00784314, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjwf1"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(0, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpmys"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(450, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8e2f"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(900, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nqm1"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(1350, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkw3r"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(1800, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c83l7"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(2250, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap0e6"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(2700, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84qhk"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(3150, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqhh2"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(3600, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eewq"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(4050, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo0c2"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(4500, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhqh6"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(4950, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acl64"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(5400, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr74e"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(5850, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1alk"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(6300, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fhi2"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(6750, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yxl"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(7200, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hij8p"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(7650, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_147t5"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(8100, 0, 450, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j0k5"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(8550, 0, 450, 450)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ln2qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjwf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpmys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8e2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nqm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkw3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c83l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap0e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84qhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqhh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7eewq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo0c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhqh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acl64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr74e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1alk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fhi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11yxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hij8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_147t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j0k5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud64e"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jexk6"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(112, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc514"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(224, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w1lj"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(336, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5a8u"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(448, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biyrp"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(560, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qasvu"]
+atlas = ExtResource("34_bhhon")
+region = Rect2(672, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65l4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud64e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jexk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc514")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w1lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5a8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biyrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qasvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpe2p"]
+bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u3m5"]
+bg_color = Color(0.0156863, 0.00784314, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
@@ -389,6 +632,105 @@ theme_override_font_sizes/font_size = 47
 text = "FIGHT FOR YOUR LIFE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Wheel Roller" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 84
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 84
+theme_override_constants/margin_bottom = 42
+
+[node name="Panel" type="Panel" parent="Wheel Roller"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3v2j")
+
+[node name="Animation Container" type="MarginContainer" parent="Wheel Roller"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Wheel Centerer" type="CenterContainer" parent="Wheel Roller/Animation Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Wheel Control" type="Control" parent="Wheel Roller/Animation Container/Wheel Centerer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Wheel" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Wheel Centerer/Wheel Control"]
+sprite_frames = SubResource("SpriteFrames_ln2qj")
+
+[node name="Clicker Container" type="MarginContainer" parent="Wheel Roller/Animation Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 484
+theme_override_constants/margin_top = 581
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Clicker Control" type="Control" parent="Wheel Roller/Animation Container/Clicker Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Clicker" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Clicker Container/Clicker Control"]
+sprite_frames = SubResource("SpriteFrames_65l4u")
+
+[node name="Header Container" type="MarginContainer" parent="Wheel Roller"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 600
+
+[node name="Label" type="Label" parent="Wheel Roller/Header Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 32
+text = "STOP THE WHEEL TO ATTACK
+GREEN: HIT ENEMY
+RED / ORANGE: WHIFF AND DAMAGE SELF
+WHITE: CRITICAL HIT AGAINST THE ENEMY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result Container" type="MarginContainer" parent="Wheel Roller"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 530
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Wheel Roller/Result Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 42
+text = "SAMPLE RESULT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stop Button Container" type="MarginContainer" parent="Wheel Roller"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 680
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 25
+
+[node name="Stop Button" type="Button" parent="Wheel Roller/Stop Button Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/hover = SubResource("StyleBoxFlat_dpe2p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1u3m5")
+text = "STOP"
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]
