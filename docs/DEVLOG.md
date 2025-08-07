@@ -218,3 +218,11 @@
 - Clearing `enemy_atlas` seems to have no negative effect
 - Head is now in charge of when it is damaged, and deducts health accordingly
 - Log messages now have numbers included with them to assist in players understanding the order and how many have happened.
+- Got the basics done for a new type of die roller called a "Wheel Roller`
+  - Wheel spins and starts at a random frame
+  - When a button is pressed to stop the wheel, a function is called based on the frame of the animation
+  - As the wheel turns, there is text that matches the effect of what would happen if the wheel were to be stopped at that point
+  - Right now, when the functions are called, only print statments happen.
+  - Tomorrow I will integrate it into the combat loop.
+- Art imported for the Wheel Roller and the clicker thing that collides up against the wheel
+- Imported a texture that can be used as a background of a photo that I took in my apartment basement.
