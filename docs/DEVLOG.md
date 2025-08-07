@@ -226,3 +226,4 @@
   - Tomorrow I will integrate it into the combat loop.
 - Art imported for the Wheel Roller and the clicker thing that collides up against the wheel
 - Imported a texture that can be used as a background of a photo that I took in my apartment basement.
+- Spent a long time fixing a bug that happened due to erasing a prototype for the wheel roller, and was able to solve it. Further described under `TODO.md` in the section "Keep in Mind".  

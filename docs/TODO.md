@@ -240,3 +240,4 @@
 - When going back to add animations instead of the labels in the UI, I would really need to just look for whenever the `refresh_temp_labels()` function is called and refresh the animations
 - Got a weird error about uid "dqrdhjjdlmsmt", keep an eye out. It happened when I was adding children to the wheel roller
   - I was able to solve it by deleting the reference in `.godot/editor/quick_open_dialog_cache.cfg` and put a screenshot of the uid I deleted in `dev_screenshots/error_tracking/uid_removal.png`
+  - I found out about why this problem occured and where to go to go about solving it by finding a GitHub Issue that was created about it at this link: https://github.com/godotengine/godot/issues/104961
