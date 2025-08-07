@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=72 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cy0id8vi086ow" path="res://assets/visual/ui/run_window/run_dirs_0_hover3.png" id="28_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://bt6qvfk08xwbs" path="res://assets/visual/ui/run_window/run_dirs_0_disabled2.png" id="28_xx2gd"]
 [ext_resource type="Texture2D" uid="uid://b1n1gq4258ycd" path="res://assets/visual/ui/run_window/run_dirs_0_hover2.png" id="31_bhhon"]
+[ext_resource type="Script" uid="uid://bhqla245yfxor" path="res://prefabs/ui/combat_viewport/wheel_roller/wheel_roller.gd" id="33_bhhon"]
 [ext_resource type="Texture2D" uid="uid://4d7svxjvbrst" path="res://assets/visual/ui/wheel_roller/wheel_roller_0.png" id="33_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://cdr3ouxfesibc" path="res://assets/visual/ui/wheel_roller/clicker_0.png" id="34_bhhon"]
 
@@ -80,10 +81,6 @@ expand_margin_left = 4.0
 expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjwf1"]
-atlas = ExtResource("33_pcqw8")
-region = Rect2(0, 0, 450, 450)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpmys"]
 atlas = ExtResource("33_pcqw8")
@@ -161,12 +158,13 @@ region = Rect2(8100, 0, 450, 450)
 atlas = ExtResource("33_pcqw8")
 region = Rect2(8550, 0, 450, 450)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjwf1"]
+atlas = ExtResource("33_pcqw8")
+region = Rect2(0, 0, 450, 450)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln2qj"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hjwf1")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hpmys")
 }, {
@@ -223,10 +221,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5j0k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjwf1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 40.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud64e"]
@@ -310,7 +311,7 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -324,6 +325,7 @@ button_container = NodePath("Dialog Box/Dialog Box Panel Container/MarginContain
 attack_button = NodePath("Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack")
 run_button = NodePath("Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run")
 att_die_roller = NodePath("Dialog Box/Dialog Box Panel Container/Attacking Die Roller")
+wheel_roller = NodePath("Wheel Roller")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
 arm_selection_window = NodePath("Attacking Arm Selection")
@@ -633,7 +635,7 @@ text = "FIGHT FOR YOUR LIFE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wheel Roller" type="MarginContainer" parent="."]
+[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("wheel", "clicker", "result_label", "stop_button")]
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -641,6 +643,11 @@ theme_override_constants/margin_left = 84
 theme_override_constants/margin_top = 84
 theme_override_constants/margin_right = 84
 theme_override_constants/margin_bottom = 42
+script = ExtResource("33_bhhon")
+wheel = NodePath("Animation Container/Wheel Centerer/Wheel Control/Wheel")
+clicker = NodePath("Animation Container/Clicker Container/Clicker Control/Clicker")
+result_label = NodePath("Result Container/Label")
+stop_button = NodePath("Stop Button Container/Stop Button")
 
 [node name="Panel" type="Panel" parent="Wheel Roller"]
 layout_mode = 2
@@ -665,12 +672,13 @@ mouse_filter = 2
 
 [node name="Wheel" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Wheel Centerer/Wheel Control"]
 sprite_frames = SubResource("SpriteFrames_ln2qj")
+frame = 18
 
 [node name="Clicker Container" type="MarginContainer" parent="Wheel Roller/Animation Container"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 484
-theme_override_constants/margin_top = 581
+theme_override_constants/margin_left = 539
+theme_override_constants/margin_top = 556
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
@@ -680,6 +688,8 @@ mouse_filter = 2
 
 [node name="Clicker" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Clicker Container/Clicker Control"]
 sprite_frames = SubResource("SpriteFrames_65l4u")
+autoplay = "default"
+frame_progress = 0.539606
 
 [node name="Header Container" type="MarginContainer" parent="Wheel Roller"]
 layout_mode = 2

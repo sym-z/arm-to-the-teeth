@@ -19,6 +19,9 @@ var enemy_dead : bool = false
 @export_category("Dialog Box Die Rollers")
 @export var att_die_roller : AnimatedSprite2D
 
+@export_category("Wheel Roller")
+@export var wheel_roller : MarginContainer
+
 @export_category("Animations")
 @export var player_anim : AnimatedSprite2D
 @export var enemy_anim : AnimatedSprite2D
@@ -76,6 +79,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	opponent = e
 	combat_location = loc
 	refresh_temp_labels()
+	wheel_roller.spin_wheel()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
