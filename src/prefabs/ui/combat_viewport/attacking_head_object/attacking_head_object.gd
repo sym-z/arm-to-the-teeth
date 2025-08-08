@@ -21,4 +21,4 @@ func input_head(h : Head):
 	head_reference = h
 
 func _on_select_button_pressed():
-	attacking_head_selected.emit(head_reference)
+	attacking_head_selected.emit()

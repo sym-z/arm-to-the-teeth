@@ -227,7 +227,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 40.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud64e"]
@@ -635,7 +635,8 @@ text = "FIGHT FOR YOUR LIFE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("wheel", "clicker", "result_label", "stop_button")]
+[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "wheel", "clicker", "result_label", "stop_button")]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -644,6 +645,7 @@ theme_override_constants/margin_top = 84
 theme_override_constants/margin_right = 84
 theme_override_constants/margin_bottom = 42
 script = ExtResource("33_bhhon")
+combat_viewport = NodePath("..")
 wheel = NodePath("Animation Container/Wheel Centerer/Wheel Control/Wheel")
 clicker = NodePath("Animation Container/Clicker Container/Clicker Control/Clicker")
 result_label = NodePath("Result Container/Label")

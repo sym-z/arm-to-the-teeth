@@ -5,7 +5,7 @@ extends VBoxContainer
 var arm_reference : Arm
 
 # Gives the reference back to the combat viewport of the arm to use for combat
-signal attacking_arm_selected(a : Arm)
+signal attacking_arm_selected()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,5 +22,5 @@ func input_arm(a : Arm):
 
 
 func _on_select_button_pressed():
-	attacking_arm_selected.emit(arm_reference)
+	attacking_arm_selected.emit(arm_reference,false)
 	pass # Replace with function body.

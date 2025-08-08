@@ -1,6 +1,7 @@
 extends MarginContainer
 
 @export var root_ui : CanvasLayer
+@export var use_wheel : bool = true
 var player : Node
 var map : Node
 var opponent : Enemy 
@@ -61,6 +62,8 @@ func _ready():
 	visible = false
 	player = root_ui.player
 	map = root_ui.map
+	#if use_wheel == true:
+		#wheel_roller.connect("results_ready", )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,7 +82,6 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	opponent = e
 	combat_location = loc
 	refresh_temp_labels()
-	wheel_roller.spin_wheel()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
@@ -208,7 +210,11 @@ func refresh_arm_selections():
 	# Add head of player first
 	var new_head_obj = attacking_head_object_scene.instantiate()
 	new_head_obj.input_head(player.head)
-	new_head_obj.connect("attacking_head_selected", attacking_head_selected)
+	if use_wheel == false:
+		new_head_obj.connect("attacking_head_selected", attacking_head_selected)
+	else:
+		## Method 1, parameters are bound to the function beforehand
+		new_head_obj.connect("attacking_head_selected", wheel_roller.spin_wheel.bindv([new_head_obj.head_reference, true]))
 	arm_container.add_child(new_head_obj)
 	# Refill with current arm inventory state
 	for arm in player.arm_inventory:
@@ -216,7 +222,11 @@ func refresh_arm_selections():
 		if arm.equipped == true:
 			var new_arm_obj = attacking_arm_object_scene.instantiate()
 			new_arm_obj.input_arm(arm)
-			new_arm_obj.connect("attacking_arm_selected", attacking_arm_selected)
+			if use_wheel == false:
+				new_arm_obj.connect("attacking_arm_selected", attacking_arm_selected)
+			else:
+				## Method 2, attacking_arm_object handles sending the parameters to spin_wheel
+				new_arm_obj.connect("attacking_arm_selected", wheel_roller.spin_wheel)
 			arm_container.add_child(new_arm_obj)
 
 func attacking_arm_selected(a : Arm):
@@ -259,7 +269,6 @@ func attacking_head_selected(h : Head):
 		#att_die_roller.set_die(1,20,20)
 		att_die_roller.set_die(1,20,opponent.difficulty_class)
 	#TODO: SET LABEL TO SHOW DIFFICULTY CLASS
-
 func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 	if Globals.verbose_console == true:
 		print("DIE RESULTS READY")
@@ -323,6 +332,8 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 		#endregion
 	#endregion
 	#region Enemy's Turn
+
+
 # Enemy rolls to attempt to attack player
 func enemy_attack_roll():
 	if enemy_dead == false:
@@ -418,32 +429,7 @@ func check_enemy_death():
 		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
 		# Set flag
 		enemy_dead = true
-		# Hide combat viewport
-		visible = false
-		# Get cell that combat is taking place in
-		var map_cell : Cell = map.world_map[combat_location]
-		# Remove enemy from map's atlas at combat_location
-		map.enemy_atlas.erase(combat_location)
-		
-		
-		# Make the cell empty at that location
-		#map.make_cell_empty(map_cell)
-		# This signal tells the viewport to refresh, tells the UI that the cell is empty, and tells the minimap to get rid of the icon at this location.
-		#player.item_picked_up.emit()
-		
-		# Allow the player to move
-		player.in_combat = false
-		
-		
-		# Calculate loot for drop and overwrite cell's contents.
-		drop_loot()
-		# Tell the viewport to refresh, but don't allow the UI to think that the cell is empty, or allow the minimap to erase the icon at this location
-		player.item_partial_pickup.emit()
-		
-		if Globals.verbose_console == true:
-			print("ENEMY KILLED")
-			map.print_enemy_atlas()
-			print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
+		create_timer(pause_time,combat_victory)
 
 func drop_loot():
 	#TODO: Eventually factor in enemy type and floor number
@@ -514,6 +500,35 @@ func drop_loot():
 	# Refresh the player's understanding of what is on the ground in front of them
 	player.check_cell_content()
 	#endregion
+
+func combat_victory():
+	# Hide combat viewport
+	visible = false
+	# Get cell that combat is taking place in
+	var map_cell : Cell = map.world_map[combat_location]
+	# Remove enemy from map's atlas at combat_location
+	map.enemy_atlas.erase(combat_location)
+	
+	
+	# Make the cell empty at that location
+	#map.make_cell_empty(map_cell)
+	# This signal tells the viewport to refresh, tells the UI that the cell is empty, and tells the minimap to get rid of the icon at this location.
+	#player.item_picked_up.emit()
+	
+	# Allow the player to move
+	player.in_combat = false
+	
+	
+	# Calculate loot for drop and overwrite cell's contents.
+	drop_loot()
+	# Tell the viewport to refresh, but don't allow the UI to think that the cell is empty, or allow the minimap to erase the icon at this location
+	player.item_partial_pickup.emit()
+	
+	if Globals.verbose_console == true:
+		print("ENEMY KILLED")
+		map.print_enemy_atlas()
+		print("THERE ARE NOW ", map.enemy_atlas.keys().size(), " ENEMIES LEFT.")
+	pass
 #endregion
 
 #region Group Visibility Switching Functions
@@ -535,6 +550,10 @@ func change_run_direction_selection_vis(new_vis : bool):
 	down_button.disabled = true
 	left_button.disabled = true
 	right_button.disabled = true
+func change_wheel_roller_vis(new_vis : bool):
+	wheel_roller.visible = new_vis
+	# Disable/Enable inventory management
+	root_ui.inventory_button.disabled = new_vis
 func show_player_turn_start():
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(false)
@@ -548,7 +567,7 @@ func show_player_turn_start():
 ## Create a timer that after "duration" seconds calls "callback" and destroys itself
 func create_timer(duration : float, callback: Callable):
 	if Globals.debug_combat == true:
-		duration = 0.1
+		duration = duration
 	var t : Timer = Timer.new()
 	t.connect("timeout", callback)
 	t.connect("timeout", t.queue_free)
