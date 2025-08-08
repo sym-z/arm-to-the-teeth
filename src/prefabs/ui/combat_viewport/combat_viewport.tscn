@@ -674,7 +674,6 @@ mouse_filter = 2
 
 [node name="Wheel" type="AnimatedSprite2D" parent="Wheel Roller/Animation Container/Wheel Centerer/Wheel Control"]
 sprite_frames = SubResource("SpriteFrames_ln2qj")
-frame = 18
 
 [node name="Clicker Container" type="MarginContainer" parent="Wheel Roller/Animation Container"]
 layout_mode = 2
