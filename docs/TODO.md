@@ -82,13 +82,11 @@
 - [ ] Player Animates
   - [x] Prototype
   - [ ] Final
-- [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy
 - [ ] Higher damage for crit rolls
   - [ ] For enemy
-  - [ ] For player
+  - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] Tune pauses between hits
-- [ ] Die rolls faster, or randomizes number.
 - [ ] Pause after death before transition
 - [ ] Running may damage your arms
 - [ ] Enemy animation
@@ -104,6 +102,8 @@
 - [ ] Monster stats are depedent on floor level
 - [ ] More enemy types
 ### DONE
+- [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy (NOT APPLICABLE)
+- [ ] Die rolls faster, or randomizes number. (NOT APPLICABLE)
 - [x] Windows have titles and instructions
 - [x] Enemies can drop items (Teeth/Arms)
 - [x] Battle can end

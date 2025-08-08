@@ -226,4 +226,8 @@
   - Tomorrow I will integrate it into the combat loop.
 - Art imported for the Wheel Roller and the clicker thing that collides up against the wheel
 - Imported a texture that can be used as a background of a photo that I took in my apartment basement.
-- Spent a long time fixing a bug that happened due to erasing a prototype for the wheel roller, and was able to solve it. Further described under `TODO.md` in the section "Keep in Mind".  
+- Spent a long time fixing a bug that happened due to erasing a prototype for the wheel roller, and was able to solve it. Further described under `TODO.md` in the section "Keep in Mind". 
+
+## 8 August 2025
+- Integrated `wheel_roller.tscn` to take the place of the prototype D20 that was being used. A lot of code can now be taken out of `combat_viewport.gd`.
+- Made the area available to land a hit on the `wheel_roller` larger.
