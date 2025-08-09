@@ -87,10 +87,15 @@ func initial_setup():
 func _on_mini_map_mini_map_ready():
 	mini_map.create_visualization()
 #endregion
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
+func _input(event):
+	if event.is_action_pressed("open_inventory"):
+		if inventory_button.disabled == false:
+			inventory_button.pressed.emit()
+	elif event.is_action_pressed("pick_up"):
+		if pickup_button.disabled == false:
+			pickup_button.pressed.emit()
+			
 #region Viewport Header
 func _on_map_level_clear():
 	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)

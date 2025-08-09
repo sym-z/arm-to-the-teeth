@@ -254,3 +254,6 @@
 ## 9 August 2025
 - Testing all of yesterday's work, and merging back into `content-enhancement`
 - Adding in some new prototype art for the back of the player's head, and aligning the minimap with the UI. Added some new color's to AT3's palette.
+- New keyboard input options added:
+  - TAB/I: Open inventory
+  - E/SPACE: Pickup

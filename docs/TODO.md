@@ -46,14 +46,14 @@
 - [ ] Text speed choice in options menu that effects battle speed
 - [ ] Content animates in map
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
-- [ ] SPACE to pick up
-  - Remember to have `ui.gd` check if the button is disabled first
-- [ ] TAB for inventory
-  - Remember to have `ui.gd` check if the button is disabled first
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
 - [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
 - [ ] On new floor, decide on head upgrade, or arm upgrade? (STRETCH GOAL)
 ### DONE
+- [x] SPACE to pick up
+  - Remember to have `ui.gd` check if the button is disabled first
+- [x] TAB for inventory
+  - Remember to have `ui.gd` check if the button is disabled first
 - [x] When a player picks up teeth, there can be 1 or more teeth in that spot
   - [x] If player has full teeth, they can leave the remainder on the ground, or it just maxes out their teeth
     - [x] If they can leave the remainder, then I need to create a tooth atlas when the map is generated like the arms to keep track of tooth drops
