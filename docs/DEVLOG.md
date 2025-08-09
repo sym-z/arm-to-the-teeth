@@ -272,3 +272,4 @@
   - This means that the player's DC could be negative, if the floor is 15, their max health would be 5+15 and if their current health was 10, their dc would be 10-15(-5). This prioritizes the player staying within range of their max health.
   - In the future I can just make the enemy roll 1 - max health *4 and if the roll is under player max_health /4 then it misses.
 - Switched mini-map icons to new palette, and imported them, but it still needs to be integrated into the minimap itself
+- Applied the temporary fix idea from earlier in this entry for the player's DC. The enemy will always roll from 1 - `player.head.max_health * 4`, and if the roll is under `floor(player.head.max_health /4)` then the enemy misses.

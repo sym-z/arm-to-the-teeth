@@ -183,9 +183,9 @@ func runaway_damage():
 		if arm.equipped == true:
 			equipped_arms.append(arm)
 	var limb_choice : int = randi_range(0, equipped_arms.size())
-	var enemy_roll : int = randi_range(0,20)
+	var enemy_roll : int = randi_range(1,player.head.max_health * 4)
 	# Roll using player's head health as DC / head health + teeth
-	if enemy_roll > player.head.health - Globals.curr_floor:
+	if enemy_roll > floor(player.head.max_health/4):
 		match limb_choice:
 			0:
 				# Head
@@ -360,11 +360,12 @@ func enemy_attack_roll():
 		# Hide player's die roll screen
 		change_att_die_roller_vis(false)
 		# Player's DC is dependent on head health.
-		var enemy_roll = randi_range(1,20)
+		# Using a factor of 4 will always assure that the rolls will simulate a 1-20 roll when the player's health is at 5
+		var enemy_roll = randi_range(1,player.head.max_health * 4)
 		if Globals.debug_combat == true:
 			enemy_roll = 20 
 			pass
-		if enemy_roll < player.head.health - Globals.curr_floor:
+		if enemy_roll < floor(player.head.max_health / 4):
 			# Enemy Miss
 			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
 			#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
