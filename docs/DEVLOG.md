@@ -249,3 +249,4 @@
   - Enemy base damage and stats increase by floor number
     - Variance will still be added so there will be weaker and stronger enemies
 - Adjusted ordering of MiniMap CanvasLayer to be lower than other menus, but needed to make it render after the viewport header container.
+- Gave the Minimap its own border
