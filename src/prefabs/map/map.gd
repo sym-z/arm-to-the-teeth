@@ -334,18 +334,19 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 			return
 		world_map[loc].contents = type
 		empty_cells.erase(loc)
+		# Base stats are slightly randomized, and also influenced by floor level.
 		if type == Cell.TYPE.ARM:
 			var arm_drop : Arm = Arm.new()
-			#TODO: Randomize
-			arm_drop.strength = 2
-			arm_drop.max_condition = 6
+			arm_drop.strength = randi_range(1,3) + Globals.curr_floor
+			arm_drop.max_condition = randi_range(4,7) + Globals.curr_floor
 			arm_drop.condition = arm_drop.max_condition
 			arm_drop.equipped = false
 			arm_atlas[loc] = arm_drop
 		elif type == Cell.TYPE.ENEMY:
 			var new_enemy : Enemy = Enemy.new()
-			#TODO: Randomize stats, but influence based off of floor level
-			# Keeping defaults for now
+			new_enemy.total_health = randi_range(4,6) + Globals.curr_floor
+			new_enemy.curr_health = new_enemy.total_health
+			new_enemy.damage = randi_range(1,3) + Globals.curr_floor
 			#TODO: GIVE UNIQUE SPRITEFRAMES!
 			enemy_atlas[loc] = new_enemy
 		elif type == Cell.TYPE.TOOTH:

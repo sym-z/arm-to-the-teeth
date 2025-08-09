@@ -49,6 +49,8 @@
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
 - [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
 - [ ] On new floor, decide on head upgrade, or arm upgrade? (STRETCH GOAL)
+  - Keep in mind if you do this that the player's DC now needs to be adjusted because a standard subtraction of `Globals.curr_floor` is happening to the player's health when the DC is being calculated, so non-head upgrades will result in negative impact of the player's DC. 
+  - Try to make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health /4
 ### DONE
 - [x] SPACE to pick up
   - Remember to have `ui.gd` check if the button is disabled first
@@ -103,6 +105,7 @@
 - [ ] Loot drops are dependent on monster stats
 - [ ] Monster stats are depedent on floor level
 - [ ] More enemy types
+- [ ] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health /4 for runaway damage and enemy roll calculations in combat.
 ### DONE
 - [x] Running may damage your arms
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy (NOT APPLICABLE)
@@ -187,6 +190,8 @@
 - [ ] (STRETCH GOAL) Log messages have a timestamp
 - [ ] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
+- [ ] Head ui shows health/max_health
+- [ ] Arms show condition in stat_showcase
 ### DONE
 - [x] Log line window label?
 - [x] Stat showcase labelled with "STATS"
@@ -212,13 +217,13 @@
 ## Fixes
 - [ ] Farther side wall at distance d2 needs to have a connection of lines from the far center wall at level d2. It also needs to be 1 pixel longer on its left side. This needs to be double-checked in the testing room to see if it is actually visible. The one pixel offset thing seems to be visible, but I have yet to replicate the other issue. It would be nice to take care of though.
   - Will be under the UI's CanvasLayer now.
-- [ ] Turn off arrow key input for Context menu
 - [ ] Prevent negative values for appearing for
   - [ ] Teeth
   - [ ] Arm condition
   - [ ] Head health
 - [ ] Add padding to font and re-export
 ### DONE
+- [x] Turn off arrow key input for Context menu
 - [x] Head should be in charge of tooth count
 - [x] Try to make the `CanvasLayer` parent thing work in the UI scene.
 - [x] Fix issue with side walls that have 2 frames being set to frame 2 and fixing itself by setting to 1. To avoid future undefined behavior the best fix would be to just copy the second frame for each of the side walls that only have 2 frames. 

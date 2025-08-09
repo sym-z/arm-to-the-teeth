@@ -544,24 +544,28 @@ alignment = 1
 [node name="Pick Up" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme = ExtResource("5_cllw1")
 text = "PICK UP"
 
 [node name="Inventory" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme = ExtResource("5_cllw1")
 text = "INVENTORY"
 
 [node name="Options" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme = ExtResource("5_cllw1")
 text = "OPTIONS"
 
 [node name="Quit" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme = ExtResource("5_cllw1")
 text = "QUIT"
 

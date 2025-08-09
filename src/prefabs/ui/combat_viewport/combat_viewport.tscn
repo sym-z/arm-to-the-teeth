@@ -69,6 +69,8 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_right = 20.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3v2j"]
 bg_color = Color(0.0156863, 0.00784314, 0, 1)
@@ -429,12 +431,13 @@ theme_override_constants/margin_bottom = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="TEMP ENEMY STATS/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="TEMP ENEMY HEALTH" type="Label" parent="TEMP ENEMY STATS/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 32
-text = "HEALTH: "
+text = "HEALTH: 200/200"
 
 [node name="TEMP ENEMY DAMAGE" type="Label" parent="TEMP ENEMY STATS/MarginContainer/VBoxContainer"]
 layout_mode = 2

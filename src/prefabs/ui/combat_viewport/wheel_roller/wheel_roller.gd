@@ -84,6 +84,8 @@ func spin_wheel(limb : Variant, head : bool):
 	# Set to random frame
 	wheel.frame = randi_range(0,wheel.sprite_frames.get_frame_count("default")-1)
 	change_label()
+	if Globals.curr_floor != 0:
+		wheel.speed_scale += log(Globals.curr_floor**3)
 	wheel.play()
 
 func stop_wheel():

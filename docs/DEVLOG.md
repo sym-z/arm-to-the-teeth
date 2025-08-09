@@ -257,3 +257,17 @@
 - New keyboard input options added:
   - TAB/I: Open inventory
   - E/SPACE: Pickup
+- Game difficulty is now tuned to the floor that the player is on. This affects things like:
+  - Enemy base stats
+  - Arm drop base stats
+  - Loot drop base stats
+- The player's head health and current health is upgraded by 1 every time they ascend a floor
+  - Eventually I would love to give more upgrade options at this point
+- Enemies and Arm drops now have slightly randomized base stats, like tooth drops. They are still incremented by the floor level.
+- Context menu buttons cannot take focus and override spacebar presses
+- Wheel's spin speed is now increased by log(floor^3) when not on the first floor
+- Adjusted the enemy's stat window to accomodate for larger health due to difficulty increases.
+- Refactored the way that the enemy calculates the DC for the player due to head health being a factor.
+  - Right now, it just subtracts the health added by new floors, but later I will need to make it a standard number because if I want the player to choose what they want to upgrade when they transition to a new floor non-head health upgrades will negatively impact their DC.
+  - This means that the player's DC could be negative, if the floor is 15, their max health would be 5+15 and if their current health was 10, their dc would be 10-15(-5). This prioritizes the player staying within range of their max health.
+  - In the future I can just make the enemy roll 1 - max health *4 and if the roll is under player max_health /4 then it misses.

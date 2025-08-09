@@ -74,7 +74,14 @@ func _on_map_map_generated():
 		if Globals.verbose_console == true:
 			debug_print_inventory()
 	map.world_map[position].contents = Cell.TYPE.SPAWN
+	upgrade_loadout()
 	player_spawned.emit()
+
+# Each floor, the player can upgrade something. For now, their head max_health and current health goes up by one each floor. 
+func upgrade_loadout():
+	head.max_health += 1
+	head.health += 1
+	Log.add_log_message("IT GREW STRONGER, ITS HEAD GAINED BIOTIC FORTITUDE.")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

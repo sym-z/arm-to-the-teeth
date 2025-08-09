@@ -185,7 +185,7 @@ func runaway_damage():
 	var limb_choice : int = randi_range(0, equipped_arms.size())
 	var enemy_roll : int = randi_range(0,20)
 	# Roll using player's head health as DC / head health + teeth
-	if enemy_roll > player.head.health:
+	if enemy_roll > player.head.health - Globals.curr_floor:
 		match limb_choice:
 			0:
 				# Head
@@ -364,7 +364,7 @@ func enemy_attack_roll():
 		if Globals.debug_combat == true:
 			enemy_roll = 20 
 			pass
-		if enemy_roll < player.head.health:
+		if enemy_roll < player.head.health - Globals.curr_floor:
 			# Enemy Miss
 			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
 			#TODO: BACK TO ATTACK/RUN CHOICE AFTER TIMER
@@ -456,6 +456,9 @@ func drop_loot():
 	var curr_cell : Cell = map.world_map[combat_location]
 	var loot_roll : int = randi_range(1,20)
 	var coin_flip : int = randi_range(0,1)
+	if Globals.debug_combat == true:
+		loot_roll = 20
+		coin_flip = 1
 	if loot_roll >= 19:
 		# Rare
 		# Great Arm / 8 Teeth
@@ -463,9 +466,9 @@ func drop_loot():
 			curr_cell.contents = Cell.TYPE.ARM
 			# Add to map arm atlas
 			var great_arm : Arm = Arm.new()
-			great_arm.max_condition = 15
+			great_arm.max_condition = 15 + Globals.curr_floor
 			great_arm.condition = great_arm.max_condition
-			great_arm.strength = 4
+			great_arm.strength = 4 + Globals.curr_floor
 			map.arm_atlas[curr_cell.position] = great_arm
 			root_ui.mini_map.set_icon(Cell.TYPE.ARM, curr_cell.position)
 		else:
@@ -480,9 +483,9 @@ func drop_loot():
 			curr_cell.contents = Cell.TYPE.ARM
 			# Add to map arm atlas
 			var avg_arm : Arm = Arm.new()
-			avg_arm.max_condition = 8
+			avg_arm.max_condition = 8 + Globals.curr_floor
 			avg_arm.condition = avg_arm.max_condition
-			avg_arm.strength = 3
+			avg_arm.strength = 3 + Globals.curr_floor
 			map.arm_atlas[curr_cell.position] = avg_arm
 			root_ui.mini_map.set_icon(Cell.TYPE.ARM, curr_cell.position)
 		else:
@@ -497,9 +500,9 @@ func drop_loot():
 			curr_cell.contents = Cell.TYPE.ARM
 			# Add to map arm atlas
 			var bad_arm : Arm = Arm.new()
-			bad_arm.max_condition = 3
+			bad_arm.max_condition = 3 + Globals.curr_floor
 			bad_arm.condition = bad_arm.max_condition
-			bad_arm.strength = 1
+			bad_arm.strength = 1 + Globals.curr_floor
 			map.arm_atlas[curr_cell.position] = bad_arm
 			root_ui.mini_map.set_icon(Cell.TYPE.ARM, curr_cell.position)
 		else:
