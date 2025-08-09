@@ -88,7 +88,6 @@
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] Tune pauses between hits
 - [ ] Pause after death before transition
-- [ ] Running may damage your arms
 - [ ] Enemy animation
   - [ ] Attack
   - [ ] Hurt
@@ -102,6 +101,7 @@
 - [ ] Monster stats are depedent on floor level
 - [ ] More enemy types
 ### DONE
+- [x] Running may damage your arms
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy (NOT APPLICABLE)
 - [ ] Die rolls faster, or randomizes number. (NOT APPLICABLE)
 - [x] Windows have titles and instructions

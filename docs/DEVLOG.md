@@ -237,3 +237,13 @@
 - Combined the Stat Showcase and Temp Labels CanvasLayers into having one parent
 - Gave the Context Menu its own CanvasLayer parent.
 - Log line window now has a header in the UI scene.
+- Need to do a lot of testing:
+  - All wheel_roller possibilities
+  - Arm destroy on flee
+  - Both of those affect the UI labels and animations
+- When I go to make the game harder based on floor level:
+  - Head health and head max health increase by 1 every floor
+  - Arm drop base stats increase by floor number
+    - Variance will be added so there will still be better and worse arms
+  - Enemy base damage and stats increase by floor number
+    - Variance will still be added so there will be weaker and stronger enemies
