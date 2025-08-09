@@ -231,3 +231,5 @@
 ## 8 August 2025
 - Integrated `wheel_roller.tscn` to take the place of the prototype D20 that was being used. A lot of code can now be taken out of `combat_viewport.gd`.
 - Made the area available to land a hit on the `wheel_roller` larger.
+- Added in the functionality for arms to be hit when the player flees, still need to test this. 
+- I want to look into combining the functions `ui.refresh_temp_labels()` and `ui.refresh_stat_showcase()`
