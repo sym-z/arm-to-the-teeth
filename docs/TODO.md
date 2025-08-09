@@ -76,7 +76,8 @@
 - [x] Enemies Spawn
 
 ## Player vs Enemy Combat 
-- [ ] Enemy Animates
+- [ ] Cancel running / attacking choice?
+- [ ] Enemy animates
   - [x] Prototype
   - [ ] Final
 - [ ] Player Animates
@@ -147,6 +148,7 @@
   - [x] Could use outline tool in Aseprite!
 
 ## UI
+- [ ] Convert buttons to use red hover stylebox 
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art
