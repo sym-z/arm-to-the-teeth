@@ -273,3 +273,6 @@
   - In the future I can just make the enemy roll 1 - max health *4 and if the roll is under player max_health /4 then it misses.
 - Switched mini-map icons to new palette, and imported them, but it still needs to be integrated into the minimap itself
 - Applied the temporary fix idea from earlier in this entry for the player's DC. The enemy will always roll from 1 - `player.head.max_health * 4`, and if the roll is under `floor(player.head.max_health /4)` then the enemy misses.
+  - After testing, the calculation was edited to be rolling from 1 - `player.head.max_health * 4` and hitting if it was beneath `player.head.max_health`
+  - I can further adjust it to hit if it is under `player.head.health` which will make it easier to get hit the lower your head's health is, but that might make the game too punishing.
+- Fixed unintended behavior of the player upgrading at the start of the game.
