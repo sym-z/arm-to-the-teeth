@@ -133,9 +133,9 @@ func whiff(damage: int):
 		#TODO: Have low rolls factor into more health and teeth lost
 		Log.add_log_message("IT WHIFFED AND DEALTH " + str(damage) + " DAMAGE TO ITS HEAD.")
 		attacking_limb.damage(damage)
-		combat_viewport.player.stat_change.emit()
+		#combat_viewport.player.stat_change.emit()
 		# Refresh root_ui's labels
-		combat_viewport.root_ui.refresh_temp_labels()
+		
 		# Check for player death.
 		combat_viewport.check_player_death()
 	else:
@@ -146,4 +146,5 @@ func whiff(damage: int):
 		else:
 			Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(damage) + " CONDITION.")
 			# Only emitting here because when an arm is fully eaten the signal will fire.
-			combat_viewport.player.stat_change.emit()
+	combat_viewport.root_ui.refresh_temp_labels()
+	combat_viewport.player.stat_change.emit()

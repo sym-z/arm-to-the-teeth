@@ -176,23 +176,43 @@ func runaway_damage():
 		print("APPLYING RUNAWAY DAMAGE")
 	# Disable inventory management
 	root_ui.inventory_button.disabled = true
-	# Choose where to hit player, may default to head
-	# Temporarily always chooses head
-	# Roll using player's head health as DC / head health + teeth
+	# Choose where to hit player,
+	# Calculate the number of arms the player has equipped
+	var equipped_arms : Array[Arm] = []
+	for arm in player.arm_inventory:
+		if arm.equipped == true:
+			equipped_arms.append(arm)
+	var limb_choice : int = randi_range(0, equipped_arms.size())
 	var enemy_roll : int = randi_range(0,20)
+	# Roll using player's head health as DC / head health + teeth
 	if enemy_roll > player.head.health:
-		# Apply damage
-		player.head.damage(opponent.damage)
-		# TODO RANDOMIZE TEETH LOST
-		Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
-		player.stat_change.emit()
+		match limb_choice:
+			0:
+				# Head
+				# Apply damage
+				player.head.damage(opponent.damage)
+				Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
+				root_ui.refresh_temp_labels()
+				player.stat_change.emit()
+				check_player_death()
+			1:
+				# Arm 1
+				equipped_arms[0].condition = max(0,equipped_arms[0].condition - opponent.damage)
+				if equipped_arms[0].condition <= 0:
+					root_ui.arm_fully_eaten(equipped_arms[0])
+					root_ui.refresh_temp_labels()
+					player.stat_change.emit()
+			2:
+				# Arm 2
+				equipped_arms[1].condition = max(0,equipped_arms[1].condition - opponent.damage)
+				if equipped_arms[1].condition <= 0:
+					root_ui.arm_fully_eaten(equipped_arms[1])
+					root_ui.refresh_temp_labels()
+					player.stat_change.emit()
 	else:
 		Log.add_log_message("IT MANAGED TO FLEE AND TAKE NO DAMAGE")
-	# Check for death or arm destruction
-	check_player_death()
 	# Enable inventory management
 	root_ui.inventory_button.disabled = false
-	pass
 		#endregion
 		#region Attack Option
 func _on_attack_pressed():
