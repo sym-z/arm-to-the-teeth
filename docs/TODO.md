@@ -19,6 +19,7 @@
 
 ## Outside of Gameplay
 - [ ] Main Menu
+  - Words for Arm and Teeth are made from arms and teeth.
 - [ ] How to Play
 - [ ] Death Screen
 - [ ] Track highest floor achieved
