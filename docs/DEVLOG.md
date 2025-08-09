@@ -236,3 +236,4 @@
 - Added more labels for the UI, namely the Context Menu and the Stats Showcase
 - Combined the Stat Showcase and Temp Labels CanvasLayers into having one parent
 - Gave the Context Menu its own CanvasLayer parent.
+- Log line window now has a header in the UI scene.

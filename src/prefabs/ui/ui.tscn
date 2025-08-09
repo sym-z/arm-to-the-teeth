@@ -452,6 +452,7 @@ mouse_filter = 2
 
 [node name="Context Menu Header Label" type="RichTextLabel" parent="Context Menu/Context Menu Header Container"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("18_w51vb")
 theme_override_font_sizes/normal_font_size = 53
 text = "CONTEXT
@@ -588,6 +589,7 @@ mouse_filter = 2
 
 [node name="Stat Header Label" type="RichTextLabel" parent="Stat Showcase/Stat Header Container"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("18_w51vb")
 theme_override_font_sizes/normal_font_size = 53
 text = "BIOTIC
@@ -738,6 +740,33 @@ offset_right = 1029.0
 offset_bottom = 895.0
 theme = ExtResource("12_b6rlx")
 text = "BACK"
+
+[node name="Log Header Container" type="MarginContainer" parent="Log"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("13_xw6rm")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 990
+theme_override_constants/margin_right = 1630
+theme_override_constants/margin_bottom = 0
+
+[node name="Panel" type="Panel" parent="Log/Log Header Container"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Log Header Label" type="RichTextLabel" parent="Log/Log Header Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("18_w51vb")
+theme_override_font_sizes/normal_font_size = 53
+text = "LOG ->"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Viewport Header Container" type="MarginContainer" parent="."]
 anchors_preset = 15

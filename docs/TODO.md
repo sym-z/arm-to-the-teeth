@@ -177,15 +177,15 @@
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 - [ ] Border around mini-map
-  - 160 x 160px is the max size for map
+  - 320 x 320px is the max size for map
 - [ ] Enemy name to combat window
-- [ ] Log line window label?
-- [ ] Stat showcase labelled with "STATS"
 - [ ] First log message is the default text for the log line window.
 - [ ] (STRETCH GOAL) Log messages have a timestamp
 - [ ] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
 ### DONE
+- [x] Log line window label?
+- [x] Stat showcase labelled with "STATS"
 - [x] Log messages have a number associated with them
 - [x] Context menu buttons should have one theme because it shouldn't matter what can and can't be disabled if I am disabling random buttons at random times.
 - [x] Create separate button theme for buttons that can be disabled or enabled.
