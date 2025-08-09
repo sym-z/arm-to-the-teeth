@@ -233,3 +233,6 @@
 - Made the area available to land a hit on the `wheel_roller` larger.
 - Added in the functionality for arms to be hit when the player flees, still need to test this. 
 - I want to look into combining the functions `ui.refresh_temp_labels()` and `ui.refresh_stat_showcase()`
+- Added more labels for the UI, namely the Context Menu and the Stats Showcase
+- Combined the Stat Showcase and Temp Labels CanvasLayers into having one parent
+- Gave the Context Menu its own CanvasLayer parent.
