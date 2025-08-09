@@ -252,4 +252,5 @@
 - Gave the Minimap its own border
 
 ## 9 August 2025
-- Testing all of yesterday's work, and merging
+- Testing all of yesterday's work, and merging back into `content-enhancement`
+- Adding in some new prototype art for the back of the player's head, and aligning the minimap with the UI. Added some new color's to AT3's palette.
