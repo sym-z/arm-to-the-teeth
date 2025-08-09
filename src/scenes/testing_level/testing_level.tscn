@@ -28,10 +28,11 @@ player = NodePath("../Player")
 map = NodePath("../Map")
 
 [node name="Debug Visualizer Layer" type="CanvasLayer" parent="."]
+layer = 3
 visible = false
 
 [node name="Debug Visualizer" parent="Debug Visualizer Layer" node_paths=PackedStringArray("player", "map_node") instance=ExtResource("2_tt45j")]
-position = Vector2(96, 650)
+position = Vector2(107, 637)
 scale = Vector2(4, 4)
 player = NodePath("../../Player")
 map_node = NodePath("../../Map")
