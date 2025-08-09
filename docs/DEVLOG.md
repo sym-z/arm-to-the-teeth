@@ -241,6 +241,7 @@
   - All wheel_roller possibilities
   - Arm destroy on flee
   - Both of those affect the UI labels and animations
+  - No new UI tweaks affected any mouse input
 - When I go to make the game harder based on floor level:
   - Head health and head max health increase by 1 every floor
   - Arm drop base stats increase by floor number
