@@ -11,7 +11,8 @@ var anim : SpriteFrames
 ## Minimum roll to hit
 var difficulty_class : int = 5
 
-#TODO: Possibly item drop?
+## Enemy will hit about every 1 in hit_chance attempts.
+var hit_chance : float = 4.0
 
 func debug_print():
 	print("ENEMY")

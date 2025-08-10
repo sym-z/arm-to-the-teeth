@@ -276,3 +276,7 @@
   - After testing, the calculation was edited to be rolling from 1 - `player.head.max_health * 4` and hitting if it was beneath `player.head.max_health`
   - I can further adjust it to hit if it is under `player.head.health` which will make it easier to get hit the lower your head's health is, but that might make the game too punishing.
 - Fixed unintended behavior of the player upgrading at the start of the game.
+- Refactoring enemies to have adjustable `hit_chance` attributes in which they will hit approximately 1 in every `hit_chance` attempts.
+  - Might implement a similar system for luck in which the player can influence chances of teeth to not be lost when eating.
+- Because of rounding issues that might make certain DC's run together, the number is first generated as a float product of `player.head.max_health` and `enemy.hit_chance`, and then through using `round()` is rounded to the nearest whole number. This prevents something like `hit_chance` being 3.5 and the player's `max_health` at 10 and expecting the number be from 1-35 and it actually being 1-30 because `hit_chance` is narrowly converted before the random generation in `randi_range()`.
+- Enemy accuracy is now tunable

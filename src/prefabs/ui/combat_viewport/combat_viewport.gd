@@ -183,8 +183,9 @@ func runaway_damage():
 		if arm.equipped == true:
 			equipped_arms.append(arm)
 	var limb_choice : int = randi_range(0, equipped_arms.size())
-	var enemy_roll : int = randi_range(1,player.head.max_health * 4)
-	print(enemy_roll, " " , player.head.max_health)
+	var enemy_roll : int = roundi(randf_range(1,player.head.max_health * opponent.hit_chance))
+	if Globals.verbose_console == true:
+		print("ENEMY ROLLED A " ,enemy_roll, " " , " MUST ROLL ABOVE ", player.head.max_health, " ", " WITH A MAX ROLL OF " ,roundi(opponent.hit_chance * player.head.max_health))
 	# Roll using player's head health as DC / head health + teeth
 	if enemy_roll > player.head.max_health:
 		match limb_choice:
@@ -192,22 +193,26 @@ func runaway_damage():
 				# Head
 				# Apply damage
 				player.head.damage(opponent.damage)
-				Log.add_log_message("IT TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
+				Log.add_log_message("ITS HEAD TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
 				root_ui.refresh_temp_labels()
 				player.stat_change.emit()
 				check_player_death()
 			1:
 				# Arm 1
 				equipped_arms[0].condition = max(0,equipped_arms[0].condition - opponent.damage)
+				Log.add_log_message("ITS ARM TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
 				if equipped_arms[0].condition <= 0:
 					root_ui.arm_fully_eaten(equipped_arms[0])
+					Log.add_log_message("IT LOST AN ARM WHILE FLEEING...")
 					root_ui.refresh_temp_labels()
 					player.stat_change.emit()
 			2:
 				# Arm 2
 				equipped_arms[1].condition = max(0,equipped_arms[1].condition - opponent.damage)
+				Log.add_log_message("ITS ARM TOOK " + str(opponent.damage) + " DAMAGE WHILE FLEEING!")
 				if equipped_arms[1].condition <= 0:
 					root_ui.arm_fully_eaten(equipped_arms[1])
+					Log.add_log_message("IT LOST AN ARM WHILE FLEEING...")
 					root_ui.refresh_temp_labels()
 					player.stat_change.emit()
 	else:
@@ -361,10 +366,12 @@ func enemy_attack_roll():
 		# Hide player's die roll screen
 		change_att_die_roller_vis(false)
 		# Player's DC is dependent on head health.
-		# Using a factor of 4 will always assure that the rolls will simulate a 1-20 roll when the player's health is at 5
-		var enemy_roll = randi_range(1,player.head.max_health * 4)
+		# Using a factor of 4 will always assure that the rolls will 1:4 chance to miss.
+		var enemy_roll : int = roundi(randf_range(1,player.head.max_health * opponent.hit_chance))
+		if Globals.verbose_console == true:
+			print("ENEMY ROLLED A " ,enemy_roll, " " , " MUST ROLL ABOVE ", player.head.max_health, " ", " WITH A MAX ROLL OF " ,roundi(opponent.hit_chance * player.head.max_health))
 		if Globals.debug_combat == true:
-			enemy_roll = player.head.max_health * 4 
+			enemy_roll = player.head.max_health * opponent.hit_chance
 			pass
 		if enemy_roll < player.head.max_health:
 			# Enemy Miss

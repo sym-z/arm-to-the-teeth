@@ -38,7 +38,6 @@ func remove_teeth(num_teeth : int):
 	else:
 		Log.add_log_message("IT LOST " + str(num_teeth) + " TOOTH.")
 func damage(amt : int):
-	print("YOLO")
 	if amt >= health:
 		health = 0
 	else:
