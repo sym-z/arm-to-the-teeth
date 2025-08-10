@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=78 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://b0rwfmnijyt3u" path="res://themes/log/log_full_margin_container.tres" id="10_d8cmc"]
 [ext_resource type="Texture2D" uid="uid://c6hnsbl00mc2" path="res://assets/visual/prototype_items/v2/arm_prototype_0_beta_anim.png" id="11_0a60q"]
 [ext_resource type="PackedScene" uid="uid://dp85jko1wcurv" path="res://prefabs/ui/log_full_window/full_window_log_label.tscn" id="11_b6rlx"]
+[ext_resource type="Script" uid="uid://dpjvndb6ybp66" path="res://themes/reactive_stylebox/reactive_pickup.gd" id="11_b7xdf"]
 [ext_resource type="Texture2D" uid="uid://b64hwvql0s6m1" path="res://assets/visual/ui/tooth_stat_anim_prototype.png" id="12_44hv2"]
 [ext_resource type="Theme" uid="uid://dinequvservm1" path="res://themes/log/full_window_back_button.tres" id="12_b6rlx"]
 [ext_resource type="Theme" uid="uid://b4oi387uf7g0b" path="res://themes/log/full_window_panel_background.tres" id="12_hvfel"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c2f1a8763qesj" path="res://prefabs/ui/mini_map/mini_map.tscn" id="15_gtvwi"]
 [ext_resource type="PackedScene" uid="uid://bg56n8dk3bo32" path="res://prefabs/ui/combat_viewport/combat_viewport.tscn" id="18_hvfel"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="18_w51vb"]
+[ext_resource type="Script" uid="uid://ctaigrvqpe5na" path="res://themes/reactive_stylebox/reactive_pc.gd" id="19_xqkvd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7xdf"]
 bg_color = Color(0.0196078, 0.00784314, 0, 1)
@@ -548,6 +550,7 @@ size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("5_cllw1")
 text = "PICK UP"
+script = ExtResource("11_b7xdf")
 
 [node name="Inventory" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
 layout_mode = 2
@@ -738,6 +741,7 @@ offset_right = 1677.0
 offset_bottom = 1067.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_xqkvd")
+script = ExtResource("19_xqkvd")
 
 [node name="Log Line Label" type="RichTextLabel" parent="Log/Log Line Window"]
 layout_mode = 2

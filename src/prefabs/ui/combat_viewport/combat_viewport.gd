@@ -388,6 +388,7 @@ func enemy_attack_roll():
 ## Player decides what body part receives damage
 func player_damage_selection():
 	# Reveal body part selection screen
+	#TODO LOG MESSAGE ABOUT DAMAGE AMOUNT
 	if Globals.verbose_console == true:
 		print("PLAYER DAMAGE SELECTION TIME")
 	change_player_damage_selection_vis(true)

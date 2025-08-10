@@ -10,7 +10,6 @@ extends CanvasLayer
 @export var options_button : Button
 @export var quit_button : Button
 
-
 @export_category("Temporary Labels")
 @export var tooth_label : Label
 @export var arm_label : Label
@@ -132,7 +131,10 @@ func _on_player_item_detected(item, loc):
 		Cell.TYPE.ENEMY:
 			pickup_button.disabled = true
 			item_to_pick = Cell.TYPE.ENEMY
-			
+	if pickup_button.disabled == false:
+		pickup_button.start_blink()
+	elif pickup_button.curr_state == pickup_button.STATE.BLINK:
+		pickup_button.end_blink()
 # When the player picks up what is at their feet, set the UI to the correct state.
 func _on_player_item_picked_up():
 	pickup_button.disabled = true

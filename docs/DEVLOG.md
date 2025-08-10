@@ -281,3 +281,10 @@
 - Because of rounding issues that might make certain DC's run together, the number is first generated as a float product of `player.head.max_health` and `enemy.hit_chance`, and then through using `round()` is rounded to the nearest whole number. This prevents something like `hit_chance` being 3.5 and the player's `max_health` at 10 and expecting the number be from 1-35 and it actually being 1-30 because `hit_chance` is narrowly converted before the random generation in `randi_range()`.
 - Enemy accuracy is now tunable
 - Mini map uses new palette.
+
+## 10 August 2025
+- New battle background
+- New back of player head sprite
+- Log line window now shines green when a new log is added, and turns red on hover.
+- Pickup button now changes stylebox when walking over a pickup-able item.
+  - May add this functionality to the inventory button causing it to shine for a couple seconds when an arm is added but I want to work on some other, more pressing stuff first.
