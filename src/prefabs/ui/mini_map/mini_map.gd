@@ -9,13 +9,13 @@ const MINI_MAP_TILE_SIZE = 8
 var tiles : Dictionary[Vector2i, Sprite2D]
 var icons : Dictionary[Vector2i, Sprite2D]
 
-var mini_map_tiles : SpriteFrames = preload("uid://d166pw3cu8q7h")
-var player_sprite_frames : SpriteFrames = preload("uid://caihvt45cbg4i")
-var exit_icon : Texture2D = preload("uid://blc81w30jdjnu")
-var spawn_icon : Texture2D = preload("uid://pgdh165ysjky")
-var arm_icon : Texture2D = preload("uid://dwjsemtnijkgq")
-var tooth_icon : Texture2D = preload("uid://dtkpc7daktc22")
-var enemy_icon : Texture2D = preload("uid://cgqod4fxuhk7i")
+var mini_map_tiles : SpriteFrames = preload("uid://58ywf8owqlkj")
+var player_sprite_frames : SpriteFrames = preload("uid://bilyg2c07firc")
+var exit_icon : Texture2D = preload("uid://dk6w2sox6788m")
+var spawn_icon : Texture2D = preload("uid://cxgyk5cp3ygtf")
+var arm_icon : Texture2D = preload("uid://b660jj2kjsd3u")
+var tooth_icon : Texture2D = preload("uid://bwjsth4iug6ls")
+var enemy_icon : Texture2D = preload("uid://dk6w2sox6788m")
 var player_sprite : Sprite2D
 
 signal mini_map_ready

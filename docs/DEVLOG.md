@@ -280,3 +280,4 @@
   - Might implement a similar system for luck in which the player can influence chances of teeth to not be lost when eating.
 - Because of rounding issues that might make certain DC's run together, the number is first generated as a float product of `player.head.max_health` and `enemy.hit_chance`, and then through using `round()` is rounded to the nearest whole number. This prevents something like `hit_chance` being 3.5 and the player's `max_health` at 10 and expecting the number be from 1-35 and it actually being 1-30 because `hit_chance` is narrowly converted before the random generation in `randi_range()`.
 - Enemy accuracy is now tunable
+- Mini map uses new palette.

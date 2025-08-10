@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bilyg2c07firc"]
+
+[ext_resource type="Texture2D" uid="uid://dur36pslf00mm" path="res://assets/visual/ui/mini_map/mini_map_player2.png" id="1_k4lcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8s5b"]
+atlas = ExtResource("1_k4lcy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bc61"]
+atlas = ExtResource("1_k4lcy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfira"]
+atlas = ExtResource("1_k4lcy")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puy1w"]
+atlas = ExtResource("1_k4lcy")
+region = Rect2(24, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8s5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bc61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfira")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puy1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

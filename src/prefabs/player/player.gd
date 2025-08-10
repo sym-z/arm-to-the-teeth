@@ -6,7 +6,7 @@ extends Node
 @export var ui : CanvasLayer
 
 ## Will the player enter the battle scene when they step on a space with an enemy
-@export var ignore_combat : bool = false
+@export var ignore_combat : bool = Globals.ignore_combat
 ## Is the player currently in combat
 var in_combat : bool = false
 

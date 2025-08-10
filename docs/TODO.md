@@ -25,6 +25,7 @@
 - [ ] Track highest floor achieved
 
 ## Gameplay
+- [ ] Player has vision of 1 on minimap
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [ ] The map's arm drops are randomized
   - [ ] They are also influenced by the floor that the player is on.
@@ -153,6 +154,7 @@
   - [x] Could use outline tool in Aseprite!
 
 ## UI
+- [ ] Player has vision of 1 on minimap
 - [ ] Convert buttons to use red hover stylebox 
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
