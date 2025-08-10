@@ -27,8 +27,13 @@ var arm_inventory : Array[Arm]
 var head : Head 
 ## Hunger Stats
 var hunger : int = 0
-enum HUNGER_LEVEL {SATISFIED = 0,HUNGRY = 20, STARVING = 40, DEAD = 60}
+enum HUNGER_LEVEL {SATISFIED = 50,HUNGRY = 100, STARVING = 150, DEAD = 200}
+var arm_nurishment_min : int = 10
+var arm_nurishment_max : int = 30
 var hunger_state : HUNGER_LEVEL = HUNGER_LEVEL.SATISFIED
+var attack_debuff : float = 1.0
+var death_steps : int = 0
+const HUNGER_DAMAGE_TICK : int = 10
 signal hunger_ticked
 # For connecting the UI in the future to show specific states of hunger.
 signal hunger_satisfied
@@ -276,10 +281,15 @@ func remove_arm(a : Arm):
 # Apply conditions to hunger, tooth count, and health
 func arm_bitten():
 	#TODO: Randomize and check max and minimums
-	hunger -= 1
-	head.remove_teeth(1)
-	head.health += 1
-	Log.add_log_message("IT HAS TAKEN A BITE FROM ONE OF ITS ARMS.")
+	var hunger_nourished : int = randi_range(arm_nurishment_min,arm_nurishment_max)
+	var teeth_removed : int = randi_range(0,2)
+	hunger = max(hunger- hunger_nourished,0)
+	head.remove_teeth(teeth_removed)
+	head.health = min(head.health + 1,head.max_health)
+	if teeth_removed > 0:
+		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER AND LOSING " + str(teeth_removed) + " TEETH.")
+	else:
+		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER.")
 	stat_change.emit()
 	set_hunger_state()
 
@@ -287,17 +297,37 @@ func arm_bitten():
 	
 #region Hunger Management
 func tick_hunger():
-	hunger += 1
+	if hunger_state == HUNGER_LEVEL.DEAD:
+		death_steps += 1
+		if death_steps >= HUNGER_DAMAGE_TICK:
+			hunger_damage()
+	else:
+		hunger += 1
 	hunger_ticked.emit()
 	set_hunger_state()
+
+func hunger_damage():
+	head.health -= 1
+	Log.add_log_message("IT'S HEAD TOOK DAMAGE DUE TO ITS ADVANCED HUNGER.")
+	death_steps = 0
+	if head.health <= 0:
+		if Globals.verbose_console == true:
+			print("PLAYER HAS DIED")
+		Log.add_log_message("IT HAS PERISHED.")
+		#TODO: Stop all player input, pause, then transition to death scene
+		SceneTransition.testing_level()
+	
 func set_hunger_state():
 	var before_state : HUNGER_LEVEL = hunger_state
 	if hunger >= HUNGER_LEVEL.DEAD:
 		hunger_state = HUNGER_LEVEL.DEAD
+		attack_debuff = 0.4
 	elif hunger >= HUNGER_LEVEL.STARVING:
 		hunger_state = HUNGER_LEVEL.STARVING
+		attack_debuff = 0.6
 	elif hunger >= HUNGER_LEVEL.HUNGRY:
 		hunger_state = HUNGER_LEVEL.HUNGRY
+		attack_debuff = 0.8
 	elif hunger >= HUNGER_LEVEL.SATISFIED:
 		hunger_state = HUNGER_LEVEL.SATISFIED
 	var after_state : HUNGER_LEVEL = hunger_state
@@ -313,9 +343,12 @@ func set_hunger_state():
 				Log.add_log_message("IT IS NOW HUNGRY.")
 			HUNGER_LEVEL.STARVING:
 				hunger_starving.emit()
+				death_steps = 0
 				Log.add_log_message("IT IS NOW STARVING.")
 			HUNGER_LEVEL.DEAD:
 				hunger_dead.emit()
 				Log.add_log_message("IT IS NOW DYING OF HUNGER.")
 		stat_change.emit()
+
+
 #endregion

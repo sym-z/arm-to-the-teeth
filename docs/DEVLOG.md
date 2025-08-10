@@ -288,3 +288,10 @@
 - Log line window now shines green when a new log is added, and turns red on hover.
 - Pickup button now changes stylebox when walking over a pickup-able item.
   - May add this functionality to the inventory button causing it to shine for a couple seconds when an arm is added but I want to work on some other, more pressing stuff first.
+- Hunger has begun the process of being reworked
+  - Hunger now has edited boundaries of the phases to make hunger onset slower
+  - Hunger will now negatively effect your strength as it grows
+  - Hunger will start to destroy your head at the last steps and damage your head every `HUNGER_DAMAGE_TICK` steps.
+  - Eating arms now results in nourishment of hunger between `arm_nourishment_min` and `arm_nourishment_max`
+  - Between 0 and 2 teeth are now lost on each bite of an arm.
+  - Going to test this extensively, especially the arm nourishment side of things. But I may add an increase to the chance to be hit later on down the line.

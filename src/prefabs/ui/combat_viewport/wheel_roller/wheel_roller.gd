@@ -15,6 +15,7 @@ extends MarginContainer
 
 var attacking_limb
 var is_head : bool
+var debuff : float
 var result_network : Dictionary[int,Callable] = {
 	0 : crit,
 	1 : whiff_heavy,
@@ -81,6 +82,7 @@ func spin_wheel(limb : Variant, head : bool):
 	# Set the references
 	attacking_limb = limb
 	is_head = head
+	debuff = combat_viewport.player.attack_debuff
 	# Set to random frame
 	wheel.frame = randi_range(0,wheel.sprite_frames.get_frame_count("default")-1)
 	change_label()
@@ -123,6 +125,12 @@ func miss():
 	Log.add_log_message("IT MISSED ITS ATTACK")
 
 func hit_enemy(damage: int):
+	if Globals.verbose_console == true:
+		print("HUNGER DEBUFF: ", debuff, " ORIGINAL DAMAGE: ", damage)
+	# Apply hunger effects, if any.
+	damage = max(roundi(damage * debuff),1)
+	if Globals.verbose_console == true:
+		print("ACTUAL DAMAGE: " , damage)
 	# Prevent negative hp in enemy stat label
 	combat_viewport.opponent.curr_health = max(0, combat_viewport.opponent.curr_health - damage)
 	Log.add_log_message("IT DEALT " + str(damage) + " DAMAGE.")

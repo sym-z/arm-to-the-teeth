@@ -27,14 +27,14 @@
 ## Gameplay
 - [ ] Player has vision of 1 on minimap
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
-- [ ] The map's arm drops are randomized
-  - [ ] They are also influenced by the floor that the player is on.
+- [x] The map's arm drops are randomized
+  - [x] They are also influenced by the floor that the player is on.
 - [ ] Refine Arm Eating
-  - [ ] Check mins and maxes of the stats that it affects for the player
+  - [x] Check mins and maxes of the stats that it affects for the player
   - [ ] Player can use the same spinning die roll to see how much teeth is lost when eating and possibly how much benefit they gain
-- [ ] Refine hunger growth
-- [ ] Make eating heal your head a little but improve your hunger a lot
-- [ ] Figure out if hunger kills you or hurts your head
+- [x] Refine hunger growth
+- [x] Make eating heal your head a little but improve your hunger a lot
+- [x] Figure out if hunger kills you or hurts your head
   - If hunger removes head health, don't use `head.damage()` because it shouldn't cause teeth to be lost.
 - [ ] Multi-Arm Storage (STRETCH GOAL)
   - [ ] Ability to store extra arms in inventory
@@ -102,11 +102,11 @@
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
-- [ ] Loot drops are dependent on floor level
+- [x] Loot drops are dependent on floor level
 - [ ] Loot drops are dependent on monster stats
-- [ ] Monster stats are depedent on floor level
+- [x] Monster stats are depedent on floor level
 - [ ] More enemy types
-- [ ] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health /4 for runaway damage and enemy roll calculations in combat.
+- [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
 ### DONE
 - [x] Running may damage your arms
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy (NOT APPLICABLE)
@@ -155,7 +155,7 @@
 
 ## UI
 - [ ] Player has vision of 1 on minimap
-- [ ] Convert buttons to use red hover stylebox 
+- [x] Convert buttons to use red hover stylebox 
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art
@@ -177,15 +177,15 @@
   - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
-- [ ] Log window changes stylebox on hover and click
-  - [ ] Log window changes to hover stylebox for a certain amount of time when a log message goes through
+- [x] Log window changes stylebox on hover and click
+  - [x] Log window changes to hover stylebox for a certain amount of time when a log message goes through
   - A little difficult, requires styleboxes to be switched in and out with code, and timers to be made for the log update
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 - [ ] Make sure that the UI only uses the AT3 palette
   - [x] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
-- [ ] Border around mini-map
+- [x] Border around mini-map
   - 320 x 320px is the max size for map
 - [ ] Enemy name to combat window
 - [ ] First log message is the default text for the log line window.
@@ -193,7 +193,7 @@
 - [ ] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
 - [ ] Head ui shows health/max_health
-- [ ] Arms show condition in stat_showcase
+- [ ] Arms show condition in stat_showcase instead of arm count
 ### DONE
 - [x] Log line window label?
 - [x] Stat showcase labelled with "STATS"
