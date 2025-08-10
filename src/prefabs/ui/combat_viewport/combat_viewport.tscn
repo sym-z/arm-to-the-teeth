@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=75 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -6,12 +6,13 @@
 [ext_resource type="Theme" uid="uid://b0247qwjlu8lv" path="res://themes/combat_viewport/dialog_box_panel_container.tres" id="3_s7sq0"]
 [ext_resource type="Theme" uid="uid://cy0kpb306vpwj" path="res://themes/combat_viewport/db_button_choices_hbox.tres" id="4_1vvdr"]
 [ext_resource type="Theme" uid="uid://bwh30wttiv88h" path="res://themes/combat_viewport/db_margin_container.tres" id="4_j2lbb"]
+[ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="4_t3v2j"]
 [ext_resource type="Theme" uid="uid://buown6vatfsa6" path="res://themes/combat_viewport/db_buttons.tres" id="5_0i4k7"]
 [ext_resource type="PackedScene" uid="uid://wwoi8jwh6ncu" path="res://prefabs/ui/die_roller/die_roller.tscn" id="8_guh7h"]
 [ext_resource type="Texture2D" uid="uid://cojykr6pxe0cr" path="res://assets/visual/prototype_items/v2/enemy_prototype_1_x2.png" id="9_8xoyx"]
-[ext_resource type="Texture2D" uid="uid://dja1fke8bwqgh" path="res://assets/visual/prototype_items/head_icon_0_back.png" id="10_dfnbh"]
 [ext_resource type="Theme" uid="uid://db0krltjp1fvu" path="res://themes/combat_viewport/att_arm_select_margin_container.tres" id="11_guh7h"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="11_k7xhf"]
+[ext_resource type="Texture2D" uid="uid://dtbyspxsuoec0" path="res://assets/visual/ui/head_1B_back.png" id="12_hjwf1"]
 [ext_resource type="Theme" uid="uid://dcrr47tdwur0b" path="res://themes/combat_viewport/att_arm_select_panel.tres" id="12_ho6fy"]
 [ext_resource type="PackedScene" uid="uid://dljmxwj6vs50b" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.tscn" id="12_ud8o6"]
 [ext_resource type="PackedScene" uid="uid://n07t7fqqy66w" path="res://prefabs/ui/combat_viewport/attacking_head_object/attacking_head_object.tscn" id="14_dfnbh"]
@@ -51,11 +52,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_65l4u"]
+atlas = ExtResource("12_hjwf1")
+region = Rect2(0, 0, 112, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6poga"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_dfnbh")
+"texture": SubResource("AtlasTexture_65l4u")
 }],
 "loop": true,
 "name": &"default",
@@ -71,6 +76,16 @@ border_width_bottom = 4
 border_color = Color(0.984314, 0.980392, 0.898039, 1)
 expand_margin_right = 20.0
 expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmgk"]
+bg_color = Color(0.0156863, 0.00784314, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3v2j"]
 bg_color = Color(0.0156863, 0.00784314, 0, 1)
@@ -346,6 +361,11 @@ temp_e_damage = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/TEMP EN
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_l6kcl")
+
+[node name="Drip Texture" type="TextureRect" parent="."]
+modulate = Color(0.64, 0.64, 0.64, 1)
+layout_mode = 2
+texture = ExtResource("4_t3v2j")
 
 [node name="Dialog Box" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -626,11 +646,16 @@ texture_disabled = ExtResource("28_xx2gd")
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 810
 
-[node name="Header" type="Label" parent="Header Container"]
+[node name="Panel" type="PanelContainer" parent="Header Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbmgk")
+
+[node name="Header" type="Label" parent="Header Container/Panel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 47

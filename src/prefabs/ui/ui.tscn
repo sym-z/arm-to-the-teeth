@@ -434,14 +434,15 @@ equipped_arm_anim_1 = NodePath("Stat Showcase/Arm")
 equipped_arm_anim_2 = NodePath("Stat Showcase/Arm2")
 tooth_anim = NodePath("Stat Showcase/Teeth")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_hvfel")
-
 [node name="Combat Viewport" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
 visible = false
 root_ui = NodePath("..")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("2_hvfel")
 
 [node name="Viewport Header Container" type="MarginContainer" parent="."]
 anchors_preset = 15
