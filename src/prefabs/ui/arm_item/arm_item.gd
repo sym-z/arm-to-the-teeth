@@ -36,5 +36,4 @@ func _on_eat_button_pressed():
 	condition.text = "CONDITION: " + str(arm_object.condition)
 	if arm_object.condition <= 0:
 		arm_fully_eaten.emit(arm_object)
-		#TODO: Destroy self
 		call_deferred("queue_free")

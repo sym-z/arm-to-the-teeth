@@ -295,3 +295,4 @@
   - Eating arms now results in nourishment of hunger between `arm_nourishment_min` and `arm_nourishment_max`
   - Between 0 and 2 teeth are now lost on each bite of an arm.
   - Going to test this extensively, especially the arm nourishment side of things. But I may add an increase to the chance to be hit later on down the line.
+  - Arms lose between 1 and 3 condition when they are bitten

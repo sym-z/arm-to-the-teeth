@@ -179,13 +179,14 @@ func change_inventory_visibility(new_vis : bool):
 func arm_eaten(arm_object : Arm):
 	# Check tooth count to see if it is possible
 	if player.head.tooth_count > 0:
-		arm_object.condition -= 1
+		arm_object.condition = max(arm_object.condition - randi_range(1,3), 0)
 		# Adjust hunger, health, arm count etc.
 		player.arm_bitten()
 		if player.in_combat == true:
 			combat_viewport.refresh_arm_selections()
 		refresh_temp_labels()
-		# TODO: UPDATE ATT ARM SELECTION
+	else:
+		Log.add_log_message("IT TRIED TO TAKE A BITE OF ITS ARM, BUT IT HAD NO TEETH TO DO SO.")
 
 func arm_fully_eaten(arm_object : Arm):
 	player.remove_arm(arm_object)
