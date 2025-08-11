@@ -27,15 +27,9 @@
 ## Gameplay
 - [ ] Player has vision of 1 on minimap
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
-- [x] The map's arm drops are randomized
-  - [x] They are also influenced by the floor that the player is on.
 - [ ] Refine Arm Eating
   - [x] Check mins and maxes of the stats that it affects for the player
-  - [ ] Player can use the same spinning die roll to see how much teeth is lost when eating and possibly how much benefit they gain
-- [x] Refine hunger growth
-- [x] Make eating heal your head a little but improve your hunger a lot
-- [x] Figure out if hunger kills you or hurts your head
-  - If hunger removes head health, don't use `head.damage()` because it shouldn't cause teeth to be lost.
+  - [ ] Player can play a minigame to see how much teeth is lost when eating and possibly how much benefit they gain
 - [ ] Multi-Arm Storage (STRETCH GOAL)
   - [ ] Ability to store extra arms in inventory
   - [ ] Ability to swap between arms
@@ -52,7 +46,15 @@
 - [ ] On new floor, decide on head upgrade, or arm upgrade? (STRETCH GOAL)
   - Keep in mind if you do this that the player's DC now needs to be adjusted because a standard subtraction of `Globals.curr_floor` is happening to the player's health when the DC is being calculated, so non-head upgrades will result in negative impact of the player's DC. 
   - Try to make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health /4
+  - [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
+
 ### DONE
+- [x] The map's arm drops are randomized
+  - [x] They are also influenced by the floor that the player is on.
+- [x] Refine hunger growth
+- [x] Make eating heal your head a little but improve your hunger a lot
+- [x] Figure out if hunger kills you or hurts your head
+  - If hunger removes head health, don't use `head.damage()` because it shouldn't cause teeth to be lost.
 - [x] SPACE to pick up
   - Remember to have `ui.gd` check if the button is disabled first
 - [x] TAB for inventory
@@ -93,7 +95,7 @@
   - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] Tune pauses between hits
-- [ ] Pause after death before transition
+- [ ] Pause after death before transition / eye close animation
 - [ ] Enemy animation
   - [ ] Attack
   - [ ] Hurt
@@ -102,12 +104,12 @@
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
-- [x] Loot drops are dependent on floor level
-- [ ] Loot drops are dependent on monster stats
-- [x] Monster stats are depedent on floor level
+- [ ] Loot drops are dependent on monster stats / monster type
 - [ ] More enemy types
-- [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
 ### DONE
+- [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
+- [x] Monster stats are depedent on floor level
+- [x] Loot drops are dependent on floor level
 - [x] Running may damage your arms
 - [ ] Attack dice roller also reveals a label showing the difficulty class for the enemy (NOT APPLICABLE)
 - [ ] Die rolls faster, or randomizes number. (NOT APPLICABLE)
@@ -136,12 +138,13 @@
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [ ] Arm sprite reduction to fit viewport
+- [ ] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
 - [ ] Inventory items need better styleboxes
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
 - [ ] Make better vision bounds animation
 - [ ] Jaw-like tooth stat showcase animation
 - [ ] Tooth icon for hud
+- [ ] Start up animation overlay of an eye opening up from first person view
 ### DONE
 - [x] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [x] Add in Head animation to stat showcase
@@ -155,7 +158,6 @@
 
 ## UI
 - [ ] Player has vision of 1 on minimap
-- [x] Convert buttons to use red hover stylebox 
 - [ ] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art
@@ -177,24 +179,25 @@
   - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
-- [x] Log window changes stylebox on hover and click
-  - [x] Log window changes to hover stylebox for a certain amount of time when a log message goes through
-  - A little difficult, requires styleboxes to be switched in and out with code, and timers to be made for the log update
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 - [ ] Make sure that the UI only uses the AT3 palette
   - [x] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
-- [x] Border around mini-map
-  - 320 x 320px is the max size for map
-- [ ] Enemy name to combat window
-- [ ] First log message is the default text for the log line window.
+- [ ] Enemy is named in the combat window
+- [ ] First log message pushed is the default text for the log line window.
 - [ ] (STRETCH GOAL) Log messages have a timestamp
 - [ ] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
-- [ ] Head ui shows health/max_health
-- [ ] Arms show condition in stat_showcase instead of arm count
+- [ ] Head ui shows (`health`/`max_health`)
+- [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
+- [ ] Convert all buttons to use red hover stylebox 
 ### DONE
+- [x] Border around mini-map
+  - 320 x 320px is the max size for map
+- [x] Log window changes stylebox on hover and click
+  - [x] Log window changes to hover stylebox for a certain amount of time when a log message goes through
+  - A little difficult, requires styleboxes to be switched in and out with code, and timers to be made for the log update
 - [x] Log line window label?
 - [x] Stat showcase labelled with "STATS"
 - [x] Log messages have a number associated with them
@@ -214,6 +217,7 @@
 - [ ] Get rid of "Turn" enum and code in `combat_viewport.gd`
 - [ ] Change functions `damage_head` and `damage_arm` to be more specific, showing that this is taking place during the damage limb phase of combat
 - [ ] Clean up TODO's in `combat_viewport.gd`
+- [ ] Get rid of all console warnings.
 ### DONE
 
 ## Fixes
