@@ -27,7 +27,7 @@ var arm_inventory : Array[Arm]
 var head : Head 
 ## Hunger Stats
 var hunger : int = 0
-enum HUNGER_LEVEL {SATISFIED = 50,HUNGRY = 100, STARVING = 150, DEAD = 200}
+enum HUNGER_LEVEL {SATISFIED = 0,HUNGRY = 50, STARVING = 100, DEAD = 150}
 var arm_nurishment_min : int = 10
 var arm_nurishment_max : int = 30
 var hunger_state : HUNGER_LEVEL = HUNGER_LEVEL.SATISFIED
@@ -121,7 +121,16 @@ func _input(event):
 				Globals.EAST:
 					facing = Globals.SOUTH
 			change_facing.emit()
-			
+	if event.is_action_pressed("debug_add_hunger"):
+		hunger = min(HUNGER_LEVEL.DEAD, hunger+25)
+		hunger_ticked.emit()
+		set_hunger_state()
+
+	if event.is_action_pressed("debug_sub_hunger"):
+		hunger = max(hunger - 25,0)
+		hunger_ticked.emit()
+		set_hunger_state()
+
 func force_turn_left():
 	match facing:
 		Globals.NORTH:
@@ -286,8 +295,10 @@ func arm_bitten():
 	hunger = max(hunger- hunger_nourished,0)
 	head.remove_teeth(teeth_removed)
 	head.health = min(head.health + 1,head.max_health)
-	if teeth_removed > 0:
-		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER AND LOSING " + str(teeth_removed) + " TEETH.")
+	if teeth_removed == 2:
+		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER AND LOSING TWO TEETH.")
+	elif teeth_removed == 1:
+		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER AND LOSING ONE TOOTH.")
 	else:
 		Log.add_log_message("IT TOOK A BITE FROM ONE OF ITS ARMS, NOURISHING " + str(hunger_nourished) + " HUNGER.")
 	stat_change.emit()
@@ -330,6 +341,7 @@ func set_hunger_state():
 		attack_debuff = 0.8
 	elif hunger >= HUNGER_LEVEL.SATISFIED:
 		hunger_state = HUNGER_LEVEL.SATISFIED
+		attack_debuff = 1.0
 	var after_state : HUNGER_LEVEL = hunger_state
 	if(before_state != after_state):
 		if Globals.verbose_console == true:
