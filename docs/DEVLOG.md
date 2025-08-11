@@ -300,4 +300,39 @@
   - Tested and tweaked hunger state transition code, and assured that attack debuff was reset when hunger level lowers.
 
 ## 11 August 2025
-  - Wheel spins faster based on the `attack_debuff` of the player. Higher hunger leads to faster wheel spinning.
+- Wheel spins faster based on the `attack_debuff` of the player. Higher hunger leads to faster wheel spinning.
+- Head stat showcase shows `health`/`max_health` 
+- Log line text is added as the first log
+- Being that a ton of the coding has been done, the visuals need some love. Some things to add in are:
+  - Tooth stat showcase
+  - Redo arm icon
+  - Vision bounds animation
+  - Eye opening animation
+  - Stat showcase decay
+    - Head
+    - Arms
+    - Stomach
+  - Lots of log messages
+  - Player animations
+    - Attack
+    - Death
+    - Hurt
+  - Enemy animations
+    - Attack
+    - Death
+    - Hurt
+  - Menus
+    - How to play
+    - Main menu
+    - Death screen
+  - Environment
+    - Wall textures
+  - Inventory background
+  - New enemies
+- After the above is done, some big coding things that can be worked on are:
+  - Cancel attack/run choice
+  - Vision of one on minimap
+  - New damage selection system
+  - Multi-Arm storage
+  - Different enemy code
+  - Enemy movement (once Spyro essay is done, this one is a huge stretch goal)

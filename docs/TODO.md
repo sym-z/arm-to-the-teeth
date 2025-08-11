@@ -46,7 +46,10 @@
 - [ ] On new floor, decide on head upgrade, or arm upgrade? (STRETCH GOAL)
   - Keep in mind if you do this that the player's DC now needs to be adjusted because a standard subtraction of `Globals.curr_floor` is happening to the player's health when the DC is being calculated, so non-head upgrades will result in negative impact of the player's DC. 
   - Try to make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health /4
-  - [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
+- [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
+  - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
+- [ ] New attack limb choice minigame that is a reaction based block
+
 
 ### DONE
 - [x] The map's arm drops are randomized
@@ -104,8 +107,8 @@
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
-- [ ] Loot drops are dependent on monster stats / monster type
 - [ ] More enemy types
+  - [ ] Loot drops are dependent on monster stats / monster type
 ### DONE
 - [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
 - [x] Monster stats are depedent on floor level
@@ -185,14 +188,14 @@
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 - [ ] Enemy is named in the combat window
-- [ ] First log message pushed is the default text for the log line window.
 - [ ] (STRETCH GOAL) Log messages have a timestamp
 - [ ] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
-- [ ] Head ui shows (`health`/`max_health`)
 - [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [ ] Convert all buttons to use red hover stylebox 
 ### DONE
+- [x] Head ui shows (`health`/`max_health`)
+- [x] First log message pushed is the default text for the log line window.
 - [x] Border around mini-map
   - 320 x 320px is the max size for map
 - [x] Log window changes stylebox on hover and click

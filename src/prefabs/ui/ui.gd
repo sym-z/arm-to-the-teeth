@@ -61,6 +61,8 @@ func _ready():
 		post_death_log_transfer()
 	# Initialize viewport header label
 	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)
+	# Adds default log line text as first log
+	Log.add_log_message(log_line_label.text)
 
 # Work should start only when the map is done filling.
 func _on_map_map_filled():
@@ -103,7 +105,7 @@ func _on_map_level_clear():
 func refresh_temp_labels():
 	tooth_label.text = "TOOTH COUNT: " + str(player.head.tooth_count)
 	arm_label.text = "ARM COUNT: " + str(player.arm_count)
-	head_label.text = "HEAD HEALTH: " + str(player.head.health)
+	head_label.text = "HEAD HEALTH: (" + str(player.head.health) + "/" + str(player.head.max_health) + ")"
 	hunger_label.text = "HUNGER LEVEL: " + str(player.hunger)
 
 func _on_player_hunger_ticked():
