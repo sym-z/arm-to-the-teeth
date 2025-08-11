@@ -298,3 +298,6 @@
   - Arms lose between 1 and 3 condition when they are bitten
   - Added debug controls to raise and lower hunger by 25, `L` and `K` respectively.
   - Tested and tweaked hunger state transition code, and assured that attack debuff was reset when hunger level lowers.
+
+## 11 August 2025
+  - Wheel spins faster based on the `attack_debuff` of the player. Higher hunger leads to faster wheel spinning.

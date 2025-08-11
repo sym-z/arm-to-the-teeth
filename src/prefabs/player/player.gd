@@ -362,5 +362,4 @@ func set_hunger_state():
 				Log.add_log_message("IT IS NOW DYING OF HUNGER.")
 		stat_change.emit()
 
-
 #endregion

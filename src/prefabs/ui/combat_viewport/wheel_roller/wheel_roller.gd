@@ -87,7 +87,10 @@ func spin_wheel(limb : Variant, head : bool):
 	wheel.frame = randi_range(0,wheel.sprite_frames.get_frame_count("default")-1)
 	change_label()
 	if Globals.curr_floor != 0:
-		wheel.speed_scale += log(Globals.curr_floor**3)
+		if Globals.verbose_console == true:
+			print("WITHOUT DEBUFF: ", wheel.speed_scale + log(Globals.curr_floor**3))
+			print("WITH DEBUFF: ", wheel.speed_scale + log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff)
+		wheel.speed_scale += log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff
 	wheel.play()
 
 func stop_wheel():
@@ -145,7 +148,6 @@ func whiff(damage: int):
 		attacking_limb.damage(damage)
 		#combat_viewport.player.stat_change.emit()
 		# Refresh root_ui's labels
-		
 		# Check for player death.
 		combat_viewport.check_player_death()
 	else:
