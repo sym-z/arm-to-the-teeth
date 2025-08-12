@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnq242qe5ftmt"]
 
-[ext_resource type="Texture2D" uid="uid://d0ub2ykdrwpyf" path="res://assets/visual/prototype_items/v2/arm_prototype_0_content_x4.png" id="1_b6we3"]
+[ext_resource type="Texture2D" uid="uid://cc8i4n7ywknam" path="res://assets/visual/prototype_items/v2/arm_prototype_2_x4.png" id="1_b6we3"]
 [ext_resource type="Texture2D" uid="uid://bwmbwcjolcvy1" path="res://assets/visual/prototype_items/v2/enemy_prototype_1_x4.png" id="2_k8a64"]
 [ext_resource type="Texture2D" uid="uid://dw6mgc1p2kweh" path="res://assets/visual/prototype_items/v2/exit_prototype_0_x4.png" id="3_b6we3"]
 [ext_resource type="Texture2D" uid="uid://b7w0rx6tyyawv" path="res://assets/visual/prototype_items/v2/tooth_prototype_1_x4.png" id="4_l76lw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tojyx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndc8"]
 atlas = ExtResource("1_b6we3")
-region = Rect2(0, 0, 448, 1056)
+region = Rect2(0, 0, 448, 672)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1y3d"]
 atlas = ExtResource("2_k8a64")
@@ -25,7 +25,7 @@ region = Rect2(0, 0, 448, 448)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tojyx")
+"texture": SubResource("AtlasTexture_1ndc8")
 }],
 "loop": true,
 "name": &"arm",
@@ -64,4 +64,4 @@ animations = [{
 [node name="Contents" type="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_m1j6k")
-animation = &"exit"
+animation = &"arm"

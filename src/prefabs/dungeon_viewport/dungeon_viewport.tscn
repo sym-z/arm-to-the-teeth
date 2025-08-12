@@ -1,7 +1,7 @@
-[gd_scene load_steps=105 format=3 uid="uid://b5lskvgjumjn"]
+[gd_scene load_steps=108 format=3 uid="uid://b5lskvgjumjn"]
 
 [ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
-[ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="2_catg2"]
+[ext_resource type="Texture2D" uid="uid://bccyj0d1j1pdx" path="res://assets/visual/ui/vision_bounds_1.png" id="2_catg2"]
 [ext_resource type="Texture2D" uid="uid://d487iunn4nvv" path="res://assets/visual/prototype_renderer/v2/d2_farthest_side_v2.png" id="3_n4cni"]
 [ext_resource type="Texture2D" uid="uid://bepx25oftce6g" path="res://assets/visual/prototype_renderer/v2/d2_farther_center_v2.png" id="4_b4v8s"]
 [ext_resource type="PackedScene" uid="uid://m0ggohtumqml" path="res://prefabs/contents/contents_d2/contents_d2.tscn" id="5_2qty0"]
@@ -22,11 +22,32 @@
 atlas = ExtResource("2_catg2")
 region = Rect2(0, 0, 480, 270)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwm0v"]
+atlas = ExtResource("2_catg2")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhs0v"]
+atlas = ExtResource("2_catg2")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnijb"]
+atlas = ExtResource("2_catg2")
+region = Rect2(1440, 0, 480, 270)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wqhcc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2bd64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwm0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhs0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnijb")
 }],
 "loop": true,
 "name": &"default",
@@ -697,6 +718,7 @@ d2_fff_right = NodePath("Distance 2/Farthest Right Wall")
 position = Vector2(960, 540)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wqhcc")
+autoplay = "default"
 
 [node name="Distance 2" type="Node2D" parent="."]
 z_index = 1

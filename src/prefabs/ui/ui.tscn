@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://c6hnsbl00mc2" path="res://assets/visual/prototype_items/v2/arm_prototype_0_beta_anim.png" id="11_0a60q"]
 [ext_resource type="PackedScene" uid="uid://dp85jko1wcurv" path="res://prefabs/ui/log_full_window/full_window_log_label.tscn" id="11_b6rlx"]
 [ext_resource type="Script" uid="uid://dpjvndb6ybp66" path="res://themes/reactive_stylebox/reactive_pickup.gd" id="11_b7xdf"]
-[ext_resource type="Texture2D" uid="uid://b64hwvql0s6m1" path="res://assets/visual/ui/tooth_stat_anim_prototype.png" id="12_44hv2"]
 [ext_resource type="Theme" uid="uid://dinequvservm1" path="res://themes/log/full_window_back_button.tres" id="12_b6rlx"]
 [ext_resource type="Theme" uid="uid://b4oi387uf7g0b" path="res://themes/log/full_window_panel_background.tres" id="12_hvfel"]
 [ext_resource type="Theme" uid="uid://casrwxgiyddvj" path="res://themes/viewport_header/viewport_header_margin_container.tres" id="13_xw6rm"]
 [ext_resource type="Theme" uid="uid://6j2no5j5cswb" path="res://themes/viewport_header/viewport_header_label.tres" id="14_gtvwi"]
 [ext_resource type="PackedScene" uid="uid://cs01wd2aki26b" path="res://prefabs/ui/arm_item/arm_item.tscn" id="14_xqkvd"]
 [ext_resource type="PackedScene" uid="uid://c2f1a8763qesj" path="res://prefabs/ui/mini_map/mini_map.tscn" id="15_gtvwi"]
+[ext_resource type="Texture2D" uid="uid://c55k6h7dlsoqa" path="res://assets/visual/ui/tooth_stat_showcase_1anim.png" id="16_b7xdf"]
 [ext_resource type="PackedScene" uid="uid://bg56n8dk3bo32" path="res://prefabs/ui/combat_viewport/combat_viewport.tscn" id="18_hvfel"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="18_w51vb"]
 [ext_resource type="Script" uid="uid://ctaigrvqpe5na" path="res://themes/reactive_stylebox/reactive_pc.gd" id="19_xqkvd"]
@@ -147,135 +147,135 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0gkn"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(0, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfc3p"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yx2k"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1x4d"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(1200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7s35"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(1600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oowx1"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(2000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqqjo"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(2400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ex4"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(2800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpgui"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(3200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mq63"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(3600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otlga"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(4000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbomq"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(4400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nc4rq"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(4800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o0dj"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(5200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kdjk"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(5600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mggq"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(6000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abryy"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(6400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8ccg"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(6800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoepl"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(7200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smb0g"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(7600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfeyr"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(8000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gac88"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(8400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6uqa"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(8800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm1y2"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(9200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_youva"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(9600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hcmc"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(10000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd1qd"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(10400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqb5"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(10800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6n7a"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(11200, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rx6j"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(11600, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdc6g"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(12000, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hh8df"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(12400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3rqj"]
-atlas = ExtResource("12_44hv2")
+atlas = ExtResource("16_b7xdf")
 region = Rect2(12800, 0, 400, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rod3w"]
@@ -588,19 +588,19 @@ vertical_alignment = 1
 
 [node name="TEMP ARMS" type="Label" parent="Stat Showcase"]
 offset_left = 1466.0
-offset_top = 867.0
+offset_top = 829.0
 offset_right = 1850.0
-offset_bottom = 911.0
+offset_bottom = 873.0
 theme = ExtResource("7_1is0v")
 text = "ARM COUNT: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TEMP HEAD" type="Label" parent="Stat Showcase"]
-offset_left = 1451.0
-offset_top = 472.0
-offset_right = 1899.0
-offset_bottom = 516.0
+offset_left = 1445.0
+offset_top = 461.0
+offset_right = 1893.0
+offset_bottom = 505.0
 theme = ExtResource("7_1is0v")
 text = "HEAD HEALTH: X"
 horizontal_alignment = 1
@@ -608,9 +608,9 @@ vertical_alignment = 1
 
 [node name="TEMP HUNGER" type="Label" parent="Stat Showcase"]
 offset_left = 1418.0
-offset_top = 832.0
+offset_top = 794.0
 offset_right = 1898.0
-offset_bottom = 876.0
+offset_bottom = 838.0
 theme = ExtResource("7_1is0v")
 text = "HUNGER LEVEL: X"
 horizontal_alignment = 1
@@ -622,17 +622,17 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xqkvd")
 
 [node name="Stomach" type="AnimatedSprite2D" parent="Stat Showcase"]
-position = Vector2(1665, 710)
+position = Vector2(1665, 672)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_l1g0r")
 
 [node name="Arm" type="AnimatedSprite2D" parent="Stat Showcase"]
-position = Vector2(1510, 708)
+position = Vector2(1510, 670)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 flip_h = true
 
 [node name="Arm2" type="AnimatedSprite2D" parent="Stat Showcase"]
-position = Vector2(1820, 708)
+position = Vector2(1820, 670)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 
 [node name="Teeth" type="AnimatedSprite2D" parent="Stat Showcase"]

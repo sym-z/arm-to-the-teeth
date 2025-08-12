@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://8kt2w4jcfysv"]
 
-[ext_resource type="Texture2D" uid="uid://decfglq013e6u" path="res://assets/visual/prototype_items/v2/arm_prototype_0_content_x2.png" id="1_ns6y5"]
+[ext_resource type="Texture2D" uid="uid://dm2212lyivolc" path="res://assets/visual/prototype_items/v2/arm_prototype_2_x2.png" id="1_ns6y5"]
 [ext_resource type="Texture2D" uid="uid://cojykr6pxe0cr" path="res://assets/visual/prototype_items/v2/enemy_prototype_1_x2.png" id="2_vr7t4"]
 [ext_resource type="Texture2D" uid="uid://b2pv8gsgojlq" path="res://assets/visual/prototype_items/v2/exit_prototype_0_x2.png" id="3_ns6y5"]
 [ext_resource type="Texture2D" uid="uid://dtf56fwydwglo" path="res://assets/visual/prototype_items/v2/tooth_prototype_1_x2.png" id="4_206kl"]
 [ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="5_ceqlw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfil6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns5p4"]
 atlas = ExtResource("1_ns6y5")
-region = Rect2(0, 0, 224, 528)
+region = Rect2(0, 0, 224, 336)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jn3b0"]
 atlas = ExtResource("2_vr7t4")
@@ -26,7 +26,7 @@ region = Rect2(0, 0, 224, 224)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfil6")
+"texture": SubResource("AtlasTexture_ns5p4")
 }],
 "loop": true,
 "name": &"arm",
@@ -66,5 +66,5 @@ animations = [{
 visible = false
 modulate = Color(0.75, 0.75, 0.75, 1)
 sprite_frames = SubResource("SpriteFrames_5csd1")
-animation = &"exit"
+animation = &"arm"
 script = ExtResource("5_ceqlw")

@@ -336,3 +336,14 @@
   - Multi-Arm storage
   - Different enemy code
   - Enemy movement (once Spyro essay is done, this one is a huge stretch goal)
+
+## 12 August 2025
+- Added in art for:
+  - Eye transition
+  - New arm item
+  - Tooth stat showcase animation
+  - Vision bounds animation
+- Implemented new art for:
+  - Vision bounds
+  - Arm content
+  - Tooth stat showcase
