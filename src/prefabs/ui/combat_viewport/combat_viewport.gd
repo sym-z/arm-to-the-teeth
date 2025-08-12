@@ -62,13 +62,14 @@ func _ready():
 	visible = false
 	player = root_ui.player
 	map = root_ui.map
+	root_ui.eye_anim.connect("animation_finished", death_transition)
 	#if use_wheel == true:
 		#wheel_roller.connect("results_ready", )
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _input(event):
+	if event.is_action_pressed("debug_kill"):
+		player.head.health = 0
+		check_player_death()
 
 func begin_combat(e : Enemy, loc : Vector2i):
 	if Globals.verbose_console == true:
@@ -452,8 +453,13 @@ func check_player_death():
 		player_dead = true
 		Log.add_log_message("IT HAS PERISHED.")
 		#TODO: Stop all player input, pause, then transition to death scene
-		SceneTransition.testing_level()
+		#SceneTransition.testing_level()
+		root_ui.eye_anim.frame = 0
+		root_ui.eye_anim.play()
 
+func death_transition():
+	if player_dead == true:
+		SceneTransition.testing_level()
 func check_enemy_death():
 	if opponent.curr_health <= 0:
 		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")

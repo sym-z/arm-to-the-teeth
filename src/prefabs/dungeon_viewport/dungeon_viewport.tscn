@@ -715,6 +715,7 @@ d2_ff_right_center = NodePath("Distance 2/Farther Right Center Wall")
 d2_fff_right = NodePath("Distance 2/Farthest Right Wall")
 
 [node name="Vision Bounds" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.51, 0.51, 0.51, 1)
 position = Vector2(960, 540)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wqhcc")

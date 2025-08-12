@@ -324,10 +324,11 @@ func hunger_damage():
 	if head.health <= 0:
 		if Globals.verbose_console == true:
 			print("PLAYER HAS DIED")
-		Log.add_log_message("IT HAS PERISHED.")
+		#Log.add_log_message("IT HAS PERISHED.")
 		#TODO: Stop all player input, pause, then transition to death scene
-		SceneTransition.testing_level()
-	
+		#SceneTransition.testing_level()
+		ui.combat_viewport.check_player_death()
+
 func set_hunger_state():
 	var before_state : HUNGER_LEVEL = hunger_state
 	if hunger >= HUNGER_LEVEL.DEAD:

@@ -52,6 +52,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 @export var equipped_arm_anim_1 : AnimatedSprite2D
 @export var equipped_arm_anim_2 : AnimatedSprite2D
 @export var tooth_anim : AnimatedSprite2D
+
+@export_category("Eye Transition")
+@export var eye_anim : AnimatedSprite2D
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -83,6 +86,10 @@ func initial_setup():
 	player.connect("item_picked_up", refresh_stat_showcase)
 	player.connect("item_partial_pickup", refresh_stat_showcase)
 	refresh_stat_showcase()
+	
+	eye_anim.frame = eye_anim.sprite_frames.get_frame_count("default") - 1
+	eye_anim.play_backwards("default")
+	
 
 #region Mini Map
 func _on_mini_map_mini_map_ready():

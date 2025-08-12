@@ -49,8 +49,6 @@
 - [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
   - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
 - [ ] New attack limb choice minigame that is a reaction based block
-
-
 ### DONE
 - [x] The map's arm drops are randomized
   - [x] They are also influenced by the floor that the player is on.
@@ -141,14 +139,15 @@
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [ ] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
 - [ ] Inventory items need better styleboxes
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
-- [ ] Make better vision bounds animation
-- [ ] Jaw-like tooth stat showcase animation
-- [ ] Tooth icon for hud
 - [ ] Start up animation overlay of an eye opening up from first person view
+- [ ] Gate transition animation
 ### DONE
+- [x] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
+- [x] Make better vision bounds animation
+- [x] Jaw-like tooth stat showcase animation
+- [x] Tooth icon for hud
 - [x] New font that doesn't have to be 32x32 and can be more vertical than horizontal
 - [x] Add in Head animation to stat showcase
 - [x] Add in Arm animation to stat showcase
@@ -161,10 +160,6 @@
 
 ## UI
 - [ ] Player has vision of 1 on minimap
-- [ ] Tooth Indication (Frame = Tooth Count)
-  - [x] Temporary label
-  - [x] Prototype Art
-  - [ ] Final Art
 - [ ] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
   - [x] Temporary label
   - [x] Prototype Art
@@ -194,6 +189,10 @@
 - [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [ ] Convert all buttons to use red hover stylebox 
 ### DONE
+- [x] Tooth Indication (Frame = Tooth Count)
+  - [x] Temporary label
+  - [x] Prototype Art
+  - [x] Final Art
 - [x] Head ui shows (`health`/`max_health`)
 - [x] First log message pushed is the default text for the log line window.
 - [x] Border around mini-map

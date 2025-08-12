@@ -347,3 +347,6 @@
   - Vision bounds
   - Arm content
   - Tooth stat showcase
+- There is now a transition of an eye opening and closing when the game starts or the player dies.
+  - There is now a way to immediately kill the player by pressing `P`, made to test this function.
+- When the player dies of hunger, it uses the function `check_player_death()` from the `ui/combat_viewport.tscn` so there won't be multiple scene transitions at the same time.
