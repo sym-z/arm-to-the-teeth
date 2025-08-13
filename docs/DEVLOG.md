@@ -304,10 +304,10 @@
 - Head stat showcase shows `health`/`max_health` 
 - Log line text is added as the first log
 - Being that a ton of the coding has been done, the visuals need some love. Some things to add in are:
-  - Tooth stat showcase
-  - Redo arm icon
-  - Vision bounds animation
-  - Eye opening animation
+  - [x] Tooth stat showcase
+  - [x] Redo arm icon
+  - [x] Vision bounds animation
+  - [x] Eye opening animation
   - Stat showcase decay
     - Head
     - Arms

@@ -96,7 +96,7 @@
   - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] Tune pauses between hits
-- [ ] Pause after death before transition / eye close animation
+- [x] Pause after death before transition / eye close animation
 - [ ] Enemy animation
   - [ ] Attack
   - [ ] Hurt
@@ -141,7 +141,7 @@
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
 - [ ] Inventory items need better styleboxes
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
-- [ ] Start up animation overlay of an eye opening up from first person view
+- [x] Start up animation overlay of an eye opening up from first person view
 - [ ] Gate transition animation
 ### DONE
 - [x] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
