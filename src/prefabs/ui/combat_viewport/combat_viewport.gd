@@ -57,8 +57,9 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 enum TURN {PLAYER,ENEMY}
 var curr_turn : TURN = TURN.PLAYER
 
-var pause_time : float = 2.5
+var pause_time : float 
 func _ready():
+	pause_time = root_ui.med_battle_speed
 	visible = false
 	player = root_ui.player
 	map = root_ui.map

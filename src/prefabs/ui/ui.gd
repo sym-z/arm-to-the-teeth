@@ -10,6 +10,18 @@ extends CanvasLayer
 @export var options_button : Button
 @export var quit_button : Button
 
+@export_category("Options Menu")
+@export var options_container : MarginContainer
+@export var curr_speed_label : Label
+@export var slow_speed_button : Button
+@export var slow_battle_speed : float = 2.5
+@export var med_speed_button : Button
+@export var med_battle_speed : float = 1.5
+@export var fast_speed_button : Button
+@export var fast_battle_speed : float = 0.5
+@export var options_back_button : Button
+
+
 @export_category("Temporary Labels")
 @export var tooth_label : Label
 @export var arm_label : Label
@@ -178,6 +190,21 @@ func _on_inventory_pressed():
 		pass
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _on_options_pressed():
+	options_container.visible = !options_container.visible
+	pass
+#endregion
+#region Options Window
+func set_slow_battle_speed():
+	combat_viewport.pause_time = slow_battle_speed
+	curr_speed_label.text = "CURRENT SPEED: SLOW"
+func set_med_battle_speed():
+	combat_viewport.pause_time = med_battle_speed
+	curr_speed_label.text = "CURRENT SPEED: MEDIUM"
+func set_fast_battle_speed():
+	combat_viewport.pause_time = fast_battle_speed
+	curr_speed_label.text = "CURRENT SPEED: FAST"
 #endregion
 #region Inventory Window
 func change_inventory_visibility(new_vis : bool):

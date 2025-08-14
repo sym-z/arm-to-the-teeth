@@ -369,3 +369,5 @@
 - Changed out the animations in the stat showcase to use the new decay animations
 - Decay animations tested and working
 - Options menu built
+- Battle speed tunable in options menu
+- Options menu tested and functional

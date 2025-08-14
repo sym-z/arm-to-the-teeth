@@ -40,7 +40,6 @@
   - Enemies can't move on top of eachother.
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
-- [ ] Text speed choice in options menu that effects battle speed
 - [ ] Content animates in map
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
@@ -52,6 +51,7 @@
   - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
 - [ ] New attack limb choice minigame that is a reaction based block
 ### DONE
+- [x] Text speed choice in options menu that effects battle speed
 - [x] The map's arm drops are randomized
   - [x] They are also influenced by the floor that the player is on.
 - [x] Refine hunger growth
