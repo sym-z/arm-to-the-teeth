@@ -309,9 +309,9 @@
   - [x] Vision bounds animation
   - [x] Eye opening animation
   - Stat showcase decay
-    - Head
-    - Arms
-    - Stomach
+    - [x] Head
+    - [x] Arms
+    - [x] Stomach
   - Lots of log messages
   - Player animations
     - Attack
@@ -323,8 +323,8 @@
     - Hurt
   - Menus
     - How to play
-    - Main menu
-    - Death screen
+    - [x] Main menu
+    - [x] Death screen
   - Environment
     - Wall textures
   - Inventory background
@@ -358,3 +358,4 @@
 - Created scenes for main menu and death screen
 - Implemented basic working death screen and main menu
 - Fixed a bug where the floor number was never being reset when the player died.
+- Fixed a bug where the wheel roller's speed was being incremented every attack

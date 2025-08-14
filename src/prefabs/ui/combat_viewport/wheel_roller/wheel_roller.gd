@@ -90,7 +90,7 @@ func spin_wheel(limb : Variant, head : bool):
 		if Globals.verbose_console == true:
 			print("WITHOUT DEBUFF: ", wheel.speed_scale + log(Globals.curr_floor**3))
 			print("WITH DEBUFF: ", wheel.speed_scale + log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff)
-		wheel.speed_scale += log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff
+		wheel.speed_scale = 1.0 + log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff
 	wheel.play()
 
 func stop_wheel():
