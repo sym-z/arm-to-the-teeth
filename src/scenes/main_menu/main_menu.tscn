@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://vedpap325i3n"]
+
+[ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="1_ob46e"]
+[ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
+[ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
+
+[node name="Main Menu" type="CanvasLayer"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ob46e")
+
+[node name="Header Container" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 745
+
+[node name="CenterContainer" type="CenterContainer" parent="Header Container"]
+layout_mode = 2
+
+[node name="Header Label" type="Label" parent="Header Container/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uqeha")
+theme_override_font_sizes/font_size = 181
+text = "ARM TO THE TEETH"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 95
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Play" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_wem23")
+text = "BEGIN"
+
+[node name="Tutorial" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_wem23")
+text = "INSTRUCTIONS"
+
+[node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_wem23")
+text = "QUIT"
