@@ -362,3 +362,4 @@
 - Scene is coded up for the Tutorial scene, and linked it to the main menu. Still need to add the text for it and test it.
 - Quit button in UI now works
 - High score is tracked and shown in Death Screen
+- High score is now displayed in the main menu

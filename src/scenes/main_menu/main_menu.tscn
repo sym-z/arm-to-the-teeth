@@ -5,11 +5,12 @@
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
 
-[node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button")]
+[node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button", "score_label")]
 script = ExtResource("1_uqeha")
 play_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Play")
 tutorial_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Tutorial")
 quit_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Quit")
+score_label = NodePath("Scores/CenterContainer/Score Label")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -65,3 +66,22 @@ text = "INSTRUCTIONS"
 layout_mode = 2
 theme = ExtResource("3_wem23")
 text = "QUIT"
+
+[node name="Scores" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 940
+
+[node name="CenterContainer" type="CenterContainer" parent="Scores"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Score Label" type="Label" parent="Scores/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uqeha")
+theme_override_font_sizes/font_size = 61
+text = "HIGHEST FLOOR REACHED: "
