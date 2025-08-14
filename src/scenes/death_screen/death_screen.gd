@@ -7,7 +7,9 @@ extends CanvasLayer
 
 func _ready():
 	#TODO: Add in high score
-	score_label.text = "YOU REACHED FLOOR: " + str(Globals.curr_floor) 
+	if Globals.curr_floor > Globals.highest_floor:
+		Globals.highest_floor = Globals.curr_floor
+	score_label.text = "YOU REACHED FLOOR: " + str(Globals.curr_floor) + "\nHIGHEST FLOOR REACHED: " + str(Globals.highest_floor)
 	retry_button.connect("pressed", try_again)
 	menu_button.connect("pressed", back_to_menu)
 	quit_button.connect("pressed", quit_game)
