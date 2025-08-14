@@ -36,6 +36,8 @@
   - [ ] Ability to drop arm on free tile
   - [ ] Ability to swap arms in combat
 - [ ] Enemy Movement (STRETCH GOAL)
+  - Basic idea: Enemy decides movement immediately, then executes when player moves, then decides new movement based on new information.
+  - Enemies can't move on top of eachother.
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
 - [ ] Text speed choice in options menu that effects battle speed
@@ -143,6 +145,10 @@
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
 - [x] Start up animation overlay of an eye opening up from first person view
 - [ ] Gate transition animation
+- [ ] Shaders
+- [ ] More lighting
+- [ ] Tunnel vision overlay
+
 ### DONE
 - [x] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
 - [x] Make better vision bounds animation
@@ -188,6 +194,9 @@
   - Remember to ignore mouse input
 - [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [ ] Convert all buttons to use red hover stylebox 
+- [ ] Occasional blinking animation
+- [ ] Tunnel vision overlay
+- [ ] Overlays could be done to mix eating and physical damage to arms
 ### DONE
 - [x] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
