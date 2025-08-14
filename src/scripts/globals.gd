@@ -12,6 +12,8 @@ const EAST : int = 1
 
 # What floor is the player on?
 var curr_floor = 0
+# What is the highest floor the player has reached?
+var highest_floor = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
