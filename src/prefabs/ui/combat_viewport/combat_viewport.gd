@@ -459,7 +459,7 @@ func check_player_death():
 
 func death_transition():
 	if player_dead == true:
-		SceneTransition.testing_level()
+		SceneTransition.death_screen()
 func check_enemy_death():
 	if opponent.curr_health <= 0:
 		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")

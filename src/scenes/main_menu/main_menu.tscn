@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://vedpap325i3n"]
+[gd_scene load_steps=5 format=3 uid="uid://vedpap325i3n"]
 
 [ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="1_ob46e"]
+[ext_resource type="Script" uid="uid://bppfvn2t8lfpo" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
 
-[node name="Main Menu" type="CanvasLayer"]
+[node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button")]
+script = ExtResource("1_uqeha")
+play_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Play")
+tutorial_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Tutorial")
+quit_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Quit")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15

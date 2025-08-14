@@ -356,3 +356,5 @@
 - Created animations for head, arm, and stomach decay
 - Merged back to #content-enhancement
 - Created scenes for main menu and death screen
+- Implemented basic working death screen and main menu
+- Fixed a bug where the floor number was never being reset when the player died.
