@@ -363,3 +363,8 @@
 - Quit button in UI now works
 - High score is tracked and shown in Death Screen
 - High score is now displayed in the main menu
+
+## 14 August 2025
+- Imported new decay animations for the stomach, arms, and head
+- Changed out the animations in the stat showcase to use the new decay animations
+- Decay animations tested and working

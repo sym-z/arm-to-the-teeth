@@ -289,15 +289,16 @@ func set_arm_frame(a : Arm, anim : AnimatedSprite2D):
 	anim.frame = total_arm_frames - frame_num
 	
 func refresh_stomach_stat():
-	match player.hunger_state:
-		player.HUNGER_LEVEL.SATISFIED:
-			stomach_anim.frame = 0
-		player.HUNGER_LEVEL.HUNGRY:
-			stomach_anim.frame = 1
-		player.HUNGER_LEVEL.STARVING:
-			stomach_anim.frame = 2
-		player.HUNGER_LEVEL.DEAD:
-			stomach_anim.frame = 3
+	if player.hunger == 0:
+		stomach_anim.frame = 0
+	else:
+		var total_stomach_frames = stomach_anim.sprite_frames.get_frame_count("default") - 1
+		var hunger : float = player.hunger
+		var max_hunger : float = player.HUNGER_LEVEL.DEAD
+		var hunger_percent : float = hunger/max_hunger
+		var frame_num = floor(total_stomach_frames * hunger_percent)
+		stomach_anim.frame = frame_num
+
 			
 func refresh_head_stat():
 	# Get frame size, zero-indexed
