@@ -176,6 +176,8 @@ func _on_inventory_pressed():
 			add_arm_to_inventory(player.arm_inventory[i], i+1)
 			pass
 		pass
+func _on_quit_pressed():
+	get_tree().quit()
 #endregion
 #region Inventory Window
 func change_inventory_visibility(new_vis : bool):

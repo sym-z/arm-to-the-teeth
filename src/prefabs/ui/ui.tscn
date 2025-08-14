@@ -911,6 +911,7 @@ vertical_alignment = 1
 [connection signal="mini_map_ready" from="Mini Map Layer/Mini Map" to="." method="_on_mini_map_mini_map_ready"]
 [connection signal="pressed" from="Context Menu/Context Menu Container/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]
 [connection signal="pressed" from="Context Menu/Context Menu Container/Button Container/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="Context Menu/Context Menu Container/Button Container/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Inventory/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="gui_input" from="Log/Log Line Window" to="." method="_on_log_line_window_gui_input"]
 [connection signal="pressed" from="Log/Full Window Back Button" to="." method="_on_full_window_back_button_pressed"]

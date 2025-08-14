@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready():
 	play_button.connect("pressed", start_game)
 	quit_button.connect("pressed", quit_game)
+	tutorial_button.connect("pressed", tutorial)
 
 func start_game():
 	Globals.curr_floor = 0
