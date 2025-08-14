@@ -13,5 +13,8 @@ func start_game():
 	Log.log_messages.clear()
 	SceneTransition.testing_level()
 
+func tutorial():
+	SceneTransition.tutorial()
+
 func quit_game():
 	get_tree().quit()

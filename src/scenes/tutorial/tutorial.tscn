@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1pwicxgdt8l3"]
+
+[ext_resource type="Script" uid="uid://88jg1khpu10x" path="res://scenes/tutorial/tutorial.gd" id="1_g40di"]
+[ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="2_r23bs"]
+[ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="3_pq3l0"]
+[ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="4_g7eoy"]
+
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("play_button", "back_button")]
+script = ExtResource("1_g40di")
+play_button = NodePath("Buttons/CenterContainer/HBoxContainer/Play")
+back_button = NodePath("Buttons/CenterContainer/HBoxContainer/Back")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r23bs")
+
+[node name="Header" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 925
+
+[node name="CenterContainer" type="CenterContainer" parent="Header"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Header/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pq3l0")
+theme_override_font_sizes/font_size = 96
+text = "HOW TO PLAY"
+
+[node name="Buttons" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 875
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1360
+
+[node name="Back" type="Button" parent="Buttons/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_g7eoy")
+text = "BACK"
+
+[node name="Play" type="Button" parent="Buttons/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_g7eoy")
+text = "PLAY"
