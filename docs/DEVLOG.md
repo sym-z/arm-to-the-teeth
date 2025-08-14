@@ -368,3 +368,4 @@
 - Imported new decay animations for the stomach, arms, and head
 - Changed out the animations in the stat showcase to use the new decay animations
 - Decay animations tested and working
+- Options menu built
