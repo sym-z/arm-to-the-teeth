@@ -373,3 +373,12 @@
 - Options menu tested and functional
 - Player attack animation drawn
 - Need to add in and finish up new drawings tomorrow.
+
+# 15 August 2025
+- Imported new animations for:
+  - Gate transition
+  - Player attack
+  - Player hurt
+  - Run directions
+  - Tiling textures for the walls
+  - UI background prototype
