@@ -384,3 +384,4 @@
   - UI background prototype
 - Implemented:
   - Gate transition animation
+  - New textures for walls
