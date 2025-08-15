@@ -371,3 +371,5 @@
 - Options menu built
 - Battle speed tunable in options menu
 - Options menu tested and functional
+- Player attack animation drawn
+- Need to add in and finish up new drawings tomorrow.
