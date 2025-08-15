@@ -67,6 +67,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Eye Transition")
 @export var eye_anim : AnimatedSprite2D
+
+@export_category("Gate Transition")
+@export var gate_anim : AnimatedSprite2D
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -101,6 +104,8 @@ func initial_setup():
 	
 	eye_anim.frame = eye_anim.sprite_frames.get_frame_count("default") - 1
 	eye_anim.play_backwards("default")
+	
+	gate_anim.connect("animation_finished", hide_gate_anim)
 	
 
 #region Mini Map
@@ -142,7 +147,11 @@ func _on_player_item_detected(item, loc):
 			item_to_pick = Cell.TYPE.SPAWN
 		Cell.TYPE.EXIT:
 			pickup_button.disabled = true
+			#TODO: ASK PLAYER IF THEY WANT TO GO TO NEXT LEVEL
 			item_to_pick = Cell.TYPE.EXIT
+			gate_anim.visible = true
+			gate_anim.play()
+			map.new_level()
 		Cell.TYPE.ARM:
 			pickup_button.disabled = false
 			item_to_pick = Cell.TYPE.ARM
@@ -156,6 +165,10 @@ func _on_player_item_detected(item, loc):
 		pickup_button.start_blink()
 	elif pickup_button.curr_state == pickup_button.STATE.BLINK:
 		pickup_button.end_blink()
+
+func hide_gate_anim():
+	gate_anim.visible = false
+
 # When the player picks up what is at their feet, set the UI to the correct state.
 func _on_player_item_picked_up():
 	pickup_button.disabled = true

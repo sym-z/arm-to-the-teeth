@@ -199,7 +199,6 @@ func check_cell_content() -> Cell.TYPE:
 			if Globals.verbose_console == true:
 				print("PLAYER ON EXIT!")
 			item_detected.emit(Cell.TYPE.EXIT, position)
-			map.new_level()
 			return Cell.TYPE.EXIT
 		Cell.TYPE.SPAWN:
 			if Globals.verbose_console == true:

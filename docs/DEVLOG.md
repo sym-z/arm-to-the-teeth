@@ -382,3 +382,5 @@
   - Run directions
   - Tiling textures for the walls
   - UI background prototype
+- Implemented:
+  - Gate transition animation
