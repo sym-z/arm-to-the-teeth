@@ -54,6 +54,7 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 @export var temp_e_health : Label
 @export var temp_e_damage : Label
 
+
 enum TURN {PLAYER,ENEMY}
 var curr_turn : TURN = TURN.PLAYER
 
@@ -431,6 +432,7 @@ func damage_head(h: Head):
 	# Go to attack/run right after damage application
 	if player_dead == false:
 		#create_timer(3.5, show_player_turn_start)
+		player_anim.hurt_bounce()
 		show_player_turn_start()
 	
 func damage_arm(a: Arm):
@@ -444,6 +446,7 @@ func damage_arm(a: Arm):
 	# Re-Enable inventory use after damage is applied
 	root_ui.inventory_button.disabled = false
 	# Go to attack/run right after damage application
+	player_anim.hurt_bounce()
 	show_player_turn_start()
 	#endregion
 	#region Combat Ending State

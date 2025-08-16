@@ -40,7 +40,7 @@
   - Enemies can't move on top of eachother.
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
-- [ ] Content animates in map
+- [ ] Content animates in dungeon viewport
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
 - [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
@@ -97,18 +97,18 @@
   - [ ] For enemy
   - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
-- [ ] Tune pauses between hits
+- [x] Tune pauses between hits
 - [x] Pause after death before transition / eye close animation
 - [ ] Enemy animation
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
 - [ ] Player animation
-  - [ ] Attack
-  - [ ] Hurt
+  - [x] Attack
+  - [x] Hurt
   - [ ] Death
 - [ ] More enemy types
-  - [ ] Loot drops are dependent on monster stats / monster type
+  - [ ] Loot drops are dependent on monster type
 ### DONE
 - [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
 - [x] Monster stats are depedent on floor level
@@ -143,13 +143,13 @@
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
 - [ ] Inventory items need better styleboxes
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
-- [x] Start up animation overlay of an eye opening up from first person view
-- [ ] Gate transition animation
 - [ ] Shaders
 - [ ] More lighting
 - [ ] Tunnel vision overlay
 
 ### DONE
+- [x] Start up animation overlay of an eye opening up from first person view
+- [x] Gate transition animation
 - [x] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
 - [x] Make better vision bounds animation
 - [x] Jaw-like tooth stat showcase animation
@@ -166,18 +166,6 @@
 
 ## UI
 - [ ] Player has vision of 1 on minimap
-- [ ] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
-  - [x] Temporary label
-  - [x] Prototype Art
-  - [ ] Final Art
-- [ ] Head indication (Frame = Head Health)
-  - [x] Temporary label
-  - [x] Prototype Art
-  - [ ] Final Art
-- [ ] Hunger indication (Stomach animation in between arms. Frame = Hunger level)
-  - [x] Temporary label
-  - [x] Prototype Art
-  - [ ] Final Art
 - [ ] Figure out how exits are used
   - [x] Automatic
   - [ ] Dialog window pop-up
@@ -198,6 +186,18 @@
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
 ### DONE
+- [x] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
+  - [x] Temporary label
+  - [x] Prototype Art
+  - [x] Final Art
+- [x] Head indication (Frame = Head Health)
+  - [x] Temporary label
+  - [x] Prototype Art
+  - [x] Final Art
+- [x] Hunger indication (Stomach animation in between arms. Frame = Hunger level)
+  - [x] Temporary label
+  - [x] Prototype Art
+  - [x] Final Art
 - [x] Tooth Indication (Frame = Tooth Count)
   - [x] Temporary label
   - [x] Prototype Art

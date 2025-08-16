@@ -374,7 +374,7 @@
 - Player attack animation drawn
 - Need to add in and finish up new drawings tomorrow.
 
-# 15 August 2025
+## 15 August 2025
 - Imported new animations for:
   - Gate transition
   - Player attack
@@ -384,3 +384,6 @@
   - UI background prototype
 - Implemented:
   - Gate transition animation
+
+## 16 August 2025
+- Player attack and hurt animations implemented.
