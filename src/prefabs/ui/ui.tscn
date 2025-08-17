@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
-[ext_resource type="Texture2D" uid="uid://di01mum33xdma" path="res://assets/visual/ui/prototype_texture_0_full_border.png" id="2_hvfel"]
 [ext_resource type="Texture2D" uid="uid://drgfbbk2ic7c" path="res://assets/visual/ui/eye_transition/eye_transition_1.png" id="3_b1ex4"]
 [ext_resource type="Theme" uid="uid://c2mywnu4h8hvj" path="res://themes/context_menu/margin_container/Panel/context_menu_panel_theme.tres" id="3_htiv7"]
 [ext_resource type="Texture2D" uid="uid://h30xwa8dde6b" path="res://assets/visual/ui/eye_transition/eye_transition_2.png" id="4_mpgui"]
@@ -67,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://pwkav1mdysu2" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_25.png" id="41_nuxg6"]
 [ext_resource type="Texture2D" uid="uid://cerrt2sg5vnji" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_26.png" id="42_3t8s0"]
 [ext_resource type="Texture2D" uid="uid://80064q74ture" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_27.png" id="43_nrubd"]
+[ext_resource type="Texture2D" uid="uid://chm84apqi6yjj" path="res://assets/visual/ui/ui_bg_0.png" id="44_wcb55"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u5l0a"]
 animations = [{
@@ -727,10 +727,11 @@ sprite_frames = SubResource("SpriteFrames_m0h0r")
 centered = false
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-texture = ExtResource("2_hvfel")
+texture = ExtResource("44_wcb55")
 
 [node name="Viewport Header Container" type="MarginContainer" parent="."]
 anchors_preset = 15

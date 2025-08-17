@@ -217,7 +217,7 @@ func runaway_damage():
 					root_ui.arm_fully_eaten(equipped_arms[1])
 					Log.add_log_message("IT LOST AN ARM WHILE FLEEING...")
 					root_ui.refresh_temp_labels()
-					player.stat_change.emit()
+				player.stat_change.emit()
 	else:
 		Log.add_log_message("IT MANAGED TO FLEE AND TAKE NO DAMAGE")
 	# Enable inventory management

@@ -675,6 +675,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Run Direction Selection" type="MarginContainer" parent="."]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
