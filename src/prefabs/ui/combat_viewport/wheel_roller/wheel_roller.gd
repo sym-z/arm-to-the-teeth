@@ -136,6 +136,7 @@ func hit_enemy(damage: int):
 		print("ACTUAL DAMAGE: " , damage)
 	# Prevent negative hp in enemy stat label
 	combat_viewport.opponent.curr_health = max(0, combat_viewport.opponent.curr_health - damage)
+	combat_viewport.player_anim.attack_bounce()
 	Log.add_log_message("IT DEALT " + str(damage) + " DAMAGE.")
 	combat_viewport.refresh_temp_labels()
 	combat_viewport.check_enemy_death()
@@ -158,5 +159,9 @@ func whiff(damage: int):
 		else:
 			Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(damage) + " CONDITION.")
 			# Only emitting here because when an arm is fully eaten the signal will fire.
+			
+	if combat_viewport.player_dead == false:
+		combat_viewport.player_anim.hurt_bounce()
+		
 	combat_viewport.root_ui.refresh_temp_labels()
 	combat_viewport.player.stat_change.emit()
