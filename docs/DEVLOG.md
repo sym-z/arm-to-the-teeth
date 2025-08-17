@@ -387,3 +387,4 @@
 
 ## 16 August 2025
 - Player attack and hurt animations implemented.
+- Added temporary background for ui, and tested. Really like the look of it so I am going to refine it.
