@@ -389,3 +389,6 @@
 - Player attack and hurt animations implemented.
 - Added temporary background for ui, and tested. Really like the look of it so I am going to refine it.
 - Because of issues and that I think it is a better idea, I am going to make the textured version of the walls a separate animation in the future
+- Textured walls are now optional, and can be swapped between using `1` and `2`.
+- Fully fixed a bug that did not update arm condition in the stat showcase when a player received runaway damage.
+- Added code to `dungeon_viewport.gd` that allows for animations to be swapped easily for the walls

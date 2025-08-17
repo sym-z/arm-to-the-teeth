@@ -208,7 +208,7 @@ func runaway_damage():
 					root_ui.arm_fully_eaten(equipped_arms[0])
 					Log.add_log_message("IT LOST AN ARM WHILE FLEEING...")
 					root_ui.refresh_temp_labels()
-					player.stat_change.emit()
+				player.stat_change.emit()
 			2:
 				# Arm 2
 				equipped_arms[1].condition = max(0,equipped_arms[1].condition - opponent.damage)

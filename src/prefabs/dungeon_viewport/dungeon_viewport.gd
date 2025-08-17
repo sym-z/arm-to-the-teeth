@@ -37,7 +37,30 @@ enum SIDE {WALL, TURN, EMPTY}
 @export var d2_ff_right_center : AnimatedSprite2D
 @export var d2_fff_right : AnimatedSprite2D
 
+@export_category("Parents")
+@export var d0_parent : Node2D
+@export var d1_parent : Node2D
+@export var d2_parent : Node2D
+var d_parents : Array[Node2D] = []
+
 signal refresh_ordering
+
+func _ready():
+	d_parents = [d0_parent,d1_parent,d2_parent]
+	change_animations("default")
+
+func change_animations(anim : String):
+	for parent in d_parents:
+		for child in parent.get_children():
+			if child.is_in_group("wall"):
+				child.animation = anim
+	refresh()
+
+func _input(event):
+	if event.is_action_pressed("debug_default_tex"):
+		change_animations("default")
+	elif event.is_action_pressed("debug_tex_0"):
+		change_animations("tex_0")
 #func _on_map_map_generated():
 	#refresh_viewport_2()
 
