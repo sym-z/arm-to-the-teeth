@@ -388,3 +388,4 @@
 ## 16 August 2025
 - Player attack and hurt animations implemented.
 - Added temporary background for ui, and tested. Really like the look of it so I am going to refine it.
+- Because of issues and that I think it is a better idea, I am going to make the textured version of the walls a separate animation in the future
