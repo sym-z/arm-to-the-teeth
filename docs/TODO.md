@@ -22,7 +22,8 @@
   - Words for Arm and Teeth are made from arms and teeth.
 - [ ] How to Play
 - [ ] Death Screen
-- [ ] Track highest floor achieved
+### DONE
+- [x] Track highest floor achieved
 
 ## Gameplay
 - [ ] Player has vision of 1 on minimap
@@ -50,6 +51,7 @@
 - [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
   - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
 - [ ] New attack limb choice minigame that is a reaction based block
+- [ ] Chest / lock and key puzzle
 ### DONE
 - [x] Text speed choice in options menu that effects battle speed
 - [x] The map's arm drops are randomized
@@ -90,26 +92,26 @@
 - [ ] Enemy animates
   - [x] Prototype
   - [ ] Final
-- [ ] Player Animates
-  - [x] Prototype
-  - [ ] Final
 - [ ] Higher damage for crit rolls
   - [ ] For enemy
   - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
-- [x] Tune pauses between hits
-- [x] Pause after death before transition / eye close animation
 - [ ] Enemy animation
   - [ ] Attack
   - [ ] Hurt
   - [ ] Death
-- [ ] Player animation
-  - [x] Attack
-  - [x] Hurt
-  - [ ] Death
 - [ ] More enemy types
   - [ ] Loot drops are dependent on monster type
 ### DONE
+- [x] Player animation
+  - [x] Attack
+  - [x] Hurt
+  - [ ] Death (NOT APPLICABLE)
+- [x] Tune pauses between hits
+- [x] Pause after death before transition / eye close animation
+- [x] Player Animates
+  - [x] Prototype
+  - [x] Final
 - [x] Make the enemy rolls go from 1 - player.max_health *4 and set the DC to player.max_health for runaway damage and enemy roll calculations in combat.
 - [x] Monster stats are depedent on floor level
 - [x] Loot drops are dependent on floor level
@@ -146,7 +148,6 @@
 - [ ] Shaders
 - [ ] More lighting
 - [ ] Tunnel vision overlay
-
 ### DONE
 - [x] Start up animation overlay of an eye opening up from first person view
 - [x] Gate transition animation
