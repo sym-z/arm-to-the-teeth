@@ -24,21 +24,21 @@
 [ext_resource type="PackedScene" uid="uid://c20d3pqcgllt8" path="res://prefabs/ui/combat_viewport/damagable_limb/damagable_limb.tscn" id="17_xkj7y"]
 [ext_resource type="Theme" uid="uid://b2ycv3walgxhg" path="res://themes/combat_viewport/run_dir_margin_container.tres" id="18_8xoyx"]
 [ext_resource type="Theme" uid="uid://cq8ao4feimsfo" path="res://themes/combat_viewport/run_dir_panel_background.tres" id="19_k7xhf"]
-[ext_resource type="Texture2D" uid="uid://c7t55p6ho3c7" path="res://assets/visual/ui/run_window/run_dirs_0_1.png" id="20_ir4bk"]
-[ext_resource type="Texture2D" uid="uid://l66eqfhvqoha" path="res://assets/visual/ui/run_window/run_dirs_0_4.png" id="21_q6axe"]
 [ext_resource type="Texture2D" uid="uid://8pbxl0gdkwhb" path="res://assets/visual/ui/run_window/run_dirs_0_disabled1.png" id="22_2uckp"]
 [ext_resource type="Texture2D" uid="uid://4hluvw65gqu8" path="res://assets/visual/ui/run_window/run_dirs_0_hover1.png" id="22_ln2qj"]
-[ext_resource type="Texture2D" uid="uid://cq2bcl4kph0v0" path="res://assets/visual/ui/run_window/run_dirs_0_3.png" id="22_nqaus"]
-[ext_resource type="Texture2D" uid="uid://bcnpot0nlt6xp" path="res://assets/visual/ui/run_window/run_dirs_0_2.png" id="23_2uckp"]
 [ext_resource type="Texture2D" uid="uid://e05m0lxms872" path="res://assets/visual/ui/run_window/run_dirs_0_disabled4.png" id="24_a13an"]
 [ext_resource type="Texture2D" uid="uid://bpag8xjuarg1c" path="res://assets/visual/ui/run_window/run_dirs_0_hover4.png" id="25_frval"]
+[ext_resource type="Texture2D" uid="uid://b7ntjjx5drk2q" path="res://assets/visual/ui/run_window/run_dirs_1_1.png" id="25_l8e2f"]
 [ext_resource type="Texture2D" uid="uid://bbaftllj8jifm" path="res://assets/visual/ui/run_window/run_dirs_0_disabled3.png" id="26_vcyn2"]
+[ext_resource type="Texture2D" uid="uid://b3am1sni15h2b" path="res://assets/visual/ui/run_window/run_dirs_1_4.png" id="28_2nqm1"]
 [ext_resource type="Texture2D" uid="uid://cy0id8vi086ow" path="res://assets/visual/ui/run_window/run_dirs_0_hover3.png" id="28_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://bt6qvfk08xwbs" path="res://assets/visual/ui/run_window/run_dirs_0_disabled2.png" id="28_xx2gd"]
 [ext_resource type="Texture2D" uid="uid://b1n1gq4258ycd" path="res://assets/visual/ui/run_window/run_dirs_0_hover2.png" id="31_bhhon"]
+[ext_resource type="Texture2D" uid="uid://badpw3mu3fsl1" path="res://assets/visual/ui/run_window/run_dirs_1_3.png" id="31_rkw3r"]
 [ext_resource type="Script" uid="uid://bhqla245yfxor" path="res://prefabs/ui/combat_viewport/wheel_roller/wheel_roller.gd" id="33_bhhon"]
 [ext_resource type="Texture2D" uid="uid://4d7svxjvbrst" path="res://assets/visual/ui/wheel_roller/wheel_roller_0.png" id="33_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://cdr3ouxfesibc" path="res://assets/visual/ui/wheel_roller/clicker_0.png" id="34_bhhon"]
+[ext_resource type="Texture2D" uid="uid://teemfsxk00q2" path="res://assets/visual/ui/run_window/run_dirs_1_2.png" id="34_c83l7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7xhf"]
 atlas = ExtResource("9_8xoyx")
@@ -675,7 +675,6 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Run Direction Selection" type="MarginContainer" parent="."]
-visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -722,7 +721,7 @@ alignment = 1
 
 [node name="Up Button" type="TextureButton" parent="Run Direction Selection/MarginContainer/Direction Buttons/Up Container"]
 layout_mode = 2
-texture_normal = ExtResource("20_ir4bk")
+texture_normal = ExtResource("25_l8e2f")
 texture_hover = ExtResource("22_ln2qj")
 texture_disabled = ExtResource("22_2uckp")
 
@@ -734,13 +733,13 @@ alignment = 1
 
 [node name="Left Button" type="TextureButton" parent="Run Direction Selection/MarginContainer/Direction Buttons/Left Right Container"]
 layout_mode = 2
-texture_normal = ExtResource("21_q6axe")
+texture_normal = ExtResource("28_2nqm1")
 texture_hover = ExtResource("25_frval")
 texture_disabled = ExtResource("24_a13an")
 
 [node name="Right Button" type="TextureButton" parent="Run Direction Selection/MarginContainer/Direction Buttons/Left Right Container"]
 layout_mode = 2
-texture_normal = ExtResource("22_nqaus")
+texture_normal = ExtResource("31_rkw3r")
 texture_hover = ExtResource("28_pcqw8")
 texture_disabled = ExtResource("26_vcyn2")
 
@@ -751,7 +750,7 @@ alignment = 1
 
 [node name="Down Button" type="TextureButton" parent="Run Direction Selection/MarginContainer/Direction Buttons/Down Container"]
 layout_mode = 2
-texture_normal = ExtResource("23_2uckp")
+texture_normal = ExtResource("34_c83l7")
 texture_hover = ExtResource("31_bhhon")
 texture_disabled = ExtResource("28_xx2gd")
 
