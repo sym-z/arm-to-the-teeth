@@ -1,10 +1,13 @@
-[gd_scene load_steps=108 format=3 uid="uid://b5lskvgjumjn"]
+[gd_scene load_steps=107 format=3 uid="uid://b5lskvgjumjn"]
 
 [ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
-[ext_resource type="Texture2D" uid="uid://bccyj0d1j1pdx" path="res://assets/visual/ui/vision_bounds_1.png" id="2_catg2"]
+[ext_resource type="Texture2D" uid="uid://cktu4f21gyl7u" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped1.png" id="2_rhs0v"]
 [ext_resource type="Texture2D" uid="uid://d1eelbtekskxj" path="res://assets/visual/prototype_renderer/v2/tiling/d2_farthest_side_v3.png" id="3_catg2"]
+[ext_resource type="Texture2D" uid="uid://cb05x5a0pbwmw" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped2.png" id="3_qnijb"]
 [ext_resource type="Texture2D" uid="uid://utp7dbowevbb" path="res://assets/visual/prototype_renderer/v2/tiling/d2_farther_center_v3.png" id="4_2bd64"]
+[ext_resource type="Texture2D" uid="uid://ckcvwriluj6ef" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped3.png" id="4_08knw"]
 [ext_resource type="PackedScene" uid="uid://m0ggohtumqml" path="res://prefabs/contents/contents_d2/contents_d2.tscn" id="5_2qty0"]
+[ext_resource type="Texture2D" uid="uid://cqoowq80sq1ql" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped4.png" id="5_e8g67"]
 [ext_resource type="Texture2D" uid="uid://bev5o1vlfwite" path="res://assets/visual/prototype_renderer/v2/tiling/d2_farther_side_v3.png" id="6_hwm0v"]
 [ext_resource type="Texture2D" uid="uid://b243pfl8obqbt" path="res://assets/visual/prototype_renderer/v2/tiling/d2_far_center_v3.png" id="7_rhs0v"]
 [ext_resource type="Texture2D" uid="uid://da2orytpikxep" path="res://assets/visual/prototype_renderer/v2/tiling/d2_far_side_v3.png" id="8_qnijb"]
@@ -18,36 +21,20 @@
 [ext_resource type="Texture2D" uid="uid://d2iibg4vptftb" path="res://assets/visual/prototype_renderer/v2/tiling/d0_center_v4.png" id="16_2bd64"]
 [ext_resource type="PackedScene" uid="uid://cnq242qe5ftmt" path="res://prefabs/contents/contents_d0/contents_d0.tscn" id="17_2bd64"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bd64"]
-atlas = ExtResource("2_catg2")
-region = Rect2(0, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwm0v"]
-atlas = ExtResource("2_catg2")
-region = Rect2(480, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhs0v"]
-atlas = ExtResource("2_catg2")
-region = Rect2(960, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnijb"]
-atlas = ExtResource("2_catg2")
-region = Rect2(1440, 0, 480, 270)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_wqhcc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2bd64")
+"texture": ExtResource("2_rhs0v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hwm0v")
+"texture": ExtResource("3_qnijb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rhs0v")
+"texture": ExtResource("4_08knw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qnijb")
+"texture": ExtResource("5_e8g67")
 }],
 "loop": true,
 "name": &"default",
@@ -717,7 +704,6 @@ d2_fff_right = NodePath("Distance 2/Farthest Right Wall")
 [node name="Vision Bounds" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.25, 0.25, 0.25, 1)
 position = Vector2(960, 540)
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wqhcc")
 autoplay = "default"
 

@@ -20,14 +20,14 @@ position = Vector2i(9, 9)
 map = NodePath("../Map")
 ui = NodePath("../UI")
 
-[node name="Dungeon Viewport" parent="." node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]
-map = NodePath("../Map")
-player = NodePath("../Player")
-
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_n0j1u")
+
+[node name="Dungeon Viewport" parent="." node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]
+map = NodePath("../Map")
+player = NodePath("../Player")
 
 [node name="UI" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("6_ped82")]
 player = NodePath("../Player")
