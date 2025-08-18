@@ -392,3 +392,13 @@
 - Textured walls are now optional, and can be swapped between using `1` and `2`.
 - Fully fixed a bug that did not update arm condition in the stat showcase when a player received runaway damage.
 - Added code to `dungeon_viewport.gd` that allows for animations to be swapped easily for the walls
+
+## 17 August 2025
+- Biotic Status has a stylebox border
+- Dungeon Viewport has a stylebox border
+- Screen has a stylebox border
+- Enemy uses a progress bar for their health in addition to a numerical representation
+- Adjusted "Attack/Run" stylebox
+- Tweaked the UI texture slightly
+- Imported animations for enemy attack, hurt and death
+- Enemy animations implemented for attack, hurt and death

@@ -89,20 +89,20 @@
 
 ## Player vs Enemy Combat 
 - [ ] Cancel running / attacking choice?
-- [ ] Enemy animates
-  - [x] Prototype
-  - [ ] Final
 - [ ] Higher damage for crit rolls
   - [ ] For enemy
   - [x] For player
 - [ ] A lot more log messages about how much damage is dealt and where.
-- [ ] Enemy animation
-  - [ ] Attack
-  - [ ] Hurt
-  - [ ] Death
 - [ ] More enemy types
   - [ ] Loot drops are dependent on monster type
 ### DONE
+- [x] Enemy animates
+  - [x] Prototype
+  - [x] Final
+- [x] Enemy animation
+  - [x] Attack
+  - [x] Hurt
+  - [x] Death
 - [x] Player animation
   - [x] Attack
   - [x] Hurt
@@ -148,6 +148,7 @@
 - [ ] Shaders
 - [ ] More lighting
 - [ ] Tunnel vision overlay
+- [ ] Enemy idle animation
 ### DONE
 - [x] Start up animation overlay of an eye opening up from first person view
 - [x] Gate transition animation
@@ -176,17 +177,17 @@
 - [ ] Make sure that the UI only uses the AT3 palette
   - [x] Green-white color for stylebox borders
   - [ ] Can use texture stylebox to make more stylized boxes
-- [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go.
 - [ ] Enemy is named in the combat window
 - [ ] (STRETCH GOAL) Log messages have a timestamp
-- [ ] Panel container surrounds viewport instead of built in border
-  - Remember to ignore mouse input
 - [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [ ] Convert all buttons to use red hover stylebox 
 - [ ] Occasional blinking animation
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
 ### DONE
+- [x] Panel container surrounds viewport instead of built in border
+  - Remember to ignore mouse input
+- [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go. (NOT APPLICABLE, NEW METHOD USED)
 - [x] Arm indication (Two separate animations, frames = max condition. Lowered to 0 as damage is taken)
   - [x] Temporary label
   - [x] Prototype Art

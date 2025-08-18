@@ -140,6 +140,9 @@ func hit_enemy(damage: int):
 	Log.add_log_message("IT DEALT " + str(damage) + " DAMAGE.")
 	combat_viewport.refresh_temp_labels()
 	combat_viewport.check_enemy_death()
+	if combat_viewport.enemy_dead == false:
+		combat_viewport.enemy_anim.animation = "hurt"
+		combat_viewport.enemy_anim.play()
 
 func whiff(damage: int):
 	if is_head == true:

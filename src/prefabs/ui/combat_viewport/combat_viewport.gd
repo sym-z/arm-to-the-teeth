@@ -88,6 +88,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	# Initialize enemy health bar
 	e_health_bar.max_value = opponent.total_health
 	refresh_temp_labels()
+	enemy_anim.animation = "default"
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
@@ -437,6 +438,8 @@ func damage_head(h: Head):
 		#create_timer(3.5, show_player_turn_start)
 		player_anim.hurt_bounce()
 		show_player_turn_start()
+	enemy_anim.animation = "attack"
+	enemy_anim.play()
 	
 func damage_arm(a: Arm):
 	if Globals.verbose_console:
@@ -451,6 +454,8 @@ func damage_arm(a: Arm):
 	# Go to attack/run right after damage application
 	player_anim.hurt_bounce()
 	show_player_turn_start()
+	enemy_anim.animation = "attack"
+	enemy_anim.play()
 	#endregion
 	#region Combat Ending State
 func check_player_death():
@@ -472,6 +477,8 @@ func check_enemy_death():
 		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
 		# Set flag
 		enemy_dead = true
+		enemy_anim.animation = "death"
+		enemy_anim.play()
 		create_timer(pause_time,combat_victory)
 
 func drop_loot():
