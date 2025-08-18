@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=94 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -187,6 +187,21 @@ border_width_bottom = 4
 border_color = Color(0.984314, 0.980392, 0.898039, 1)
 expand_margin_right = 20.0
 expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8e2f"]
+bg_color = Color(0.0156863, 0.00784314, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.984314, 0.980392, 0.898039, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nqm1"]
+bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmgk"]
 bg_color = Color(0.0156863, 0.00784314, 0, 1)
@@ -439,7 +454,7 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -467,6 +482,7 @@ left_button = NodePath("Run Direction Selection/MarginContainer/Direction Button
 right_button = NodePath("Run Direction Selection/MarginContainer/Direction Buttons/Left Right Container/Right Button")
 temp_e_health = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/TEMP ENEMY HEALTH")
 temp_e_damage = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/TEMP ENEMY DAMAGE")
+e_health_bar = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/Health Bar")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 2
@@ -564,6 +580,7 @@ theme_override_constants/margin_bottom = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="TEMP ENEMY STATS/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="TEMP ENEMY HEALTH" type="Label" parent="TEMP ENEMY STATS/MarginContainer/VBoxContainer"]
@@ -571,6 +588,15 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 32
 text = "HEALTH: 200/200"
+horizontal_alignment = 1
+
+[node name="Health Bar" type="ProgressBar" parent="TEMP ENEMY STATS/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_l8e2f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2nqm1")
+rounded = true
+show_percentage = false
 
 [node name="TEMP ENEMY DAMAGE" type="Label" parent="TEMP ENEMY STATS/MarginContainer/VBoxContainer"]
 layout_mode = 2

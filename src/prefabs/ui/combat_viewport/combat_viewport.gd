@@ -53,6 +53,7 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 @export_category("TEMP ENEMY STATS")
 @export var temp_e_health : Label
 @export var temp_e_damage : Label
+@export var e_health_bar : ProgressBar
 
 
 enum TURN {PLAYER,ENEMY}
@@ -84,6 +85,8 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	show_player_turn_start()
 	opponent = e
 	combat_location = loc
+	# Initialize enemy health bar
+	e_health_bar.max_value = opponent.total_health
 	refresh_temp_labels()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
@@ -621,6 +624,7 @@ func create_timer(duration : float, callback: Callable):
 
 func refresh_temp_labels():
 	temp_e_health.text = "HEALTH: " + str(opponent.curr_health) + "/" + str(opponent.total_health)
+	e_health_bar.value = opponent.curr_health
 	temp_e_damage.text = "DAMAGE: " + str(opponent.damage)
 	pass
 #endregion

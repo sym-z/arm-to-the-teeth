@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://2ghmulmo5ff" path="res://scenes/testing_level/testing_level.gd" id="1_tt45j"]
 [ext_resource type="PackedScene" uid="uid://dbnakwfvnxgvn" path="res://prefabs/debug_visualizer/debug_visualizer.tscn" id="2_tt45j"]
 [ext_resource type="PackedScene" uid="uid://dipa21mimgjkj" path="res://prefabs/player/player.tscn" id="4_f1y3a"]
-[ext_resource type="Texture2D" uid="uid://bwqssc6d3rfoo" path="res://assets/visual/ui/ui_bg_4.png" id="4_n0j1u"]
+[ext_resource type="Texture2D" uid="uid://cie36mpkhq27c" path="res://assets/visual/ui/ui_bg_5.png" id="4_n0j1u"]
 [ext_resource type="PackedScene" uid="uid://b5lskvgjumjn" path="res://prefabs/dungeon_viewport/dungeon_viewport.tscn" id="5_etvxw"]
 [ext_resource type="PackedScene" uid="uid://ceq7clgkyer44" path="res://prefabs/ui/ui.tscn" id="6_ped82"]
 
