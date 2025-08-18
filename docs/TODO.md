@@ -168,9 +168,6 @@
 
 ## UI
 - [ ] Player has vision of 1 on minimap
-- [ ] Figure out how exits are used
-  - [x] Automatic
-  - [ ] Dialog window pop-up
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
 - [ ] Better StyleBoxes for inventory and arm items
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
@@ -185,6 +182,9 @@
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
 ### DONE
+- [x] Figure out how exits are used
+  - [x] Automatic
+  - [x] Dialog window pop-up
 - [x] Panel container surrounds viewport instead of built in border
   - Remember to ignore mouse input
 - [ ] "Sunken In" slots where the context menu, stat showcase, minimap, log and header go. (NOT APPLICABLE, NEW METHOD USED)

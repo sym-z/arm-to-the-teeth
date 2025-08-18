@@ -402,3 +402,4 @@
 - Tweaked the UI texture slightly
 - Imported animations for enemy attack, hurt and death
 - Enemy animations implemented for attack, hurt and death
+- Transitioning to the next floor is now optional.

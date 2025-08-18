@@ -70,6 +70,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Gate Transition")
 @export var gate_anim : AnimatedSprite2D
+
+@export_category("Gate Notification")
+@export var gate_notif_container : MarginContainer
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -81,6 +84,7 @@ func _ready():
 	viewport_header_label.text = "FLOOR: " + str(Globals.curr_floor)
 	# Adds default log line text as first log
 	Log.add_log_message(log_line_label.text)
+	gate_notif_container.visible = false
 
 # Work should start only when the map is done filling.
 func _on_map_map_filled():
@@ -147,11 +151,8 @@ func _on_player_item_detected(item, loc):
 			item_to_pick = Cell.TYPE.SPAWN
 		Cell.TYPE.EXIT:
 			pickup_button.disabled = true
-			#TODO: ASK PLAYER IF THEY WANT TO GO TO NEXT LEVEL
 			item_to_pick = Cell.TYPE.EXIT
-			gate_anim.visible = true
-			gate_anim.play()
-			map.new_level()
+			gate_notify()
 		Cell.TYPE.ARM:
 			pickup_button.disabled = false
 			item_to_pick = Cell.TYPE.ARM
@@ -165,6 +166,21 @@ func _on_player_item_detected(item, loc):
 		pickup_button.start_blink()
 	elif pickup_button.curr_state == pickup_button.STATE.BLINK:
 		pickup_button.end_blink()
+
+func gate_notify():
+	player.disable_movement = true
+	gate_notif_container.visible = true
+func gate_accept():
+	gate_anim.visible = true
+	gate_anim.play()
+	map.new_level()
+	gate_notif_container.visible = false
+	player.disable_movement = false
+func gate_reject():
+	player.disable_movement = false
+	gate_notif_container.visible = false
+
+
 
 func hide_gate_anim():
 	gate_anim.visible = false

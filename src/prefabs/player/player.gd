@@ -10,6 +10,8 @@ var ignore_combat : bool = Globals.ignore_combat
 ## Is the player currently in combat
 var in_combat : bool = false
 
+var disable_movement : bool = false
+
 signal change_facing
 signal change_position
 signal item_picked_up
@@ -94,7 +96,7 @@ func _process(delta):
 	pass
 #region Player Movement
 func _input(event):
-	if in_combat == false:
+	if in_combat == false and disable_movement == false:
 		if event.is_action_pressed("move_forward"):
 			move()
 		if event.is_action_pressed("move_back"):
