@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://2ghmulmo5ff" path="res://scenes/testing_level/testing_level.gd" id="1_tt45j"]
 [ext_resource type="PackedScene" uid="uid://dbnakwfvnxgvn" path="res://prefabs/debug_visualizer/debug_visualizer.tscn" id="2_tt45j"]
 [ext_resource type="PackedScene" uid="uid://dipa21mimgjkj" path="res://prefabs/player/player.tscn" id="4_f1y3a"]
+[ext_resource type="Texture2D" uid="uid://bwqssc6d3rfoo" path="res://assets/visual/ui/ui_bg_4.png" id="4_n0j1u"]
 [ext_resource type="PackedScene" uid="uid://b5lskvgjumjn" path="res://prefabs/dungeon_viewport/dungeon_viewport.tscn" id="5_etvxw"]
-[ext_resource type="Texture2D" uid="uid://chm84apqi6yjj" path="res://assets/visual/ui/ui_bg_0.png" id="5_n0j1u"]
 [ext_resource type="PackedScene" uid="uid://ceq7clgkyer44" path="res://prefabs/ui/ui.tscn" id="6_ped82"]
 
 [node name="Testing Level" type="Node2D" node_paths=PackedStringArray("visualizer")]
@@ -23,7 +23,7 @@ ui = NodePath("../UI")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("5_n0j1u")
+texture = ExtResource("4_n0j1u")
 
 [node name="Dungeon Viewport" parent="." node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]
 map = NodePath("../Map")
