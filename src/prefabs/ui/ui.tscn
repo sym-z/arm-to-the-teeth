@@ -1296,6 +1296,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0a1xg")
 [node name="Gate Notification" type="CanvasLayer" parent="."]
 
 [node name="Gate Notification Container" type="MarginContainer" parent="Gate Notification"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
