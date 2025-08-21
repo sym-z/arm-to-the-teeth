@@ -187,6 +187,7 @@ func move(distance : int = 1):
 	#NOTE: This fires even if the player is blocked by a wall, not sure if that matters.
 	change_position.emit()
 	check_cell_content()
+	AudioBank.play_rand(ui.speaker,AudioBank.BANK.FOOTSTEP)
 #endregion
 
 #region Detecting Cell Types, and Cell Content Interaction
@@ -270,7 +271,7 @@ func pick_up(type : Cell.TYPE):
 					# Need to make sure that UI doesn't mark this spot as empty
 					item_partial_pickup.emit()
 					curr_cell.tooth_count = leftover_teeth
-				
+				AudioBank.play_rand(ui.speaker, AudioBank.BANK.TOOTH_INSERT)
 				if Globals.verbose_console == true:
 					print("PICKED UP TOOTH! PLAYER NOW HOLDS ", head.tooth_count, " TEETH!")
 				#Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(head.tooth_count) + " TEETH!")

@@ -179,6 +179,7 @@ func gate_accept():
 	map.new_level()
 	gate_notif_container.visible = false
 	player.disable_movement = false
+	AudioBank.play_rand(speaker, AudioBank.BANK.GATE)
 func gate_reject():
 	player.disable_movement = false
 	gate_notif_container.visible = false

@@ -143,6 +143,7 @@ func hit_enemy(damage: int):
 	if combat_viewport.enemy_dead == false:
 		combat_viewport.enemy_anim.animation = "hurt"
 		combat_viewport.enemy_anim.play()
+		AudioBank.play_rand(combat_viewport.root_ui.speaker, AudioBank.BANK.E_HURT)
 
 func whiff(damage: int):
 	if is_head == true:
