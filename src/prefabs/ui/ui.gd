@@ -73,6 +73,9 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Gate Notification")
 @export var gate_notif_container : MarginContainer
+
+@export_category("Audio")
+@export var speaker : AudioStreamPlayer
 #endregion
 func _ready():
 	Log.connect("new_log", update_log_line)
@@ -249,6 +252,7 @@ func arm_eaten(arm_object : Arm):
 		arm_object.condition = max(arm_object.condition - randi_range(1,3), 0)
 		# Adjust hunger, health, arm count etc.
 		player.arm_bitten()
+		AudioBank.play_rand(speaker,AudioBank.BANK.ARM_EAT)
 		if player.in_combat == true:
 			combat_viewport.refresh_arm_selections()
 		refresh_temp_labels()
