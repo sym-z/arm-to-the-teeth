@@ -676,7 +676,7 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -694,7 +694,8 @@ wheel_roller = NodePath("Wheel Roller")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
 arm_selection_window = NodePath("Attacking Arm Selection")
-arm_container = NodePath("Attacking Arm Selection/MarginContainer/Arm Container")
+arm_container = NodePath("Attacking Arm Selection/VBoxContainer/MarginContainer/Arm Container")
+attack_cancel_button = NodePath("Attacking Arm Selection/VBoxContainer/Cancel Attack")
 player_damage_selection_window = NodePath("Player Damage Selection")
 damage_limb_container = NodePath("Player Damage Selection/MarginContainer/Limb Container")
 run_direction_selection_window = NodePath("Run Direction Selection")
@@ -842,15 +843,20 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("12_ho6fy")
 
-[node name="Header Container" type="MarginContainer" parent="Attacking Arm Selection"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Attacking Arm Selection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Header Container" type="MarginContainer" parent="Attacking Arm Selection/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 345
+theme_override_constants/margin_bottom = 0
 
-[node name="Header" type="Label" parent="Attacking Arm Selection/Header Container"]
+[node name="Header" type="Label" parent="Attacking Arm Selection/VBoxContainer/Header Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 47
@@ -858,27 +864,36 @@ text = "CHOOSE AN ATTACKING LIMB"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Attacking Arm Selection"]
+[node name="MarginContainer" type="MarginContainer" parent="Attacking Arm Selection/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Arm Container" type="HBoxContainer" parent="Attacking Arm Selection/MarginContainer"]
+[node name="Arm Container" type="HBoxContainer" parent="Attacking Arm Selection/VBoxContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Attacking Arm Object" parent="Attacking Arm Selection/MarginContainer/Arm Container" instance=ExtResource("12_ud8o6")]
+[node name="Attacking Arm Object" parent="Attacking Arm Selection/VBoxContainer/MarginContainer/Arm Container" instance=ExtResource("12_ud8o6")]
 visible = false
 layout_mode = 2
 
-[node name="Attacking Head Object" parent="Attacking Arm Selection/MarginContainer/Arm Container" instance=ExtResource("14_dfnbh")]
+[node name="Attacking Head Object" parent="Attacking Arm Selection/VBoxContainer/MarginContainer/Arm Container" instance=ExtResource("14_dfnbh")]
 visible = false
 layout_mode = 2
+
+[node name="Cancel Attack" type="Button" parent="Attacking Arm Selection/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/hover = ExtResource("39_ap0e6")
+theme_override_styles/normal = ExtResource("40_84qhk")
+text = "CANCEL"
 
 [node name="Player Damage Selection" type="MarginContainer" parent="."]
 visible = false
@@ -1153,6 +1168,7 @@ text = "STOP"
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]
 [connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]
+[connection signal="pressed" from="Attacking Arm Selection/VBoxContainer/Cancel Attack" to="." method="cancel_attack"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Up Container/Up Button" to="." method="up_button_chosen"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container/Left Button" to="." method="left_button_chosen"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container/Right Button" to="." method="right_button_chosen"]

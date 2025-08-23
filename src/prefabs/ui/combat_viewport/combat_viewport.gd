@@ -30,12 +30,14 @@ var enemy_dead : bool = false
 @export_category("Attacking Arm Selection")
 @export var arm_selection_window : MarginContainer
 @export var arm_container : HBoxContainer
+@export var attack_cancel_button : Button
 var attacking_arm_object_scene : PackedScene = preload("uid://dljmxwj6vs50b")
 var attacking_head_object_scene : PackedScene = preload("uid://n07t7fqqy66w")
 # What arm is currently selected to attack with.
 var attacking_arm : Arm
 # Flag set when attacking with head to give proper damage and consequences on roll
 var attacking_with_head : bool
+
 
 @export_category("Player Damage Selection")
 @export var player_damage_selection_window : MarginContainer
@@ -240,6 +242,11 @@ func _on_attack_pressed():
 	refresh_arm_selections()
 	change_arm_select_vis(true)
 # Refresh arm (and head) selections for combat
+
+func cancel_attack():
+	change_arm_select_vis(false)
+	change_attack_run_vis(true)
+	pass
 func refresh_arm_selections():
 	# Clear out all children, if any
 	for child in arm_container.get_children():
