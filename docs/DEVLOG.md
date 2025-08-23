@@ -403,3 +403,16 @@
 - Imported animations for enemy attack, hurt and death
 - Enemy animations implemented for attack, hurt and death
 - Transitioning to the next floor is now optional.
+
+## 23 August 2025
+- Created audio for:
+  - Tooth insert
+  - Enemy:
+    - Death
+    - Attack
+    - Hurt
+  - Player:
+    - Hurt
+  - Gate Transition
+  - Footsteps
+- Implemented these sounds using an AudioBank system

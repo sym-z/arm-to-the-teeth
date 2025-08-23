@@ -133,6 +133,17 @@
 - [x] Combat scene show enemy health and damage
 - [x] Player chooses what arm to attack with
 
+## Audio
+- [ ] Tune Volume
+- [ ] Hurt noise for:
+  - [ ] Hunger damage
+- [ ] Hunger State Transition
+- [ ] Arm Pickup
+- [ ] UI Select
+- [ ] Player attack
+  - [ ] Player Crit
+  - [ ] Player Whiff
+- [ ] Dungeon Ambience
 ## Balance
 - [ ] More arm spawns with weirder stats.
 ### DONE
