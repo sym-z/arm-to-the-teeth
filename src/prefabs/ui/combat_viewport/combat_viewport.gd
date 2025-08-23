@@ -44,6 +44,7 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 
 @export_category("Run Direction Selection")
 @export var run_direction_selection_window : MarginContainer
+@export var cancel_button : Button
 @export var up_button : TextureButton
 @export var down_button : TextureButton
 @export var left_button : TextureButton
@@ -121,6 +122,9 @@ func _on_run_pressed():
 		left_button.disabled = false
 	if right_cell != null and right_cell.dir_to_wall(Globals.left_of(player.facing)) == false:
 		right_button.disabled = false
+func cancel_run():
+	change_run_direction_selection_vis(false)
+
 func up_button_chosen():
 	if Globals.verbose_console:
 		print("PLAYER CHOSE TO RUN FORWARD")
@@ -600,7 +604,7 @@ func change_player_damage_selection_vis(new_vis : bool):
 	player_damage_selection_window.visible = new_vis
 func change_run_direction_selection_vis(new_vis : bool):
 	run_direction_selection_window.visible = new_vis
-	change_attack_run_vis(false)
+	change_attack_run_vis(!new_vis)
 	# Start with all buttons disabled
 	up_button.disabled = true
 	down_button.disabled = true
