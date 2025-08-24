@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://8kt2w4jcfysv"]
+[gd_scene load_steps=12 format=3 uid="uid://8kt2w4jcfysv"]
 
 [ext_resource type="Texture2D" uid="uid://dm2212lyivolc" path="res://assets/visual/prototype_items/v2/arm_prototype_2_x2.png" id="1_ns6y5"]
+[ext_resource type="Material" uid="uid://strtqfbwxq7m" path="res://shaders/content_shader.tres" id="1_vr7t4"]
 [ext_resource type="Texture2D" uid="uid://cojykr6pxe0cr" path="res://assets/visual/prototype_items/v2/enemy_prototype_1_x2.png" id="2_vr7t4"]
 [ext_resource type="Texture2D" uid="uid://b2pv8gsgojlq" path="res://assets/visual/prototype_items/v2/exit_prototype_0_x2.png" id="3_ns6y5"]
 [ext_resource type="Texture2D" uid="uid://dtf56fwydwglo" path="res://assets/visual/prototype_items/v2/tooth_prototype_1_x2.png" id="4_206kl"]
@@ -65,6 +66,7 @@ animations = [{
 [node name="Contents" type="AnimatedSprite2D"]
 visible = false
 modulate = Color(0.75, 0.75, 0.75, 1)
+material = ExtResource("1_vr7t4")
 sprite_frames = SubResource("SpriteFrames_5csd1")
 animation = &"arm"
 script = ExtResource("5_ceqlw")
