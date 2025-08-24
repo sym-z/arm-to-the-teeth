@@ -192,6 +192,7 @@
 - [ ] Occasional blinking animation
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
+- [ ] Shader that moves items that are content
 ### DONE
 - [x] Figure out how exits are used
   - [x] Automatic
