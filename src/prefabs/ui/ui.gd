@@ -64,6 +64,8 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 @export var equipped_arm_anim_1 : AnimatedSprite2D
 @export var equipped_arm_anim_2 : AnimatedSprite2D
 @export var tooth_anim : AnimatedSprite2D
+@export var arm_cond_1 : Label
+@export var arm_cond_2 : Label
 
 @export_category("Eye Transition")
 @export var eye_anim : AnimatedSprite2D
@@ -328,16 +330,25 @@ func refresh_arm_stat():
 		1:
 			equipped_arm_anim_1.visible = true
 			equipped_arm_anim_2.visible = false
+			arm_cond_1.visible = true
+			arm_cond_2.visible = false
 			# Apply same strategy used in head stat showcase
 			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
+			refresh_condition_label(arm_cond_1, equipped_arms[0])
 		2:
 			equipped_arm_anim_1.visible = true
 			equipped_arm_anim_2.visible = true
+			arm_cond_1.visible = true
+			arm_cond_2.visible = true
 			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
 			set_arm_frame(equipped_arms[1], equipped_arm_anim_2)
+			refresh_condition_label(arm_cond_1, equipped_arms[0])
+			refresh_condition_label(arm_cond_2, equipped_arms[1])
 		_:
 			equipped_arm_anim_1.visible = false
 			equipped_arm_anim_2.visible = false
+			arm_cond_1.visible = false
+			arm_cond_2.visible = false
 	if equipped_count > 2:
 		push_error("Error in function refresh_stat_showcase in ui.gd, more than 2 arms are equipped when refreshing stat showcase.")
 
@@ -348,7 +359,15 @@ func set_arm_frame(a : Arm, anim : AnimatedSprite2D):
 	var condition_percent : float = condition / max_condition
 	var frame_num = floor(total_arm_frames * condition_percent)
 	anim.frame = total_arm_frames - frame_num
-	
+
+func refresh_condition_label(label : Label, arm : Arm):
+	if label == arm_cond_1:
+		label.text = "ARM 1\n" + str(arm.condition) + "/" + str(arm.max_condition)
+	elif label == arm_cond_2:
+		label.text = "ARM 2\n" + str(arm.condition) + "/" + str(arm.max_condition)
+	else:
+		push_error("Attempting to write to non-existent label in refresh_condition_label() in ui.gd")
+
 func refresh_stomach_stat():
 	if player.hunger == 0:
 		stomach_anim.frame = 0
