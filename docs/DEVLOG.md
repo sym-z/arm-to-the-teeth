@@ -416,3 +416,17 @@
   - Gate Transition
   - Footsteps
 - Implemented these sounds using an AudioBank system
+
+## 24 August 2025
+- Created audio for:
+  - Player:
+    - Crit
+    - Attack
+    - Whiff
+  - Several UI sounds
+  - Arm:
+    - Pickup
+    - Fully eating
+- Arm condition is now shown in UI instead of number of arms equipped
+- Tutorial scene text written
+- Made a shader that adds a bit of jiggle movement to each of the content sprites
