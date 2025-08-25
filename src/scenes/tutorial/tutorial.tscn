@@ -97,7 +97,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme = ExtResource("6_g7eoy")
-text = "Your main objective is to reach the highest floor you can in the ever changing maze-like dungeon. Along the way, you will fight the inhabiting creatures of this dungeon using only your arms as weapons. 
+text = "Your main objective is to find and travel through gates to reach the highest floor you can in the ever changing maze-like dungeon. Along the way, you will fight the inhabiting creatures of this dungeon using only your arms as weapons. 
 
 You control \"It\", a self sustaining entity capable of regenerating its life force by consuming its own arms at the cost of its teeth. Search the dungeons to find more powerful arms, take bites of your arms to regain health, and pick up teeth to keep eating."
 autowrap_mode = 2
