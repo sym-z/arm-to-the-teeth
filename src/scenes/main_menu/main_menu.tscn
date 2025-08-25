@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vedpap325i3n"]
+[gd_scene load_steps=6 format=3 uid="uid://vedpap325i3n"]
 
-[ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="1_ob46e"]
 [ext_resource type="Script" uid="uid://bppfvn2t8lfpo" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
+[ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_wem23"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
+[ext_resource type="Texture2D" uid="uid://dm7p3xecilppi" path="res://assets/visual/ui/logo_6.png" id="4_3ovsr"]
 
 [node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button", "score_label")]
 script = ExtResource("1_uqeha")
@@ -18,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ob46e")
+texture = ExtResource("2_wem23")
 
 [node name="Header Container" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -32,10 +33,15 @@ theme_override_constants/margin_bottom = 745
 layout_mode = 2
 
 [node name="Header Label" type="Label" parent="Header Container/CenterContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_uqeha")
 theme_override_font_sizes/font_size = 181
 text = "ARM TO THE TEETH"
+
+[node name="Logo" type="TextureRect" parent="Header Container/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_3ovsr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
