@@ -197,13 +197,13 @@
   - [ ] Can use texture stylebox to make more stylized boxes
 - [ ] Enemy is named in the combat window
 - [ ] (STRETCH GOAL) Log messages have a timestamp
-- [ ] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [ ] Convert all buttons to use red hover stylebox 
 - [ ] Occasional blinking animation
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
-- [ ] Shader that moves items that are content
 ### DONE
+- [x] Shader that moves items that are content
+- [x] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [x] Figure out how exits are used
   - [x] Automatic
   - [x] Dialog window pop-up

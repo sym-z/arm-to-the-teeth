@@ -447,3 +447,5 @@
     - State change
     - Damage tick
 - Added more `AudioStreamPlayer` nodes to the `combat_viewport` and `player` to allow for multiple sounds to play at the same time
+- Added new logo
+- As of now, Arm to the Teeth is officially in MVP stage!
