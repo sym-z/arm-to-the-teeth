@@ -18,11 +18,12 @@
 - [x] Debug Map to Test Rendering
 
 ## Outside of Gameplay
-- [ ] Main Menu
-  - Words for Arm and Teeth are made from arms and teeth.
-- [ ] How to Play
-- [ ] Death Screen
+- [ ] High score menu
 ### DONE
+- [x] Main Menu
+  - Words for Arm and Teeth are made from arms and teeth.
+- [x] How to Play
+- [x] Death Screen
 - [x] Track highest floor achieved
 
 ## Gameplay
@@ -41,7 +42,6 @@
   - Enemies can't move on top of eachother.
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
-- [ ] Content animates in dungeon viewport
 - [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
 - [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
@@ -52,6 +52,9 @@
   - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
 - [ ] New attack limb choice minigame that is a reaction based block
 - [ ] Chest / lock and key puzzle
+- [ ] Content animates in dungeon viewport
+  - [x] Shader
+  - [ ] Animation
 ### DONE
 - [x] Text speed choice in options menu that effects battle speed
 - [x] The map's arm drops are randomized
@@ -88,7 +91,6 @@
 - [x] Enemies Spawn
 
 ## Player vs Enemy Combat 
-- [ ] Cancel running / attacking choice?
 - [ ] Higher damage for crit rolls
   - [ ] For enemy
   - [x] For player
@@ -96,6 +98,7 @@
 - [ ] More enemy types
   - [ ] Loot drops are dependent on monster type
 ### DONE
+- [x] Cancel running / attacking choice?
 - [x] Enemy animates
   - [x] Prototype
   - [x] Final
@@ -135,15 +138,20 @@
 
 ## Audio
 - [ ] Tune Volume
-- [ ] Hurt noise for:
-  - [ ] Hunger damage
-- [ ] Hunger State Transition
-- [ ] Arm Pickup
 - [ ] UI Select
-- [ ] Player attack
-  - [ ] Player Crit
-  - [ ] Player Whiff
-- [ ] Dungeon Ambience
+- [ ] Dungeon ambience
+- [ ] Enemy attack
+- [ ] Player miss
+- [ ] Battle ambience
+- [ ] Death screen
+### DONE
+- [x] Hurt noise for:
+  - [x] Hunger damage
+- [x] Hunger State Transition
+- [x] Arm Pickup
+- [x] Player attack
+  - [x] Player Crit
+  - [x] Player Whiff
 ## Balance
 - [ ] More arm spawns with weirder stats.
 ### DONE
@@ -160,6 +168,8 @@
 - [ ] More lighting
 - [ ] Tunnel vision overlay
 - [ ] Enemy idle animation
+- [ ] Tune jiggle shader to use uniforms that are randomly set to have variance between content movement
+- [ ] Tooth chomp scene transition
 ### DONE
 - [x] Start up animation overlay of an eye opening up from first person view
 - [x] Gate transition animation

@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://b5lskvgjumjn"]
+[gd_scene load_steps=179 format=3 uid="uid://b5lskvgjumjn"]
 
 [ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
 [ext_resource type="Texture2D" uid="uid://cap7mc0qhfcyn" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped1.png" id="2_rhs0v"]
@@ -476,11 +476,15 @@ region = Rect2(112, 0, 56, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqhcc"]
 atlas = ExtResource("20_6b30m")
-region = Rect2(0, 0, 84, 224)
+region = Rect2(0, 0, 56, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1j6k"]
 atlas = ExtResource("20_6b30m")
-region = Rect2(84, 0, 84, 224)
+region = Rect2(56, 0, 56, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1y3d"]
+atlas = ExtResource("20_6b30m")
+region = Rect2(112, 0, 56, 224)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fpch3"]
 animations = [{
@@ -504,6 +508,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m1j6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1y3d")
 }],
 "loop": true,
 "name": &"tex_0",
