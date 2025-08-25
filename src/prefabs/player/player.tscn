@@ -2,5 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c7k1xrn8u2bex" path="res://prefabs/player/player.gd" id="1_sxsrd"]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node" node_paths=PackedStringArray("speaker")]
 script = ExtResource("1_sxsrd")
+speaker = NodePath("Speaker")
+
+[node name="Speaker" type="AudioStreamPlayer" parent="."]

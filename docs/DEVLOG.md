@@ -427,6 +427,23 @@
   - Arm:
     - Pickup
     - Fully eating
+  - Hunger:
+    - State change
+    - Damage tick
 - Arm condition is now shown in UI instead of number of arms equipped
 - Tutorial scene text written
 - Made a shader that adds a bit of jiggle movement to each of the content sprites
+
+## 25 August 2025
+- Implemented sounds for:
+  - Player:
+    - Crit
+    - Attack
+    - Whiff
+  - Arm:
+    - Pickup
+    - Swallow
+  - Hunger:
+    - State change
+    - Damage tick
+- Added more `AudioStreamPlayer` nodes to the `combat_viewport` and `player` to allow for multiple sounds to play at the same time

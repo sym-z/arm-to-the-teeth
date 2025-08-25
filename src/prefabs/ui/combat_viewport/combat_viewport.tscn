@@ -676,7 +676,7 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -707,6 +707,8 @@ right_button = NodePath("Run Direction Selection/VBoxContainer/MarginContainer/D
 temp_e_health = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/TEMP ENEMY HEALTH")
 temp_e_damage = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/TEMP ENEMY DAMAGE")
 e_health_bar = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/Health Bar")
+p_speaker = NodePath("Player Speaker")
+e_speaker = NodePath("Enemy Speaker")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 2
@@ -1164,6 +1166,10 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpe2p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1u3m5")
 text = "STOP"
+
+[node name="Player Speaker" type="AudioStreamPlayer" parent="."]
+
+[node name="Enemy Speaker" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]

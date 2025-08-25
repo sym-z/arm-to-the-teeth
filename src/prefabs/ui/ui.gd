@@ -206,6 +206,7 @@ func add_arm_to_inventory(a : Arm, number : int):
 	new_arm_item.set_text_to_arm(a, number)
 	new_arm_item.connect("eat_pressed", arm_eaten)
 	new_arm_item.connect("arm_fully_eaten", arm_fully_eaten)
+	new_arm_item.connect("arm_fully_eaten", play_swallow_sound)
 	item_container.add_child(new_arm_item)
 #endregion
 #region Context Menu Button Presses
@@ -269,6 +270,9 @@ func arm_fully_eaten(arm_object : Arm):
 	refresh_temp_labels()
 	#TODO: UPDATE ATT ARM SELECTION 
 
+func play_swallow_sound(_arm:Arm):
+	AudioBank.play_rand(speaker, AudioBank.BANK.ARM_SWALLOW)
+	pass
 func _on_back_button_pressed():
 	change_inventory_visibility(false)
 #endregion

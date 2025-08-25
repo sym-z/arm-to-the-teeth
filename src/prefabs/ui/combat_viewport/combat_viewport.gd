@@ -58,7 +58,9 @@ var damagable_limb_scene : PackedScene = preload("uid://c20d3pqcgllt8")
 @export var temp_e_damage : Label
 @export var e_health_bar : ProgressBar
 
-
+@export_category("Audio")
+@export var p_speaker : AudioStreamPlayer
+@export var e_speaker : AudioStreamPlayer
 enum TURN {PLAYER,ENEMY}
 var curr_turn : TURN = TURN.PLAYER
 
@@ -449,7 +451,7 @@ func damage_head(h: Head):
 		#create_timer(3.5, show_player_turn_start)
 		player_anim.hurt_bounce()
 		show_player_turn_start()
-		AudioBank.play_rand(root_ui.speaker, AudioBank.BANK.P_HURT)
+		AudioBank.play_rand(p_speaker, AudioBank.BANK.P_HURT)
 	enemy_anim.animation = "attack"
 	enemy_anim.play()
 	
@@ -466,7 +468,7 @@ func damage_arm(a: Arm):
 	# Go to attack/run right after damage application
 	player_anim.hurt_bounce()
 	show_player_turn_start()
-	AudioBank.play_rand(root_ui.speaker, AudioBank.BANK.P_HURT)
+	AudioBank.play_rand(p_speaker, AudioBank.BANK.P_HURT)
 	enemy_anim.animation = "attack"
 	enemy_anim.play()
 	#endregion
@@ -492,7 +494,7 @@ func check_enemy_death():
 		enemy_dead = true
 		enemy_anim.animation = "death"
 		enemy_anim.play()
-		AudioBank.play_rand(root_ui.speaker, AudioBank.BANK.E_DEATH)
+		AudioBank.play_rand(e_speaker, AudioBank.BANK.E_DEATH)
 		create_timer(pause_time,combat_victory)
 
 func drop_loot():

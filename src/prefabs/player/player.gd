@@ -4,7 +4,7 @@ extends Node
 @export var facing : int = Globals.NORTH
 @export var map : Node 
 @export var ui : CanvasLayer
-
+@export var speaker : AudioStreamPlayer
 ## Will the player enter the battle scene when they step on a space with an enemy
 var ignore_combat : bool = Globals.ignore_combat
 ## Is the player currently in combat
@@ -249,6 +249,7 @@ func pick_up(type : Cell.TYPE):
 				map.make_cell_empty(curr_cell)
 				item_picked_up.emit()
 				Log.add_log_message("PICKED UP ARM! IT NOW HOLDS " + str(arm_count) + " ARMS!")
+				AudioBank.play_rand(ui.speaker, AudioBank.BANK.ARM_PICKUP)
 				if Globals.verbose_console == true:
 					debug_print_inventory()
 					map.print_arm_atlas()
@@ -321,6 +322,7 @@ func tick_hunger():
 
 func hunger_damage():
 	head.health -= 1
+	AudioBank.play_rand(speaker, AudioBank.BANK.H_HURT)
 	Log.add_log_message("IT'S HEAD TOOK DAMAGE DUE TO ITS ADVANCED HUNGER.")
 	death_steps = 0
 	if head.health <= 0:
@@ -349,6 +351,7 @@ func set_hunger_state():
 	if(before_state != after_state):
 		if Globals.verbose_console == true:
 			print("STATE SWITCH")
+		AudioBank.play_rand(speaker, AudioBank.BANK.H_STATE)
 		match hunger_state:
 			HUNGER_LEVEL.SATISFIED:
 				hunger_satisfied.emit()

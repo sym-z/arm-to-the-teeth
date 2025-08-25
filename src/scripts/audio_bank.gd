@@ -118,8 +118,38 @@ var tooth_insert_bank : Dictionary[int, AudioStreamMP3] = {
 	11 : preload("res://assets/audio/tooth_insert/tooth_insert-12.mp3"),
 	12 : preload("res://assets/audio/tooth_insert/tooth_insert-13.mp3"),
 }
+var arm_pickup_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/arm_pickup/arm_pickup_0.mp3"),
+}
+var hunger_state_change_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/hunger/hunger_0.mp3"),
+	1 : preload("res://assets/audio/hunger/hunger_1.mp3"),
+}
+var hunger_damage_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/hunger/hunger_pain_0.mp3"),
+}
+var p_attack_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/p_attack/p_attack_0.mp3"),
+}
+var p_whiff_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/p_attack/p_whiff_0.mp3"),
+}
+var p_crit_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/p_attack/p_crit_0.mp3"),
+}
+var ui_select_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/ui/ui-02.mp3"),
+	1 : preload("res://assets/audio/ui/ui-03.mp3"),
+	2 : preload("res://assets/audio/ui/ui-04.mp3"),
+}
+var ui_accept_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/ui/ui-01.mp3"),
+}
+var arm_swallow_bank : Dictionary[int, AudioStreamMP3] = {
+	0 : preload("res://assets/audio/arm_eat/full_eat_0.mp3"),
+}
 #endregion
-enum BANK {ARM_EAT, E_DEATH, E_HURT, FOOTSTEP, GATE, P_HURT, TOOTH_INSERT}
+enum BANK {ARM_EAT, E_DEATH, E_HURT, FOOTSTEP, GATE, P_HURT, TOOTH_INSERT, ARM_PICKUP, H_STATE, H_HURT, P_ATT, P_WHIFF, P_CRIT, UI_SEL, UI_ACC, ARM_SWALLOW}
 var bank_arr : Array[Dictionary]
 
 func _ready():
@@ -134,6 +164,15 @@ func build_bank_arr():
 	bank_arr.append(gate_bank)
 	bank_arr.append(p_hurt_bank)
 	bank_arr.append(tooth_insert_bank)
+	bank_arr.append(arm_pickup_bank)
+	bank_arr.append(hunger_state_change_bank)
+	bank_arr.append(hunger_damage_bank)
+	bank_arr.append(p_attack_bank)
+	bank_arr.append(p_whiff_bank)
+	bank_arr.append(p_crit_bank)
+	bank_arr.append(ui_select_bank)
+	bank_arr.append(ui_accept_bank)
+	bank_arr.append(arm_swallow_bank)
 	
 # Plays a random sound from the given bank
 func play_rand(speaker : AudioStreamPlayer, bank : BANK):
