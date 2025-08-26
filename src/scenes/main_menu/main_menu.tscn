@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://vedpap325i3n"]
+[gd_scene load_steps=7 format=3 uid="uid://vedpap325i3n"]
 
 [ext_resource type="Script" uid="uid://bppfvn2t8lfpo" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
 [ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_wem23"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
 [ext_resource type="Texture2D" uid="uid://dm7p3xecilppi" path="res://assets/visual/ui/logo_6.png" id="4_3ovsr"]
+[ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="6_3ovsr"]
 
-[node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button", "score_label")]
+[node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button", "score_label", "chomp_transition")]
 script = ExtResource("1_uqeha")
 play_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Play")
 tutorial_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Tutorial")
 quit_button = NodePath("MarginContainer/CenterContainer/VBoxContainer/Quit")
 score_label = NodePath("Scores/CenterContainer/Score Label")
+chomp_transition = NodePath("Chomp Transition")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -91,3 +93,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_uqeha")
 theme_override_font_sizes/font_size = 61
 text = "HIGHEST FLOOR REACHED: "
+
+[node name="Chomp Transition" parent="." instance=ExtResource("6_3ovsr")]

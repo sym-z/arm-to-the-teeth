@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwf7p0roh6mem"]
+[gd_scene load_steps=6 format=3 uid="uid://dwf7p0roh6mem"]
 
 [ext_resource type="Script" uid="uid://bwxa6hc7ywh65" path="res://scenes/death_screen/death_screen.gd" id="1_5wmoq"]
 [ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="1_s5f70"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_5wmoq"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_ulujf"]
+[ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="5_ulujf"]
 
-[node name="Death Screen" type="CanvasLayer" node_paths=PackedStringArray("score_label", "retry_button", "menu_button", "quit_button")]
+[node name="Death Screen" type="CanvasLayer" node_paths=PackedStringArray("score_label", "retry_button", "menu_button", "quit_button", "chomp_transition")]
 script = ExtResource("1_5wmoq")
 score_label = NodePath("VBoxContainer/Stats/CenterContainer/VBoxContainer/Score")
 retry_button = NodePath("VBoxContainer/Buttons/CenterContainer/VBoxContainer/Retry")
 menu_button = NodePath("VBoxContainer/Buttons/CenterContainer/VBoxContainer/Main Menu")
 quit_button = NodePath("VBoxContainer/Buttons/CenterContainer/VBoxContainer/Quit")
+chomp_transition = NodePath("Chomp Transition")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -77,3 +79,5 @@ text = "MAIN MENU"
 layout_mode = 2
 theme = ExtResource("3_ulujf")
 text = "QUIT"
+
+[node name="Chomp Transition" parent="." instance=ExtResource("5_ulujf")]

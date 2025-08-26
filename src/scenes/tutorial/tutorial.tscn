@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1pwicxgdt8l3"]
+[gd_scene load_steps=9 format=3 uid="uid://b1pwicxgdt8l3"]
 
 [ext_resource type="Script" uid="uid://88jg1khpu10x" path="res://scenes/tutorial/tutorial.gd" id="1_g40di"]
 [ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="2_r23bs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="4_g7eoy"]
 [ext_resource type="Theme" uid="uid://b8tsdli3etiyv" path="res://themes/tutorial/sub_header_tut.tres" id="5_pq3l0"]
 [ext_resource type="Theme" uid="uid://bt3xlpniattbt" path="res://themes/tutorial/desc_tut.tres" id="6_g7eoy"]
+[ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="7_g7eoy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq3l0"]
 bg_color = Color(0.0156863, 0.00784314, 0, 1)
@@ -19,10 +20,11 @@ expand_margin_top = 16.0
 expand_margin_right = 16.0
 expand_margin_bottom = 16.0
 
-[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("play_button", "back_button")]
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("play_button", "back_button", "chomp_transition")]
 script = ExtResource("1_g40di")
 play_button = NodePath("Buttons/CenterContainer/HBoxContainer/Play")
 back_button = NodePath("Buttons/CenterContainer/HBoxContainer/Back")
+chomp_transition = NodePath("Chomp Transition")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -146,3 +148,5 @@ A/LEFT ARROW: Turn Left
 D/RIGHT ARROW: Turn Right"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Chomp Transition" parent="." instance=ExtResource("7_g7eoy")]

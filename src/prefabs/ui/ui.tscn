@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=139 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://80064q74ture" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_27.png" id="43_nrubd"]
 [ext_resource type="Texture2D" uid="uid://chm84apqi6yjj" path="res://assets/visual/ui/ui_bg_0.png" id="44_wcb55"]
 [ext_resource type="Theme" uid="uid://joig1alr8u7d" path="res://themes/gate_transition/gate_buttons.tres" id="68_bfx8m"]
+[ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="69_0a1xg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u5l0a"]
 animations = [{
@@ -710,8 +711,9 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.984314, 0.980392, 0.898039, 1)
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pickup_button", "inventory_button", "options_button", "quit_button", "options_container", "curr_speed_label", "slow_speed_button", "med_speed_button", "fast_speed_button", "options_back_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button", "log_line_label", "full_log_container", "full_log_window_container", "full_log_scroller", "full_log_back_button", "viewport_header_label", "mini_map", "combat_viewport", "head_anim", "stomach_anim", "equipped_arm_anim_1", "equipped_arm_anim_2", "tooth_anim", "arm_cond_1", "arm_cond_2", "eye_anim", "gate_anim", "gate_notif_container", "speaker")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("chomp_transition", "pickup_button", "inventory_button", "options_button", "quit_button", "options_container", "curr_speed_label", "slow_speed_button", "med_speed_button", "fast_speed_button", "options_back_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button", "log_line_label", "full_log_container", "full_log_window_container", "full_log_scroller", "full_log_back_button", "viewport_header_label", "mini_map", "combat_viewport", "head_anim", "stomach_anim", "equipped_arm_anim_1", "equipped_arm_anim_2", "tooth_anim", "arm_cond_1", "arm_cond_2", "eye_anim", "gate_anim", "gate_notif_container", "speaker")]
 script = ExtResource("1_gxjsb")
+chomp_transition = NodePath("Chomp Layer/Chomp Transition")
 pickup_button = NodePath("Context Menu/Context Menu Container/Button Container/Pick Up")
 inventory_button = NodePath("Context Menu/Context Menu Container/Button Container/Inventory")
 options_button = NodePath("Context Menu/Context Menu Container/Button Container/Options")
@@ -1374,6 +1376,11 @@ text = "PROCEED"
 
 [node name="Speaker" type="AudioStreamPlayer" parent="."]
 max_polyphony = 4
+
+[node name="Chomp Layer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Chomp Transition" parent="Chomp Layer" instance=ExtResource("69_0a1xg")]
 
 [connection signal="mini_map_ready" from="Mini Map Layer/Mini Map" to="." method="_on_mini_map_mini_map_ready"]
 [connection signal="pressed" from="Context Menu/Context Menu Container/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]

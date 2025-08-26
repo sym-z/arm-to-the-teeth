@@ -3,6 +3,7 @@ extends CanvasLayer
 #region Initializations and Export Variables
 @export var player : Node 
 @export var map : Node
+@export var chomp_transition : AnimatedSprite2D
 
 @export_category("Context Menu Buttons")
 @export var pickup_button : Button
@@ -80,6 +81,7 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 @export var speaker : AudioStreamPlayer
 #endregion
 func _ready():
+	chomp_transition.open()
 	Log.connect("new_log", update_log_line)
 	Log.connect("new_log", update_full_log)
 	# If the player died, allow them to still access their logs from the previous run
@@ -225,7 +227,8 @@ func _on_inventory_pressed():
 			pass
 		pass
 func _on_quit_pressed():
-	get_tree().quit()
+	chomp_transition.close(get_tree().quit)
+	#get_tree().quit()
 
 func _on_options_pressed():
 	options_container.visible = !options_container.visible

@@ -6,7 +6,10 @@ extends CanvasLayer
 
 @export var score_label : Label
 
+@export var chomp_transition : AnimatedSprite2D
+
 func _ready():
+	chomp_transition.open()
 	play_button.connect("pressed", start_game)
 	quit_button.connect("pressed", quit_game)
 	tutorial_button.connect("pressed", tutorial)
@@ -15,10 +18,10 @@ func _ready():
 func start_game():
 	Globals.curr_floor = 0
 	Log.log_messages.clear()
-	SceneTransition.testing_level()
+	chomp_transition.close(SceneTransition.testing_level)
 
 func tutorial():
-	SceneTransition.tutorial()
+	chomp_transition.close(SceneTransition.tutorial)
 
 func quit_game():
-	get_tree().quit()
+	chomp_transition.close(get_tree().quit)

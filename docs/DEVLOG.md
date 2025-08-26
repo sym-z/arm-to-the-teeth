@@ -449,3 +449,8 @@
 - Added more `AudioStreamPlayer` nodes to the `combat_viewport` and `player` to allow for multiple sounds to play at the same time
 - Added new logo
 - As of now, Arm to the Teeth is officially in MVP stage!
+
+## 26 August 2025
+- Created art for chests
+- Created art for a tooth chomping transition
+- Implemented a simple tooth chomping transition between scenes

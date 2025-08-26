@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://boqktneibgc51"]
+
+[ext_resource type="Texture2D" uid="uid://bt6157ts2000t" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_1.png" id="1_3qghn"]
+[ext_resource type="Texture2D" uid="uid://3lyf1i73ualg" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_2.png" id="2_uvk4d"]
+[ext_resource type="Texture2D" uid="uid://cjwowfkurljss" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_3.png" id="3_7t455"]
+[ext_resource type="Texture2D" uid="uid://bj21res8dt4td" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_4.png" id="4_n5hgc"]
+[ext_resource type="Texture2D" uid="uid://cdfjgr76pe2uv" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_5.png" id="5_6s0jc"]
+[ext_resource type="Texture2D" uid="uid://6n06nfa2y0gy" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_6.png" id="6_h2a3v"]
+[ext_resource type="Texture2D" uid="uid://cqdnr67fjqq0g" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_7.png" id="7_6082u"]
+[ext_resource type="Texture2D" uid="uid://lit5lh4m07go" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_8.png" id="8_emkxb"]
+[ext_resource type="Texture2D" uid="uid://ci3ahm6ib6d7w" path="res://assets/visual/ui/chomp_transition_0/chomp_transition_0_9.png" id="9_b6wq5"]
+[ext_resource type="Script" uid="uid://pb42xhqnx5vc" path="res://prefabs/chomp_transition/chomp_transition.gd" id="10_uvk4d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcy23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3qghn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uvk4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7t455")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n5hgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6s0jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h2a3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6082u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_emkxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b6wq5")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_b6wq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_emkxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6082u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h2a3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6s0jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n5hgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7t455")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uvk4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_3qghn")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}]
+
+[node name="Chomp Transition" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_wcy23")
+animation = &"close"
+centered = false
+script = ExtResource("10_uvk4d")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

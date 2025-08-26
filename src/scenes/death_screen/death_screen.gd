@@ -5,6 +5,8 @@ extends CanvasLayer
 @export var menu_button : Button
 @export var quit_button : Button
 
+@export var chomp_transition : AnimatedSprite2D
+
 func _ready():
 	#TODO: Add in high score
 	if Globals.curr_floor > Globals.highest_floor:
@@ -15,12 +17,15 @@ func _ready():
 	quit_button.connect("pressed", quit_game)
 
 func back_to_menu():
-	SceneTransition.main_menu()
+	chomp_transition.close(SceneTransition.main_menu)
+	#SceneTransition.main_menu()
 
 func try_again():
 	# Retain log if they decide to hit retry.
 	Globals.curr_floor = 0
-	SceneTransition.testing_level()
+	chomp_transition.close(SceneTransition.testing_level)
+	#SceneTransition.testing_level()
 	
 func quit_game():
-	get_tree().quit()
+	chomp_transition.close(get_tree().quit)
+	#get_tree().quit()
