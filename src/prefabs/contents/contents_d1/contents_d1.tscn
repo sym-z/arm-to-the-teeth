@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://8kt2w4jcfysv"]
+[gd_scene load_steps=15 format=3 uid="uid://8kt2w4jcfysv"]
 
 [ext_resource type="Texture2D" uid="uid://dm2212lyivolc" path="res://assets/visual/prototype_items/v2/arm_prototype_2_x2.png" id="1_ns6y5"]
 [ext_resource type="Material" uid="uid://strtqfbwxq7m" path="res://shaders/content_shader.tres" id="1_vr7t4"]
-[ext_resource type="Texture2D" uid="uid://cojykr6pxe0cr" path="res://assets/visual/prototype_items/v2/enemy_prototype_1_x2.png" id="2_vr7t4"]
 [ext_resource type="Texture2D" uid="uid://bb3uh7fxgx310" path="res://assets/visual/ui/chest_1_x2.png" id="3_206kl"]
 [ext_resource type="Texture2D" uid="uid://b2pv8gsgojlq" path="res://assets/visual/prototype_items/v2/exit_prototype_0_x2.png" id="3_ns6y5"]
 [ext_resource type="Texture2D" uid="uid://dtf56fwydwglo" path="res://assets/visual/prototype_items/v2/tooth_prototype_1_x2.png" id="4_206kl"]
+[ext_resource type="Texture2D" uid="uid://ns6j0pv1o3ic" path="res://assets/visual/ui/enemy_prototype_1_idle_x2.png" id="4_ceqlw"]
 [ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="5_ceqlw"]
 [ext_resource type="Texture2D" uid="uid://bx5fp22ykjq4i" path="res://assets/visual/ui/key_0_x2.png" id="6_ceqlw"]
 
@@ -13,9 +13,13 @@
 atlas = ExtResource("1_ns6y5")
 region = Rect2(0, 0, 224, 336)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn3b0"]
-atlas = ExtResource("2_vr7t4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2juix"]
+atlas = ExtResource("4_ceqlw")
 region = Rect2(0, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m0iu"]
+atlas = ExtResource("4_ceqlw")
+region = Rect2(224, 0, 224, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr7t4"]
 atlas = ExtResource("3_ns6y5")
@@ -50,7 +54,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jn3b0")
+"texture": SubResource("AtlasTexture_2juix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m0iu")
 }],
 "loop": true,
 "name": &"enemy",
@@ -86,5 +93,5 @@ visible = false
 modulate = Color(0.75, 0.75, 0.75, 1)
 material = ExtResource("1_vr7t4")
 sprite_frames = SubResource("SpriteFrames_5csd1")
-animation = &"chest"
+animation = &"enemy"
 script = ExtResource("5_ceqlw")

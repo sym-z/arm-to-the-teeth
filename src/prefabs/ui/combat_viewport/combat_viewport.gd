@@ -657,4 +657,8 @@ func refresh_temp_labels():
 	e_health_bar.value = opponent.curr_health
 	temp_e_damage.text = "DAMAGE: " + str(opponent.damage)
 	pass
+func set_enemy_idle_anim():
+	if enemy_anim.animation != "default":
+		enemy_anim.animation = "default"
+		enemy_anim.play()
 #endregion

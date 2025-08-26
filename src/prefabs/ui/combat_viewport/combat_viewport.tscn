@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=129 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -17,6 +17,7 @@
 [ext_resource type="Theme" uid="uid://dcrr47tdwur0b" path="res://themes/combat_viewport/att_arm_select_panel.tres" id="12_ho6fy"]
 [ext_resource type="Texture2D" uid="uid://jhw5xyu1fgk5" path="res://assets/visual/ui/head_1B_back_attack.png" id="12_hpmys"]
 [ext_resource type="PackedScene" uid="uid://dljmxwj6vs50b" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.tscn" id="12_ud8o6"]
+[ext_resource type="Texture2D" uid="uid://52isnedcyfsq" path="res://assets/visual/ui/enemy_prototype_1_idle.png" id="13_84qhk"]
 [ext_resource type="Texture2D" uid="uid://dh3bhokwmifsj" path="res://assets/visual/ui/enemy_prototype_1_hurt_bounce.png" id="13_ap0e6"]
 [ext_resource type="PackedScene" uid="uid://n07t7fqqy66w" path="res://prefabs/ui/combat_viewport/attacking_head_object/attacking_head_object.tscn" id="14_dfnbh"]
 [ext_resource type="Texture2D" uid="uid://dwdf8v508641e" path="res://assets/visual/ui/head_1B_back_hurt.png" id="14_l8e2f"]
@@ -109,8 +110,12 @@ atlas = ExtResource("12_c83l7")
 region = Rect2(112, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_puqgi"]
-atlas = ExtResource("11_rkw3r")
+atlas = ExtResource("13_84qhk")
 region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al2t3"]
+atlas = ExtResource("13_84qhk")
+region = Rect2(112, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6sw4"]
 atlas = ExtResource("13_ap0e6")
@@ -227,8 +232,11 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_puqgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al2t3")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -776,9 +784,7 @@ vertical_alignment = 1
 position = Vector2(1226, 356)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6m76e")
-animation = &"hurt"
-frame = 12
-frame_progress = 1.0
+autoplay = "default"
 
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(704, 682)
@@ -1174,6 +1180,7 @@ text = "STOP"
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]
 [connection signal="roll_results_ready" from="Dialog Box/Dialog Box Panel Container/Attacking Die Roller" to="." method="_on_attacking_die_roller_roll_results_ready"]
+[connection signal="animation_finished" from="Enemy Sprite" to="." method="set_enemy_idle_anim"]
 [connection signal="pressed" from="Attacking Arm Selection/VBoxContainer/Cancel Attack" to="." method="cancel_attack"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Up Container/Up Button" to="." method="up_button_chosen"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container/Left Button" to="." method="left_button_chosen"]

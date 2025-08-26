@@ -460,3 +460,4 @@
 - Simple ui notification of holding key implemented.
 - Log messages about chest and key usage added.
 - Set the main scene to be `main_menu.tscn`
+- Enemy now has an idle animation for battle and as content in the dungeon viewport

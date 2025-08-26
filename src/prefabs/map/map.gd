@@ -265,7 +265,7 @@ func _on_player_player_spawned():
 	if Globals.debug_combat == false:
 		type_surrounding(player.position, Cell.TYPE.SPAWN)
 	else:
-		type_surrounding(player.position, Cell.TYPE.KEY)
+		type_surrounding(player.position, Cell.TYPE.ENEMY)
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)
