@@ -51,11 +51,11 @@
 - [ ] Different arms/ enemies have different wheels/die roller games (STRETCH GOAL)
   - Customizations can be done by overlaying new sectons onto the wheel roller, and manually changing the dictionary in the back end.
 - [ ] New attack limb choice minigame that is a reaction based block
-- [ ] Chest / lock and key puzzle
 - [ ] Content animates in dungeon viewport
   - [x] Shader
   - [ ] Animation
 ### DONE
+- [x] Chest / lock and key puzzle
 - [x] Text speed choice in options menu that effects battle speed
 - [x] The map's arm drops are randomized
   - [x] They are also influenced by the floor that the player is on.
