@@ -167,10 +167,10 @@
 - [ ] Shaders
 - [ ] More lighting
 - [ ] Tunnel vision overlay
-- [ ] Enemy idle animation
 - [ ] Tune jiggle shader to use uniforms that are randomly set to have variance between content movement
-- [ ] Tooth chomp scene transition
 ### DONE
+- [x] Tooth chomp scene transition
+- [x] Enemy idle animation
 - [x] Start up animation overlay of an eye opening up from first person view
 - [x] Gate transition animation
 - [x] Arm sprite reduction to fit `dungeon_viewport` more cleanly. (112x178)
