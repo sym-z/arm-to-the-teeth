@@ -16,6 +16,8 @@ var spawn_icon : Texture2D = preload("uid://cxgyk5cp3ygtf")
 var arm_icon : Texture2D = preload("uid://b660jj2kjsd3u")
 var tooth_icon : Texture2D = preload("uid://bwjsth4iug6ls")
 var enemy_icon : Texture2D = preload("uid://dk6w2sox6788m")
+var chest_icon : Texture2D = preload("uid://0hj4ddb8vij")
+var key_icon : Texture2D = preload("uid://bxeixeaxp158h")
 var player_sprite : Sprite2D
 
 signal mini_map_ready
@@ -64,6 +66,12 @@ func create_visualization():
 				Cell.TYPE.ENEMY:
 					icon_sprite.texture = enemy_icon
 					icons[world_map[key].position] = icon_sprite
+				Cell.TYPE.CHEST:
+					icon_sprite.texture = chest_icon
+					icons[world_map[key].position] = icon_sprite
+				Cell.TYPE.KEY:
+					icon_sprite.texture = key_icon
+					icons[world_map[key].position] = icon_sprite
 			curr_sprite.add_child(icon_sprite)
 		# Hide this sprite until it is walked on!
 		curr_sprite.visible = false
@@ -73,6 +81,7 @@ func create_visualization():
 
 func set_icon(type: Cell.TYPE, loc: Vector2i):
 	var icon_sprite = icons[loc]
+	
 	match type:
 		Cell.TYPE.EXIT:
 			icon_sprite.texture = exit_icon
@@ -84,6 +93,10 @@ func set_icon(type: Cell.TYPE, loc: Vector2i):
 			icon_sprite.texture = tooth_icon
 		Cell.TYPE.ENEMY:
 			icon_sprite.texture = enemy_icon
+		Cell.TYPE.CHEST:
+			icon_sprite.texture = chest_icon
+		Cell.TYPE.KEY:
+			icon_sprite.texture = key_icon
 
 func clear_visualization():
 	tiles.clear()

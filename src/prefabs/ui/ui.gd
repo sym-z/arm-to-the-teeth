@@ -169,6 +169,15 @@ func _on_player_item_detected(item, loc):
 		Cell.TYPE.ENEMY:
 			pickup_button.disabled = true
 			item_to_pick = Cell.TYPE.ENEMY
+		Cell.TYPE.CHEST:
+			if player.holding_key == true:
+				pickup_button.disabled = false
+			else:
+				pickup_button.disabled = true
+			item_to_pick = Cell.TYPE.CHEST
+		Cell.TYPE.KEY:
+			pickup_button.disabled = false
+			item_to_pick = Cell.TYPE.KEY
 	if pickup_button.disabled == false:
 		pickup_button.start_blink()
 	elif pickup_button.curr_state == pickup_button.STATE.BLINK:

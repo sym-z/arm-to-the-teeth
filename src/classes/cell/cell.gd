@@ -3,7 +3,7 @@ class_name Cell extends Resource
 var position : Vector2i
 
 ## What is stored in this cell?
-enum TYPE {EMPTY, SPAWN, EXIT, ARM, TOOTH, ENEMY}
+enum TYPE {EMPTY, SPAWN, EXIT, ARM, TOOTH, ENEMY, CHEST, KEY}
 var contents : TYPE = TYPE.EMPTY
 ## If this spot is a TOOTH type, how many teeth does it hold?
 var tooth_count : int = 0

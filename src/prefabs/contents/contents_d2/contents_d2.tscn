@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://m0ggohtumqml"]
+[gd_scene load_steps=14 format=3 uid="uid://m0ggohtumqml"]
 
 [ext_resource type="Material" uid="uid://strtqfbwxq7m" path="res://shaders/content_shader.tres" id="1_hht5d"]
 [ext_resource type="Texture2D" uid="uid://ecxsgkcggxg1" path="res://assets/visual/prototype_items/v2/arm_prototype_2.png" id="1_nu0kk"]
 [ext_resource type="Texture2D" uid="uid://cua6phyg5xd7m" path="res://assets/visual/prototype_items/v2/enemy_prototype_1.png" id="2_hht5d"]
+[ext_resource type="Texture2D" uid="uid://gpx0664wd8bw" path="res://assets/visual/ui/chest_1.png" id="3_j4umy"]
 [ext_resource type="Texture2D" uid="uid://dwv4bmn2gaunn" path="res://assets/visual/prototype_items/v2/exit_prototype_0.png" id="3_nu0kk"]
 [ext_resource type="Texture2D" uid="uid://ddwi0ur4oibae" path="res://assets/visual/prototype_items/v2/tooth_prototype_1.png" id="4_j4umy"]
 [ext_resource type="Script" uid="uid://bw86rjk7vpya7" path="res://scripts/content.gd" id="5_1pvci"]
+[ext_resource type="Texture2D" uid="uid://7b216fuvpex8" path="res://assets/visual/ui/key_0.png" id="6_1pvci"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88kct"]
 atlas = ExtResource("1_nu0kk")
@@ -33,6 +35,14 @@ animations = [{
 "name": &"arm",
 "speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j4umy")
+}],
+"loop": true,
+"name": &"chest",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -56,6 +66,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_1pvci")
+}],
+"loop": true,
+"name": &"key",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nmgve")
 }],
 "loop": true,
@@ -68,5 +86,5 @@ visible = false
 modulate = Color(0.5, 0.5, 0.5, 1)
 material = ExtResource("1_hht5d")
 sprite_frames = SubResource("SpriteFrames_gv4ay")
-animation = &"arm"
+animation = &"chest"
 script = ExtResource("5_1pvci")

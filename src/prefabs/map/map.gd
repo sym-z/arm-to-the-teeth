@@ -265,7 +265,7 @@ func _on_player_player_spawned():
 	if Globals.debug_combat == false:
 		type_surrounding(player.position, Cell.TYPE.SPAWN)
 	else:
-		type_surrounding(player.position, Cell.TYPE.ENEMY)
+		type_surrounding(player.position, Cell.TYPE.KEY)
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)
@@ -273,6 +273,10 @@ func _on_player_player_spawned():
 	# Place Enemies
 	#TODO: Factor in floor level with enemy spawns
 	place_items_randomly(Cell.TYPE.ENEMY, 10)
+	
+	place_items_randomly(Cell.TYPE.CHEST, 1)
+	place_items_randomly(Cell.TYPE.KEY, 1)
+	
 	map_filled.emit()
 
 # Set all surrounding cells to a type. (Including diagonals)
@@ -352,6 +356,11 @@ func place_item_at_loc(loc : Vector2i, type: Cell.TYPE):
 		elif type == Cell.TYPE.TOOTH:
 			# TODO: Balance
 			world_map[loc].tooth_count = randi_range(1,3)
+		elif type == Cell.TYPE.CHEST:
+			# DO I NEED CHEST / KEY ATLAS? OR IS THIS AS SIMPLE AS THE GATE?
+			pass
+		elif type == Cell.TYPE.KEY:
+			pass
 		#print("Placing ", type, " at ", loc)
 	else:
 		push_error("Attempted to place an empty item on a cell in place_item_at_loc in map.gd")

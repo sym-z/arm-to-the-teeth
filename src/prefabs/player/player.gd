@@ -9,7 +9,7 @@ extends Node
 var ignore_combat : bool = Globals.ignore_combat
 ## Is the player currently in combat
 var in_combat : bool = false
-
+var holding_key : bool = false
 var disable_movement : bool = false
 
 signal change_facing
@@ -82,6 +82,7 @@ func _on_map_map_generated():
 			debug_print_inventory()
 	else:
 		upgrade_loadout()
+	holding_key = false
 	map.world_map[position].contents = Cell.TYPE.SPAWN
 	player_spawned.emit()
 
@@ -227,6 +228,12 @@ func check_cell_content() -> Cell.TYPE:
 				in_combat = true
 				combat_started.emit(map.enemy_atlas[position], position)
 			return Cell.TYPE.ENEMY
+		Cell.TYPE.CHEST:
+			item_detected.emit(Cell.TYPE.CHEST, position)
+			return Cell.TYPE.CHEST
+		Cell.TYPE.KEY:
+			item_detected.emit(Cell.TYPE.KEY, position)
+			return Cell.TYPE.KEY
 	push_error("Current cell does not have detectable type in check_cell_type() in player.gd")
 	item_detected.emit(Cell.TYPE.EMPTY, position)
 	return Cell.TYPE.EMPTY
@@ -278,6 +285,15 @@ func pick_up(type : Cell.TYPE):
 				#Log.add_log_message("PICKED UP TOOTH! IT NOW HOLDS " + str(head.tooth_count) + " TEETH!")
 			else:
 				Log.add_log_message("IT TRIED TO PUSH TEETH INTO ITS HEAD, BUT ITS HEAD IS ALREADY FULL")
+		Cell.TYPE.CHEST:
+			if holding_key == true:
+				holding_key = false
+				ui.combat_viewport.drop_loot(true)
+		Cell.TYPE.KEY:
+			holding_key = true
+			map.make_cell_empty(curr_cell)
+			item_picked_up.emit()
+			Log.add_log_message("IT PICKED UP A KEY TO THIS FLOOR'S CHEST")
 	
 #endregion
 

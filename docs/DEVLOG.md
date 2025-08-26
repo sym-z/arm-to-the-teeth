@@ -454,3 +454,6 @@
 - Created art for chests
 - Created art for a tooth chomping transition
 - Implemented a simple tooth chomping transition between scenes
+- Created art for key
+- Simple chest and key drops per floor, chests drop rare loot every time.
+- Got rid of debug visualizer because it is not used.

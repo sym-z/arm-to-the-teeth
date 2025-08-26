@@ -497,15 +497,17 @@ func check_enemy_death():
 		AudioBank.play_rand(e_speaker, AudioBank.BANK.E_DEATH)
 		create_timer(pause_time,combat_victory)
 
-func drop_loot():
+func drop_loot(from_chest : bool = false):
 	#TODO: Eventually factor in enemy type and floor number
 	var curr_cell : Cell = map.world_map[combat_location]
+	if from_chest == true:
+		curr_cell = map.world_map[player.position]
 	var loot_roll : int = randi_range(1,20)
 	var coin_flip : int = randi_range(0,1)
 	if Globals.debug_combat == true:
 		loot_roll = 20
 		coin_flip = 1
-	if loot_roll >= 19:
+	if loot_roll >= 19 or from_chest:
 		# Rare
 		# Great Arm / 8 Teeth
 		if coin_flip == 1:
@@ -521,7 +523,12 @@ func drop_loot():
 			curr_cell.contents = Cell.TYPE.TOOTH
 			curr_cell.tooth_count = 8
 			root_ui.mini_map.set_icon(Cell.TYPE.TOOTH, curr_cell.position)
-		Log.add_log_message("THE ENEMY DROPPED RARE LOOT")
+		if from_chest == false:
+			Log.add_log_message("THE ENEMY DROPPED RARE LOOT")
+		else:
+			Log.add_log_message("THE CHEST OPENS TO REVEAL RARE TREASURES")
+			# Tell the viewport to refresh, but don't allow the UI to think that the cell is empty, or allow the minimap to erase the icon at this location
+			player.item_partial_pickup.emit()
 	elif loot_roll >= 15:
 		# Uncommon
 		# Average Arm / 5 Teeth
