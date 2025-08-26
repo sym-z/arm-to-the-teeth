@@ -459,3 +459,4 @@
 - Got rid of debug visualizer because it is not used.
 - Simple ui notification of holding key implemented.
 - Log messages about chest and key usage added.
+- Set the main scene to be `main_menu.tscn`
