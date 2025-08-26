@@ -457,3 +457,5 @@
 - Created art for key
 - Simple chest and key drops per floor, chests drop rare loot every time.
 - Got rid of debug visualizer because it is not used.
+- Simple ui notification of holding key implemented.
+- Log messages about chest and key usage added.

@@ -82,7 +82,10 @@ func _on_map_map_generated():
 			debug_print_inventory()
 	else:
 		upgrade_loadout()
+	if holding_key == true:
+		Log.add_log_message("IT DROPPED IT'S KEY TO THE LAST FLOOR'S CHEST.")
 	holding_key = false
+	ui.key_slot.visible = false
 	map.world_map[position].contents = Cell.TYPE.SPAWN
 	player_spawned.emit()
 
@@ -288,9 +291,13 @@ func pick_up(type : Cell.TYPE):
 		Cell.TYPE.CHEST:
 			if holding_key == true:
 				holding_key = false
+				ui.key_slot.visible = false
 				ui.combat_viewport.drop_loot(true)
+			else:
+				Log.add_log_message("IT TRIED TO OPEN THE CHEST, BUT IT DOESN'T HAVE A KEY")
 		Cell.TYPE.KEY:
 			holding_key = true
+			ui.key_slot.visible = true
 			map.make_cell_empty(curr_cell)
 			item_picked_up.emit()
 			Log.add_log_message("IT PICKED UP A KEY TO THIS FLOOR'S CHEST")

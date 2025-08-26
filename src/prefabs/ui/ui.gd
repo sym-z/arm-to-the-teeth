@@ -67,6 +67,7 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 @export var tooth_anim : AnimatedSprite2D
 @export var arm_cond_1 : Label
 @export var arm_cond_2 : Label
+@export var key_slot : TextureRect
 
 @export_category("Eye Transition")
 @export var eye_anim : AnimatedSprite2D
