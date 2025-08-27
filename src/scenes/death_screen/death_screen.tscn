@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwf7p0roh6mem"]
 
 [ext_resource type="Script" uid="uid://bwxa6hc7ywh65" path="res://scenes/death_screen/death_screen.gd" id="1_5wmoq"]
-[ext_resource type="Texture2D" uid="uid://coqqdjdjcdjqg" path="res://assets/visual/ui/prototype_texture_0.png" id="1_s5f70"]
+[ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_1loci"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_5wmoq"]
 [ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="3_1loci"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_ulujf"]
@@ -20,7 +20,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_s5f70")
+texture = ExtResource("2_1loci")
 
 [node name="Border" type="Panel" parent="."]
 anchors_preset = 15
