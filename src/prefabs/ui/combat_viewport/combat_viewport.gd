@@ -67,6 +67,7 @@ var curr_turn : TURN = TURN.PLAYER
 var pause_time : float 
 func _ready():
 	pause_time = root_ui.med_battle_speed
+	root_ui.dungeon_viewport.visible = true
 	visible = false
 	player = root_ui.player
 	map = root_ui.map
@@ -86,6 +87,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 		print("AT ", loc)
 	Log.add_log_message("IT HAS ENTERED COMBAT")
 	visible = true
+	root_ui.dungeon_viewport.visible = false
 	enemy_dead = false
 	show_player_turn_start()
 	opponent = e
@@ -116,7 +118,7 @@ func _on_run_pressed():
 		if d != null:
 			if Globals.verbose_console == true:
 				print("PLAYER CAN RUN TO ", d.position)
-			pass
+				
 	# The cells that exist need to be verified as a possible route of transportation
 	if forward_cell != null and forward_cell.dir_to_wall(Globals.get_opposite_direction(player.facing))== false:
 		up_button.disabled = false
@@ -140,8 +142,8 @@ func up_button_chosen():
 		#Log.add_log_message("IT FLED AND RAN FORWARD")
 		player.move()
 		player.in_combat = false
-		pass
-	pass
+		root_ui.dungeon_viewport.visible = true
+
 func down_button_chosen():
 	if Globals.verbose_console:
 		print("PLAYER CHOSE TO RUN BACKWARD")
@@ -153,8 +155,8 @@ func down_button_chosen():
 		#Log.add_log_message("IT FLED AND RAN BACKWARD")
 		player.move(-1)
 		player.in_combat = false
-		pass
-	pass
+		root_ui.dungeon_viewport.visible = true
+
 func left_button_chosen():
 	if Globals.verbose_console:
 		print("PLAYER CHOSE TO RUN TO THE LEFT")
@@ -168,8 +170,8 @@ func left_button_chosen():
 		player.move()
 		player.force_turn_right()
 		player.in_combat = false
-		pass
-	pass
+		root_ui.dungeon_viewport.visible = true
+
 func right_button_chosen():
 	if Globals.verbose_console:
 		print("PLAYER CHOSE TO RUN TO THE RIGHT")
@@ -183,8 +185,8 @@ func right_button_chosen():
 		player.move()
 		player.force_turn_left()
 		player.in_combat = false
-		pass
-	pass
+		root_ui.dungeon_viewport.visible = true
+
 # Have the enemy roll to see if they will hit the player, where, and for how much damage. Sets player_dead on death.
 func runaway_damage():
 	if Globals.verbose_console:
@@ -248,7 +250,7 @@ func _on_attack_pressed():
 func cancel_attack():
 	change_arm_select_vis(false)
 	change_attack_run_vis(true)
-	pass
+	
 func refresh_arm_selections():
 	# Clear out all children, if any
 	for child in arm_container.get_children():
@@ -392,7 +394,7 @@ func enemy_attack_roll():
 			print("ENEMY ROLLED A " ,enemy_roll, " " , " MUST ROLL ABOVE ", player.head.max_health, " ", " WITH A MAX ROLL OF " ,roundi(opponent.hit_chance * player.head.max_health))
 		if Globals.debug_combat == true:
 			enemy_roll = player.head.max_health * opponent.hit_chance
-			pass
+			
 		if enemy_roll < player.head.max_health:
 			# Enemy Miss
 			Log.add_log_message("THE ENEMY WENT FOR AN ATTACK, BUT MISSED!")
@@ -580,6 +582,7 @@ func drop_loot(from_chest : bool = false):
 func combat_victory():
 	# Hide combat viewport
 	visible = false
+	root_ui.dungeon_viewport.visible = true
 	# Get cell that combat is taking place in
 	var map_cell : Cell = map.world_map[combat_location]
 	# Remove enemy from map's atlas at combat_location

@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=131 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -42,8 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://4d7svxjvbrst" path="res://assets/visual/ui/wheel_roller/wheel_roller_0.png" id="33_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://cdr3ouxfesibc" path="res://assets/visual/ui/wheel_roller/clicker_0.png" id="34_bhhon"]
 [ext_resource type="Texture2D" uid="uid://teemfsxk00q2" path="res://assets/visual/ui/run_window/run_dirs_1_2.png" id="34_c83l7"]
-[ext_resource type="StyleBox" uid="uid://b53bkad2aybog" path="res://themes/reactive_stylebox/styleboxes/hover_box.tres" id="39_ap0e6"]
-[ext_resource type="StyleBox" uid="uid://bmhjew6b2j2f1" path="res://themes/reactive_stylebox/styleboxes/default_box.tres" id="40_84qhk"]
+[ext_resource type="StyleBox" uid="uid://dcsryejxiudct" path="res://themes/general/combat_viewport_mini_hover_box.tres" id="43_sqhh2"]
+[ext_resource type="StyleBox" uid="uid://boqc8r7cgbm6k" path="res://themes/general/combat_viewport_mini_pressed_box.tres" id="44_7eewq"]
+[ext_resource type="StyleBox" uid="uid://cipd0lhkv4mns" path="res://themes/general/combat_viewport_mini_box.tres" id="45_eo0c2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -408,52 +409,127 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7xhf"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84qhk"]
+bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-expand_margin_right = 20.0
-expand_margin_bottom = 15.0
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_right = 19.0
+expand_margin_bottom = 13.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8e2f"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nqm1"]
 bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmgk"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqh6"]
+bg_color = Color(0.6, 0.1424, 0.072, 0.376471)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 expand_margin_left = 4.0
 expand_margin_right = 4.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3v2j"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acl64"]
+bg_color = Color(0.4032, 0.48, 0.288, 0.376471)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 expand_margin_left = 4.0
-expand_margin_top = 4.0
 expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr74e"]
+bg_color = Color(0.02, 0.01, 0, 0.376471)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqhh2"]
+bg_color = Color(0.02, 0.01, 0, 0.376471)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1alk"]
+bg_color = Color(0.02, 0.01, 0, 0.784314)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpmys"]
 atlas = ExtResource("33_pcqw8")
@@ -660,30 +736,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpe2p"]
-bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u3m5"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
 [node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -723,7 +775,14 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_l6kcl")
 
-[node name="Drip Texture" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="Drip Texture" type="TextureRect" parent="MarginContainer"]
 modulate = Color(0.64, 0.64, 0.64, 1)
 layout_mode = 2
 texture = ExtResource("4_t3v2j")
@@ -797,13 +856,13 @@ script = ExtResource("15_l8e2f")
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 225
-theme_override_constants/margin_top = 110
+theme_override_constants/margin_top = 140
 theme_override_constants/margin_right = 395
-theme_override_constants/margin_bottom = 685
+theme_override_constants/margin_bottom = 675
 
 [node name="Panel" type="Panel" parent="TEMP ENEMY STATS"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k7xhf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_84qhk")
 
 [node name="MarginContainer" type="MarginContainer" parent="TEMP ENEMY STATS"]
 layout_mode = 2
@@ -853,7 +912,7 @@ theme = ExtResource("12_ho6fy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Attacking Arm Selection"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = -1
 alignment = 1
 
 [node name="Header Container" type="MarginContainer" parent="Attacking Arm Selection/VBoxContainer"]
@@ -876,9 +935,9 @@ vertical_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_bottom = 40
 
 [node name="Arm Container" type="HBoxContainer" parent="Attacking Arm Selection/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -887,20 +946,16 @@ theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Attacking Arm Object" parent="Attacking Arm Selection/VBoxContainer/MarginContainer/Arm Container" instance=ExtResource("12_ud8o6")]
-visible = false
 layout_mode = 2
 
 [node name="Attacking Head Object" parent="Attacking Arm Selection/VBoxContainer/MarginContainer/Arm Container" instance=ExtResource("14_dfnbh")]
-visible = false
 layout_mode = 2
 
 [node name="Cancel Attack" type="Button" parent="Attacking Arm Selection/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("11_k7xhf")
-theme_override_font_sizes/font_size = 46
-theme_override_styles/hover = ExtResource("39_ap0e6")
-theme_override_styles/normal = ExtResource("40_84qhk")
+theme = ExtResource("5_0i4k7")
 text = "CANCEL"
 
 [node name="Player Damage Selection" type="MarginContainer" parent="."]
@@ -1040,22 +1095,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 81
-theme_override_styles/hover = ExtResource("39_ap0e6")
-theme_override_styles/normal = ExtResource("40_84qhk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhqh6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_acl64")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr74e")
 text = "CANCEL"
 
 [node name="Header Container" type="MarginContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 810
+theme_override_constants/margin_bottom = 805
 
 [node name="Panel" type="PanelContainer" parent="Header Container"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbmgk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sqhh2")
 
 [node name="Header" type="Label" parent="Header Container/Panel"]
 layout_mode = 2
@@ -1084,7 +1140,7 @@ stop_button = NodePath("Stop Button Container/Stop Button")
 [node name="Panel" type="Panel" parent="Wheel Roller"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3v2j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1alk")
 
 [node name="Animation Container" type="MarginContainer" parent="Wheel Roller"]
 layout_mode = 2
@@ -1161,16 +1217,17 @@ vertical_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 250
-theme_override_constants/margin_top = 680
+theme_override_constants/margin_top = 703
 theme_override_constants/margin_right = 250
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_bottom = 35
 
 [node name="Stop Button" type="Button" parent="Wheel Roller/Stop Button Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/hover = SubResource("StyleBoxFlat_dpe2p")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1u3m5")
+theme_override_styles/hover = ExtResource("43_sqhh2")
+theme_override_styles/pressed = ExtResource("44_7eewq")
+theme_override_styles/normal = ExtResource("45_eo0c2")
 text = "STOP"
 
 [node name="Player Speaker" type="AudioStreamPlayer" parent="."]

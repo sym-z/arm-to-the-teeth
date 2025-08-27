@@ -1,33 +1,67 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cjx0tjkwn4x17"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cjx0tjkwn4x17"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_4vqmi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3feg"]
-bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
+bg_color = Color(0.6, 0.1424, 0.072, 0.376471)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 expand_margin_left = 8.0
 expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16jav"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 expand_margin_left = 8.0
 expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vqmi"]
+bg_color = Color(0.4032, 0.48, 0.288, 0.376471)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [resource]
 Button/font_sizes/font_size = 104
 Button/fonts/font = ExtResource("1_4vqmi")
 Button/styles/hover = SubResource("StyleBoxFlat_f3feg")
 Button/styles/normal = SubResource("StyleBoxFlat_16jav")
+Button/styles/pressed = SubResource("StyleBoxFlat_4vqmi")

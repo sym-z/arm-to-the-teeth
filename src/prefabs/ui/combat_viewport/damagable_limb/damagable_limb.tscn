@@ -1,24 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://c20d3pqcgllt8"]
+[gd_scene load_steps=6 format=3 uid="uid://c20d3pqcgllt8"]
 
 [ext_resource type="Script" uid="uid://cgxhrx7nt88uc" path="res://prefabs/ui/combat_viewport/damagable_limb/damagable_limb.gd" id="1_1yei0"]
+[ext_resource type="StyleBox" uid="uid://ds824ew80pn46" path="res://themes/combat_viewport/limb_selection/buttons/limb_container.tres" id="1_eyb72"]
 [ext_resource type="Texture2D" uid="uid://bcef8a1s3erho" path="res://assets/visual/prototype_items/v2/arm_prototype_0.png" id="2_u1o8d"]
 [ext_resource type="Theme" uid="uid://du5aum1xk741y" path="res://themes/combat_viewport/dam_limb_label.tres" id="3_u1o8d"]
 [ext_resource type="Theme" uid="uid://820qq2m7fm60" path="res://themes/combat_viewport/dam_limb_button.tres" id="4_eyb72"]
 
-[node name="Damagable Limb" type="VBoxContainer" node_paths=PackedStringArray("icon", "health_label")]
-offset_right = 40.0
-offset_bottom = 40.0
-alignment = 1
+[node name="Damagable Limb" type="PanelContainer" node_paths=PackedStringArray("icon", "health_label")]
+offset_right = 122.0
+offset_bottom = 290.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_eyb72")
 script = ExtResource("1_1yei0")
-icon = NodePath("Icon")
-health_label = NodePath("Health Label")
+icon = NodePath("VBox Container/Icon")
+health_label = NodePath("VBox Container/Health Label")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="VBox Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBox Container"]
 layout_mode = 2
 texture = ExtResource("2_u1o8d")
 stretch_mode = 3
 
-[node name="Health Label" type="RichTextLabel" parent="."]
+[node name="Health Label" type="RichTextLabel" parent="VBox Container"]
 layout_mode = 2
 theme = ExtResource("3_u1o8d")
 text = "HEALTH: X"
@@ -27,9 +34,9 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Damage Button" type="Button" parent="."]
+[node name="Damage Button" type="Button" parent="VBox Container"]
 layout_mode = 2
 theme = ExtResource("4_eyb72")
 text = "DAMAGE"
 
-[connection signal="pressed" from="Damage Button" to="." method="_on_damage_button_pressed"]
+[connection signal="pressed" from="VBox Container/Damage Button" to="." method="_on_damage_button_pressed"]

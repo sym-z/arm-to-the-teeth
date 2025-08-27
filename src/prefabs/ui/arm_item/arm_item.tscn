@@ -6,12 +6,23 @@
 [ext_resource type="Theme" uid="uid://bw38ek4svmtns" path="res://themes/inventory/arm_item_eat_button.tres" id="4_qdlwk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdlwk"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+bg_color = Color(0.02, 0.01, 0, 0.376471)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
 
 [node name="Arm Item" type="PanelContainer" node_paths=PackedStringArray("title", "strength", "condition", "equipped")]
 offset_right = 40.0
@@ -27,6 +38,8 @@ equipped = NodePath("HBoxContainer/Stat Container/Equipped")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
 
 [node name="Arm Icon" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://820qq2m7fm60"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://820qq2m7fm60"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_t0vmj"]
+[ext_resource type="StyleBox" uid="uid://c5yrabdmmfctk" path="res://themes/combat_viewport/limb_selection/buttons/limb_hover.tres" id="2_ut0u1"]
+[ext_resource type="StyleBox" uid="uid://c7puguiqv1ske" path="res://themes/combat_viewport/limb_selection/buttons/limb_normal.tres" id="3_8kiy6"]
+[ext_resource type="StyleBox" uid="uid://cirbfg5e1qnht" path="res://themes/combat_viewport/limb_selection/buttons/limb_pressed.tres" id="4_akrt1"]
 
 [resource]
 Button/font_sizes/font_size = 27
 Button/fonts/font = ExtResource("1_t0vmj")
+Button/styles/hover = ExtResource("2_ut0u1")
+Button/styles/normal = ExtResource("3_8kiy6")
+Button/styles/pressed = ExtResource("4_akrt1")

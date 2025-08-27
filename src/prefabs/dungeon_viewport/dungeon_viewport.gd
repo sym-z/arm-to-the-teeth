@@ -47,7 +47,7 @@ signal refresh_ordering
 
 func _ready():
 	d_parents = [d0_parent,d1_parent,d2_parent]
-	change_animations("default")
+	change_animations("tex_1")
 
 func change_animations(anim : String):
 	for parent in d_parents:
@@ -61,6 +61,8 @@ func _input(event):
 		change_animations("default")
 	elif event.is_action_pressed("debug_tex_0"):
 		change_animations("tex_0")
+	elif event.is_action_pressed("debug_tex_1"):
+		change_animations("tex_1")
 #func _on_map_map_generated():
 	#refresh_viewport_2()
 

@@ -461,3 +461,9 @@
 - Log messages about chest and key usage added.
 - Set the main scene to be `main_menu.tscn`
 - Enemy now has an idle animation for battle and as content in the dungeon viewport
+
+## 27 August 2025
+- Huge UI look overhaul using critique from showing an outside source my game
+- Wall texture remake
+- Establishing full UI consistency, making use of more transparency
+- Only the death screen and tutorial screen need additional borders and background textures, and the overhaul is done.

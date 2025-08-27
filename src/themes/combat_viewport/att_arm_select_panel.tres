@@ -1,6 +1,23 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dcrr47tdwur0b"]
 
-[ext_resource type="StyleBox" uid="uid://b1mv8pdp2pnqu" path="res://themes/combat_viewport/att_arm_select_panel_style_box.tres" id="1_7pbgg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px5jw"]
+bg_color = Color(0.02, 0.01, 0, 0.784314)
+border_width_left = 13
+border_width_top = 13
+border_width_right = 13
+border_width_bottom = 13
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 13.0
+expand_margin_top = 13.0
+expand_margin_right = 13.0
+expand_margin_bottom = 13.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [resource]
-Panel/styles/panel = ExtResource("1_7pbgg")
+Panel/styles/panel = SubResource("StyleBoxFlat_px5jw")

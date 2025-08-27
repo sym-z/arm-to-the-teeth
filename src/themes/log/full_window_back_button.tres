@@ -1,16 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dinequvservm1"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dinequvservm1"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_jlmu1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlmu1"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+[ext_resource type="StyleBox" uid="uid://dcsryejxiudct" path="res://themes/general/combat_viewport_mini_hover_box.tres" id="2_eglr1"]
+[ext_resource type="StyleBox" uid="uid://cipd0lhkv4mns" path="res://themes/general/combat_viewport_mini_box.tres" id="3_gnqbf"]
+[ext_resource type="StyleBox" uid="uid://boqc8r7cgbm6k" path="res://themes/general/combat_viewport_mini_pressed_box.tres" id="4_152gg"]
 
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_jlmu1")
-Button/styles/normal = SubResource("StyleBoxFlat_jlmu1")
+Button/styles/hover = ExtResource("2_eglr1")
+Button/styles/normal = ExtResource("3_gnqbf")
+Button/styles/pressed = ExtResource("4_152gg")

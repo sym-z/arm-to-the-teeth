@@ -1,26 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dljmxwj6vs50b"]
+[gd_scene load_steps=6 format=3 uid="uid://dljmxwj6vs50b"]
 
+[ext_resource type="StyleBox" uid="uid://ds824ew80pn46" path="res://themes/combat_viewport/limb_selection/buttons/limb_container.tres" id="1_5y5fn"]
 [ext_resource type="Script" uid="uid://wslwcbi41a7x" path="res://prefabs/ui/combat_viewport/attacking_arm_object/attacking_arm_object.gd" id="1_l2ca3"]
 [ext_resource type="Texture2D" uid="uid://bcef8a1s3erho" path="res://assets/visual/prototype_items/v2/arm_prototype_0.png" id="2_6uige"]
 [ext_resource type="Theme" uid="uid://cyhb63ciusi3p" path="res://themes/combat_viewport/att_arm_obj_label.tres" id="3_5y5fn"]
 [ext_resource type="Theme" uid="uid://by2sn6e3qpnon" path="res://themes/combat_viewport/att_arm_obj_button.tres" id="4_6uige"]
 
-[node name="Attacking Arm Object" type="VBoxContainer" node_paths=PackedStringArray("str_label", "con_label")]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Attacking Arm Object" type="PanelContainer" node_paths=PackedStringArray("str_label", "con_label")]
+offset_right = 162.0
+offset_bottom = 325.0
+theme_override_styles/panel = ExtResource("1_5y5fn")
+script = ExtResource("1_l2ca3")
+str_label = NodePath("VboxContainer/Strength Label")
+con_label = NodePath("VboxContainer/Condition Label")
+
+[node name="VboxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
-script = ExtResource("1_l2ca3")
-str_label = NodePath("Strength Label")
-con_label = NodePath("Condition Label")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="VboxContainer"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_6uige")
 stretch_mode = 3
 
-[node name="Strength Label" type="RichTextLabel" parent="."]
+[node name="Strength Label" type="RichTextLabel" parent="VboxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_5y5fn")
@@ -30,7 +35,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Condition Label" type="RichTextLabel" parent="."]
+[node name="Condition Label" type="RichTextLabel" parent="VboxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_5y5fn")
@@ -40,9 +45,9 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select Button" type="Button" parent="."]
+[node name="Select Button" type="Button" parent="VboxContainer"]
 layout_mode = 2
 theme = ExtResource("4_6uige")
 text = "SELECT ARM"
 
-[connection signal="pressed" from="Select Button" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="VboxContainer/Select Button" to="." method="_on_select_button_pressed"]

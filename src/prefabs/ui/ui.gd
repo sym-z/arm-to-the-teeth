@@ -3,6 +3,7 @@ extends CanvasLayer
 #region Initializations and Export Variables
 @export var player : Node 
 @export var map : Node
+@export var dungeon_viewport : Node2D
 @export var chomp_transition : AnimatedSprite2D
 
 @export_category("Context Menu Buttons")
@@ -51,7 +52,7 @@ var arm_item_scene : PackedScene = preload("uid://cs01wd2aki26b")
 var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Viewport Header")
-@export var viewport_header_label : RichTextLabel
+@export var viewport_header_label : Label
 
 @export_category("Mini Map")
 @export var mini_map : Node2D
@@ -139,10 +140,10 @@ func _on_map_level_clear():
 #endregion
 
 func refresh_temp_labels():
-	tooth_label.text = "TOOTH COUNT: " + str(player.head.tooth_count)
+	tooth_label.text = "TEETH: " + str(player.head.tooth_count) + "/32"
 	arm_label.text = "ARM COUNT: " + str(player.arm_count)
-	head_label.text = "HEAD HEALTH: (" + str(player.head.health) + "/" + str(player.head.max_health) + ")"
-	hunger_label.text = "HUNGER LEVEL: " + str(player.hunger)
+	head_label.text = "HEALTH: " + str(player.head.health) + "/" + str(player.head.max_health)
+	hunger_label.text = "HUNGER: " + str(player.hunger) + "/150"
 
 func _on_player_hunger_ticked():
 	refresh_temp_labels()

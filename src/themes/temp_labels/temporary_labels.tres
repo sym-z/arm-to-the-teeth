@@ -3,5 +3,7 @@
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_ra7le"]
 
 [resource]
+Label/colors/font_shadow_color = Color(0.02, 0.01, 0, 0.376471)
+Label/constants/shadow_offset_y = 4
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_ra7le")

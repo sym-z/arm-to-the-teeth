@@ -1,24 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://n07t7fqqy66w"]
+[gd_scene load_steps=6 format=3 uid="uid://n07t7fqqy66w"]
 
 [ext_resource type="Script" uid="uid://c3we5vfrrd1mt" path="res://prefabs/ui/combat_viewport/attacking_head_object/attacking_head_object.gd" id="1_ey84f"]
+[ext_resource type="StyleBox" uid="uid://ds824ew80pn46" path="res://themes/combat_viewport/limb_selection/buttons/limb_container.tres" id="1_yi3p8"]
 [ext_resource type="Texture2D" uid="uid://2vw2q80oajo3" path="res://assets/visual/prototype_items/v2/head_prototype_1B.png" id="2_ey84f"]
 [ext_resource type="Theme" uid="uid://frl37suyd3ud" path="res://themes/combat_viewport/att_head_obj_label.tres" id="3_ldpa5"]
 [ext_resource type="Theme" uid="uid://dey1i4cpbo2g6" path="res://themes/combat_viewport/att_head_obj_button.tres" id="4_n2rmt"]
 
-[node name="Attacking Head Object" type="VBoxContainer" node_paths=PackedStringArray("str_label", "health_label")]
-offset_right = 40.0
-offset_bottom = 40.0
-alignment = 1
+[node name="Attacking Head Object" type="PanelContainer" node_paths=PackedStringArray("str_label", "health_label")]
+offset_right = 153.0
+offset_bottom = 209.0
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("1_yi3p8")
 script = ExtResource("1_ey84f")
-str_label = NodePath("Strength Label")
-health_label = NodePath("Health Label")
+str_label = NodePath("VBox Container/Strength Label")
+health_label = NodePath("VBox Container/Health Label")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="VBox Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBox Container"]
 layout_mode = 2
 texture = ExtResource("2_ey84f")
 stretch_mode = 3
 
-[node name="Strength Label" type="RichTextLabel" parent="."]
+[node name="Strength Label" type="RichTextLabel" parent="VBox Container"]
 layout_mode = 2
 theme = ExtResource("3_ldpa5")
 text = "STRENGTH: X"
@@ -27,7 +34,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Health Label" type="RichTextLabel" parent="."]
+[node name="Health Label" type="RichTextLabel" parent="VBox Container"]
 layout_mode = 2
 theme = ExtResource("3_ldpa5")
 text = "HEALTH: X"
@@ -36,9 +43,9 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select Button" type="Button" parent="."]
+[node name="Select Button" type="Button" parent="VBox Container"]
 layout_mode = 2
 theme = ExtResource("4_n2rmt")
 text = "SELECT HEAD"
 
-[connection signal="pressed" from="Select Button" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="VBox Container/Select Button" to="." method="_on_select_button_pressed"]

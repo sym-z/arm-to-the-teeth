@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends PanelContainer
 @export var str_label : RichTextLabel
 @export var health_label : RichTextLabel
 

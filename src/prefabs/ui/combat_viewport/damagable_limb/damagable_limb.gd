@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends PanelContainer
 
 var arm_texture : Texture2D = preload("uid://bcef8a1s3erho")
 var head_texture : Texture2D = preload("uid://2vw2q80oajo3")

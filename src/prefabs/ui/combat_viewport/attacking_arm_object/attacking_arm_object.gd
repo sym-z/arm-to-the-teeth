@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends PanelContainer
 @export var str_label : RichTextLabel
 @export var con_label : RichTextLabel
 
@@ -22,5 +22,6 @@ func input_arm(a : Arm):
 
 
 func _on_select_button_pressed():
+	print("POOPIE")
 	attacking_arm_selected.emit(arm_reference,false)
 	pass # Replace with function body.

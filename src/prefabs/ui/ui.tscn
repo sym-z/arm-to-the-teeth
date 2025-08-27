@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=139 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -67,9 +67,13 @@
 [ext_resource type="Texture2D" uid="uid://cerrt2sg5vnji" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_26.png" id="42_3t8s0"]
 [ext_resource type="Texture2D" uid="uid://80064q74ture" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_27.png" id="43_nrubd"]
 [ext_resource type="Texture2D" uid="uid://chm84apqi6yjj" path="res://assets/visual/ui/ui_bg_0.png" id="44_wcb55"]
+[ext_resource type="Theme" uid="uid://dtuj3mnagw148" path="res://themes/general/ui_header.tres" id="47_3dlba"]
+[ext_resource type="StyleBox" uid="uid://cuadpqjxid7hy" path="res://themes/general/mini_map_container.tres" id="49_jvrmo"]
 [ext_resource type="Texture2D" uid="uid://3lp5pma0e3lx" path="res://assets/visual/ui/ui_key_0.png" id="58_07iut"]
 [ext_resource type="Theme" uid="uid://joig1alr8u7d" path="res://themes/gate_transition/gate_buttons.tres" id="68_bfx8m"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="69_0a1xg"]
+[ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="70_jvrmo"]
+[ext_resource type="StyleBox" uid="uid://dwveivsufdo5t" path="res://themes/general/ui_containers_transparent.tres" id="73_bsq4w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u5l0a"]
 animations = [{
@@ -209,18 +213,6 @@ animations = [{
 "name": &"default",
 "speed": 15.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7xdf"]
-bg_color = Color(0.0196078, 0.00784314, 0, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rod3w"]
 atlas = ExtResource("27_b1ex4")
@@ -632,29 +624,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w51vb"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqkvd"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mq63"]
 bg_color = Color(0.0156863, 0.00784314, 0, 1)
@@ -680,37 +656,20 @@ expand_margin_top = 4.0
 expand_margin_right = 9.0
 expand_margin_bottom = 9.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcb55"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvrmo"]
+bg_color = Color(0.02, 0.01, 0, 0.784314)
 border_width_left = 16
 border_width_top = 16
 border_width_right = 16
 border_width_bottom = 16
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfx8m"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 13
-border_width_top = 13
-border_width_right = 13
-border_width_bottom = 13
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a1xg"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07iut"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("chomp_transition", "pickup_button", "inventory_button", "options_button", "quit_button", "options_container", "curr_speed_label", "slow_speed_button", "med_speed_button", "fast_speed_button", "options_back_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button", "log_line_label", "full_log_container", "full_log_window_container", "full_log_scroller", "full_log_back_button", "viewport_header_label", "mini_map", "combat_viewport", "head_anim", "stomach_anim", "equipped_arm_anim_1", "equipped_arm_anim_2", "tooth_anim", "arm_cond_1", "arm_cond_2", "key_slot", "eye_anim", "gate_anim", "gate_notif_container", "speaker")]
 script = ExtResource("1_gxjsb")
@@ -766,6 +725,7 @@ visible = false
 position = Vector2(512, 92)
 sprite_frames = SubResource("SpriteFrames_m0h0r")
 centered = false
+offset = Vector2(0, -10)
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -788,7 +748,7 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Viewport Header Label" type="RichTextLabel" parent="Viewport Header Container"]
+[node name="Viewport Header Label" type="Label" parent="Viewport Header Container"]
 layout_mode = 2
 theme = ExtResource("14_gtvwi")
 text = "FLOOR: 0"
@@ -802,8 +762,7 @@ offset_left = 211.0
 offset_top = 538.0
 offset_right = 291.0
 offset_bottom = 591.0
-theme_override_fonts/font = ExtResource("18_w51vb")
-theme_override_font_sizes/font_size = 53
+theme = ExtResource("47_3dlba")
 text = "MAP"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -820,7 +779,7 @@ offset_top = 621.0
 offset_right = 411.0
 offset_bottom = 941.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b7xdf")
+theme_override_styles/panel = ExtResource("49_jvrmo")
 
 [node name="Context Menu" type="CanvasLayer" parent="."]
 layer = 2
@@ -842,11 +801,9 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Context Menu Header Label" type="RichTextLabel" parent="Context Menu/Context Menu Header Container"]
+[node name="Context Menu Header Label" type="Label" parent="Context Menu/Context Menu Header Container"]
 layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("18_w51vb")
-theme_override_font_sizes/normal_font_size = 53
+theme = ExtResource("47_3dlba")
 text = "CONTEXT
 MENU"
 horizontal_alignment = 1
@@ -870,6 +827,7 @@ theme = ExtResource("3_htiv7")
 [node name="Button Container" type="VBoxContainer" parent="Context Menu/Context Menu Container"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Pick Up" type="Button" parent="Context Menu/Context Menu Container/Button Container"]
@@ -905,12 +863,12 @@ text = "QUIT"
 layer = 2
 
 [node name="TEMP TEETH" type="Label" parent="Stat Showcase"]
-offset_left = 1457.0
+offset_left = 1442.0
 offset_top = 225.0
-offset_right = 1905.0
+offset_right = 1890.0
 offset_bottom = 269.0
 theme = ExtResource("7_1is0v")
-text = "TOOTH COUNT: X"
+text = "TEETH: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -948,12 +906,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TEMP HEAD" type="Label" parent="Stat Showcase"]
-offset_left = 1456.0
+offset_left = 1443.0
 offset_top = 460.0
-offset_right = 1904.0
+offset_right = 1891.0
 offset_bottom = 504.0
 theme = ExtResource("7_1is0v")
-text = "HEAD HEALTH: (5/5)"
+text = "HEALTH: 5/5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -963,30 +921,35 @@ offset_top = 794.0
 offset_right = 1898.0
 offset_bottom = 838.0
 theme = ExtResource("7_1is0v")
-text = "HUNGER LEVEL: X"
+text = "HUNGER: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Head" type="AnimatedSprite2D" parent="Stat Showcase"]
+modulate = Color(1, 1, 1, 0.921569)
 position = Vector2(1667, 370)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xqkvd")
 
 [node name="Stomach" type="AnimatedSprite2D" parent="Stat Showcase"]
+modulate = Color(1, 1, 1, 0.921569)
 position = Vector2(1674, 672)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_l1g0r")
 
 [node name="Arm" type="AnimatedSprite2D" parent="Stat Showcase"]
+modulate = Color(1, 1, 1, 0.921569)
 position = Vector2(1528, 670)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 flip_h = true
 
 [node name="Arm2" type="AnimatedSprite2D" parent="Stat Showcase"]
+modulate = Color(1, 1, 1, 0.921569)
 position = Vector2(1806, 670)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 
 [node name="Teeth" type="AnimatedSprite2D" parent="Stat Showcase"]
+modulate = Color(1, 1, 1, 0.921569)
 position = Vector2(1668, 368)
 sprite_frames = SubResource("SpriteFrames_rod3w")
 frame = 32
@@ -1008,11 +971,9 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Stat Header Label" type="RichTextLabel" parent="Stat Showcase/Stat Header Container"]
+[node name="Stat Header Label" type="Label" parent="Stat Showcase/Stat Header Container"]
 layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("18_w51vb")
-theme_override_font_sizes/normal_font_size = 53
+theme = ExtResource("47_3dlba")
 text = "BIOTIC
 STATUS"
 horizontal_alignment = 1
@@ -1043,7 +1004,7 @@ theme = ExtResource("6_mbf2n")
 [node name="Background" type="Panel" parent="Inventory/Inventory Window"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_w51vb")
+theme_override_styles/panel = ExtResource("73_bsq4w")
 
 [node name="Item Margins" type="MarginContainer" parent="Inventory/Inventory Window"]
 layout_mode = 2
@@ -1095,9 +1056,9 @@ layer = 2
 [node name="Log Line Window" type="PanelContainer" parent="Log"]
 z_index = 2
 offset_left = 248.0
-offset_top = 1007.0
+offset_top = 1002.0
 offset_right = 1677.0
-offset_bottom = 1065.0
+offset_bottom = 1060.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_xqkvd")
 script = ExtResource("19_xqkvd")
@@ -1189,11 +1150,9 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Log Header Label" type="RichTextLabel" parent="Log/Log Header Container"]
+[node name="Log Header Label" type="Label" parent="Log/Log Header Container"]
 layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("18_w51vb")
-theme_override_font_sizes/normal_font_size = 53
+theme = ExtResource("47_3dlba")
 text = "LOG ->"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1284,23 +1243,6 @@ size_flags_horizontal = 4
 theme = ExtResource("40_mpgui")
 text = "BACK"
 
-[node name="Dungeon Viewport Style" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 497
-theme_override_constants/margin_top = 76
-theme_override_constants/margin_right = 497
-theme_override_constants/margin_bottom = 76
-
-[node name="Dungeon Viewport Border" type="Panel" parent="Dungeon Viewport Style"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wcb55")
-
 [node name="Screen Style" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -1312,7 +1254,7 @@ mouse_filter = 2
 [node name="Screen Border" type="Panel" parent="Screen Style"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bfx8m")
+theme_override_styles/panel = ExtResource("70_jvrmo")
 
 [node name="Biotic Style" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -1329,7 +1271,7 @@ theme_override_constants/margin_bottom = 150
 [node name="Biotic Border" type="Panel" parent="Biotic Style"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0a1xg")
+theme_override_styles/panel = ExtResource("73_bsq4w")
 
 [node name="Gate Notification" type="CanvasLayer" parent="."]
 
@@ -1349,7 +1291,7 @@ theme_override_constants/margin_bottom = 325
 [node name="PanelContainer" type="PanelContainer" parent="Gate Notification/Gate Notification Container"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_07iut")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvrmo")
 
 [node name="CenterContainer" type="CenterContainer" parent="Gate Notification/Gate Notification Container/PanelContainer"]
 layout_mode = 2
@@ -1391,6 +1333,26 @@ max_polyphony = 4
 layer = 4
 
 [node name="Chomp Transition" parent="Chomp Layer" instance=ExtResource("69_0a1xg")]
+
+[node name="Dungeon Viewport Style Box" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Dungeon Viewport Style Container" type="MarginContainer" parent="Dungeon Viewport Style Box"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 89
+
+[node name="Dungeon Viewport Border" type="Panel" parent="Dungeon Viewport Style Box/Dungeon Viewport Style Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("73_bsq4w")
 
 [connection signal="mini_map_ready" from="Mini Map Layer/Mini Map" to="." method="_on_mini_map_mini_map_ready"]
 [connection signal="pressed" from="Context Menu/Context Menu Container/Button Container/Pick Up" to="." method="_on_pick_up_pressed"]

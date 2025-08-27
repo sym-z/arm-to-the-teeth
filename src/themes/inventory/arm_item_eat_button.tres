@@ -1,25 +1,13 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bw38ek4svmtns"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bw38ek4svmtns"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_jh4rg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grokg"]
-bg_color = Color(0.603922, 0.145098, 0.0745098, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.603922, 0.145098, 0.0745098, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh4rg"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.603922, 0.145098, 0.0745098, 1)
+[ext_resource type="StyleBox" uid="uid://c5yrabdmmfctk" path="res://themes/combat_viewport/limb_selection/buttons/limb_hover.tres" id="2_io5bp"]
+[ext_resource type="StyleBox" uid="uid://c7puguiqv1ske" path="res://themes/combat_viewport/limb_selection/buttons/limb_normal.tres" id="3_2fjig"]
+[ext_resource type="StyleBox" uid="uid://cirbfg5e1qnht" path="res://themes/combat_viewport/limb_selection/buttons/limb_pressed.tres" id="4_48w73"]
 
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_jh4rg")
-Button/styles/hover = SubResource("StyleBoxFlat_grokg")
-Button/styles/normal = SubResource("StyleBoxFlat_jh4rg")
+Button/styles/hover = ExtResource("2_io5bp")
+Button/styles/normal = ExtResource("3_2fjig")
+Button/styles/pressed = ExtResource("4_48w73")

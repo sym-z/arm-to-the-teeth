@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b0247qwjlu8lv"]
 
-[ext_resource type="StyleBox" uid="uid://dy4q0l8dyrsii" path="res://themes/combat_viewport/db_panel_container_style_box.tres" id="1_cynft"]
+[ext_resource type="StyleBox" uid="uid://cx6p57b1fofk1" path="res://themes/general/ui_containers_opaque.tres" id="1_cynft"]
 
 [resource]
 PanelContainer/styles/panel = ExtResource("1_cynft")

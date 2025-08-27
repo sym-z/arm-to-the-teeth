@@ -1,6 +1,19 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bmsfnogygnl6q"]
 
-[ext_resource type="StyleBox" uid="uid://bjuxysextgcgm" path="res://themes/combat_viewport/player_dam_sel_panel_style_box.tres" id="1_p8am7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbc4g"]
+bg_color = Color(0.02, 0.01, 0, 0.784314)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [resource]
-Panel/styles/panel = ExtResource("1_p8am7")
+Panel/styles/panel = SubResource("StyleBoxFlat_tbc4g")
