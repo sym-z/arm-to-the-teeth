@@ -1006,6 +1006,7 @@ texture = ExtResource("58_07iut")
 layer = 2
 
 [node name="Inventory Window" type="MarginContainer" parent="Inventory"]
+visible = false
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
