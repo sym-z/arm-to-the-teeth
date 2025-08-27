@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://vedpap325i3n"]
+[gd_scene load_steps=8 format=3 uid="uid://vedpap325i3n"]
 
 [ext_resource type="Script" uid="uid://bppfvn2t8lfpo" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
 [ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_wem23"]
+[ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="3_5seab"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
 [ext_resource type="Texture2D" uid="uid://dm7p3xecilppi" path="res://assets/visual/ui/logo_6.png" id="4_3ovsr"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="6_3ovsr"]
@@ -22,6 +23,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_wem23")
+
+[node name="Border" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5seab")
 
 [node name="Header Container" type="MarginContainer" parent="."]
 anchors_preset = 15

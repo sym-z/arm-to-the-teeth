@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=140 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -624,6 +624,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsq4w"]
+bg_color = Color(0.02, 0.01, 0, 0.784314)
+border_width_left = 13
+border_width_top = 13
+border_width_right = 13
+border_width_bottom = 13
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqkvd"]
 bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 4
@@ -1004,7 +1019,7 @@ theme = ExtResource("6_mbf2n")
 [node name="Background" type="Panel" parent="Inventory/Inventory Window"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = ExtResource("73_bsq4w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsq4w")
 
 [node name="Item Margins" type="MarginContainer" parent="Inventory/Inventory Window"]
 layout_mode = 2
@@ -1028,7 +1043,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 590
+theme_override_constants/margin_bottom = 570
 
 [node name="Header" type="Label" parent="Inventory/Inventory Window/Header Margins"]
 layout_mode = 2
@@ -1042,9 +1057,9 @@ vertical_alignment = 1
 visible = false
 z_index = 2
 offset_left = 892.0
-offset_top = 824.0
+offset_top = 814.0
 offset_right = 1028.0
-offset_bottom = 864.0
+offset_bottom = 854.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("7_lntee")

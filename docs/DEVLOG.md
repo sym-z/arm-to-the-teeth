@@ -467,3 +467,4 @@
 - Wall texture remake
 - Establishing full UI consistency, making use of more transparency
 - Only the death screen and tutorial screen need additional borders and background textures, and the overhaul is done.
+- Borders added, overhaul is done. I still want to tweak with the textures of the wall. The plan now is to make them all use the same color texture, and then make a shader that dims everything at each distance level respectively.

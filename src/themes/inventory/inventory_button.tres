@@ -1,16 +1,66 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cfkrwy0lnfu1n"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cfkrwy0lnfu1n"]
 
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="1_nf73e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf73e"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
+bg_color = Color(0.6, 0.1424, 0.072, 0.376471)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qk2"]
+bg_color = Color(0.02, 0.01, 0, 0.376471)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_expmo"]
+bg_color = Color(0.4032, 0.48, 0.288, 0.376471)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
 
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_nf73e")
-Button/styles/normal = SubResource("StyleBoxFlat_nf73e")
+Button/styles/hover = SubResource("StyleBoxFlat_nf73e")
+Button/styles/normal = SubResource("StyleBoxFlat_u3qk2")
+Button/styles/pressed = SubResource("StyleBoxFlat_expmo")
