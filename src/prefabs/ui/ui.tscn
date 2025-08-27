@@ -625,7 +625,7 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsq4w"]
-bg_color = Color(0.02, 0.01, 0, 0.784314)
+bg_color = Color(0.02, 0.01, 0, 0.376471)
 border_width_left = 13
 border_width_top = 13
 border_width_right = 13
@@ -1006,7 +1006,6 @@ texture = ExtResource("58_07iut")
 layer = 2
 
 [node name="Inventory Window" type="MarginContainer" parent="Inventory"]
-visible = false
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
