@@ -474,3 +474,11 @@
 
 ## 28 August 2025
 - Minimap vision extended to include 1 additional cell
+- Basic setup for minigame where you react to block damage. Correct limbs are calculated. Next:
+  - Hurt the limb that is cut
+  - Add buttons and icons to show blocking
+  - Connect arrow keys to block buttons
+  - Add punishment for spamming
+  - Add effect for blocking
+  - Add it into the combat flow instead of limb damage selection
+- Right now, the game overrides the battle scene

@@ -23,6 +23,9 @@ var enemy_dead : bool = false
 @export_category("Wheel Roller")
 @export var wheel_roller : MarginContainer
 
+@export_category("Finger React")
+@export var finger_react : MarginContainer
+
 @export_category("Animations")
 @export var player_anim : AnimatedSprite2D
 @export var enemy_anim : AnimatedSprite2D
@@ -96,6 +99,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	e_health_bar.max_value = opponent.total_health
 	refresh_temp_labels()
 	enemy_anim.animation = "default"
+	finger_react.begin_game()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
