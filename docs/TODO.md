@@ -42,7 +42,6 @@
   - Enemies can't move on top of eachother.
 - [ ] Swapping arm with arm on the ground
   - [ ] Player can see stats of arm on the ground before adding it to inventory
-- [ ] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [ ] Anything that removes teeth for the most part should have a chance of not doing so. Make a `roll_for_teeth_lost()` function in head and implement it.
 - [ ] Future die rollers can be managed using a `Dictionary[int, Callable]` to run functions based off of the frame it lands on.
 - [ ] On new floor, decide on head upgrade, or arm upgrade? (STRETCH GOAL)
@@ -55,6 +54,7 @@
   - [x] Shader
   - [ ] Animation
 ### DONE
+- [x] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [x] Chest / lock and key puzzle
 - [x] Text speed choice in options menu that effects battle speed
 - [x] The map's arm drops are randomized
