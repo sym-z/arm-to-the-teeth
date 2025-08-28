@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cm4vdqlydnmfh"]
+
+[ext_resource type="Shader" uid="uid://c4kd8j3x6vbrk" path="res://shaders/dimming_shader.gdshader" id="1_7xxhm"]
+
+[resource]
+shader = ExtResource("1_7xxhm")
+shader_parameter/dimming = 1.0

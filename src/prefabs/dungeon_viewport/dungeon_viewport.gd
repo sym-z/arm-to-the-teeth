@@ -47,7 +47,7 @@ signal refresh_ordering
 
 func _ready():
 	d_parents = [d0_parent,d1_parent,d2_parent]
-	change_animations("tex_1")
+	change_animations("tex_2")
 
 func change_animations(anim : String):
 	for parent in d_parents:
