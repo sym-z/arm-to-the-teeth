@@ -469,3 +469,4 @@
 - Only the death screen and tutorial screen need additional borders and background textures, and the overhaul is done.
 - Borders added, overhaul is done. I still want to tweak with the textures of the wall. The plan now is to make them all use the same color texture, and then make a shader that dims everything at each distance level respectively.
 - Tutorial and death screen use the same background texture.
+- Implemented a new method of shading the walls using shaders assigned to the parents of the walls at each level.
