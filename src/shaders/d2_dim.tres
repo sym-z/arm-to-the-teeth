@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_t1ujs")
-shader_parameter/dimming = 0.56
+shader_parameter/dimming = 0.535

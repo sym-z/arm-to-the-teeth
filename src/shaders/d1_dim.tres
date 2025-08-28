@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_g1035")
-shader_parameter/dimming = 0.625
+shader_parameter/dimming = 0.735
