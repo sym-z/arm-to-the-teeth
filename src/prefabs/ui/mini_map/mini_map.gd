@@ -81,7 +81,6 @@ func create_visualization():
 
 func set_icon(type: Cell.TYPE, loc: Vector2i):
 	var icon_sprite = icons[loc]
-	
 	match type:
 		Cell.TYPE.EXIT:
 			icon_sprite.texture = exit_icon
@@ -123,10 +122,30 @@ func reveal_tile(loc : Vector2i):
 	if icons.has(loc):
 		icons[loc].visible = true
 
+func reveal_adjacent_tile(loc : Vector2i, facing : int):
+	# Bounds check with adjacent tile.
+	var adj_loc : Vector2i = Vector2i(loc.x,loc.y)
+	match facing:
+		Globals.NORTH:
+			adj_loc += Vector2i.UP
+		Globals.SOUTH:
+			adj_loc += Vector2i.DOWN
+		Globals.WEST:
+			adj_loc += Vector2i.LEFT
+		Globals.EAST:
+			adj_loc += Vector2i.RIGHT
+	if map.check_bounds(adj_loc) == true:
+		# Does a wall exist between the two cells? Check the cell the player is in to see if they're facing a wall
+		var curr_cell : Cell = map.world_map[loc]
+		if curr_cell.walls_to_int() & facing == 0:
+			reveal_tile(adj_loc)
+
 func player_position_refresh():
 	player_sprite.position = Vector2i(player.position.x*MINI_MAP_TILE_SIZE,player.position.y*MINI_MAP_TILE_SIZE)
 	# Reveal part of map here
 	reveal_tile(player.position)
+	# Reveal one tile in front of the player, if possible
+	reveal_adjacent_tile(player.position,player.facing)
 	
 func player_direction_refresh():
 	match player.facing:
@@ -138,4 +157,5 @@ func player_direction_refresh():
 			player_sprite.texture = player_sprite_frames.get_frame_texture("default", 2)
 		Globals.EAST:
 			player_sprite.texture = player_sprite_frames.get_frame_texture("default", 3)
-	
+	# Reveal a tile in front of the player, if possible
+	reveal_adjacent_tile(player.position,player.facing)

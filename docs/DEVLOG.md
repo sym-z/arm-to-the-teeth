@@ -471,3 +471,6 @@
 - Tutorial and death screen use the same background texture.
 - Implemented a new method of shading the walls using shaders assigned to the parents of the walls at each level.
   - Ran into a weird error that I ended up solving by simply opening up another project in Godot, and then opening this project. It was an engine level bug that had a weird fix that I found at this link. https://www.reddit.com/r/godot/comments/g8157l/resource_file_not_found_res_how_do_i_fix_this/
+
+## 28 August 2025
+- Minimap vision extended to include 1 additional cell

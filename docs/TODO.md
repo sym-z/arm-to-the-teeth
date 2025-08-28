@@ -27,7 +27,6 @@
 - [x] Track highest floor achieved
 
 ## Gameplay
-- [ ] Player has vision of 1 on minimap
 - [ ] Player's spawn point is randomized or has the option to be randomized in `player.gd`, more necessary when UI is in.
 - [ ] Refine Arm Eating
   - [x] Check mins and maxes of the stats that it affects for the player
@@ -54,6 +53,7 @@
   - [x] Shader
   - [ ] Animation
 ### DONE
+- [x] Player has vision of 1 on minimap
 - [x] `Node2D`s can have shaders, could I set the parents of the walls to apply dimming?
 - [x] Chest / lock and key puzzle
 - [x] Text speed choice in options menu that effects battle speed
