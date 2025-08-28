@@ -75,145 +75,6 @@
 [ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="70_jvrmo"]
 [ext_resource type="StyleBox" uid="uid://dwveivsufdo5t" path="res://themes/general/ui_containers_transparent.tres" id="73_bsq4w"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_u5l0a"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_b1ex4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_mpgui")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_3mq63")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_otlga")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_vbomq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_nc4rq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_1o0dj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_0kdjk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_7mggq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_abryy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_c8ccg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_aoepl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_smb0g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_kfeyr")
-}],
-"loop": false,
-"name": &"default",
-"speed": 20.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m0h0r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_wcb55")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_bfx8m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_0a1xg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_07iut")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_a0gks")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_hg2lu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_3dlba")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_jvrmo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_bsq4w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_hjeeh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_ukgtl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_6bp04")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_u5l0a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_3tf8r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_1dnbl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_38ywx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_76mk3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_lge0c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_r731v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_p3cfc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_2nc7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_xevvd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_qmh41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_r2244")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_nuxg6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_3t8s0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_nrubd")
-}],
-"loop": false,
-"name": &"default",
-"speed": 15.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rod3w"]
 atlas = ExtResource("27_b1ex4")
 region = Rect2(0, 0, 112, 112)
@@ -700,9 +561,148 @@ shadow_color = Color(0.02, 0.01, 0, 0.376471)
 shadow_size = 12
 shadow_offset = Vector2(0, 8)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5l0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_b1ex4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mpgui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3mq63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_otlga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vbomq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nc4rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1o0dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0kdjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7mggq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_abryy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c8ccg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_aoepl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_smb0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kfeyr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0h0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_wcb55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bfx8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0a1xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_07iut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a0gks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hg2lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3dlba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_jvrmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_bsq4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_hjeeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ukgtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6bp04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_u5l0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3tf8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1dnbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_38ywx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_76mk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_lge0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_r731v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_p3cfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_2nc7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_xevvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_qmh41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_r2244")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_nuxg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_3t8s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_nrubd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("chomp_transition", "pickup_button", "inventory_button", "options_button", "quit_button", "options_container", "curr_speed_label", "slow_speed_button", "med_speed_button", "fast_speed_button", "options_back_button", "tooth_label", "arm_label", "head_label", "hunger_label", "inventory_container", "item_container", "inv_back_button", "log_line_label", "full_log_container", "full_log_window_container", "full_log_scroller", "full_log_back_button", "viewport_header_label", "mini_map", "combat_viewport", "head_anim", "stomach_anim", "equipped_arm_anim_1", "equipped_arm_anim_2", "tooth_anim", "arm_cond_1", "arm_cond_2", "key_slot", "eye_anim", "gate_anim", "gate_notif_container", "speaker")]
 script = ExtResource("1_gxjsb")
-chomp_transition = NodePath("Chomp Layer/Chomp Transition")
+chomp_transition = NodePath("Transition Layer/Chomp Transition")
 pickup_button = NodePath("Context Menu/Context Menu Container/Button Container/Pick Up")
 inventory_button = NodePath("Context Menu/Context Menu Container/Button Container/Inventory")
 options_button = NodePath("Context Menu/Context Menu Container/Button Container/Options")
@@ -736,25 +736,14 @@ tooth_anim = NodePath("Stat Showcase/Teeth")
 arm_cond_1 = NodePath("Stat Showcase/Condition Label 1")
 arm_cond_2 = NodePath("Stat Showcase/Condition Label 2")
 key_slot = NodePath("Stat Showcase/Key Slot")
-eye_anim = NodePath("Eye Transition")
-gate_anim = NodePath("Gate Transition")
+eye_anim = NodePath("Transition Layer/Eye Transition")
+gate_anim = NodePath("Transition Layer/Gate Transition")
 gate_notif_container = NodePath("Gate Notification/Gate Notification Container")
 speaker = NodePath("Speaker")
 
 [node name="Combat Viewport" parent="." node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
 visible = false
 root_ui = NodePath("..")
-
-[node name="Eye Transition" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_u5l0a")
-centered = false
-
-[node name="Gate Transition" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(512, 92)
-sprite_frames = SubResource("SpriteFrames_m0h0r")
-centered = false
-offset = Vector2(0, -10)
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -1362,10 +1351,21 @@ text = "PROCEED"
 [node name="Speaker" type="AudioStreamPlayer" parent="."]
 max_polyphony = 4
 
-[node name="Chomp Layer" type="CanvasLayer" parent="."]
+[node name="Transition Layer" type="CanvasLayer" parent="."]
 layer = 4
 
-[node name="Chomp Transition" parent="Chomp Layer" instance=ExtResource("69_0a1xg")]
+[node name="Eye Transition" type="AnimatedSprite2D" parent="Transition Layer"]
+sprite_frames = SubResource("SpriteFrames_u5l0a")
+centered = false
+
+[node name="Chomp Transition" parent="Transition Layer" instance=ExtResource("69_0a1xg")]
+
+[node name="Gate Transition" type="AnimatedSprite2D" parent="Transition Layer"]
+visible = false
+position = Vector2(512, 92)
+sprite_frames = SubResource("SpriteFrames_m0h0r")
+centered = false
+offset = Vector2(0, -10)
 
 [node name="Dungeon Viewport Style Box" type="CanvasLayer" parent="."]
 layer = 0
