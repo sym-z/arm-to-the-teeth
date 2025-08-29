@@ -5,6 +5,7 @@ extends Node2D
 @export var fing_3 : AnimatedSprite2D
 
 var curr_anim : AnimatedSprite2D = fing_3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,6 +15,8 @@ func _ready():
 func _process(delta):
 	pass
 
+func emit_cut_signal():
+	pass
 func set_finger_number(num : int):
 	if num > 3 or num < 1:
 		push_error("Invalid finger number setting in set_finger_number() in finger_react_animations.gd")

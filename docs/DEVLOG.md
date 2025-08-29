@@ -475,10 +475,17 @@
 ## 28 August 2025
 - Minimap vision extended to include 1 additional cell
 - Basic setup for minigame where you react to block damage. Correct limbs are calculated. Next:
-  - Hurt the limb that is cut
-  - Add buttons and icons to show blocking
-  - Connect arrow keys to block buttons
-  - Add punishment for spamming
-  - Add effect for blocking
-  - Add it into the combat flow instead of limb damage selection
+  - [ ] Hurt the limb that is cut
+  - [x] Add buttons and icons to show blocking
+  - [x] Start with all buttons disabled
+  - [x] Connect arrow keys to block buttons
+  - [ ] Add punishment for spamming
+  - [ ] Add effect for blocking
+  - [ ] Add it into the combat flow instead of limb damage selection
+  - [ ] Add sound
+  - [ ] Add tutorial text / "?" button for hint / first time required tutorial
 - Right now, the game overrides the battle scene
+- Changed to allow for the possibility of punishing early button presses
+  - This may be good to just start with it automatically cutting a limb / the limb that was pressed.
+- Arrow keys or mouse can be used to block
+- Icons and animations change depending on limb configuration

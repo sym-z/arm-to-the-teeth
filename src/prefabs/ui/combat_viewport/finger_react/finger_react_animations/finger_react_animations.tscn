@@ -48,15 +48,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_83pp3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_83pp3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_83pp3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_83pp3")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0xc4n")
 }],
 "loop": false,
@@ -64,15 +55,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jp02t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jp02t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jp02t")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jp02t")
 }, {
@@ -88,20 +70,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_j0plq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0plq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0plq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0plq")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ilvkw")
 }],
 "loop": false,
 "name": &"cut_3",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,15 +122,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_1kwff")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1kwff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1kwff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1kwff")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ravaw")
 }],
 "loop": false,
@@ -165,15 +129,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_igu0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_igu0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_igu0i")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_igu0i")
 }, {
@@ -215,15 +170,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_uwgc6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uwgc6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwgc6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwgc6")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_q0rdg")
 }],
 "loop": false,
@@ -247,7 +193,7 @@ fing_3 = NodePath("Three Finger React")
 
 [node name="Three Finger React" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ov3ta")
-animation = &"cut_3"
+animation = &"cut_1"
 
 [node name="Two Finger React" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -257,4 +203,3 @@ animation = &"cut_2"
 [node name="One Finger React" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_bqns5")
-animation = &"cut_2"

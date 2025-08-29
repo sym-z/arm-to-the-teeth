@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=137 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -47,6 +47,8 @@
 [ext_resource type="StyleBox" uid="uid://cipd0lhkv4mns" path="res://themes/general/combat_viewport_mini_box.tres" id="45_eo0c2"]
 [ext_resource type="PackedScene" uid="uid://ves0hrwxyc5l" path="res://prefabs/ui/combat_viewport/finger_react/finger_react_animations/finger_react_animations.tscn" id="46_7eewq"]
 [ext_resource type="Script" uid="uid://b8bjcltpvebhr" path="res://prefabs/ui/combat_viewport/finger_react/finger_react.gd" id="46_eo0c2"]
+[ext_resource type="Texture2D" uid="uid://ecxsgkcggxg1" path="res://assets/visual/prototype_items/v2/arm_prototype_2.png" id="47_pof7y"]
+[ext_resource type="Texture2D" uid="uid://2vw2q80oajo3" path="res://assets/visual/prototype_items/v2/head_prototype_1B.png" id="48_jbwc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -753,6 +755,9 @@ shadow_color = Color(0.02, 0.01, 0, 0.376471)
 shadow_size = 12
 shadow_offset = Vector2(0, 8)
 
+[sub_resource type="Theme" id="Theme_pof7y"]
+/icons/highlight = ExtResource("25_frval")
+
 [node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "finger_react", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -788,19 +793,19 @@ e_health_bar = NodePath("TEMP ENEMY STATS/MarginContainer/VBoxContainer/Health B
 p_speaker = NodePath("Player Speaker")
 e_speaker = NodePath("Enemy Speaker")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background Panel" type="Panel" parent="."]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_l6kcl")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Background Image" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 13
 theme_override_constants/margin_top = 13
 theme_override_constants/margin_right = 13
 theme_override_constants/margin_bottom = 13
 
-[node name="Drip Texture" type="TextureRect" parent="MarginContainer"]
+[node name="Drip Texture" type="TextureRect" parent="Background Image"]
 modulate = Color(0.64, 0.64, 0.64, 1)
 layout_mode = 2
 texture = ExtResource("4_t3v2j")
@@ -1248,9 +1253,10 @@ theme_override_styles/pressed = ExtResource("44_7eewq")
 theme_override_styles/normal = ExtResource("45_eo0c2")
 text = "STOP"
 
-[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "timer")]
+[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "left_button", "head_button", "right_button", "ready_button")]
 z_index = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 84
 theme_override_constants/margin_top = 84
 theme_override_constants/margin_right = 84
@@ -1258,16 +1264,139 @@ theme_override_constants/margin_bottom = 42
 script = ExtResource("46_eo0c2")
 combat_viewport = NodePath("..")
 finger_anims = NodePath("Finger React Animations")
-timer = NodePath("Timer")
+blockable_wait_time = NodePath("Blockable Wait Time")
+blockable_duration = NodePath("Blockable Duration")
+left_container = NodePath("PanelContainer/Left Container")
+head_container = NodePath("PanelContainer/Head Container")
+right_container = NodePath("PanelContainer/Right Container")
+left_button = NodePath("PanelContainer/Left Container/Left Stack/Left Arrow")
+head_button = NodePath("PanelContainer/Head Container/Head Stack/Up Arrow")
+right_button = NodePath("PanelContainer/Right Container/Right Stack/Right Arrow")
+ready_button = NodePath("PanelContainer/Button Container/Ready Button")
 
 [node name="PanelContainer" type="PanelContainer" parent="Finger React"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eo0c2")
+
+[node name="Left Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 535
+theme_override_constants/margin_bottom = 0
+
+[node name="Left Stack" type="VBoxContainer" parent="Finger React/PanelContainer/Left Container"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Left Arm" type="TextureRect" parent="Finger React/PanelContainer/Left Container/Left Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("47_pof7y")
+stretch_mode = 2
+
+[node name="Left Arrow" type="TextureButton" parent="Finger React/PanelContainer/Left Container/Left Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_pof7y")
+theme_type_variation = &"highlight"
+texture_normal = ExtResource("28_2nqm1")
+texture_hover = ExtResource("25_frval")
+texture_disabled = ExtResource("24_a13an")
+
+[node name="Head Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 105
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Head Stack" type="VBoxContainer" parent="Finger React/PanelContainer/Head Container"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Head" type="TextureRect" parent="Finger React/PanelContainer/Head Container/Head Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("48_jbwc1")
+stretch_mode = 2
+
+[node name="Up Arrow" type="TextureButton" parent="Finger React/PanelContainer/Head Container/Head Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_pof7y")
+theme_type_variation = &"highlight"
+texture_normal = ExtResource("25_l8e2f")
+texture_hover = ExtResource("22_ln2qj")
+texture_disabled = ExtResource("22_2uckp")
+
+[node name="Right Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 535
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Right Stack" type="VBoxContainer" parent="Finger React/PanelContainer/Right Container"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Right Arm" type="TextureRect" parent="Finger React/PanelContainer/Right Container/Right Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("47_pof7y")
+stretch_mode = 2
+
+[node name="Right Arrow" type="TextureButton" parent="Finger React/PanelContainer/Right Container/Right Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_pof7y")
+theme_type_variation = &"highlight"
+texture_normal = ExtResource("31_rkw3r")
+texture_hover = ExtResource("28_pcqw8")
+texture_disabled = ExtResource("26_vcyn2")
+
+[node name="Button Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 220
+theme_override_constants/margin_top = 610
+theme_override_constants/margin_right = 220
+theme_override_constants/margin_bottom = 55
+
+[node name="Ready Button" type="Button" parent="Finger React/PanelContainer/Button Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/hover = ExtResource("43_sqhh2")
+theme_override_styles/pressed = ExtResource("44_7eewq")
+theme_override_styles/normal = ExtResource("45_eo0c2")
+text = "READY?
+PRESS ME."
 
 [node name="Finger React Animations" parent="Finger React" instance=ExtResource("46_7eewq")]
 position = Vector2(466, 460)
 
-[node name="Timer" type="Timer" parent="Finger React"]
+[node name="Blockable Wait Time" type="Timer" parent="Finger React"]
+one_shot = true
+
+[node name="Blockable Duration" type="Timer" parent="Finger React"]
 one_shot = true
 
 [node name="Player Speaker" type="AudioStreamPlayer" parent="."]
@@ -1284,4 +1413,9 @@ one_shot = true
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container/Right Button" to="." method="right_button_chosen"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Down Container/Down Button" to="." method="down_button_chosen"]
 [connection signal="pressed" from="Run Direction Selection/VBoxContainer/Cancel Run" to="." method="cancel_run"]
-[connection signal="timeout" from="Finger React/Timer" to="Finger React" method="cut_finger"]
+[connection signal="pressed" from="Finger React/PanelContainer/Left Container/Left Stack/Left Arrow" to="Finger React" method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="Finger React/PanelContainer/Head Container/Head Stack/Up Arrow" to="Finger React" method="_on_up_arrow_pressed"]
+[connection signal="pressed" from="Finger React/PanelContainer/Right Container/Right Stack/Right Arrow" to="Finger React" method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="Finger React/PanelContainer/Button Container/Ready Button" to="Finger React" method="rand_wait"]
+[connection signal="timeout" from="Finger React/Blockable Wait Time" to="Finger React" method="cut_finger"]
+[connection signal="timeout" from="Finger React/Blockable Duration" to="Finger React" method="apply_damage"]
