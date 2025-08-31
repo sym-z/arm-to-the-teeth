@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=153 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -62,6 +62,8 @@
 [ext_resource type="Texture2D" uid="uid://2vw2q80oajo3" path="res://assets/visual/prototype_items/v2/head_prototype_1B.png" id="48_jbwc1"]
 [ext_resource type="StyleBox" uid="uid://dnn7rj67rewwj" path="res://themes/finger_react/ready_box.tres" id="49_147t5"]
 [ext_resource type="StyleBox" uid="uid://se36mv5uncgv" path="res://themes/finger_react/block_box.tres" id="51_hij8p"]
+[ext_resource type="Theme" uid="uid://cbwcgyg8hdf4a" path="res://themes/tutorial_button.tres" id="62_qasvu"]
+[ext_resource type="StyleBox" uid="uid://bwcnp5f8k7rix" path="res://themes/general/ui_containers_blackout.tres" id="63_65l4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -1300,8 +1302,7 @@ theme_override_styles/pressed = ExtResource("44_147t5")
 theme_override_styles/normal = ExtResource("45_5j0k5")
 text = "STOP"
 
-[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "left_button", "head_button", "right_button", "ready_button", "panel")]
-visible = false
+[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel")]
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -1317,10 +1318,12 @@ blockable_duration = NodePath("Blockable Duration")
 left_container = NodePath("PanelContainer/Left Container")
 head_container = NodePath("PanelContainer/Head Container")
 right_container = NodePath("PanelContainer/Right Container")
+tutorial_container = NodePath("PanelContainer/Tutorial Window Container")
 left_button = NodePath("PanelContainer/Left Container/Left Stack/Left Arrow")
 head_button = NodePath("PanelContainer/Head Container/Head Stack/Up Arrow")
 right_button = NodePath("PanelContainer/Right Container/Right Stack/Right Arrow")
 ready_button = NodePath("PanelContainer/Button Container/Ready Button")
+tutorial_button = NodePath("PanelContainer/Tutorial Button Container/Tutorial Button")
 panel = NodePath("PanelContainer")
 default_box = ExtResource("47_11yxl")
 fail_box = ExtResource("48_hij8p")
@@ -1445,6 +1448,74 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_hij8p")
 text = "READY?
 PRESS ME."
 
+[node name="Tutorial Button Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 550
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Tutorial Button" type="Button" parent="Finger React/PanelContainer/Tutorial Button Container"]
+layout_mode = 2
+theme = ExtResource("62_qasvu")
+text = "?"
+
+[node name="Tutorial Window Container" type="MarginContainer" parent="Finger React/PanelContainer"]
+visible = false
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="Finger React/PanelContainer/Tutorial Window Container"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("63_65l4u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Finger React/PanelContainer/Tutorial Window Container/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Finger React/PanelContainer/Tutorial Window Container/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="Label" type="Label" parent="Finger React/PanelContainer/Tutorial Window Container/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0.065, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 30
+text = "It has the chance to block incoming damage by passing a trial of dexterity.
+
+Start by pressing the ready button and when the time comes, press the highlighted button to block the incoming attack. 
+
+Blocking too early will be punished, as will blocking from the wrong direction.
+
+Good luck."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Back Button" type="Button" parent="Finger React/PanelContainer/Tutorial Window Container/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_k7xhf")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/hover = ExtResource("43_hij8p")
+theme_override_styles/pressed = ExtResource("44_147t5")
+theme_override_styles/normal = ExtResource("45_5j0k5")
+text = "BACK"
+
 [node name="Finger React Animations" parent="Finger React" instance=ExtResource("46_7eewq")]
 position = Vector2(466, 460)
 
@@ -1472,5 +1543,7 @@ one_shot = true
 [connection signal="pressed" from="Finger React/PanelContainer/Head Container/Head Stack/Up Arrow" to="Finger React" method="_on_up_arrow_pressed"]
 [connection signal="pressed" from="Finger React/PanelContainer/Right Container/Right Stack/Right Arrow" to="Finger React" method="_on_right_arrow_pressed"]
 [connection signal="pressed" from="Finger React/PanelContainer/Button Container/Ready Button" to="Finger React" method="rand_wait"]
+[connection signal="pressed" from="Finger React/PanelContainer/Tutorial Button Container/Tutorial Button" to="Finger React" method="open_tutorial"]
+[connection signal="pressed" from="Finger React/PanelContainer/Tutorial Window Container/PanelContainer/MarginContainer/VBoxContainer/Back Button" to="Finger React" method="close_tutorial"]
 [connection signal="timeout" from="Finger React/Blockable Wait Time" to="Finger React" method="cut_finger"]
 [connection signal="timeout" from="Finger React/Blockable Duration" to="Finger React" method="apply_damage"]

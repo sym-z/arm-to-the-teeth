@@ -8,12 +8,14 @@ extends MarginContainer
 @export var left_container : MarginContainer
 @export var head_container : MarginContainer
 @export var right_container : MarginContainer
+@export var tutorial_container : MarginContainer
 
 @export_category("Buttons")
 @export var left_button : TextureButton
 @export var head_button : TextureButton
 @export var right_button : TextureButton
 @export var ready_button : Button
+@export var tutorial_button : Button
 
 @export_category("Panel Styleboxes")
 @export var panel : PanelContainer
@@ -38,6 +40,7 @@ var default_right : CompressedTexture2D = preload("uid://badpw3mu3fsl1")
 var hover_left : CompressedTexture2D = preload("uid://bpag8xjuarg1c")
 var hover_head : CompressedTexture2D = preload("uid://4hluvw65gqu8")
 var hover_right : CompressedTexture2D = preload("uid://cy0id8vi086ow")
+
 
 var cutting_left : bool = false
 var cutting_right : bool = false
@@ -348,3 +351,10 @@ func play_hit_fx():
 	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_HURT)
 	combat_viewport.enemy_anim.animation = "attack"
 	combat_viewport.enemy_anim.play()
+
+func open_tutorial():
+	if player_ready == false:
+		tutorial_container.visible = true
+
+func close_tutorial():
+	tutorial_container.visible = false
