@@ -193,7 +193,8 @@ fing_3 = NodePath("Three Finger React")
 
 [node name="Three Finger React" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ov3ta")
-animation = &"cut_1"
+frame = 1
+frame_progress = 0.178453
 
 [node name="Two Finger React" type="AnimatedSprite2D" parent="."]
 visible = false

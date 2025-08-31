@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1pwicxgdt8l3"]
+[gd_scene load_steps=11 format=3 uid="uid://b1pwicxgdt8l3"]
 
 [ext_resource type="Script" uid="uid://88jg1khpu10x" path="res://scenes/tutorial/tutorial.gd" id="1_g40di"]
 [ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_ha56g"]
@@ -9,17 +9,39 @@
 [ext_resource type="Theme" uid="uid://bt3xlpniattbt" path="res://themes/tutorial/desc_tut.tres" id="6_g7eoy"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="7_g7eoy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq3l0"]
-bg_color = Color(0.0156863, 0.00784314, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.984314, 0.980392, 0.898039, 1)
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ha56g"]
+bg_color = Color(0.02, 0.01, 0, 0.0784314)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nriy"]
+bg_color = Color(0.02, 0.01, 0, 0.0784314)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("play_button", "back_button", "chomp_transition")]
 script = ExtResource("1_g40di")
@@ -101,13 +123,13 @@ theme_override_constants/margin_bottom = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="Text"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 210
+theme_override_constants/separation = 35
 alignment = 1
 
 [node name="Description" type="VBoxContainer" parent="Text/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 35
+theme_override_constants/separation = 13
 alignment = 1
 
 [node name="Header" type="Label" parent="Text/HBoxContainer/Description"]
@@ -119,22 +141,26 @@ vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Text/HBoxContainer/Description"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pq3l0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ha56g")
 
 [node name="Text" type="Label" parent="Text/HBoxContainer/Description/PanelContainer"]
-custom_minimum_size = Vector2(900, 0)
+custom_minimum_size = Vector2(1138.22, 0)
 layout_mode = 2
 theme = ExtResource("6_g7eoy")
-text = "Your main objective is to find and travel through gates to reach the highest floor you can in the ever changing maze-like dungeon. Along the way, you will fight the inhabiting creatures of this dungeon using only your arms as weapons. 
+text = "Find and travel through gates to reach the highest floor you can in the ever changing maze-like dungeon. Along the way, you will fight the inhabiting creatures using only your arms as weapons. 
 
-You control \"It\", a self sustaining entity capable of regenerating its life force by consuming its own arms at the cost of its teeth. Search the dungeons to find more powerful arms, take bites of your arms to regain health, and pick up teeth to keep eating."
+You control \"It\", an entity capable of regenerating its life force by consuming its own arms at the cost of its teeth. Search each floor to find chests, keys, teeth, and more powerful arms. Take bites of your arms to regain health and nourish hunger. Pick up teeth to keep eating. 
+
+Manage Its hunger to avoid difficulties in battle, or possibly death from malnourishment. 
+
+Good luck."
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Controls" type="VBoxContainer" parent="Text/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 35
+theme_override_constants/separation = 13
 alignment = 1
 
 [node name="Header" type="Label" parent="Text/HBoxContainer/Controls"]
@@ -146,7 +172,7 @@ vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Text/HBoxContainer/Controls"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pq3l0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nriy")
 
 [node name="Text" type="Label" parent="Text/HBoxContainer/Controls/PanelContainer"]
 custom_minimum_size = Vector2(600, 0)
@@ -155,7 +181,11 @@ theme = ExtResource("6_g7eoy")
 text = "W/UP ARROW: Move Forward
 S/DOWN ARROW: Move Backward
 A/LEFT ARROW: Turn Left
-D/RIGHT ARROW: Turn Right"
+D/RIGHT ARROW: Turn Right
+
+---HOTKEYS:---
+TAB : Open Inventory
+SPACE: Pick Up Item"
 horizontal_alignment = 1
 autowrap_mode = 2
 

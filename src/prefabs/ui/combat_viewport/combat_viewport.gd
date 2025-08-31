@@ -236,6 +236,8 @@ func runaway_damage():
 					Log.add_log_message("IT LOST AN ARM WHILE FLEEING...")
 					root_ui.refresh_temp_labels()
 				player.stat_change.emit()
+		if player_dead == false:
+			AudioBank.play_rand(p_speaker, AudioBank.BANK.P_HURT)
 	else:
 		Log.add_log_message("IT MANAGED TO FLEE AND TAKE NO DAMAGE")
 	# Enable inventory management

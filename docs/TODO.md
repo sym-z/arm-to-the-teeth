@@ -144,6 +144,19 @@
 - [ ] Player miss
 - [ ] Battle ambience
 - [ ] Death screen
+- [ ] Hunger Satisfied
+- [ ] Wheel
+  - [ ] Miss
+  - [ ] Crit
+  - [ ] L Hit
+  - [ ] H Hit
+  - [ ] L Whiff
+  - [ ] M Whiff
+  - [ ] H Whiff
+- [ ] Finger
+  - [ ] Punish
+  - [ ] Fail
+  - [ ] Block
 ### DONE
 - [x] Hurt noise for:
   - [x] Hunger damage

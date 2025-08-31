@@ -53,6 +53,9 @@ var block_available : bool = false
 var player_ready : bool = false
 var block_success : bool = false
 var punished : bool = false
+
+const MIN_REACTION_TIME : float = 0.4
+const DEFAULT_REACTION_TIME : float = 3.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -124,8 +127,12 @@ func begin_game():
 	ready_button.text = "READY?\nPRESS ME."
 	Log.add_log_message("IT READIED ITSELF FOR THE UPCOMING ATTACK.")
 	# TODO: Adjust this for difficulty based on floor level and hunger
-	blockable_duration.wait_time = 1.8
-	
+	if Globals.curr_floor != 0:
+		blockable_duration.wait_time = max(MIN_REACTION_TIME, DEFAULT_REACTION_TIME - log(Globals.curr_floor ** 3)/5 / combat_viewport.player.attack_debuff)
+	else:
+		blockable_duration.wait_time = max(MIN_REACTION_TIME, DEFAULT_REACTION_TIME / combat_viewport.player.attack_debuff)
+	print("log", log(Globals.curr_floor ** 3)/5)
+	print("BLOCK DURATION: ", blockable_duration.wait_time)
 	# Identify number of equipped limbs
 	limb_array.clear()
 	limb_array.append(combat_viewport.player.head)
@@ -135,6 +142,11 @@ func begin_game():
 	# Set animation
 	finger_anims.set_finger_number(limb_array.size())
 	print("NUM LIMBS: ", limb_array.size)
+	if Globals.curr_floor != 0:
+		finger_anims.curr_anim.speed_scale = min(5, 1.0 + log(Globals.curr_floor**3) / combat_viewport.player.attack_debuff)
+	else:
+		finger_anims.curr_anim.speed_scale = min(5, 1.0 / combat_viewport.player.attack_debuff)
+
 	finger_anims.curr_anim.play()
 	
 	if limb_array.size() > 3:
@@ -235,11 +247,11 @@ func apply_damage():
 		# TODO: UI text, animations, sound etc.
 		var damage_suffered : int = combat_viewport.opponent.damage
 		if cutting_left == true:
-			damage_arm(limb_array[0], damage_suffered)
-		elif cutting_head == true:
-			damage_head(combat_viewport.player.head, damage_suffered)
-		elif cutting_right == true:
 			damage_arm(limb_array[1], damage_suffered)
+		elif cutting_head == true:
+			damage_head(limb_array[0], damage_suffered)
+		elif cutting_right == true:
+			damage_arm(limb_array[2], damage_suffered)
 		if combat_viewport.player_dead == false:
 			# Play hurt sound / animation
 			combat_viewport.create_timer(combat_viewport.pause_time, play_hit_fx)
