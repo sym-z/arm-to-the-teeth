@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=151 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -42,13 +42,26 @@
 [ext_resource type="Texture2D" uid="uid://4d7svxjvbrst" path="res://assets/visual/ui/wheel_roller/wheel_roller_0.png" id="33_pcqw8"]
 [ext_resource type="Texture2D" uid="uid://cdr3ouxfesibc" path="res://assets/visual/ui/wheel_roller/clicker_0.png" id="34_bhhon"]
 [ext_resource type="Texture2D" uid="uid://teemfsxk00q2" path="res://assets/visual/ui/run_window/run_dirs_1_2.png" id="34_c83l7"]
-[ext_resource type="StyleBox" uid="uid://dcsryejxiudct" path="res://themes/general/combat_viewport_mini_hover_box.tres" id="43_sqhh2"]
-[ext_resource type="StyleBox" uid="uid://boqc8r7cgbm6k" path="res://themes/general/combat_viewport_mini_pressed_box.tres" id="44_7eewq"]
-[ext_resource type="StyleBox" uid="uid://cipd0lhkv4mns" path="res://themes/general/combat_viewport_mini_box.tres" id="45_eo0c2"]
+[ext_resource type="StyleBox" uid="uid://bsok37waesui1" path="res://themes/wheel_roller/default_wheel.tres" id="41_biyrp"]
+[ext_resource type="StyleBox" uid="uid://c6tffr6addt53" path="res://themes/wheel_roller/miss_wheel.tres" id="42_qasvu"]
+[ext_resource type="StyleBox" uid="uid://86iic0kk54aa" path="res://themes/wheel_roller/light_hit_wheel.tres" id="43_65l4u"]
+[ext_resource type="StyleBox" uid="uid://hwtisw4ggtel" path="res://themes/disabled_button.tres" id="43_hij8p"]
+[ext_resource type="StyleBox" uid="uid://ct6rlwgextn6a" path="res://themes/pressed_button.tres" id="44_147t5"]
+[ext_resource type="StyleBox" uid="uid://cajr6l428qakc" path="res://themes/wheel_roller/heavy_hit_wheel.tres" id="44_dpe2p"]
+[ext_resource type="StyleBox" uid="uid://bldinb27ghlyh" path="res://themes/wheel_roller/crit_box.tres" id="45_1u3m5"]
+[ext_resource type="StyleBox" uid="uid://dk4jf3kyavgxm" path="res://themes/default_button.tres" id="45_5j0k5"]
 [ext_resource type="PackedScene" uid="uid://ves0hrwxyc5l" path="res://prefabs/ui/combat_viewport/finger_react/finger_react_animations/finger_react_animations.tscn" id="46_7eewq"]
 [ext_resource type="Script" uid="uid://b8bjcltpvebhr" path="res://prefabs/ui/combat_viewport/finger_react/finger_react.gd" id="46_eo0c2"]
+[ext_resource type="StyleBox" uid="uid://80nwsyx3mej8" path="res://themes/wheel_roller/light_whiff_wheel.tres" id="46_tbmgk"]
+[ext_resource type="StyleBox" uid="uid://82q6jqjkdert" path="res://themes/finger_react/default_box.tres" id="47_11yxl"]
+[ext_resource type="StyleBox" uid="uid://75k0ox7ckesq" path="res://themes/wheel_roller/med_whiff_wheel.tres" id="47_b8x2r"]
+[ext_resource type="StyleBox" uid="uid://dc68eill6liht" path="res://themes/finger_react/success_box.tres" id="47_nr74e"]
 [ext_resource type="Texture2D" uid="uid://ecxsgkcggxg1" path="res://assets/visual/prototype_items/v2/arm_prototype_2.png" id="47_pof7y"]
+[ext_resource type="StyleBox" uid="uid://cki7svv1dnfwa" path="res://themes/wheel_roller/heavy_whiff_wheel.tres" id="48_3ebxs"]
+[ext_resource type="StyleBox" uid="uid://tj7fbm2wcolv" path="res://themes/finger_react/fail_box.tres" id="48_hij8p"]
 [ext_resource type="Texture2D" uid="uid://2vw2q80oajo3" path="res://assets/visual/prototype_items/v2/head_prototype_1B.png" id="48_jbwc1"]
+[ext_resource type="StyleBox" uid="uid://dnn7rj67rewwj" path="res://themes/finger_react/ready_box.tres" id="49_147t5"]
+[ext_resource type="StyleBox" uid="uid://se36mv5uncgv" path="res://themes/finger_react/block_box.tres" id="51_hij8p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -520,21 +533,6 @@ shadow_color = Color(0.02, 0.01, 0, 0.376471)
 shadow_size = 6
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1alk"]
-bg_color = Color(0.02, 0.01, 0, 0.784314)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0.02, 0.01, 0, 0.376471)
-shadow_size = 12
-shadow_offset = Vector2(0, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpmys"]
 atlas = ExtResource("33_pcqw8")
 region = Rect2(450, 0, 450, 450)
@@ -740,23 +738,59 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eo0c2"]
-bg_color = Color(0.02, 0.01, 0, 0.784314)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0.02, 0.01, 0, 0.376471)
-shadow_size = 12
-shadow_offset = Vector2(0, 8)
-
 [sub_resource type="Theme" id="Theme_pof7y"]
 /icons/highlight = ExtResource("25_frval")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fhi2"]
+bg_color = Color(0.6, 0.141176, 0.0705882, 0.784314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11yxl"]
+bg_color = Color(0.403922, 0.478431, 0.286275, 0.784314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hij8p"]
+bg_color = Color(0.0196078, 0.0117647, 0, 0.784314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 6
+shadow_offset = Vector2(0, 4)
 
 [node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "finger_react", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
@@ -1144,7 +1178,7 @@ text = "FIGHT FOR YOUR LIFE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "wheel", "clicker", "result_label", "stop_button")]
+[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "wheel", "clicker", "result_label", "stop_button", "panel")]
 visible = false
 z_index = 1
 layout_mode = 2
@@ -1159,11 +1193,20 @@ wheel = NodePath("Animation Container/Wheel Centerer/Wheel Control/Wheel")
 clicker = NodePath("Animation Container/Clicker Container/Clicker Control/Clicker")
 result_label = NodePath("Result Container/Label")
 stop_button = NodePath("Stop Button Container/Stop Button")
+panel = NodePath("Panel")
+default_box = ExtResource("41_biyrp")
+miss_box = ExtResource("42_qasvu")
+light_hit_box = ExtResource("43_65l4u")
+heavy_hit_box = ExtResource("44_dpe2p")
+crit_box = ExtResource("45_1u3m5")
+light_whiff_box = ExtResource("46_tbmgk")
+med_whiff_box = ExtResource("47_b8x2r")
+heavy_whiff_box = ExtResource("48_3ebxs")
 
 [node name="Panel" type="Panel" parent="Wheel Roller"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w1alk")
+theme_override_styles/panel = ExtResource("41_biyrp")
 
 [node name="Animation Container" type="MarginContainer" parent="Wheel Roller"]
 layout_mode = 2
@@ -1211,6 +1254,8 @@ theme_override_constants/margin_bottom = 600
 
 [node name="Label" type="Label" parent="Wheel Roller/Header Container"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.02, 0.01, 0, 0.784314)
+theme_override_constants/shadow_offset_y = 6
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 32
 text = "STOP THE WHEEL TO ATTACK
@@ -1230,6 +1275,8 @@ theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="Wheel Roller/Result Container"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.02, 0.01, 0, 0.784314)
+theme_override_constants/shadow_offset_y = 6
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 42
 text = "SAMPLE RESULT!"
@@ -1248,12 +1295,12 @@ theme_override_constants/margin_bottom = 35
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/hover = ExtResource("43_sqhh2")
-theme_override_styles/pressed = ExtResource("44_7eewq")
-theme_override_styles/normal = ExtResource("45_eo0c2")
+theme_override_styles/hover = ExtResource("43_hij8p")
+theme_override_styles/pressed = ExtResource("44_147t5")
+theme_override_styles/normal = ExtResource("45_5j0k5")
 text = "STOP"
 
-[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "left_button", "head_button", "right_button", "ready_button")]
+[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "left_button", "head_button", "right_button", "ready_button", "panel")]
 visible = false
 z_index = 1
 layout_mode = 2
@@ -1274,11 +1321,17 @@ left_button = NodePath("PanelContainer/Left Container/Left Stack/Left Arrow")
 head_button = NodePath("PanelContainer/Head Container/Head Stack/Up Arrow")
 right_button = NodePath("PanelContainer/Right Container/Right Stack/Right Arrow")
 ready_button = NodePath("PanelContainer/Button Container/Ready Button")
+panel = NodePath("PanelContainer")
+default_box = ExtResource("47_11yxl")
+fail_box = ExtResource("48_hij8p")
+ready_box = ExtResource("49_147t5")
+success_box = ExtResource("47_nr74e")
+block_box = ExtResource("51_hij8p")
 
 [node name="PanelContainer" type="PanelContainer" parent="Finger React"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eo0c2")
+theme_override_styles/panel = ExtResource("49_147t5")
 
 [node name="Left Container" type="MarginContainer" parent="Finger React/PanelContainer"]
 layout_mode = 2
@@ -1300,6 +1353,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("47_pof7y")
 stretch_mode = 2
+flip_h = true
 
 [node name="Left Arrow" type="TextureButton" parent="Finger React/PanelContainer/Left Container/Left Stack"]
 layout_mode = 2
@@ -1385,9 +1439,9 @@ theme_override_constants/margin_bottom = 55
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 31
-theme_override_styles/hover = ExtResource("43_sqhh2")
-theme_override_styles/pressed = ExtResource("44_7eewq")
-theme_override_styles/normal = ExtResource("45_eo0c2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2fhi2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_11yxl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hij8p")
 text = "READY?
 PRESS ME."
 

@@ -12,10 +12,21 @@ extends MarginContainer
 @export_category("Buttons")
 @export var stop_button : Button
 
+@export_category("Styleboxes")
+@export var panel : Panel
+@export var default_box : StyleBoxFlat
+@export var miss_box : StyleBoxFlat
+@export var light_hit_box : StyleBoxFlat
+@export var heavy_hit_box : StyleBoxFlat
+@export var crit_box : StyleBoxFlat
+@export var light_whiff_box : StyleBoxFlat
+@export var med_whiff_box : StyleBoxFlat
+@export var heavy_whiff_box : StyleBoxFlat
 
 var attacking_limb
 var is_head : bool
 var debuff : float
+var wheel_stopped : bool = false
 var result_network : Dictionary[int,Callable] = {
 	0 : crit,
 	1 : whiff_heavy,
@@ -60,10 +71,34 @@ var result_text : Dictionary[int,String] = {
 	18 : "MEDIUM WHIFF",
 	19 : "HEAVY WHIFF"
 }
+var result_stylebox : Dictionary[int, StyleBoxFlat] = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	wheel.connect("frame_changed", change_label)
 	stop_button.connect("button_down", stop_wheel)
+	
+	result_stylebox = {
+	0 : crit_box,
+	1 : heavy_whiff_box,
+	2 : med_whiff_box,
+	3 : light_whiff_box,
+	4 : light_hit_box,
+	5 :  light_hit_box,
+	6 :  heavy_hit_box,
+	7 :  light_hit_box,
+	8 :  light_hit_box,
+	9 :  miss_box,
+	10 : miss_box,
+	11 : miss_box,
+	12 : light_hit_box,
+	13 : light_hit_box,
+	14 : heavy_hit_box,
+	15 : light_hit_box,
+	16 : light_hit_box,
+	17 : light_whiff_box,
+	18 : med_whiff_box,
+	19 : heavy_whiff_box 
+}
 	pass # Replace with function body.
 
 
@@ -79,6 +114,8 @@ func spin_wheel(limb : Variant, head : bool):
 	combat_viewport.change_arm_select_vis(false)
 	# Show window
 	combat_viewport.change_wheel_roller_vis(true)
+	wheel_stopped = false
+	panel.add_theme_stylebox_override("panel", default_box)
 	# Set the references
 	attacking_limb = limb
 	is_head = head
@@ -94,29 +131,32 @@ func spin_wheel(limb : Variant, head : bool):
 	wheel.play()
 
 func stop_wheel():
-	wheel.pause()
-	result_network[wheel.frame].call()
+	if wheel_stopped == false:
+		wheel_stopped = true
+		wheel.pause()
+		panel.add_theme_stylebox_override("panel", result_stylebox[wheel.frame])
+		result_network[wheel.frame].call()
 
 
 func crit():
 	hit_enemy(attacking_limb.strength * 5)
-	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_CRIT)
+	
 
 func whiff_heavy():
 	if is_head == true:
-		whiff(floor(attacking_limb.max_health * 0.5))
+		whiff(max(1,floor(attacking_limb.max_health * 0.5)))
 	else:
-		whiff(floor(attacking_limb.max_condition * 0.5))
+		whiff(max(1,floor(attacking_limb.max_condition * 0.5)))
 func whiff_medium():
 	if is_head == true:
-		whiff(floor(attacking_limb.max_health * 0.25))
+		whiff(max(1,floor(attacking_limb.max_health * 0.25)))
 	else:
-		whiff(floor(attacking_limb.max_condition * 0.25))
+		whiff(max(1,floor(attacking_limb.max_condition * 0.25)))
 func whiff_light():
 	if is_head == true:
-		whiff(floor(attacking_limb.max_health * 0.1))
+		whiff(max(1,floor(attacking_limb.max_health * 0.1)))
 	else:
-		whiff(floor(attacking_limb.max_condition * 0.1))
+		whiff(max(1,floor(attacking_limb.max_condition * 0.1)))
 func hit_heavy():
 	hit_enemy(attacking_limb.strength * 2)
 	
@@ -138,10 +178,12 @@ func hit_enemy(damage: int):
 	combat_viewport.opponent.curr_health = max(0, combat_viewport.opponent.curr_health - damage)
 	Log.add_log_message("IT DEALT " + str(damage) + " DAMAGE.")
 	combat_viewport.refresh_temp_labels()
-	combat_viewport.check_enemy_death()
-	
-	if combat_viewport.enemy_dead == false:
+		
+	if combat_viewport.opponent.curr_health <= 0:
+		combat_viewport.create_timer(combat_viewport.pause_time, play_dead_enemy_fx)
+	else:
 		combat_viewport.create_timer(combat_viewport.pause_time, play_hurt_enemy_fx)
+		
 
 func whiff(damage: int):
 	if is_head == true:
@@ -165,6 +207,7 @@ func whiff(damage: int):
 	combat_viewport.root_ui.refresh_temp_labels()
 	combat_viewport.player.stat_change.emit()
 	
+	
 	# Even if the player kills the enemy, this function will attempt to be called, but since combat_viewport.enemy_dead == true, it wont matter
 	if combat_viewport.player_dead == false:
 		combat_viewport.create_timer(combat_viewport.pause_time, play_hurt_player_fx)
@@ -184,3 +227,12 @@ func play_hurt_enemy_fx():
 	combat_viewport.enemy_anim.play()
 	AudioBank.play_rand(combat_viewport.e_speaker, AudioBank.BANK.E_HURT)
 	combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.finger_react.begin_game)
+
+func play_dead_enemy_fx():
+	visible = false
+	combat_viewport.player_anim.attack_bounce()
+	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_CRIT)
+	combat_viewport.enemy_anim.animation = "death"
+	combat_viewport.enemy_anim.play()
+	AudioBank.play_rand(combat_viewport.e_speaker, AudioBank.BANK.E_DEATH)
+	combat_viewport.create_timer(combat_viewport.pause_time,combat_viewport.check_enemy_death)

@@ -15,6 +15,14 @@ extends MarginContainer
 @export var right_button : TextureButton
 @export var ready_button : Button
 
+@export_category("Panel Styleboxes")
+@export var panel : PanelContainer
+@export var default_box : StyleBoxFlat
+@export var fail_box : StyleBoxFlat
+@export var ready_box : StyleBoxFlat
+@export var success_box : StyleBoxFlat
+@export var block_box : StyleBoxFlat
+
 var highlight_left : CompressedTexture2D = preload("uid://bk1434tm4rg5j")
 var highlight_head : CompressedTexture2D = preload("uid://byb6swm1xbyb0")
 var highlight_right : CompressedTexture2D = preload("uid://coddoaf01a0cg")
@@ -105,7 +113,8 @@ func _on_right_arrow_pressed():
 		punish()
 #endregion
 func begin_game():
-	print("FINGER")
+	ready_button.disabled = false
+	panel.add_theme_stylebox_override("panel", default_box)
 	reset_button_textures()
 	combat_viewport.change_wheel_roller_vis(false)
 	visible = true
@@ -157,6 +166,7 @@ func reset_button_textures():
 ## Starts a timer when ready that on completion will begin the blockable phase of the minigame
 func rand_wait():
 	player_ready = true
+	panel.add_theme_stylebox_override("panel", ready_box)
 	ready_button.text = "GOOD LUCK."
 	var rand_time : float = randf_range(1.0,3.5)
 	blockable_wait_time.wait_time = rand_time
@@ -182,6 +192,7 @@ func rand_wait():
 func cut_finger():
 	print("cut_finger")
 	finger_anims.curr_anim.pause()
+	panel.add_theme_stylebox_override("panel", block_box)
 	if cutting_head == true:
 		# Head hit play cut_2
 		finger_anims.curr_anim.animation = "cut_2"
@@ -210,6 +221,8 @@ func cut_finger():
 ## Failing a block by being late.
 func apply_damage():
 	if block_success == false and punished == false:
+		player_ready = false
+		panel.add_theme_stylebox_override("panel", fail_box)
 		# FAIL NOISE AND EFFECTS
 		Log.add_log_message("IT REACTED TOO LATE AND SUFFERED DAMAGE.")
 		ready_button.text = "INCORRECT"
@@ -231,7 +244,9 @@ func apply_damage():
 
 ## Failing a block by being early, or pressing the wrong button.
 func punish(misinput : bool = false):
-	if punished == false:
+	if punished == false and block_success == false:
+		player_ready = false
+		panel.add_theme_stylebox_override("panel", fail_box)
 		#TODO: PUNISH NOISE & EFFECTS
 		punished = true
 		
@@ -288,6 +303,8 @@ func damage_head(h : Head, damage : int):
 ## Successfully blocking.
 func block_attack():
 	if punished == false:
+		player_ready = false
+		panel.add_theme_stylebox_override("panel", success_box)
 		#TODO: BLOCK NOISE AND EFFECTS
 		Log.add_log_message("IT SUCCESSFULLY BLOCKED THE HIT.")
 		reset_button_textures()
@@ -306,6 +323,8 @@ func block_attack():
 		pass
 
 func reset_game_state():
+	ready_button.disabled = true
+	
 	blockable_duration.stop()
 	blockable_wait_time.stop()
 	

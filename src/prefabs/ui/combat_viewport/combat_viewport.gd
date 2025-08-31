@@ -497,11 +497,7 @@ func death_transition():
 func check_enemy_death():
 	if opponent.curr_health <= 0:
 		Log.add_log_message("IT HAS VANQUISHED THE ENEMY.")
-		# Set flag
 		enemy_dead = true
-		enemy_anim.animation = "death"
-		enemy_anim.play()
-		AudioBank.play_rand(e_speaker, AudioBank.BANK.E_DEATH)
 		create_timer(pause_time,combat_victory)
 
 func drop_loot(from_chest : bool = false):
