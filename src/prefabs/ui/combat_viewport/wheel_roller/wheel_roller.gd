@@ -23,6 +23,9 @@ extends MarginContainer
 @export var med_whiff_box : StyleBoxFlat
 @export var heavy_whiff_box : StyleBoxFlat
 
+@export_category("Audio")
+@export var speaker : AudioStreamPlayer
+
 var attacking_limb
 var is_head : bool
 var debuff : float
@@ -141,31 +144,38 @@ func stop_wheel():
 
 
 func crit():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_CRIT)
 	hit_enemy(attacking_limb.strength * 5)
 	
 
 func whiff_heavy():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_H_WHIFF)
 	if is_head == true:
 		whiff(max(1,floor(attacking_limb.max_health * 0.5)))
 	else:
 		whiff(max(1,floor(attacking_limb.max_condition * 0.5)))
 func whiff_medium():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_M_WHIFF)
 	if is_head == true:
 		whiff(max(1,floor(attacking_limb.max_health * 0.25)))
 	else:
 		whiff(max(1,floor(attacking_limb.max_condition * 0.25)))
 func whiff_light():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_L_WHIFF)
 	if is_head == true:
 		whiff(max(1,floor(attacking_limb.max_health * 0.1)))
 	else:
 		whiff(max(1,floor(attacking_limb.max_condition * 0.1)))
 func hit_heavy():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_H_HIT)
 	hit_enemy(attacking_limb.strength * 2)
 	
 func hit_light():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_L_HIT)
 	hit_enemy(attacking_limb.strength)
 	
 func miss():
+	AudioBank.play_rand(speaker, AudioBank.BANK.WR_MISS)
 	Log.add_log_message("IT MISSED ITS ATTACK")
 	combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.finger_react.begin_game)
 

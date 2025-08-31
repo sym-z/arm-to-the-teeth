@@ -25,6 +25,9 @@ extends MarginContainer
 @export var success_box : StyleBoxFlat
 @export var block_box : StyleBoxFlat
 
+@export_category("Audio")
+@export var speaker : AudioStreamPlayer
+
 var highlight_left : CompressedTexture2D = preload("uid://bk1434tm4rg5j")
 var highlight_head : CompressedTexture2D = preload("uid://byb6swm1xbyb0")
 var highlight_right : CompressedTexture2D = preload("uid://coddoaf01a0cg")
@@ -181,6 +184,7 @@ func reset_button_textures():
 ## Starts a timer when ready that on completion will begin the blockable phase of the minigame
 func rand_wait():
 	player_ready = true
+	AudioBank.play_rand(speaker, AudioBank.BANK.FR_READY)
 	panel.add_theme_stylebox_override("panel", ready_box)
 	ready_button.text = "GOOD LUCK."
 	var rand_time : float = randf_range(1.0,3.5)
@@ -236,6 +240,7 @@ func cut_finger():
 ## Failing a block by being late.
 func apply_damage():
 	if block_success == false and punished == false:
+		AudioBank.play_rand(speaker, AudioBank.BANK.FR_FAIL)
 		player_ready = false
 		panel.add_theme_stylebox_override("panel", fail_box)
 		# FAIL NOISE AND EFFECTS
@@ -260,6 +265,7 @@ func apply_damage():
 ## Failing a block by being early, or pressing the wrong button.
 func punish(misinput : bool = false):
 	if punished == false and block_success == false:
+		AudioBank.play_rand(speaker, AudioBank.BANK.FR_PUNISH)
 		player_ready = false
 		panel.add_theme_stylebox_override("panel", fail_box)
 		#TODO: PUNISH NOISE & EFFECTS
@@ -318,6 +324,7 @@ func damage_head(h : Head, damage : int):
 ## Successfully blocking.
 func block_attack():
 	if punished == false:
+		AudioBank.play_rand(speaker, AudioBank.BANK.FR_BLOCK)
 		player_ready = false
 		panel.add_theme_stylebox_override("panel", success_box)
 		#TODO: BLOCK NOISE AND EFFECTS

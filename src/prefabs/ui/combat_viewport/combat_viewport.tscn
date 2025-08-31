@@ -1180,7 +1180,7 @@ text = "FIGHT FOR YOUR LIFE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "wheel", "clicker", "result_label", "stop_button", "panel")]
+[node name="Wheel Roller" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "wheel", "clicker", "result_label", "stop_button", "panel", "speaker")]
 visible = false
 z_index = 1
 layout_mode = 2
@@ -1204,6 +1204,7 @@ crit_box = ExtResource("45_1u3m5")
 light_whiff_box = ExtResource("46_tbmgk")
 med_whiff_box = ExtResource("47_b8x2r")
 heavy_whiff_box = ExtResource("48_3ebxs")
+speaker = NodePath("Wheel Speaker")
 
 [node name="Panel" type="Panel" parent="Wheel Roller"]
 layout_mode = 2
@@ -1304,7 +1305,9 @@ theme_override_styles/pressed = ExtResource("44_147t5")
 theme_override_styles/normal = ExtResource("45_5j0k5")
 text = "STOP"
 
-[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel")]
+[node name="Wheel Speaker" type="AudioStreamPlayer" parent="Wheel Roller"]
+
+[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel", "speaker")]
 visible = false
 z_index = 1
 layout_mode = 2
@@ -1333,6 +1336,7 @@ fail_box = ExtResource("48_hij8p")
 ready_box = ExtResource("49_147t5")
 success_box = ExtResource("47_nr74e")
 block_box = ExtResource("51_hij8p")
+speaker = NodePath("Finger Speaker")
 
 [node name="PanelContainer" type="PanelContainer" parent="Finger React"]
 layout_mode = 2
@@ -1527,6 +1531,8 @@ one_shot = true
 
 [node name="Blockable Duration" type="Timer" parent="Finger React"]
 one_shot = true
+
+[node name="Finger Speaker" type="AudioStreamPlayer" parent="Finger React"]
 
 [node name="Player Speaker" type="AudioStreamPlayer" parent="."]
 
