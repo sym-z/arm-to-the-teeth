@@ -99,7 +99,7 @@ func begin_combat(e : Enemy, loc : Vector2i):
 	e_health_bar.max_value = opponent.total_health
 	refresh_temp_labels()
 	enemy_anim.animation = "default"
-	finger_react.begin_game()
+	#finger_react.begin_game()
 	if e.anim != null:
 		enemy_anim.sprite_frames = e.anim
 	
@@ -381,6 +381,7 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 	curr_turn = TURN.ENEMY
 	#TODO: Later this could be attached to the player's attack animation as well
 	create_timer(pause_time, enemy_attack_roll)
+	#create_timer(pause_time, finger_react.begin_game)
 		#endregion
 	#endregion
 	#region Enemy's Turn
@@ -637,11 +638,14 @@ func change_wheel_roller_vis(new_vis : bool):
 	wheel_roller.visible = new_vis
 	# Disable/Enable inventory management
 	root_ui.inventory_button.disabled = new_vis
+func change_finger_react_vis(new_vis : bool):
+	finger_react.visible = new_vis
 func show_player_turn_start():
 	change_arm_select_vis(false)
 	change_att_die_roller_vis(false)
 	change_player_damage_selection_vis(false)
 	change_run_direction_selection_vis(false)
+	change_finger_react_vis(false)
 	change_attack_run_vis(true)
 #endregion
 

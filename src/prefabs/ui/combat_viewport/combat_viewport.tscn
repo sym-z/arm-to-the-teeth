@@ -1254,6 +1254,7 @@ theme_override_styles/normal = ExtResource("45_eo0c2")
 text = "STOP"
 
 [node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "left_button", "head_button", "right_button", "ready_button")]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2

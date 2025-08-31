@@ -19,7 +19,8 @@ func emit_cut_signal():
 	pass
 func set_finger_number(num : int):
 	if num > 3 or num < 1:
-		push_error("Invalid finger number setting in set_finger_number() in finger_react_animations.gd")
+		push_error("Invalid finger number setting in set_finger_number() in finger_react_animations.gd", num)
+		return
 	match num:
 		1:
 			fing_1.visible = true

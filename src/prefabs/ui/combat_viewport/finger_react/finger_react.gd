@@ -71,8 +71,11 @@ func _input(event):
 					##TODO: Punish
 					#punish()
 func _on_left_arrow_pressed():
-	if block_available == true and cutting_left == true:
-		block_attack()
+	if block_available == true:
+		if cutting_left == true:
+			block_attack()
+		else:
+			punish(true)
 	elif player_ready == false:
 		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
 	else:
@@ -80,29 +83,39 @@ func _on_left_arrow_pressed():
 
 
 func _on_up_arrow_pressed():
-	if block_available == true and cutting_head == true:
-		block_attack()
+	if block_available == true:
+		if cutting_head == true:
+			block_attack()
+		else:
+			punish(true)
 	elif player_ready == false:
 		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
 	else:
 		punish()
 
 func _on_right_arrow_pressed():
-	if block_available == true and cutting_right == true:
-		block_attack()
+	if block_available == true:
+		if cutting_right == true:
+			block_attack()
+		else:
+			punish(true)
 	elif player_ready == false:
 		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
 	else:
 		punish()
 #endregion
 func begin_game():
+	print("FINGER")
 	reset_button_textures()
+	combat_viewport.change_wheel_roller_vis(false)
+	visible = true
+	ready_button.text = "READY?\nPRESS ME."
+	Log.add_log_message("IT READIED ITSELF FOR THE UPCOMING ATTACK.")
 	# TODO: Adjust this for difficulty based on floor level and hunger
 	blockable_duration.wait_time = 1.8
 	
 	# Identify number of equipped limbs
-	# Will always be more than one to include head
-	# Add limbs to array
+	limb_array.clear()
 	limb_array.append(combat_viewport.player.head)
 	for arm in combat_viewport.player.arm_inventory:
 		if arm.equipped == true:
@@ -112,11 +125,13 @@ func begin_game():
 	print("NUM LIMBS: ", limb_array.size)
 	finger_anims.curr_anim.play()
 	
-	if limb_array.size() -1 > 3:
+	if limb_array.size() > 3:
 		push_error("Incorrect number of limbs equipped in begin_game() function in finger_react.gd")
 		return
-	
-	# Only show relevent gui
+	gui_setup()
+
+## Only show relevent gui for current limb setup
+func gui_setup():
 	match limb_array.size():
 		1:
 			left_container.visible = false
@@ -146,42 +161,45 @@ func rand_wait():
 	var rand_time : float = randf_range(1.0,3.5)
 	blockable_wait_time.wait_time = rand_time
 	blockable_wait_time.start()
-	
-## Opens the scissors and accepts a block input for a moment
-func cut_finger():
 	# Calculate which limb will be hit
 	var rand_choice = randi_range(0,limb_array.size()-1)
-	print("cut_finger")
-	finger_anims.curr_anim.pause()
 	match rand_choice:
 		0:
-			# Head hit play cut_2
-			finger_anims.curr_anim.animation = "cut_2"
 			cutting_left = false
 			cutting_head = true
 			cutting_right = false
-			ready_button.text = "PRESS UP / W"
-			head_button.texture_normal = highlight_head
-			head_button.texture_hover = highlight_head_hover
 		1:
-			# Left arm hit, cut_1
-			finger_anims.curr_anim.animation = "cut_1"
 			cutting_left = true
 			cutting_head = false
 			cutting_right = false
-			ready_button.text = "PRESS LEFT / A"
-			left_button.texture_normal = highlight_left
-			left_button.texture_hover = highlight_left_hover
-			
 		2:
-			# Right arm hit, cut_3
-			finger_anims.curr_anim.animation = "cut_3"
 			cutting_left = false
 			cutting_head = false
 			cutting_right = true
-			ready_button.text = "PRESS RIGHT / D"
-			right_button.texture_normal = highlight_right
-			right_button.texture_hover = highlight_right_hover
+
+	
+## Opens the scissors and accepts a block input for a moment
+func cut_finger():
+	print("cut_finger")
+	finger_anims.curr_anim.pause()
+	if cutting_head == true:
+		# Head hit play cut_2
+		finger_anims.curr_anim.animation = "cut_2"
+		ready_button.text = "PRESS UP / W"
+		head_button.texture_normal = highlight_head
+		head_button.texture_hover = highlight_head_hover
+	elif cutting_left == true:
+		# Left arm hit, cut_1
+		finger_anims.curr_anim.animation = "cut_1"
+		ready_button.text = "PRESS LEFT / A"
+		left_button.texture_normal = highlight_left
+		left_button.texture_hover = highlight_left_hover
+	elif cutting_right == true:
+		# Right arm hit, cut_3
+		finger_anims.curr_anim.animation = "cut_3"
+		ready_button.text = "PRESS RIGHT / D"
+		right_button.texture_normal = highlight_right
+		right_button.texture_hover = highlight_right_hover
 			
 	# Open the scissors and accept player block input
 	finger_anims.curr_anim.frame = 0
@@ -192,7 +210,9 @@ func cut_finger():
 ## Failing a block by being late.
 func apply_damage():
 	if block_success == false and punished == false:
+		# FAIL NOISE AND EFFECTS
 		Log.add_log_message("IT REACTED TOO LATE AND SUFFERED DAMAGE.")
+		ready_button.text = "INCORRECT"
 		reset_button_textures()
 		block_available = false
 		finger_anims.curr_anim.frame = 1
@@ -204,40 +224,71 @@ func apply_damage():
 			damage_head(combat_viewport.player.head, damage_suffered)
 		elif cutting_right == true:
 			damage_arm(limb_array[1], damage_suffered)
+		if combat_viewport.player_dead == false:
+			# Play hurt sound / animation
+			combat_viewport.create_timer(combat_viewport.pause_time, play_hit_fx)
+			reset_game_state()
 
 ## Failing a block by being early, or pressing the wrong button.
-func punish():
+func punish(misinput : bool = false):
 	if punished == false:
+		#TODO: PUNISH NOISE & EFFECTS
 		punished = true
-		Log.add_log_message("IT REACTED TOO EARLY AND SUFFERED DAMAGE.")
+		
+		finger_anims.curr_anim.pause()
+		# Set animation
+		if cutting_head == true:
+			# Head hit play cut_2
+			finger_anims.curr_anim.animation = "cut_2"
+		elif cutting_left == true:
+			# Left arm hit, cut_1
+			finger_anims.curr_anim.animation = "cut_1"
+		elif cutting_right == true:
+			# Right arm hit, cut_3
+			finger_anims.curr_anim.animation = "cut_3"
+		finger_anims.curr_anim.frame = 1
+		
+		if misinput == false:
+			Log.add_log_message("IT REACTED TOO EARLY AND SUFFERED DAMAGE.")
+			ready_button.text = "TOO\nEARLY"
+		else:
+			Log.add_log_message("IT BLOCKED FROM THE WRONG DIRECTION AND SUFFERED DAMAGE.")
+			ready_button.text = "WRONG\nDIRECTION"
 		reset_button_textures()
 		block_available = false
-		finger_anims.curr_anim.frame = 1
+
 		# TODO: UI text, animations, sound etc.
 		var damage_suffered : int = combat_viewport.opponent.damage
 		if cutting_left == true:
-			damage_arm(limb_array[0], damage_suffered)
-		elif cutting_head == true:
-			damage_head(combat_viewport.player.head, damage_suffered)
-		elif cutting_right == true:
 			damage_arm(limb_array[1], damage_suffered)
+		elif cutting_head == true:
+			damage_head(limb_array[0], damage_suffered)
+		elif cutting_right == true:
+			damage_arm(limb_array[2], damage_suffered)
+	if combat_viewport.player_dead == false:
+		# Play hurt sound / animation
+		combat_viewport.create_timer(combat_viewport.pause_time, play_hit_fx)
+		
+		reset_game_state()
 
 func damage_arm(a : Arm, damage : int):
+	print("DAMAGE_ARM")
 	a.condition -= damage
 	if a.condition <= 0:
 		combat_viewport.root_ui.arm_fully_eaten(a)
-	#TODO: Play hurt sound / animation
+	combat_viewport.root_ui.refresh_temp_labels()
+	combat_viewport.player.stat_change.emit()
 		
 func damage_head(h : Head, damage : int):
 	h.damage(damage)
 	combat_viewport.check_player_death()
-	if combat_viewport.player_dead == false:
-		#TODO: Play hurt sound / animation
-		pass
+	combat_viewport.root_ui.refresh_temp_labels()
+	combat_viewport.player.stat_change.emit()
 
 ## Successfully blocking.
 func block_attack():
 	if punished == false:
+		#TODO: BLOCK NOISE AND EFFECTS
 		Log.add_log_message("IT SUCCESSFULLY BLOCKED THE HIT.")
 		reset_button_textures()
 		ready_button.text = "MUTILATION\nAVOIDED"
@@ -249,5 +300,32 @@ func block_attack():
 		elif cutting_right == true:
 			finger_anims.curr_anim.frame = 2
 		block_success = true
+		combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.show_player_turn_start)
+		reset_game_state()
 		# TODO: Block behavior, text etc.
 		pass
+
+func reset_game_state():
+	blockable_duration.stop()
+	blockable_wait_time.stop()
+	
+	reset_button_textures()
+	
+	cutting_left = false
+	cutting_right = false
+	cutting_head  = false
+	
+	limb_array.clear()
+
+	block_available = false
+	player_ready = false
+	block_success = false
+	punished = false
+	
+func play_hit_fx():
+	visible = false
+	combat_viewport.player_anim.hurt_bounce()
+	combat_viewport.show_player_turn_start()
+	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_HURT)
+	combat_viewport.enemy_anim.animation = "attack"
+	combat_viewport.enemy_anim.play()

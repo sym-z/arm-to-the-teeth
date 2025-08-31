@@ -96,11 +96,7 @@ func spin_wheel(limb : Variant, head : bool):
 func stop_wheel():
 	wheel.pause()
 	result_network[wheel.frame].call()
-	# Enable inventory management and hide window
-	combat_viewport.change_wheel_roller_vis(false)
-	# Even if the player kills the enemy, this function will attempt to be called, but since combat_viewport.enemy_dead == true, it wont matter
-	if combat_viewport.enemy_dead == false:
-		combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.enemy_attack_roll)
+
 
 func crit():
 	hit_enemy(attacking_limb.strength * 5)
@@ -123,12 +119,13 @@ func whiff_light():
 		whiff(floor(attacking_limb.max_condition * 0.1))
 func hit_heavy():
 	hit_enemy(attacking_limb.strength * 2)
-	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_ATT)
+	
 func hit_light():
 	hit_enemy(attacking_limb.strength)
-	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_ATT)
+	
 func miss():
 	Log.add_log_message("IT MISSED ITS ATTACK")
+	combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.finger_react.begin_game)
 
 func hit_enemy(damage: int):
 	if Globals.verbose_console == true:
@@ -139,14 +136,12 @@ func hit_enemy(damage: int):
 		print("ACTUAL DAMAGE: " , damage)
 	# Prevent negative hp in enemy stat label
 	combat_viewport.opponent.curr_health = max(0, combat_viewport.opponent.curr_health - damage)
-	combat_viewport.player_anim.attack_bounce()
 	Log.add_log_message("IT DEALT " + str(damage) + " DAMAGE.")
 	combat_viewport.refresh_temp_labels()
 	combat_viewport.check_enemy_death()
+	
 	if combat_viewport.enemy_dead == false:
-		combat_viewport.enemy_anim.animation = "hurt"
-		combat_viewport.enemy_anim.play()
-		AudioBank.play_rand(combat_viewport.e_speaker, AudioBank.BANK.E_HURT)
+		combat_viewport.create_timer(combat_viewport.pause_time, play_hurt_enemy_fx)
 
 func whiff(damage: int):
 	if is_head == true:
@@ -167,9 +162,25 @@ func whiff(damage: int):
 			Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(damage) + " CONDITION.")
 			# Only emitting here because when an arm is fully eaten the signal will fire.
 			
-	if combat_viewport.player_dead == false:
-		combat_viewport.player_anim.hurt_bounce()
-		AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_WHIFF)
-		
 	combat_viewport.root_ui.refresh_temp_labels()
 	combat_viewport.player.stat_change.emit()
+	
+	# Even if the player kills the enemy, this function will attempt to be called, but since combat_viewport.enemy_dead == true, it wont matter
+	if combat_viewport.player_dead == false:
+		combat_viewport.create_timer(combat_viewport.pause_time, play_hurt_player_fx)
+
+func play_hurt_player_fx():
+	#TODO: ENEMY ATTACK NOISE
+	visible = false
+	combat_viewport.player_anim.hurt_bounce()
+	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_WHIFF)
+	combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.finger_react.begin_game)
+	pass
+func play_hurt_enemy_fx():
+	visible = false
+	combat_viewport.player_anim.attack_bounce()
+	AudioBank.play_rand(combat_viewport.p_speaker, AudioBank.BANK.P_ATT)
+	combat_viewport.enemy_anim.animation = "hurt"
+	combat_viewport.enemy_anim.play()
+	AudioBank.play_rand(combat_viewport.e_speaker, AudioBank.BANK.E_HURT)
+	combat_viewport.create_timer(combat_viewport.pause_time, combat_viewport.finger_react.begin_game)

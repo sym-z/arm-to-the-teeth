@@ -489,3 +489,18 @@
   - This may be good to just start with it automatically cutting a limb / the limb that was pressed.
 - Arrow keys or mouse can be used to block
 - Icons and animations change depending on limb configuration
+
+## 30 August 2025
+- Fully integrated timing minigame, but juice is needed:
+  - [ ] Block sound
+  - [ ] Block effect / stylebox
+  - [ ] Punish sound
+  - [ ] Punish / stylebox
+  - [ ] Fail sound
+  - [ ] Fail effect / stylebox
+  - [ ] Ready sound
+  - [ ] Ready effect / stylebox
+  - [ ] Animation overhaul
+  - [ ] Instruction tooltip / mandatory first viewing
+- Timing minigame will now take effect seamlessly in battle
+- Adjusted timing of animations so that the player can understand their results of wheel roller and finger react before the animation plays

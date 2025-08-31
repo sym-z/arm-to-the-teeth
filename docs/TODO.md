@@ -162,13 +162,13 @@
 
 ## Art
 - [ ] When creating the final look of the rooms, if there is no room, dont draw lines/pillars that are holding up the walls
-- [ ] Inventory items need better styleboxes
 - [ ] Adjust 3 to resemble an 8 less in `ui_font_1`.
 - [ ] Shaders
 - [ ] More lighting
 - [ ] Tunnel vision overlay
 - [ ] Tune jiggle shader to use uniforms that are randomly set to have variance between content movement
 ### DONE
+- [x] Inventory items need better styleboxes
 - [x] Tooth chomp scene transition
 - [x] Enemy idle animation
 - [x] Start up animation overlay of an eye opening up from first person view
@@ -188,9 +188,7 @@
   - [x] Could use outline tool in Aseprite!
 
 ## UI
-- [ ] Player has vision of 1 on minimap
 - [ ] If there is nothing but arms in the inventory eventually, just make inventory button say 'ARMS' instead.
-- [ ] Better StyleBoxes for inventory and arm items
 - [ ] Maybe reversing log order and figuring out the scroll feature would be better. It is just so janky though.
 - [ ] Make sure that the UI only uses the AT3 palette
   - [x] Green-white color for stylebox borders
@@ -202,6 +200,8 @@
 - [ ] Tunnel vision overlay
 - [ ] Overlays could be done to mix eating and physical damage to arms
 ### DONE
+- [x] Better StyleBoxes for inventory and arm items
+- [x] Player has vision of 1 on minimap
 - [x] Shader that moves items that are content
 - [x] Arms show `condition`/`max_condition` in stat_showcase instead of arm count
 - [x] Figure out how exits are used
