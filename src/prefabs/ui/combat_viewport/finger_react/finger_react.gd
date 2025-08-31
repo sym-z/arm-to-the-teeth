@@ -27,6 +27,10 @@ var default_left : CompressedTexture2D = preload("uid://b3am1sni15h2b")
 var default_head : CompressedTexture2D = preload("uid://b7ntjjx5drk2q")
 var default_right : CompressedTexture2D = preload("uid://badpw3mu3fsl1")
 
+var hover_left : CompressedTexture2D = preload("uid://bpag8xjuarg1c")
+var hover_head : CompressedTexture2D = preload("uid://4hluvw65gqu8")
+var hover_right : CompressedTexture2D = preload("uid://cy0id8vi086ow")
+
 var cutting_left : bool = false
 var cutting_right : bool = false
 var cutting_head : bool = false
@@ -37,36 +41,60 @@ var limb_array : Array[Variant] = []
 var block_available : bool = false
 var player_ready : bool = false
 var block_success : bool = false
+var punished : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
+#region Player Input
 func _input(event):
 	if player_ready == true:
 		if combat_viewport.player.in_combat == true:
 			if event.is_action_pressed("turn_left"):
-				if block_available == true and cutting_left == true:
-					block_attack()
-				else:
-					#TODO: Punish
-					print("PUNISH")
-					pass
-				pass
+				_on_left_arrow_pressed()
+				#if block_available == true and cutting_left == true:
+					#block_attack()
+				#else:
+					##TODO: Punish
+					#punish()
 			elif event.is_action_pressed("move_forward"):
-				if block_available == true and cutting_head == true:
-					block_attack()
-				else:
-					#TODO: Punish
-					pass
-				pass
+				_on_up_arrow_pressed()
+				#if block_available == true and cutting_head == true:
+					#block_attack()
+				#else:
+					##TODO: Punish
+					#punish()
 			elif event.is_action_pressed("turn_right"):
-				if block_available == true and cutting_right == true:
-					block_attack()
-				else:
-					#TODO: Punish
-					pass
-				pass
+				_on_right_arrow_pressed()
+				#if block_available == true and cutting_right == true:
+					#block_attack()
+				#else:
+					##TODO: Punish
+					#punish()
+func _on_left_arrow_pressed():
+	if block_available == true and cutting_left == true:
+		block_attack()
+	elif player_ready == false:
+		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
+	else:
+		punish()
 
+
+func _on_up_arrow_pressed():
+	if block_available == true and cutting_head == true:
+		block_attack()
+	elif player_ready == false:
+		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
+	else:
+		punish()
+
+func _on_right_arrow_pressed():
+	if block_available == true and cutting_right == true:
+		block_attack()
+	elif player_ready == false:
+		Log.add_log_message("PRESS THE READY BUTTON BEFORE ATTEMPTING TO BLOCK.")
+	else:
+		punish()
+#endregion
 func begin_game():
 	reset_button_textures()
 	# TODO: Adjust this for difficulty based on floor level and hunger
@@ -107,6 +135,11 @@ func reset_button_textures():
 	left_button.texture_normal = default_left
 	head_button.texture_normal = default_head
 	right_button.texture_normal = default_right
+	left_button.texture_hover = hover_left
+	head_button.texture_hover = hover_head
+	right_button.texture_hover = hover_right
+
+## Starts a timer when ready that on completion will begin the blockable phase of the minigame
 func rand_wait():
 	player_ready = true
 	ready_button.text = "GOOD LUCK."
@@ -114,7 +147,7 @@ func rand_wait():
 	blockable_wait_time.wait_time = rand_time
 	blockable_wait_time.start()
 	
-
+## Opens the scissors and accepts a block input for a moment
 func cut_finger():
 	# Calculate which limb will be hit
 	var rand_choice = randi_range(0,limb_array.size()-1)
@@ -154,66 +187,67 @@ func cut_finger():
 	finger_anims.curr_anim.frame = 0
 	block_available = true
 	blockable_duration.start()
+	
 
+## Failing a block by being late.
 func apply_damage():
-	if block_success == false:
+	if block_success == false and punished == false:
+		Log.add_log_message("IT REACTED TOO LATE AND SUFFERED DAMAGE.")
 		reset_button_textures()
-		print("BLOCK FAILED")
 		block_available = false
 		finger_anims.curr_anim.frame = 1
-		# TODO: Damage, text, etc.
-	if cutting_left == true:
-		# Damage limb_arr[0]
-		pass
-	elif cutting_head == true:
-		# player.head.damage
-		pass
-	elif cutting_right == true:
-		# Damage limb_arr[1]
-		pass
+		# TODO: UI text, animations, sound etc.
+		var damage_suffered : int = combat_viewport.opponent.damage
+		if cutting_left == true:
+			damage_arm(limb_array[0], damage_suffered)
+		elif cutting_head == true:
+			damage_head(combat_viewport.player.head, damage_suffered)
+		elif cutting_right == true:
+			damage_arm(limb_array[1], damage_suffered)
 
-func block_attack():
-	print("BLOCKED!!!")
-	reset_button_textures()
-	ready_button.text = "MUTILATION\nAVOIDED"
-	finger_anims.curr_anim.animation = "default"
-	if cutting_left == true:
-		finger_anims.curr_anim.frame = 0
-	elif cutting_head == true:
+## Failing a block by being early, or pressing the wrong button.
+func punish():
+	if punished == false:
+		punished = true
+		Log.add_log_message("IT REACTED TOO EARLY AND SUFFERED DAMAGE.")
+		reset_button_textures()
+		block_available = false
 		finger_anims.curr_anim.frame = 1
-	elif cutting_right == true:
-		finger_anims.curr_anim.frame = 2
-	block_success = true
-	# TODO: Block behavior, text etc.
-	pass
+		# TODO: UI text, animations, sound etc.
+		var damage_suffered : int = combat_viewport.opponent.damage
+		if cutting_left == true:
+			damage_arm(limb_array[0], damage_suffered)
+		elif cutting_head == true:
+			damage_head(combat_viewport.player.head, damage_suffered)
+		elif cutting_right == true:
+			damage_arm(limb_array[1], damage_suffered)
 
-
-func _on_left_arrow_pressed():
-	if block_available == true and cutting_left == true:
-		block_attack()
-	elif player_ready == false:
+func damage_arm(a : Arm, damage : int):
+	a.condition -= damage
+	if a.condition <= 0:
+		combat_viewport.root_ui.arm_fully_eaten(a)
+	#TODO: Play hurt sound / animation
+		
+func damage_head(h : Head, damage : int):
+	h.damage(damage)
+	combat_viewport.check_player_death()
+	if combat_viewport.player_dead == false:
+		#TODO: Play hurt sound / animation
 		pass
-	else:
-	#TODO: Punish
-		print("PUNISH")
 
-
-func _on_up_arrow_pressed():
-	if block_available == true and cutting_head == true:
-		block_attack()
-	elif player_ready == false:
+## Successfully blocking.
+func block_attack():
+	if punished == false:
+		Log.add_log_message("IT SUCCESSFULLY BLOCKED THE HIT.")
+		reset_button_textures()
+		ready_button.text = "MUTILATION\nAVOIDED"
+		finger_anims.curr_anim.animation = "default"
+		if cutting_left == true:
+			finger_anims.curr_anim.frame = 0
+		elif cutting_head == true:
+			finger_anims.curr_anim.frame = 1
+		elif cutting_right == true:
+			finger_anims.curr_anim.frame = 2
+		block_success = true
+		# TODO: Block behavior, text etc.
 		pass
-	else:
-	#TODO: Punish
-		print("PUNISH")
-
-
-
-func _on_right_arrow_pressed():
-	if block_available == true and cutting_right == true:
-		block_attack()
-	elif player_ready == false:
-		pass
-	else:
-	#TODO: Punish
-		print("PUNISH")
