@@ -141,23 +141,23 @@
 - [ ] UI Select
 - [ ] Dungeon ambience
 - [ ] Enemy attack
-- [ ] Player miss
 - [ ] Battle ambience
 - [ ] Death screen
 - [ ] Hunger Satisfied
-- [ ] Wheel
-  - [ ] Miss
-  - [ ] Crit
-  - [ ] L Hit
-  - [ ] H Hit
-  - [ ] L Whiff
-  - [ ] M Whiff
-  - [ ] H Whiff
-- [ ] Finger
-  - [ ] Punish
-  - [ ] Fail
-  - [ ] Block
+- [ ] Player miss
 ### DONE
+- [x] Wheel
+  - [x] Miss
+  - [x] Crit
+  - [x] L Hit
+  - [x] H Hit
+  - [x] L Whiff
+  - [x] M Whiff
+  - [x] H Whiff
+- [x] Finger
+  - [x] Punish
+  - [x] Fail
+  - [x] Block
 - [x] Hurt noise for:
   - [x] Hunger damage
 - [x] Hunger State Transition

@@ -504,3 +504,14 @@
   - [ ] Instruction tooltip / mandatory first viewing
 - Timing minigame will now take effect seamlessly in battle
 - Adjusted timing of animations so that the player can understand their results of wheel roller and finger react before the animation plays
+
+## 31 August 2025
+- Finger react game fully completed
+  - Added styleboxes to reflect game state
+  - Added audio
+  - Added optional tutorial
+  - Tuned to floor level and hunger level
+- Wheel roller tuned up
+  - Better styleboxes to reflect result
+  - Added audio
+- Tuned up tutorial screen to have more accurate text
