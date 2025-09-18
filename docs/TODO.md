@@ -276,6 +276,7 @@
   - [ ] Arm condition
   - [ ] Head health
 - [ ] Add padding to font and re-export
+- [ ] Fleeing combat no longer re enters combat!! FIX!!
 ### DONE
 - [x] Turn off arrow key input for Context menu
 - [x] Head should be in charge of tooth count
