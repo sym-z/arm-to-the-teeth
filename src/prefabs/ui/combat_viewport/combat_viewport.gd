@@ -144,9 +144,11 @@ func up_button_chosen():
 	if player_dead == false:
 		visible = false
 		#Log.add_log_message("IT FLED AND RAN FORWARD")
-		player.move()
+		
 		player.in_combat = false
-		root_ui.dungeon_viewport.visible = true
+		player.move()
+		if player.in_combat == false:
+			root_ui.dungeon_viewport.visible = true
 
 func down_button_chosen():
 	if Globals.verbose_console:
@@ -157,9 +159,10 @@ func down_button_chosen():
 	if player_dead == false:
 		visible = false
 		#Log.add_log_message("IT FLED AND RAN BACKWARD")
-		player.move(-1)
 		player.in_combat = false
-		root_ui.dungeon_viewport.visible = true
+		player.move(-1)
+		if player.in_combat == false:
+			root_ui.dungeon_viewport.visible = true
 
 func left_button_chosen():
 	if Globals.verbose_console:
@@ -170,11 +173,12 @@ func left_button_chosen():
 	if player_dead == false:
 		visible = false
 		#Log.add_log_message("IT FLED AND RAN TO THE LEFT")
+		player.in_combat = false
 		player.force_turn_left()
 		player.move()
 		player.force_turn_right()
-		player.in_combat = false
-		root_ui.dungeon_viewport.visible = true
+		if player.in_combat == false:
+			root_ui.dungeon_viewport.visible = true
 
 func right_button_chosen():
 	if Globals.verbose_console:
@@ -185,11 +189,12 @@ func right_button_chosen():
 	if player_dead == false:
 		visible = false
 		#Log.add_log_message("IT FLED AND RAN TO THE RIGHT")
+		player.in_combat = false
 		player.force_turn_right()
 		player.move()
 		player.force_turn_left()
-		player.in_combat = false
-		root_ui.dungeon_viewport.visible = true
+		if player.in_combat == false:
+			root_ui.dungeon_viewport.visible = true
 
 # Have the enemy roll to see if they will hit the player, where, and for how much damage. Sets player_dead on death.
 func runaway_damage():

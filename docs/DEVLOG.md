@@ -515,3 +515,6 @@
   - Better styleboxes to reflect result
   - Added audio
 - Tuned up tutorial screen to have more accurate text
+
+## 22 September 2025
+- Fixed bug where running into a space with an enemy would create an undefined state of combat and non-combat.
