@@ -13,10 +13,6 @@ func _ready():
 	timer.wait_time = seed_tick
 	timer.connect("timeout", bump_seed)
 	add_child(timer)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func bump_seed():
 	base_noise.seed += 1
