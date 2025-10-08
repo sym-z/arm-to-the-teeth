@@ -518,3 +518,6 @@
 
 ## 22 September 2025
 - Fixed bug where running into a space with an enemy would create an undefined state of combat and non-combat.
+
+## 7 October 2025
+- Implemented a Perlin noise based shader that provides texture to the viewport with tunable speed and contrast.
