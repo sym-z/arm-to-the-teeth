@@ -1416,6 +1416,7 @@ offset_left = 512.0
 offset_top = 82.0
 offset_right = 1406.0
 offset_bottom = 978.0
+mouse_filter = 2
 script = ExtResource("76_6bp04")
 seed_tick = 0.2
 

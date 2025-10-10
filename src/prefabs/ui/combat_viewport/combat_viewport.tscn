@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=186 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -64,6 +64,8 @@
 [ext_resource type="StyleBox" uid="uid://se36mv5uncgv" path="res://themes/finger_react/block_box.tres" id="51_hij8p"]
 [ext_resource type="Theme" uid="uid://cbwcgyg8hdf4a" path="res://themes/tutorial_button.tres" id="62_qasvu"]
 [ext_resource type="StyleBox" uid="uid://bwcnp5f8k7rix" path="res://themes/general/ui_containers_blackout.tres" id="63_65l4u"]
+[ext_resource type="Texture2D" uid="uid://cmij4h1c2gflh" path="res://assets/visual/ui/finger_react/blood_flow_0.png" id="64_1u3m5"]
+[ext_resource type="Script" uid="uid://d3b0rso0xvt1" path="res://prefabs/ui/combat_viewport/finger_react/blood_animation/blood_animation.gd" id="65_tbmgk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -794,6 +796,234 @@ shadow_color = Color(0.02, 0.01, 0, 0.376471)
 shadow_size = 6
 shadow_offset = Vector2(0, 4)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qs2s"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(0, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od4dy"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(720, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbknr"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(1440, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txng7"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2160, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhycc"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2880, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbt7o"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(3600, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgu5n"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(4320, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ole7q"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(5040, 764, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrv5k"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(0, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooniv"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(720, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s6me"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(1440, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo5ad"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2160, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w7a6"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2880, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rla64"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(3600, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jqtr"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(4320, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllh3"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(5040, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm7rq"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(5760, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kabd0"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(6480, 0, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lpk"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(0, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqlji"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(720, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10tc2"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(1440, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pcqb"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2160, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umpax"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(2880, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r2tn"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(3600, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_847le"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(4320, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gja1"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(5040, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0gof"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(5760, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m5ge"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(6480, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ligxj"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(7200, 1528, 720, 764)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj15i"]
+atlas = ExtResource("64_1u3m5")
+region = Rect2(7920, 1528, 720, 764)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3hxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qs2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od4dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbknr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txng7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhycc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbt7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgu5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ole7q")
+}],
+"loop": false,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrv5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooniv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s6me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo5ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w7a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rla64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jqtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm7rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kabd0")
+}],
+"loop": false,
+"name": &"middle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqlji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10tc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pcqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umpax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_847le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gja1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0gof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m5ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ligxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj15i")
+}],
+"loop": false,
+"name": &"right",
+"speed": 5.0
+}]
+
 [node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "finger_react", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -1307,8 +1537,7 @@ text = "STOP"
 
 [node name="Wheel Speaker" type="AudioStreamPlayer" parent="Wheel Roller"]
 
-[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel", "speaker")]
-visible = false
+[node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blood_anim", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel", "speaker")]
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -1319,6 +1548,7 @@ theme_override_constants/margin_bottom = 42
 script = ExtResource("46_eo0c2")
 combat_viewport = NodePath("..")
 finger_anims = NodePath("Finger React Animations")
+blood_anim = NodePath("Blood Animation")
 blockable_wait_time = NodePath("Blockable Wait Time")
 blockable_duration = NodePath("Blockable Duration")
 left_container = NodePath("PanelContainer/Left Container")
@@ -1523,6 +1753,14 @@ theme_override_styles/pressed = ExtResource("44_147t5")
 theme_override_styles/normal = ExtResource("45_5j0k5")
 text = "BACK"
 
+[node name="Blood Animation" type="AnimatedSprite2D" parent="Finger React"]
+position = Vector2(466, 460)
+sprite_frames = SubResource("SpriteFrames_f3hxa")
+animation = &"right"
+frame = 11
+frame_progress = 1.0
+script = ExtResource("65_tbmgk")
+
 [node name="Finger React Animations" parent="Finger React" instance=ExtResource("46_7eewq")]
 position = Vector2(466, 460)
 
@@ -1554,5 +1792,6 @@ one_shot = true
 [connection signal="pressed" from="Finger React/PanelContainer/Button Container/Ready Button" to="Finger React" method="rand_wait"]
 [connection signal="pressed" from="Finger React/PanelContainer/Tutorial Button Container/Tutorial Button" to="Finger React" method="open_tutorial"]
 [connection signal="pressed" from="Finger React/PanelContainer/Tutorial Window Container/PanelContainer/MarginContainer/VBoxContainer/Back Button" to="Finger React" method="close_tutorial"]
+[connection signal="animation_finished" from="Finger React/Blood Animation" to="Finger React" method="_on_blood_animation_animation_finished"]
 [connection signal="timeout" from="Finger React/Blockable Wait Time" to="Finger React" method="cut_finger"]
 [connection signal="timeout" from="Finger React/Blockable Duration" to="Finger React" method="apply_damage"]
