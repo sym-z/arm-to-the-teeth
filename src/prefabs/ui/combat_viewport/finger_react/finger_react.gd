@@ -381,4 +381,5 @@ func end_game():
 
 func _on_blood_animation_animation_finished():
 	if combat_viewport.player_dead == false:
+		blood_anim.visible = false
 		end_game()
