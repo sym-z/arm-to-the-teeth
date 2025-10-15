@@ -528,4 +528,4 @@
   - All visuals now take center stage
   - Teeth count is now shown using the head
   - Arms can now be eaten by clicking them in the side menu
-  
+  - Map is now able to maximized/minimized using the icon 
