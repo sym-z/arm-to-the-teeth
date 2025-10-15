@@ -327,3 +327,5 @@
 - Vision bounds remake
 - Multi-stage block
 - Wheel sprite remake
+- Moving Minimizes map
+- Jiggle shader for menu items
