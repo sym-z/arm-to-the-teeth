@@ -217,6 +217,7 @@ func _on_player_item_partial_pickup():
 func add_arm_to_inventory(a : Arm, number : int):
 	var new_arm_item = arm_item_scene.instantiate()
 	new_arm_item.set_text_to_arm(a, number)
+	#TODO Connect this to arm button.
 	new_arm_item.connect("eat_pressed", arm_eaten)
 	new_arm_item.connect("arm_fully_eaten", arm_fully_eaten)
 	new_arm_item.connect("arm_fully_eaten", play_swallow_sound)
@@ -350,6 +351,7 @@ func refresh_arm_stat():
 			equipped_arm_anim_2.visible = false
 			arm_cond_1.visible = true
 			arm_cond_2.visible = false
+			equipped_arm_anim_1.arm_ref = equipped_arms[0]
 			# Apply same strategy used in head stat showcase
 			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
 			refresh_condition_label(arm_cond_1, equipped_arms[0])
@@ -358,6 +360,8 @@ func refresh_arm_stat():
 			equipped_arm_anim_2.visible = true
 			arm_cond_1.visible = true
 			arm_cond_2.visible = true
+			equipped_arm_anim_1.arm_ref = equipped_arms[0]
+			equipped_arm_anim_2.arm_ref = equipped_arms[1]
 			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
 			set_arm_frame(equipped_arms[1], equipped_arm_anim_2)
 			refresh_condition_label(arm_cond_1, equipped_arms[0])

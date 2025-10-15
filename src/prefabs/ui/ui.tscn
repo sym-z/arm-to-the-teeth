@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=204 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -44,9 +44,11 @@
 [ext_resource type="Script" uid="uid://ctaigrvqpe5na" path="res://themes/reactive_stylebox/reactive_pc.gd" id="19_xqkvd"]
 [ext_resource type="Texture2D" uid="uid://yu1orgrp2bg6" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_4.png" id="20_07iut"]
 [ext_resource type="Script" uid="uid://0ds563qi8bfg" path="res://prefabs/ui/eye/eye.gd" id="20_76mk3"]
+[ext_resource type="Script" uid="uid://c8v5u46xqnus5" path="res://prefabs/ui/arm/arm.gd" id="20_r731v"]
 [ext_resource type="Texture2D" uid="uid://d3b8hlrwvvl4t" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_5.png" id="21_a0gks"]
 [ext_resource type="PackedScene" uid="uid://6d4bxuhad55o" path="res://prefabs/mouse_detector_field/mouse_detector_field.tscn" id="21_lge0c"]
 [ext_resource type="Texture2D" uid="uid://cvgopgcpqp1rq" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_6.png" id="22_hg2lu"]
+[ext_resource type="Texture2D" uid="uid://bx3svdeqi60hw" path="res://assets/visual/ui/mouse_icons/eat.png" id="22_p3cfc"]
 [ext_resource type="Texture2D" uid="uid://clh8npgnqqwtk" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_7.png" id="23_3dlba"]
 [ext_resource type="Texture2D" uid="uid://dk50umj1exp55" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_8.png" id="24_jvrmo"]
 [ext_resource type="Texture2D" uid="uid://bcp6gd0kpcpii" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_9.png" id="25_bsq4w"]
@@ -278,67 +280,67 @@ region = Rect2(12800, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3cfc"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 0, 112, 112)
+region = Rect2(224, 560, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nc7n"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 0, 112, 112)
+region = Rect2(112, 560, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xevvd"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 0, 112, 112)
+region = Rect2(0, 560, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmh41"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(336, 0, 112, 112)
+region = Rect2(560, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2244"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(448, 0, 112, 112)
+region = Rect2(448, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuxg6"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(560, 0, 112, 112)
+region = Rect2(336, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t8s0"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 112, 112, 112)
+region = Rect2(224, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrubd"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 112, 112, 112)
+region = Rect2(112, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0h0r"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 112, 112, 112)
+region = Rect2(0, 448, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lb0k"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(336, 112, 112, 112)
+region = Rect2(560, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvqm0"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(448, 112, 112, 112)
+region = Rect2(448, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p18lp"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(560, 112, 112, 112)
+region = Rect2(336, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtjni"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 224, 112, 112)
+region = Rect2(224, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oggyt"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 224, 112, 112)
+region = Rect2(112, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csc3m"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 224, 112, 112)
+region = Rect2(0, 336, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15n2a"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(336, 224, 112, 112)
+region = Rect2(560, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gsur"]
 atlas = ExtResource("16_u5l0a")
@@ -346,67 +348,67 @@ region = Rect2(448, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qe8w6"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(560, 224, 112, 112)
+region = Rect2(336, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ir3wj"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 336, 112, 112)
+region = Rect2(224, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2sp5"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 336, 112, 112)
+region = Rect2(112, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkuon"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 336, 112, 112)
+region = Rect2(0, 224, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xylb6"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(336, 336, 112, 112)
+region = Rect2(560, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3r0ps"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(448, 336, 112, 112)
+region = Rect2(448, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxw10"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(560, 336, 112, 112)
+region = Rect2(336, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsarl"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 448, 112, 112)
+region = Rect2(224, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74omc"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 448, 112, 112)
+region = Rect2(112, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b02pt"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 448, 112, 112)
+region = Rect2(0, 112, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvm31"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(336, 448, 112, 112)
+region = Rect2(560, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm7va"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(448, 448, 112, 112)
+region = Rect2(448, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3gykr"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(560, 448, 112, 112)
+region = Rect2(336, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j8am"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(0, 560, 112, 112)
+region = Rect2(224, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjp13"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(112, 560, 112, 112)
+region = Rect2(112, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8sq6"]
 atlas = ExtResource("16_u5l0a")
-region = Rect2(224, 560, 112, 112)
+region = Rect2(0, 0, 112, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rod3w"]
 animations = [{
@@ -1368,12 +1370,33 @@ position = Vector2(-9.11111, 91.5556)
 scale = Vector2(0.985, 0.985)
 sprite_frames = SubResource("SpriteFrames_l1g0r")
 
-[node name="Left Arm" type="AnimatedSprite2D" parent="Stat Showcase"]
+[node name="Left Arm" type="AnimatedSprite2D" parent="Stat Showcase" node_paths=PackedStringArray("eat_icon", "mouse_field", "root_ui")]
 modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(152, 277)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 flip_h = true
+script = ExtResource("20_r731v")
+eat_icon = NodePath("Eat Icon")
+mouse_field = NodePath("Mouse Detector Field")
+root_ui = NodePath("../..")
+
+[node name="Mouse Detector Field" parent="Stat Showcase/Left Arm" instance=ExtResource("21_lge0c")]
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.054
+anchor_right = 0.955
+anchor_bottom = 0.969
+offset_left = -57.032
+offset_top = -112.096
+offset_right = -55.96
+offset_bottom = -112.056
+color = Color(0.8, 0, 1, 0)
+
+[node name="Eat Icon" type="Sprite2D" parent="Stat Showcase/Left Arm"]
+position = Vector2(-2.5, 3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_p3cfc")
 
 [node name="Left Arm Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)
@@ -1383,11 +1406,26 @@ scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
 flip_h = true
 
-[node name="Right Arm" type="AnimatedSprite2D" parent="Stat Showcase"]
+[node name="Right Arm" type="AnimatedSprite2D" parent="Stat Showcase" node_paths=PackedStringArray("eat_icon", "mouse_field", "root_ui")]
 modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(368, 277)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
+script = ExtResource("20_r731v")
+eat_icon = NodePath("Eat Icon")
+mouse_field = NodePath("Mouse Detector Field")
+root_ui = NodePath("../..")
+
+[node name="Mouse Detector Field" parent="Stat Showcase/Right Arm" instance=ExtResource("21_lge0c")]
+offset_left = -53.0
+offset_top = -103.0
+offset_right = -53.0
+offset_bottom = -116.0
+
+[node name="Eat Icon" type="Sprite2D" parent="Stat Showcase/Right Arm"]
+position = Vector2(5.5, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_p3cfc")
 
 [node name="Right Arm Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)

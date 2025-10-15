@@ -527,4 +527,5 @@
   - The map is in the process of being reworked into a large icon.
   - All visuals now take center stage
   - Teeth count is now shown using the head
+  - Arms can now be eaten by clicking them in the side menu
   
