@@ -1399,6 +1399,7 @@ offset_bottom = -112.056
 color = Color(0.8, 0, 1, 0)
 
 [node name="Eat Icon" type="Sprite2D" parent="Stat Showcase/Left Arm"]
+visible = false
 position = Vector2(-2.5, 2.25)
 scale = Vector2(0.964286, 1.87054)
 texture = ExtResource("22_p3cfc")
@@ -1429,6 +1430,7 @@ offset_bottom = -116.0
 color = Color(0.8, 0, 1, 0)
 
 [node name="Eat Icon" type="Sprite2D" parent="Stat Showcase/Right Arm"]
+visible = false
 position = Vector2(3, 2.5)
 scale = Vector2(0.991071, 1.875)
 texture = ExtResource("22_p3cfc")
