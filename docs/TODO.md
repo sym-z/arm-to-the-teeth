@@ -329,3 +329,4 @@
 - Wheel sprite remake
 - Moving Minimizes map
 - Jiggle shader for menu items
+- Adjust shadow sizing for menu items
