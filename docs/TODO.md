@@ -305,3 +305,25 @@
 - Got a weird error about uid "dqrdhjjdlmsmt", keep an eye out. It happened when I was adding children to the wheel roller
   - I was able to solve it by deleting the reference in `.godot/editor/quick_open_dialog_cache.cfg` and put a screenshot of the uid I deleted in `dev_screenshots/error_tracking/uid_removal.png`
   - I found out about why this problem occured and where to go to go about solving it by finding a GitHub Issue that was created about it at this link: https://github.com/godotengine/godot/issues/104961
+
+## To Apply Before App Submission:
+- New map configuration
+  - Overlay that doesn't allow movement
+- Purpose
+  - Why is the player there? What is their motivation?
+  - It will be a creation, created from the living biomass walls of the dungeon and fighting failed creations on Its journey to ascend to a chosen organism.
+- Audio Ambience
+  - Creepy, Groaning unsettling atmosphere
+- Texture Overhaul
+  - Make new textures
+  - Textures for floor and wall are decided for the whole floor when a new floor is loaded, and it will be like a separate palette is used.
+- New arm configuration
+  - Click to eat
+- New pickup mechanic implementation
+  - Walking over items automatically picks them up
+- Stat display
+  - Clicking on head will show current stats in a numerical window that must be closed to move around
+- Enemies are "failed creations"
+- Vision bounds remake
+- Multi-stage block
+- Wheel sprite remake

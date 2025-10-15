@@ -521,3 +521,10 @@
 
 ## 7 October 2025
 - Implemented a Perlin noise based shader that provides texture to the viewport with tunable speed and contrast.
+
+## 14 October 2025
+- After a consultation with Nathan Altice, I decided to work on applying notes he had given me, specifically on applying the opacity I love about UFO 50 to this game, to amp up the mystery.
+  - The map is in the process of being reworked into a large icon.
+  - All visuals now take center stage
+  - Teeth count is now shown using the head
+  

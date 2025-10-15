@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://6d4bxuhad55o"]
+
+[ext_resource type="Script" uid="uid://c8h48n25bgb4m" path="res://prefabs/mouse_detector_field/mouse_detector_field.gd" id="1_64cmm"]
+
+[node name="Mouse Detector Field" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.8, 0, 1, 0.188235)
+script = ExtResource("1_64cmm")
