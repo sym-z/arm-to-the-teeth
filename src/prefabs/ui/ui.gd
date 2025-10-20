@@ -81,6 +81,12 @@ var full_log_label_scene : PackedScene = preload("uid://dp85jko1wcurv")
 
 @export_category("Audio")
 @export var speaker : AudioStreamPlayer
+
+@export_category("Markers")
+@export var l_arm_mark : Marker2D
+@export var r_arm_mark : Marker2D
+@export var tooth_mark : Marker2D
+@export var key_mark : Marker2D
 #endregion
 func _ready():
 	chomp_transition.open()

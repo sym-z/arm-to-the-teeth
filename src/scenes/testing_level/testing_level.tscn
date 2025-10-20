@@ -13,10 +13,11 @@ script = ExtResource("1_tt45j")
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_634d8")]
 player = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("map", "ui") instance=ExtResource("4_f1y3a")]
+[node name="Player" parent="." node_paths=PackedStringArray("map", "ui", "viewport") instance=ExtResource("4_f1y3a")]
 position = Vector2i(9, 9)
 map = NodePath("../Map")
 ui = NodePath("../UI")
+viewport = NodePath("../Dungeon Layer/Dungeon Viewport")
 
 [node name="UI" parent="." node_paths=PackedStringArray("player", "map", "dungeon_viewport") instance=ExtResource("6_ped82")]
 player = NodePath("../Player")
@@ -32,6 +33,7 @@ offset_bottom = 1080.0
 texture = ExtResource("4_n0j1u")
 
 [node name="Dungeon Layer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="Dungeon Viewport" parent="Dungeon Layer" node_paths=PackedStringArray("map", "player") instance=ExtResource("5_etvxw")]
 position = Vector2(0, -10)

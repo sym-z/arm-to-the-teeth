@@ -5,6 +5,8 @@ extends Node
 @export var map : Node 
 @export var ui : CanvasLayer
 @export var speaker : AudioStreamPlayer
+@export var pickup_delay_timer : Timer
+@export var viewport : Node2D
 ## Will the player enter the battle scene when they step on a space with an enemy
 var ignore_combat : bool = Globals.ignore_combat
 ## Is the player currently in combat
@@ -14,6 +16,7 @@ var disable_movement : bool = false
 
 signal change_facing
 signal change_position
+signal move_key_pressed
 signal item_picked_up
 signal item_partial_pickup
 # Allows items/landmarks to be set after the player has spawned.
@@ -48,6 +51,7 @@ signal stat_change
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pickup_delay_timer.connect("timeout",ui._on_pick_up_pressed)
 	pass # Replace with function body.
 
 func give_starting_loadout():
@@ -103,8 +107,10 @@ func _input(event):
 	if in_combat == false and disable_movement == false:
 		if event.is_action_pressed("move_forward"):
 			move()
+			move_key_pressed.emit()
 		if event.is_action_pressed("move_back"):
 			move(-1)
+			move_key_pressed.emit()
 		if event.is_action_pressed("turn_left"):
 			match facing:
 				Globals.NORTH:
@@ -216,11 +222,18 @@ func check_cell_content() -> Cell.TYPE:
 			if Globals.verbose_console == true:
 				print("PLAYER ON ARM!")
 			item_detected.emit(Cell.TYPE.ARM, position)
+			if arm_count < 2:
+				tween_shrink(Cell.TYPE.ARM)
+			#pickup_delay_timer.start()
+			#ui._on_pick_up_pressed()
 			return Cell.TYPE.ARM
 		Cell.TYPE.TOOTH:
 			if Globals.verbose_console == true:
 				print("PLAYER ON TOOTH!")
 			item_detected.emit(Cell.TYPE.TOOTH, position)
+			tween_shrink(Cell.TYPE.TOOTH)
+			#pickup_delay_timer.start()
+			#ui._on_pick_up_pressed()
 			return Cell.TYPE.TOOTH
 		Cell.TYPE.ENEMY:
 			if Globals.verbose_console == true:
@@ -233,13 +246,47 @@ func check_cell_content() -> Cell.TYPE:
 			return Cell.TYPE.ENEMY
 		Cell.TYPE.CHEST:
 			item_detected.emit(Cell.TYPE.CHEST, position)
+			#tween_shrink(Cell.TYPE.CHEST)
+			#pickup_delay_timer.start()
+			ui._on_pick_up_pressed()
 			return Cell.TYPE.CHEST
 		Cell.TYPE.KEY:
 			item_detected.emit(Cell.TYPE.KEY, position)
+			tween_shrink(Cell.TYPE.KEY)
+			#pickup_delay_timer.start()
+			#ui._on_pick_up_pressed()
 			return Cell.TYPE.KEY
 	push_error("Current cell does not have detectable type in check_cell_type() in player.gd")
 	item_detected.emit(Cell.TYPE.EMPTY, position)
 	return Cell.TYPE.EMPTY
+	
+var tween : Tween = null
+func tween_shrink(type : Cell.TYPE):
+	var sprite = viewport.d0_center.get_child(0)
+	var original_position = sprite.global_position
+	disable_movement = true
+	if tween != null:
+		tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+	# Tween to correct position based on type
+	match type:
+		Cell.TYPE.TOOTH:
+			tween.tween_property(sprite,"global_position",ui.tooth_mark.position,0.2)
+		Cell.TYPE.ARM:
+			if arm_count == 0:
+				tween.tween_property(sprite,"global_position",ui.l_arm_mark.position,0.2)
+			elif arm_count == 1:
+				tween.tween_property(sprite,"global_position",ui.r_arm_mark.position,0.2)
+		Cell.TYPE.KEY:
+			tween.tween_property(sprite,"global_position",ui.key_mark.position,0.2)
+	tween.parallel().tween_property(sprite,"scale", Vector2(0,0), 0.2)
+	tween.tween_callback(tween_cleanup.bind( sprite, original_position))
+	pass
+func tween_cleanup(sprite: AnimatedSprite2D, original_position : Vector2):
+	sprite.scale = Vector2(1,1)
+	sprite.global_position = original_position
+	ui._on_pick_up_pressed()
+	disable_movement = false
 	
 func pick_up(type : Cell.TYPE):
 	var curr_cell : Cell = map.world_map[position]

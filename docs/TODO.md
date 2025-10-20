@@ -309,6 +309,7 @@
 ## To Apply Before App Submission:
 - New map configuration
   - Overlay that doesn't allow movement
+  - Change map color?
 - Purpose
   - Why is the player there? What is their motivation?
   - It will be a creation, created from the living biomass walls of the dungeon and fighting failed creations on Its journey to ascend to a chosen organism.
@@ -327,6 +328,14 @@
 - Vision bounds remake
 - Multi-stage block
 - Wheel sprite remake
-- Moving Minimizes map
+  - [ ] Teeth rotating in a mouth, like viewing the wheel from a side angle. Only 5 or so options are visible at any one time.
+- [x] Moving Minimizes map
 - Jiggle shader for menu items
 - Adjust shadow sizing for menu items
+- Adjust contrast of menu items
+  - [x] AUTO PICKUP
+    - [x] MAKE TWEEN MOVE TO PROPER POSITIONS
+  - [x] HIDE MAP ON MOVE
+- Hover over stomach says number, no max, nothing else.
+- Click head shows extended stat menu. Maybe.
+- Randomized groan and sfx system on top of ambience

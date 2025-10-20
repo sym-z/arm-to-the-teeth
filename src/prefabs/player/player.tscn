@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c7k1xrn8u2bex" path="res://prefabs/player/player.gd" id="1_sxsrd"]
 
-[node name="Player" type="Node" node_paths=PackedStringArray("speaker")]
+[node name="Player" type="Node" node_paths=PackedStringArray("speaker", "pickup_delay_timer")]
 script = ExtResource("1_sxsrd")
 speaker = NodePath("Speaker")
+pickup_delay_timer = NodePath("Pickup Delay")
 
 [node name="Speaker" type="AudioStreamPlayer" parent="."]
+
+[node name="Pickup Delay" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

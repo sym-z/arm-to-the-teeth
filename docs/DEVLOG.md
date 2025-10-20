@@ -529,3 +529,10 @@
   - Teeth count is now shown using the head
   - Arms can now be eaten by clicking them in the side menu
   - Map is now able to maximized/minimized using the icon 
+
+## October 15 2025
+- Map is now minimized on movement
+- Items are picked up by walking over them
+- Removed framing of eating icon
+- Shadows are darkened on menu items when mouse is hovering
+- Items will now be tweened in size and position to their menu position
