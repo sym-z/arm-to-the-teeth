@@ -97,6 +97,7 @@
 - [ ] A lot more log messages about how much damage is dealt and where.
 - [ ] More enemy types
   - [ ] Loot drops are dependent on monster type
+- [ ] Multi-stage block
 ### DONE
 - [x] Cancel running / attacking choice?
 - [x] Enemy animates
@@ -180,6 +181,7 @@
 - [ ] More lighting
 - [ ] Tunnel vision overlay
 - [ ] Tune jiggle shader to use uniforms that are randomly set to have variance between content movement
+- [ ] Textures for floor and wall are decided for the whole floor when a new floor is loaded, and it will be like a separate palette is used.
 ### DONE
 - [x] Inventory items need better styleboxes
 - [x] Tooth chomp scene transition
@@ -307,36 +309,38 @@
   - I found out about why this problem occured and where to go to go about solving it by finding a GitHub Issue that was created about it at this link: https://github.com/godotengine/godot/issues/104961
 
 ## To Apply Before App Submission:
-- New map configuration
-  - Overlay that doesn't allow movement
-  - Change map color?
-- Purpose
-  - Why is the player there? What is their motivation?
-  - It will be a creation, created from the living biomass walls of the dungeon and fighting failed creations on Its journey to ascend to a chosen organism.
-- Audio Ambience
-  - Creepy, Groaning unsettling atmosphere
-- Texture Overhaul
-  - Make new textures
-  - Textures for floor and wall are decided for the whole floor when a new floor is loaded, and it will be like a separate palette is used.
-- New arm configuration
-  - Click to eat
-- New pickup mechanic implementation
-  - Walking over items automatically picks them up
-- Stat display
-  - Clicking on head will show current stats in a numerical window that must be closed to move around
-- Enemies are "failed creations"
-- Vision bounds remake
-- Multi-stage block
-- Wheel sprite remake
+- [x] New map configuration
+  - [x] Overlay that doesn't allow movement
+  - [x] Change map color
+- [ ] Purpose
+  - [ ] Why is the player there? What is their motivation?
+    - [ ] It will be a creation, created from the living biomass walls of the dungeon and fighting failed creations on Its journey to ascend to a chosen organism.
+- [x] Audio Ambience
+  - [x] Creepy, Groaning unsettling atmosphere
+- [ ] Texture Overhaul
+  - [x] Make new textures
+- [ ] New arm configuration
+  - [x] Click to eat
+  - [ ] Remake eating texture
+- [x] New pickup mechanic implementation
+  - [x] Walking over items automatically picks them up
+- [ ] Stat display
+  - [ ] Clicking on head will show current stats in a numerical window that must be closed to move around
+- [ ] Enemies are "failed creations"
+- [ ] Vision bounds remake
+- [ ] Wheel sprite remake
   - [ ] Teeth rotating in a mouth, like viewing the wheel from a side angle. Only 5 or so options are visible at any one time.
 - [x] Moving Minimizes map
-- Jiggle shader for menu items
-- Adjust shadow sizing for menu items
-- Adjust contrast of menu items
+- [ ] Jiggle shader for menu items
+- [ ] Adjust shadow sizing for menu items
+- [ ] Adjust contrast of menu items
   - [x] AUTO PICKUP
     - [x] MAKE TWEEN MOVE TO PROPER POSITIONS
   - [x] HIDE MAP ON MOVE
-- Hover over stomach says number, no max, nothing else.
-- Click head shows extended stat menu. Maybe.
-- Randomized groan and sfx system on top of ambience
-- Set up audio bus for all sound effects
+- [ ] Hover over stomach says number, no max, nothing else.
+- [ ] Click head shows extended stat menu. Maybe.
+- [x] Randomized groan and sfx system on top of ambience
+- [x] Set up audio bus for all sound effects
+- [ ] Combat ambience
+- [ ] Make tween look more choppy for size
+- [ ] Eye closes when map closes

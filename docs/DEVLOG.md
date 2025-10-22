@@ -536,3 +536,13 @@
 - Removed framing of eating icon
 - Shadows are darkened on menu items when mouse is hovering
 - Items will now be tweened in size and position to their menu position
+
+## October 16 2025
+- Created new textures for the dungeon side walls, floor, and ceiling
+- Created the ambience for the dungeon
+
+## October 21 2025
+- Implemented the new textures for the dungeon
+- Implemented new audio for ambience
+- Implemented a randomized dungeon sting system
+  - In the future I may separate the stings into different random timers, but for now I am using it with the basic groans I recorded.
