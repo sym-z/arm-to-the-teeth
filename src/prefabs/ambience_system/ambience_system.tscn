@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://byqi4a7ukikku"]
+
+[ext_resource type="Script" uid="uid://ddmcvf813yip5" path="res://prefabs/ambience_system/ambience_system.gd" id="1_02xmi"]
+
+[node name="Ambience System" type="Node" node_paths=PackedStringArray("base_speaker", "sting_speaker", "sting_timer")]
+script = ExtResource("1_02xmi")
+base_speaker = NodePath("Base Ambience")
+sting_speaker = NodePath("Sting Sounds")
+sting_timer = NodePath("Time Til Sting")
+
+[node name="Base Ambience" type="AudioStreamPlayer" parent="."]
+bus = &"Base Ambience"
+
+[node name="Sting Sounds" type="AudioStreamPlayer" parent="."]
+max_polyphony = 5
+bus = &"Ambience Stings"
+
+[node name="Time Til Sting" type="Timer" parent="."]
+one_shot = true

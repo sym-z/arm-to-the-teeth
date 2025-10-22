@@ -8,6 +8,7 @@ speaker = NodePath("Speaker")
 pickup_delay_timer = NodePath("Pickup Delay")
 
 [node name="Speaker" type="AudioStreamPlayer" parent="."]
+bus = &"Player"
 
 [node name="Pickup Delay" type="Timer" parent="."]
 wait_time = 0.05

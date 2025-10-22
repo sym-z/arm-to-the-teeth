@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sp88rewvevlj"]
+[gd_scene load_steps=8 format=3 uid="uid://sp88rewvevlj"]
 
 [ext_resource type="PackedScene" uid="uid://cnfsb3b13fx1v" path="res://prefabs/map/map.tscn" id="1_634d8"]
 [ext_resource type="Script" uid="uid://2ghmulmo5ff" path="res://scenes/testing_level/testing_level.gd" id="1_tt45j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cie36mpkhq27c" path="res://assets/visual/ui/ui_bg_5.png" id="4_n0j1u"]
 [ext_resource type="PackedScene" uid="uid://b5lskvgjumjn" path="res://prefabs/dungeon_viewport/dungeon_viewport.tscn" id="5_etvxw"]
 [ext_resource type="PackedScene" uid="uid://ceq7clgkyer44" path="res://prefabs/ui/ui.tscn" id="6_ped82"]
+[ext_resource type="PackedScene" uid="uid://byqi4a7ukikku" path="res://prefabs/ambience_system/ambience_system.tscn" id="7_n0j1u"]
 
 [node name="Testing Level" type="Node2D"]
 script = ExtResource("1_tt45j")
@@ -39,6 +40,8 @@ layer = 3
 position = Vector2(0, -10)
 map = NodePath("../../Map")
 player = NodePath("../../Player")
+
+[node name="Ambience System" parent="." instance=ExtResource("7_n0j1u")]
 
 [connection signal="level_clear" from="Map" to="UI" method="_on_map_level_clear"]
 [connection signal="map_filled" from="Map" to="UI" method="_on_map_map_filled"]

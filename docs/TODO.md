@@ -339,3 +339,4 @@
 - Hover over stomach says number, no max, nothing else.
 - Click head shows extended stat menu. Maybe.
 - Randomized groan and sfx system on top of ambience
+- Set up audio bus for all sound effects
