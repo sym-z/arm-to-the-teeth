@@ -2,13 +2,15 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
 resource_name = "LowPassFilter"
+cutoff_hz = 590.0
 
 [resource]
+bus/0/volume_db = -1.91699
 bus/1/name = &"Base Ambience"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = 2.24926
 bus/1/send = &"Master"
 bus/2/name = &"Ambience Stings"
 bus/2/solo = false

@@ -354,3 +354,6 @@
  - [ ] Eye Shuts when map closes
  - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
  - [ ] Better eat icon
+ - [ ] Trigger attempt to pick up even when arms are full
+ - [ ] Maybe adjust side wall color and design
+ - [ ] Change stings to be groans so you can have multiple sting types

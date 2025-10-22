@@ -1830,6 +1830,7 @@ mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_6bp04")
 
 [node name="Gate Notification" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="Gate Notification Container" type="MarginContainer" parent="Gate Notification"]
 visible = false

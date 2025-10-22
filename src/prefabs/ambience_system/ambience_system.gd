@@ -36,6 +36,7 @@ func load_stings():
 func play_random_sting():
 	var random_index = randi_range(0,sting_arr.size()-1)
 	sting_speaker.stream = sting_arr[random_index]
+	sting_speaker.pitch_scale = randf_range(0.8,1.0)
 	sting_speaker.play()
 	
 func start_sting_chain():
