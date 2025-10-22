@@ -3,7 +3,7 @@ extends Node
 var debug : bool = false
 var debug_combat : bool = false
 var verbose_console : bool = false
-var ignore_combat : bool = true
+var ignore_combat : bool = false
 
 const NORTH : int = 8
 const SOUTH : int = 4

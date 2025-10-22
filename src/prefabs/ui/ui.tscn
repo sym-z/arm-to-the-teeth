@@ -1168,14 +1168,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Combat Viewport Layer" type="CanvasLayer" parent="."]
-layer = 3
+layer = 4
 
 [node name="Combat Viewport" parent="Combat Viewport Layer" node_paths=PackedStringArray("root_ui") instance=ExtResource("18_hvfel")]
 visible = false
 root_ui = NodePath("../..")
 
 [node name="Mini Map Layer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 5
 
 [node name="Header" type="Label" parent="Mini Map Layer"]
 visible = false
