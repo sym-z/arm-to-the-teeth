@@ -337,7 +337,6 @@
   - [x] AUTO PICKUP
     - [x] MAKE TWEEN MOVE TO PROPER POSITIONS
   - [x] HIDE MAP ON MOVE
-- [ ] Hover over stomach says number, no max, nothing else.
 - [ ] Click head shows extended stat menu. Maybe.
 - [x] Randomized groan and sfx system on top of ambience
 - [x] Set up audio bus for all sound effects
@@ -346,17 +345,17 @@
 - [ ] Make tween look more choppy for size
 - [ ] Eye closes when map closes
 - [ ] Re-mix Ambient Base to be weirder
-- [ ] Add some randomization to the pitch of the groans
+- [x] Add some randomization to the pitch of the groans
 - [ ] Possibly use an exported array for the different sting sounds
 
 ###  Goals for session after 10/22:
 - [ ] Replace Wheel Roller
 - [ ] Groan Effects
-- [ ] Eye Shuts when map closes
+- [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
   - Meters, COD Medal Type framing
 - [ ] Better eat icon
-- [ ] Trigger attempt to pick up even when arms are full
+- [x] Trigger attempt to pick up even when arms are full
 - [ ] Maybe adjust side wall color and design
   - Emphasize depth of fetuses and show verticality
 - [ ] Hunger shows meter
