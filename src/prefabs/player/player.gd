@@ -224,6 +224,9 @@ func check_cell_content() -> Cell.TYPE:
 			item_detected.emit(Cell.TYPE.ARM, position)
 			if arm_count < 2:
 				tween_shrink(Cell.TYPE.ARM)
+			else:
+				# Alert the player that they cannot pickup the arm
+				ui._on_pick_up_pressed()
 			#pickup_delay_timer.start()
 			#ui._on_pick_up_pressed()
 			return Cell.TYPE.ARM
