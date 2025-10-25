@@ -16,6 +16,7 @@ func _ready():
 	connect("animation_finished", check_animation)
 	connect("animation_looped", check_loops)
 	mouse_field.connect("gui_input", _on_field_clicked)
+	mouse_field.connect("gui_input", _check_for_mouse_motion)
 	shadow.modulate = default_shadow_color
 	pass # Replace with function body.
 
@@ -67,5 +68,10 @@ func _on_field_clicked(event):
 		mini_map.visible = !mini_map.visible
 	pass
 
+func _check_for_mouse_motion(event):
+	if event is InputEventMouseMotion and animation == "default":
+		_on_field_entered()
+
 func hide_map():
 	mini_map.visible = false
+	_on_field_exited()
