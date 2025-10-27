@@ -350,6 +350,9 @@
 
 ###  Goals for session after 10/22:
 - [ ] Replace Wheel Roller
+  - Make basic prototype sprites
+  - Implement gameplay
+  - Replace sprites
 - [ ] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
