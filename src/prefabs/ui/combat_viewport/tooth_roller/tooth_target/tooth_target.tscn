@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdshv64n4dlok"]
+
+[ext_resource type="Script" uid="uid://dgtc6dvy3iqb6" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.gd" id="1_h1f4v"]
+[ext_resource type="Texture2D" uid="uid://deatpfppqmt7d" path="res://assets/visual/ui/tooth_roller/tooth_target_0.png" id="1_tj3xb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndbs"]
+atlas = ExtResource("1_tj3xb")
+region = Rect2(0, 0, 60, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avsns"]
+atlas = ExtResource("1_tj3xb")
+region = Rect2(60, 0, 60, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58vru"]
+atlas = ExtResource("1_tj3xb")
+region = Rect2(120, 0, 60, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueqjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vndbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avsns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58vru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tooth Target" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ueqjx")
+script = ExtResource("1_h1f4v")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://csef5fajydy4u"]
+
+[ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
+[ext_resource type="Texture2D" uid="uid://bjujyifsiuw8" path="res://assets/visual/ui/tooth_roller/temp-bg.png" id="2_748n5"]
+[ext_resource type="Texture2D" uid="uid://0t8gmjhen3o2" path="res://assets/visual/ui/tooth_roller/gum_frame_0.png" id="3_6o746"]
+[ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
+
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_targets")]
+script = ExtResource("1_g8nkb")
+tooth_targets = [NodePath("Tooth Targets/Tooth Target"), NodePath("Tooth Targets/Tooth Target2"), NodePath("Tooth Targets/Tooth Target3"), NodePath("Tooth Targets/Tooth Target4"), NodePath("Tooth Targets/Tooth Target5"), NodePath("Tooth Targets/Tooth Target6"), NodePath("Tooth Targets/Tooth Target7"), NodePath("Tooth Targets/Tooth Target8"), NodePath("Tooth Targets/Tooth Target9")]
+
+[node name="Temp Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_748n5")
+centered = false
+
+[node name="Gum Frame" type="Sprite2D" parent="."]
+texture = ExtResource("3_6o746")
+centered = false
+
+[node name="Tooth Targets" type="Node2D" parent="."]
+
+[node name="Tooth Target" parent="Tooth Targets" node_paths=PackedStringArray("next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(66, 214)
+rotation = -1.58453
+next_tooth = NodePath("../Tooth Target2")
+is_first = true
+
+[node name="Tooth Target2" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(68, 126)
+rotation = -1.57224
+prev_tooth = NodePath("../Tooth Target")
+next_tooth = NodePath("../Tooth Target3")
+
+[node name="Tooth Target3" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(154, 64)
+prev_tooth = NodePath("../Tooth Target2")
+next_tooth = NodePath("../Tooth Target4")
+
+[node name="Tooth Target4" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(245, 66)
+prev_tooth = NodePath("../Tooth Target3")
+next_tooth = NodePath("../Tooth Target5")
+
+[node name="Tooth Target5" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(354, 66)
+prev_tooth = NodePath("../Tooth Target4")
+next_tooth = NodePath("../Tooth Target6")
+
+[node name="Tooth Target6" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(459, 70)
+prev_tooth = NodePath("../Tooth Target5")
+next_tooth = NodePath("../Tooth Target7")
+
+[node name="Tooth Target7" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(556, 70)
+prev_tooth = NodePath("../Tooth Target6")
+next_tooth = NodePath("../Tooth Target8")
+
+[node name="Tooth Target8" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(648, 131)
+rotation = 1.56918
+prev_tooth = NodePath("../Tooth Target7")
+next_tooth = NodePath("../Tooth Target9")
+
+[node name="Tooth Target9" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth") instance=ExtResource("4_dt07e")]
+position = Vector2(649, 227)
+rotation = 1.5747
+prev_tooth = NodePath("../Tooth Target8")
+is_last = true
