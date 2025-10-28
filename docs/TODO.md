@@ -357,6 +357,8 @@
   - put a ton more teeth in
   - change the viewpoint to be from the front of the jaws and let the player see all of the incoming teeth in an upside down wide u pattern
   - make it 920x922
+  - Teeth are 128x313
+  - Tongue is 112 x 339
 - [ ] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
