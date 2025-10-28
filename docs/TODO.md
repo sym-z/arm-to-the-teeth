@@ -353,6 +353,8 @@
   - Make basic prototype sprites
   - Implement gameplay
   - Replace sprites
+  - Make the next and previous tooth set automatically based on array.
+  - put a ton more teeth in
 - [ ] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
