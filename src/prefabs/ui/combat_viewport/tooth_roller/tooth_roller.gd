@@ -49,6 +49,7 @@ func create_target_pool(size : int):
 		target_pool.append(randi_range(0,tooth_types-1))
 	for num in tooth_targets.size():
 		target_pool.append(0)
+	print("TARG SIZE: ", target_pool.size())
 
 func initialize_shift_timer():
 	shift_timer.wait_time = shift_interval

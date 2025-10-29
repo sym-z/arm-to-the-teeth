@@ -81,7 +81,6 @@
 [ext_resource type="Theme" uid="uid://joig1alr8u7d" path="res://themes/gate_transition/gate_buttons.tres" id="68_bfx8m"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="69_0a1xg"]
 [ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="70_jvrmo"]
-[ext_resource type="StyleBox" uid="uid://dwveivsufdo5t" path="res://themes/general/ui_containers_transparent.tres" id="73_bsq4w"]
 [ext_resource type="Shader" uid="uid://s6ncujlidhbc" path="res://shaders/viewport.gdshader" id="75_ukgtl"]
 [ext_resource type="Script" uid="uid://pb807wos3bfy" path="res://prefabs/ui/viewport_shader/viewport_shader.gd" id="76_6bp04"]
 [ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="77_u5l0a"]
@@ -1082,6 +1081,21 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lge0c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3tf8r"]
 noise_type = 3
 seed = 56
@@ -1479,7 +1493,7 @@ color = Color(0.8, 0, 1, 0)
 modulate = Color(0, 0, 0, 0.301961)
 z_index = -1
 position = Vector2(261, 742)
-scale = Vector2(4.57, 4.57)
+scale = Vector2(4.335, 4.335)
 sprite_frames = SubResource("SpriteFrames_frrpa")
 animation = &"hover"
 autoplay = "default"
@@ -1920,7 +1934,7 @@ theme_override_constants/margin_bottom = 89
 [node name="Dungeon Viewport Border" type="Panel" parent="Dungeon Viewport Style Box/Dungeon Viewport Style Container"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("73_bsq4w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lge0c")
 
 [node name="Icon2" type="Sprite2D" parent="."]
 visible = false

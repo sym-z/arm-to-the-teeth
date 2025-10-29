@@ -1,44 +1,44 @@
 [gd_scene load_steps=11 format=3 uid="uid://cdshv64n4dlok"]
 
 [ext_resource type="Script" uid="uid://dgtc6dvy3iqb6" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.gd" id="1_h1f4v"]
-[ext_resource type="Texture2D" uid="uid://deatpfppqmt7d" path="res://assets/visual/ui/tooth_roller/tooth_target_0.png" id="1_tj3xb"]
-[ext_resource type="Texture2D" uid="uid://cpl5mpt353p3j" path="res://assets/visual/ui/tooth_roller/broken_tooth_target_0.png" id="1_vndbs"]
+[ext_resource type="Texture2D" uid="uid://dmkugqo7jarpo" path="res://assets/visual/ui/tooth_roller/tooth_target_1_broken.png" id="1_vndbs"]
+[ext_resource type="Texture2D" uid="uid://xbq35va0rb50" path="res://assets/visual/ui/tooth_roller/tooth_target_1.png" id="2_avsns"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58vru"]
+atlas = ExtResource("1_vndbs")
+region = Rect2(0, 0, 128, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ueqjx"]
 atlas = ExtResource("1_vndbs")
-region = Rect2(0, 0, 60, 78)
+region = Rect2(128, 0, 128, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ics2l"]
 atlas = ExtResource("1_vndbs")
-region = Rect2(60, 0, 60, 78)
+region = Rect2(256, 0, 128, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aaibu"]
-atlas = ExtResource("1_vndbs")
-region = Rect2(120, 0, 60, 78)
+atlas = ExtResource("2_avsns")
+region = Rect2(0, 0, 128, 313)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vndbs"]
-atlas = ExtResource("1_tj3xb")
-region = Rect2(0, 0, 60, 78)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ump0g"]
+atlas = ExtResource("2_avsns")
+region = Rect2(128, 0, 128, 313)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_avsns"]
-atlas = ExtResource("1_tj3xb")
-region = Rect2(60, 0, 60, 78)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58vru"]
-atlas = ExtResource("1_tj3xb")
-region = Rect2(120, 0, 60, 78)
+[sub_resource type="AtlasTexture" id="AtlasTexture_faum2"]
+atlas = ExtResource("2_avsns")
+region = Rect2(256, 0, 128, 313)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ueqjx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_58vru")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ueqjx")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ics2l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aaibu")
 }],
 "loop": true,
 "name": &"broken",
@@ -46,13 +46,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vndbs")
+"texture": SubResource("AtlasTexture_aaibu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_avsns")
+"texture": SubResource("AtlasTexture_ump0g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58vru")
+"texture": SubResource("AtlasTexture_faum2")
 }],
 "loop": true,
 "name": &"default",
@@ -61,4 +61,6 @@ animations = [{
 
 [node name="Tooth Target" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ueqjx")
+frame = 1
+centered = false
 script = ExtResource("1_h1f4v")

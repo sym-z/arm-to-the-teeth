@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=3 uid="uid://bg56n8dk3bo32"]
+[gd_scene load_steps=187 format=3 uid="uid://bg56n8dk3bo32"]
 
 [ext_resource type="Theme" uid="uid://sf5sddao6d8d" path="res://themes/combat_viewport/cv_margin_container.tres" id="1_tr6sk"]
 [ext_resource type="Script" uid="uid://kfv56jd16u1x" path="res://prefabs/ui/combat_viewport/combat_viewport.gd" id="2_1vvdr"]
@@ -66,6 +66,7 @@
 [ext_resource type="StyleBox" uid="uid://bwcnp5f8k7rix" path="res://themes/general/ui_containers_blackout.tres" id="63_65l4u"]
 [ext_resource type="Texture2D" uid="uid://cmij4h1c2gflh" path="res://assets/visual/ui/finger_react/blood_flow_0.png" id="64_1u3m5"]
 [ext_resource type="Script" uid="uid://d3b0rso0xvt1" path="res://prefabs/ui/combat_viewport/finger_react/blood_animation/blood_animation.gd" id="65_tbmgk"]
+[ext_resource type="PackedScene" uid="uid://csef5fajydy4u" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.tscn" id="67_tbmgk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
@@ -1066,10 +1067,10 @@ theme = ExtResource("2_l6kcl")
 
 [node name="Background Image" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 13
-theme_override_constants/margin_top = 13
-theme_override_constants/margin_right = 13
-theme_override_constants/margin_bottom = 13
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Drip Texture" type="TextureRect" parent="Background Image"]
 modulate = Color(0.64, 0.64, 0.64, 1)
@@ -1539,6 +1540,7 @@ text = "STOP"
 bus = &"Wheel SFX"
 
 [node name="Finger React" type="MarginContainer" parent="." node_paths=PackedStringArray("combat_viewport", "finger_anims", "blood_anim", "blockable_wait_time", "blockable_duration", "left_container", "head_container", "right_container", "tutorial_container", "left_button", "head_button", "right_button", "ready_button", "tutorial_button", "panel", "speaker")]
+visible = false
 z_index = 1
 layout_mode = 2
 mouse_filter = 2
@@ -1779,6 +1781,11 @@ bus = &"Player"
 
 [node name="Enemy Speaker" type="AudioStreamPlayer" parent="."]
 bus = &"Player"
+
+[node name="Tooth Roller" parent="." instance=ExtResource("67_tbmgk")]
+visible = false
+z_index = 1
+position = Vector2(501, 69)
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]

@@ -359,6 +359,14 @@
   - make it 920x922
   - Teeth are 128x313
   - Tongue is 112 x 339
+  - Hand is 150 x 200
+  - make tongue attack
+    - make tongue defense
+    - make notif of block
+  - make flick
+  - make finger wag
+  - implement sprites
+  - connect to game
 - [ ] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
