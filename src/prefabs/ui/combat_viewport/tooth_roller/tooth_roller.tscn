@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://0t8gmjhen3o2" path="res://assets/visual/ui/tooth_roller/gum_frame_0.png" id="3_6o746"]
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
 
-[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_targets", "center_tooth", "shift_timer", "bg")]
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg")]
 script = ExtResource("1_g8nkb")
-tooth_targets = [NodePath("Tooth Targets/Tooth Target"), NodePath("Tooth Targets/Tooth Target2"), NodePath("Tooth Targets/Tooth Target3"), NodePath("Tooth Targets/Tooth Target4"), NodePath("Tooth Targets/Tooth Target5"), NodePath("Tooth Targets/Tooth Target6"), NodePath("Tooth Targets/Tooth Target7"), NodePath("Tooth Targets/Tooth Target8"), NodePath("Tooth Targets/Tooth Target9"), NodePath("Baby Tooth Targets/Tooth Target8;5"), NodePath("Baby Tooth Targets/Tooth Target7;5"), NodePath("Baby Tooth Targets/Tooth Target6;5"), NodePath("Baby Tooth Targets/Tooth Target5;5"), NodePath("Baby Tooth Targets/Tooth Target4;5"), NodePath("Baby Tooth Targets/Tooth Target3;5"), NodePath("Baby Tooth Targets/Tooth Target2;5"), NodePath("Baby Tooth Targets/Tooth Target1;5"), NodePath("Baby Tooth Targets/Tooth Target9;5"), NodePath("Baby Tooth Targets/Tooth Target0;5")]
+tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Tooth Target5")
 shift_timer = NodePath("Tooth Shift Interval")
 shift_interval = 0.2
@@ -25,64 +25,46 @@ centered = false
 
 [node name="Tooth Targets" type="Node2D" parent="."]
 
-[node name="Tooth Target" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(66, 214)
 rotation = -1.58453
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target0;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target1;5")
 
-[node name="Tooth Target2" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target2" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(68, 126)
 rotation = -1.57224
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target1;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target2;5")
 
-[node name="Tooth Target3" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target3" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(154, 64)
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target2;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target3;5")
 
-[node name="Tooth Target4" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target4" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(245, 66)
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target3;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target4;5")
 
-[node name="Tooth Target5" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target5" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(354, 174)
 scale = Vector2(1, 3.51)
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target4;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target5;5")
 
-[node name="Tooth Target6" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target6" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(459, 70)
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target5;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target6;5")
 
-[node name="Tooth Target7" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target7" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(556, 70)
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target6;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target7;5")
 
-[node name="Tooth Target8" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target8" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(648, 131)
 rotation = 1.56918
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target7;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target8;5")
 
-[node name="Tooth Target9" parent="Tooth Targets" node_paths=PackedStringArray("prev_tooth", "next_tooth") instance=ExtResource("4_dt07e")]
+[node name="Tooth Target9" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 position = Vector2(649, 227)
 rotation = 1.5747
 frame = 1
-prev_tooth = NodePath("../../Baby Tooth Targets/Tooth Target8;5")
-next_tooth = NodePath("../../Baby Tooth Targets/Tooth Target9;5")
 
 [node name="Tooth Shift Interval" type="Timer" parent="."]
 
