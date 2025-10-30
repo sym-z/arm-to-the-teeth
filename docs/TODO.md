@@ -350,21 +350,21 @@
 
 ###  Goals for session after 10/22:
 - [ ] Replace Wheel Roller
-  - Make basic prototype sprites
-  - Implement gameplay
-  - Replace sprites
-  - Make the next and previous tooth set automatically based on array.
-  - put a ton more teeth in
-  - change the viewpoint to be from the front of the jaws and let the player see all of the incoming teeth in an upside down wide u pattern
-  - make it 920x922
-  - Teeth are 128x313
-  - Tongue is 112 x 339
-  - Hand is 150 x 200
+  - [x] Make basic prototype sprites
+  - [x] Implement gameplay
+  - [x] Replace sprites
+  - [x] Make the next and previous tooth set automatically based on array.
+  - [x] put a ton more teeth in
+  - [x] change the viewpoint to be from the front of the jaws and let the player see all of the incoming teeth in an upside down wide u pattern
+  - [x] make it 920x922
+  -[x] Teeth are 128x313
+  -[x] Tongue is 112 x 339
+  -[x] Hand is 150 x 200
   - make tongue attack
     - make tongue defense
     - make notif of block
-  - make flick
-  - make finger wag
+  - [x] make flick
+  -[x] make finger wag
   - implement sprites
   - connect to game
 - [ ] Groan Effects
