@@ -96,16 +96,16 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action("turn_left"):
 		if event.is_action_pressed("turn_left"):
 			flicker.block_left()
-		elif event.is_action_released("turn_left"):
+		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
 	elif event.is_action("turn_right"):
 		if event.is_action_pressed("turn_right"):
 			flicker.block_right()
-		elif event.is_action_released("turn_right"):
+		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
 	elif event.is_action("move_back"):
 		if event.is_action_pressed("move_back"):
 			flicker.block_down()
-		elif event.is_action_released("move_back"):
+		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
 	

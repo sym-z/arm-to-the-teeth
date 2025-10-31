@@ -104,7 +104,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"flick",
-"speed": 32.0
+"speed": 64.0
 }]
 
 [node name="Flicker" type="AnimatedSprite2D"]
