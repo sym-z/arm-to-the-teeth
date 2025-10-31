@@ -367,6 +367,7 @@
   -[x] make finger wag
   - implement sprites
   - connect to game
+  - Multiplier
 - [ ] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power

@@ -1,20 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://csef5fajydy4u"]
+[gd_scene load_steps=6 format=3 uid="uid://csef5fajydy4u"]
 
 [ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
 [ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="2_dt07e"]
 [ext_resource type="Texture2D" uid="uid://b5t0bnu3jm4wl" path="res://assets/visual/ui/tooth_roller/gum_frame_2.png" id="3_hd4jn"]
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
+[ext_resource type="PackedScene" uid="uid://dw88egkkpye1w" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.tscn" id="5_hd4jn"]
 
-[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg")]
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker")]
 script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
 shift_timer = NodePath("Tooth Shift Interval")
-shift_interval = 0.1
-target_pool_size = 1000
+shift_interval = 0.05
+minimum_burst = 5
+maximum_burst = 7
 bg = NodePath("Temp Background")
 hit_bg_color = Color(0, 1, 0, 1)
 whiff_bg_color = Color(1, 0, 0, 1)
+flicker = NodePath("Flicker")
 
 [node name="Temp Background" type="Sprite2D" parent="."]
 modulate = Color(0.639216, 0.639216, 0.639216, 1)
@@ -185,6 +188,7 @@ rotation = -0.151173
 scale = Vector2(0.75, 0.75)
 
 [node name="Center Tooth" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+self_modulate = Color(1.1, 1.1, 1.1, 1)
 position = Vector2(399, 116)
 rotation = -0.0151901
 
@@ -348,3 +352,6 @@ rotation = -0.035963
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Shift Interval" type="Timer" parent="."]
+
+[node name="Flicker" parent="." instance=ExtResource("5_hd4jn")]
+position = Vector2(458, 606)

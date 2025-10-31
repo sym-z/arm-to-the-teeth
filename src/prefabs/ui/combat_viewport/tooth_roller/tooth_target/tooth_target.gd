@@ -17,8 +17,8 @@ func set_new_frame(new_frame : int, anim : String = "default"):
 			next_tooth.set_new_frame(frame)
 	animation = anim
 	frame = new_frame
-	if animation == "broken":
-		print(new_frame, frame, animation)
+	#if animation == "broken":
+		#print(new_frame, frame, animation)
 #
 #func get_info_string() -> String:
 	#var retval : String = ""

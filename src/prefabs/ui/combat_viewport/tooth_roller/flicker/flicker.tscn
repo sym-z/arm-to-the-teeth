@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://dw88egkkpye1w"]
+
+[ext_resource type="Texture2D" uid="uid://bcskgxphwpo76" path="res://assets/visual/ui/tooth_roller/block_0.png" id="1_5besv"]
+[ext_resource type="Texture2D" uid="uid://dqnrjvarpwxo2" path="res://assets/visual/ui/tooth_roller/flick_0.png" id="2_ha55g"]
+[ext_resource type="Script" uid="uid://bbxhhbw26tq3f" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.gd" id="3_ha55g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0rwl"]
+atlas = ExtResource("1_5besv")
+region = Rect2(0, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m2r4"]
+atlas = ExtResource("1_5besv")
+region = Rect2(150, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_722cp"]
+atlas = ExtResource("1_5besv")
+region = Rect2(300, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx3yr"]
+atlas = ExtResource("1_5besv")
+region = Rect2(450, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqo5d"]
+atlas = ExtResource("1_5besv")
+region = Rect2(600, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qvf4"]
+atlas = ExtResource("2_ha55g")
+region = Rect2(0, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxgnu"]
+atlas = ExtResource("2_ha55g")
+region = Rect2(0, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gcrg"]
+atlas = ExtResource("2_ha55g")
+region = Rect2(150, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_immv8"]
+atlas = ExtResource("2_ha55g")
+region = Rect2(300, 0, 150, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ign7l"]
+atlas = ExtResource("2_ha55g")
+region = Rect2(450, 0, 150, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyk4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0rwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m2r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_722cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx3yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqo5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx3yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_722cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m2r4")
+}],
+"loop": true,
+"name": &"block",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qvf4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxgnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_immv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ign7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_immv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcrg")
+}],
+"loop": false,
+"name": &"flick",
+"speed": 32.0
+}]
+
+[node name="Flicker" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_eyk4x")
+animation = &"flick"
+script = ExtResource("3_ha55g")
