@@ -390,6 +390,7 @@
 - [ ] Better eat icon
 - [x] Trigger attempt to pick up even when arms are full
 - [ ] Maybe adjust side wall color and design
+  - Hue can be set independently
   - Emphasize depth of fetuses and show verticality
 - [ ] Hunger shows meter
 - [ ] Number scarce stat menu
