@@ -351,13 +351,16 @@ func refresh_arm_stat():
 		if arm.equipped == true:
 			equipped_count += 1
 			equipped_arms.append(arm)
+	
 	match equipped_count:
 		1:
+			
 			equipped_arm_anim_1.visible = true
 			equipped_arm_anim_2.visible = false
 			arm_cond_1.visible = true
 			arm_cond_2.visible = false
 			equipped_arm_anim_1.arm_ref = equipped_arms[0]
+			equipped_arm_anim_2.arm_ref = null
 			# Apply same strategy used in head stat showcase
 			set_arm_frame(equipped_arms[0], equipped_arm_anim_1)
 			refresh_condition_label(arm_cond_1, equipped_arms[0])
@@ -375,6 +378,8 @@ func refresh_arm_stat():
 		_:
 			equipped_arm_anim_1.visible = false
 			equipped_arm_anim_2.visible = false
+			equipped_arm_anim_1.arm_ref = null
+			equipped_arm_anim_2.arm_ref = null
 			arm_cond_1.visible = false
 			arm_cond_2.visible = false
 	if equipped_count > 2:

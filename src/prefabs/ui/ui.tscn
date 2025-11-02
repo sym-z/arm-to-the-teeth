@@ -1358,11 +1358,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TEMP HUNGER" type="Label" parent="Stat Showcase"]
-visible = false
-offset_left = 1418.0
-offset_top = 794.0
-offset_right = 1898.0
-offset_bottom = 838.0
+offset_left = 741.0
+offset_top = 1165.0
+offset_right = 1221.0
+offset_bottom = 1209.0
 theme = ExtResource("7_1is0v")
 text = "HUNGER: X"
 horizontal_alignment = 1

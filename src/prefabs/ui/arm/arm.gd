@@ -30,8 +30,7 @@ func _field_clicked(event):
 		if arm_ref == null:
 			push_error("attempting to eat an null reference arm")
 			return
-		print(event)
+		#print(event)
 		root_ui.arm_eaten(arm_ref)
 		if arm_ref.condition <= 0:
 			root_ui.arm_fully_eaten(arm_ref)
-			arm_ref = null
