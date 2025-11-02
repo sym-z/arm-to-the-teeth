@@ -373,6 +373,10 @@
       - Prints one of the four elements in `my_array`.
       - It is more likely to print "four", and less likely to print "one".
       - `print(my_array[rng.rand_weighted(weights)])`
+    - Make tween
+    - Make callbacks reset position
+    - Allow blocking to inturrupt
+    - Make incorrect blocking attack
   - [x] make flick
   -[x] make finger wag
   - implement sprites

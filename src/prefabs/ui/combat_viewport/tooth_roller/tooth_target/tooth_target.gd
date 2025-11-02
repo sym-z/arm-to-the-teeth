@@ -6,7 +6,7 @@ extends AnimatedSprite2D
 @export var is_first : bool
 @export var is_last : bool
 
-enum TYPE{MISS = 0, HIT = 1, WHIFF = 2}
+#enum TYPE{MISS = 0, HIT = 1, WHIFF = 2}
 
 func set_new_frame(new_frame : int, anim : String = "default"):
 	if is_last == false:

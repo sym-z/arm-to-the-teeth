@@ -10,6 +10,7 @@ extends Node2D
 var target_pool : Array[int] = []
 # How many frames the targets have
 var tooth_types : int = 3
+enum TYPE{MISS = 0, HIT = 1, WHIFF = 2}
 # What index the first tooth is at in the pool
 var pool_index : int = 0
 @export var total_bursts : int = 15
@@ -25,14 +26,29 @@ var pool_index : int = 0
 @export_category("Player Control")
 @export var flicker : AnimatedSprite2D
 
+@export_category("Tooth Type Chance")
+var rng : RandomNumberGenerator
+var weights : PackedFloat32Array = []
+@export var empty_weight : float = 0.2
+@export var whiff_weight : float = 0.4
+@export var hit_weight : float = 0.6
 
+@export_category("Tongue Attack")
+@export var tongue_attack : Node2D
+@export var creep_timer : Timer
+@export var attack_timer : Timer
+@export var cooldown_timer : Timer
+@export var start_timer : Timer
+var attacking_tongue : AnimatedSprite2D = null
 func _ready():
 	build_tooth_target_arr()
-	for tooth in tooth_targets:
-		tooth.frame = 0
+	weight_randomness()
 	create_target_pool()
 	initialize_shift_timer()
-	
+	# TODO: maybe move up
+	init_tongue()
+
+# Builds and links tooth targets together
 func build_tooth_target_arr():
 	for i in range(tooth_target_parent.get_child_count()):
 		tooth_targets.append(tooth_target_parent.get_child(i))
@@ -50,15 +66,30 @@ func build_tooth_target_arr():
 		else:
 			curr_tooth.next_tooth = tooth_targets[i+1]
 			curr_tooth.prev_tooth = tooth_targets[i-1]
+	# Initialize all teeth to be invisible
+	for tooth in tooth_targets:
+		tooth.frame = 0
 
 # Creates an encoding of frame choices for the teeth.
 func create_target_pool():
+	# Pool of indices of possible types, to be selected using weighted rng
+	var choice_arr : Array[int] = []
+	for i in range(tooth_types):
+		choice_arr.append(i)
 	for num in total_bursts:
 		#target_pool.append(randi_range(0,tooth_types-1))
-		var rand_type = randi_range(0, tooth_types-1)
+		#var rand_type = randi_range(0, tooth_types-1)
+		var rand_type = choice_arr[rng.rand_weighted(weights)]
 		burst(randi_range(minimum_burst,maximum_burst), rand_type)
 	for num in tooth_targets.size():
 		target_pool.append(0)
+
+func weight_randomness():
+	rng = RandomNumberGenerator.new()
+	weights.resize(tooth_types)
+	weights[TYPE.MISS] = empty_weight
+	weights[TYPE.WHIFF] = whiff_weight
+	weights[TYPE.HIT] = hit_weight
 
 # Teeth pool is generated out of bursts of likewise teeth
 func burst(amount : int, type : int):
@@ -70,6 +101,7 @@ func initialize_shift_timer():
 	shift_timer.connect("timeout", shift_teeth)
 	shift_timer.start()
 func shift_teeth():
+	
 	if pool_index < target_pool.size():
 		tooth_targets[0].set_new_frame(target_pool[pool_index])
 		pool_index += 1
@@ -81,13 +113,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_forward"):
 		flicker.flick()
 		match center_tooth.frame:
-			center_tooth.TYPE.HIT:
+			TYPE.HIT:
 				print("hit")
 				bg.modulate = hit_bg_color
-			center_tooth.TYPE.MISS:
+			TYPE.MISS:
 				print("miss")
 				bg.modulate = miss_bg_color
-			center_tooth.TYPE.WHIFF:
+			TYPE.WHIFF:
 				print("whiff")
 				bg.modulate = whiff_bg_color
 		var frame_ref = center_tooth.frame
@@ -96,6 +128,13 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action("turn_left"):
 		if event.is_action_pressed("turn_left"):
 			flicker.block_left()
+			#if attacking_tongue and attacking_tongue == tongue_attack.left and attacking_tongue.blockable == true:
+				#print("blockt left successfully")
+			if tongue_attack.left == attacking_tongue:
+				print("blocked left success")
+			else:
+				attacking_tongue.attack()
+				# TODO Reset tongue
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
 	elif event.is_action("turn_right"):
@@ -109,3 +148,40 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
 	
+func init_tongue():
+	cooldown_timer.connect("timeout", tongue_trigger)
+	start_timer.connect("timeout", tongue_trigger)
+	tongue_attack.connect("start_cooldown", tongue_cooldown)
+	tongue_attack.connect("start_attack", creep_to_attack)
+	# After random time, call first tongue attack
+	start_timer.wait_time = randf_range(0.25,1.0)
+	start_timer.start()
+	pass
+
+
+func tongue_trigger():
+	print("TRIGGER")
+	#print(pool_index*shift_interval, " / " ,target_pool.size() * shift_interval)
+	var current_time : float = pool_index*shift_interval
+	var total_time : float = target_pool.size() * shift_interval
+	
+	var attack_window : float = creep_timer.wait_time + attack_timer.wait_time
+	print("curr", current_time)
+	print("total", total_time)
+	print("window", attack_window)
+	if attack_window < total_time - current_time:
+		print("ATTEMPT")
+		attacking_tongue = tongue_attack.get_random_tongue()
+		attacking_tongue.creep(1.0)
+		pass
+		# Choose random direction
+		# Attack
+		# Start random cool down
+
+func tongue_cooldown():
+	print("cooling down")
+	cooldown_timer.wait_time = randf_range(1.0,1.5)
+	cooldown_timer.start()
+	
+func creep_to_attack():
+	attacking_tongue.attack(0.25)

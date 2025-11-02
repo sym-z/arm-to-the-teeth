@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyd8s5fvod4qd"]
+
+[ext_resource type="Script" uid="uid://2qivrv1agam0" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue_attack.gd" id="1_r8crm"]
+[ext_resource type="PackedScene" uid="uid://bexnyskcp8nts" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue/tongue.tscn" id="2_xec7h"]
+
+[node name="Tongue Attack" type="Node2D" node_paths=PackedStringArray("left", "down", "right")]
+script = ExtResource("1_r8crm")
+left = NodePath("Left")
+down = NodePath("Down")
+right = NodePath("Right")
+
+[node name="Left" parent="." instance=ExtResource("2_xec7h")]
+rotation = 1.5708
+
+[node name="Down" parent="." instance=ExtResource("2_xec7h")]
+
+[node name="Right" parent="." instance=ExtResource("2_xec7h")]
+rotation = 4.71239
