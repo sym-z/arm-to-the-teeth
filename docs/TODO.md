@@ -374,6 +374,7 @@
       - It is more likely to print "four", and less likely to print "one".
       - `print(my_array[rng.rand_weighted(weights)])`
     - Make tween
+      - Figure out how stop() and kill differ in case you need to stop a creep tween and start a blocking tween using the same tween
     - Make callbacks reset position
     - Allow blocking to inturrupt
     - Make incorrect blocking attack
