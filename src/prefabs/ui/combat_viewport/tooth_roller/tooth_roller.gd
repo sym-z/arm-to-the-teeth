@@ -132,19 +132,30 @@ func _input(event: InputEvent) -> void:
 				#print("blockt left successfully")
 			if tongue_attack.left == attacking_tongue:
 				print("blocked left success")
+				attacking_tongue.block()
 			else:
-				attacking_tongue.attack()
+				attacking_tongue.force_attack()
 				# TODO Reset tongue
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
 	elif event.is_action("turn_right"):
 		if event.is_action_pressed("turn_right"):
 			flicker.block_right()
+			if tongue_attack.right == attacking_tongue:
+				print("blocked right success")
+				attacking_tongue.block()
+			else:
+				attacking_tongue.force_attack()
 		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
 	elif event.is_action("move_back"):
 		if event.is_action_pressed("move_back"):
 			flicker.block_down()
+			if tongue_attack.down == attacking_tongue:
+				print("blocked down success")
+				attacking_tongue.block()
+			else:
+				attacking_tongue.force_attack()
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
 	
@@ -172,8 +183,8 @@ func tongue_trigger():
 	if attack_window < total_time - current_time:
 		print("ATTEMPT")
 		attacking_tongue = tongue_attack.get_random_tongue()
-		attacking_tongue.creep(1.0)
-		pass
+		if attacking_tongue:
+			attacking_tongue.creep(1.0)
 		# Choose random direction
 		# Attack
 		# Start random cool down

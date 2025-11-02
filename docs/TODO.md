@@ -360,11 +360,11 @@
   -[x] Teeth are 128x313
   -[x] Tongue is 112 x 339
   -[x] Hand is 150 x 200
-  - make tongue attack
-    - make tongue defense
-    - make notif of block
-    - Window of block possibility = quantity of bursts * shift time * minimum burst amount
-    - Use this to do chances of spaces and other types
+  - [x] make tongue attack
+    - [x] make tongue defense
+    - [x] make notif of block
+    - [x] Window of block possibility = quantity of bursts * shift time * minimum burst amount
+    - [x] Use this to do chances of spaces and other types
       - `int rand_weighted(weights: PackedFloat32Array)`
       - Returns a random index with non-uniform weights. Prints an error and returns -1 if the array is empty.
         - `var rng = RandomNumberGenerator.new()`
@@ -373,14 +373,14 @@
       - Prints one of the four elements in `my_array`.
       - It is more likely to print "four", and less likely to print "one".
       - `print(my_array[rng.rand_weighted(weights)])`
-    - Make tween
-      - Figure out how stop() and kill differ in case you need to stop a creep tween and start a blocking tween using the same tween
-    - Make callbacks reset position
-    - Allow blocking to inturrupt
-    - Make incorrect blocking attack
+    - [x] Make tween
+      - [x] Figure out how stop() and kill differ in case you need to stop a creep tween and start a blocking tween using the same tween
+    - [x] Make callbacks reset position
+    - [x] Allow blocking to inturrupt
+    - [x] Make incorrect blocking attack
   - [x] make flick
   -[x] make finger wag
-  - implement sprites
+  - [x] implement sprites
   - connect to game
   - Multiplier
 - [ ] Groan Effects

@@ -108,7 +108,7 @@ animations = [{
 }]
 
 [node name="Flicker" type="AnimatedSprite2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_eyk4x")
 animation = &"flick"
 script = ExtResource("3_ha55g")

@@ -26,11 +26,17 @@ func _ready():
 		tongue.flicker_location = flicker_position
 		tongue.connect("attack_done", start_cooldown.emit)
 		tongue.connect("creep_done", start_attack.emit)
+		tongue.connect("block_done", start_cooldown.emit)
 	pass # Replace with function body.
 
 
 func get_random_tongue() -> AnimatedSprite2D:
-	return tongue_sprites[randi_range(0,tongue_sprites.size()-1)]
+	print("getter")
+	tongue_sprites.shuffle()
+	for tongue in tongue_sprites:
+		if tongue.is_ready == true:
+			return tongue
+	return null
 	#attacking_tongue = tongue_sprites[randi_range(0,tongue_sprites.size())]
 	#return attacking_tongue
 
