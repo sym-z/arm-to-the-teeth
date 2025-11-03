@@ -273,10 +273,11 @@ func refresh_arm_selections():
 	# Add head of player first
 	var new_head_obj = attacking_head_object_scene.instantiate()
 	new_head_obj.input_head(player.head)
-	if use_wheel == false:
-		new_head_obj.connect("attacking_head_selected", attacking_head_selected)
-	elif use_tooth_roller == true:
+	
+	if use_tooth_roller == true:
 		new_head_obj.connect("attacking_head_selected", tooth_roller.begin_game)
+	elif use_wheel == false:
+		new_head_obj.connect("attacking_head_selected", attacking_head_selected)
 		pass
 	else:
 		## Method 1, parameters are bound to the function beforehand
@@ -288,10 +289,10 @@ func refresh_arm_selections():
 		if arm.equipped == true:
 			var new_arm_obj = attacking_arm_object_scene.instantiate()
 			new_arm_obj.input_arm(arm)
-			if use_wheel == false:
-				new_arm_obj.connect("attacking_arm_selected", attacking_arm_selected)
-			elif use_tooth_roller == true:
+			if use_tooth_roller == true:
 				new_arm_obj.connect("attacking_arm_selected", tooth_roller.begin_game)
+			elif use_wheel == false:
+				new_arm_obj.connect("attacking_arm_selected", attacking_arm_selected)
 				pass
 			else:
 				## Method 2, attacking_arm_object handles sending the parameters to spin_wheel

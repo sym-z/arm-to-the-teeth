@@ -12,14 +12,15 @@ script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
 shift_timer = NodePath("Tooth Shift Interval")
-shift_interval = 0.045
-minimum_burst = 5
+shift_interval = 0.04
+minimum_burst = 2
 maximum_burst = 7
 bg = NodePath("Temp Background")
 hit_bg_color = Color(0, 1, 0, 1)
 whiff_bg_color = Color(1, 0, 0, 1)
 flicker = NodePath("Flicker")
 tongue_attack = NodePath("Background Clip Mask/Tongue Attack")
+creep_time = 1.5
 cooldown_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Cooldown")
 start_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Start")
 
@@ -65,13 +66,6 @@ position = Vector2(455, 574)
 one_shot = true
 
 [node name="Tongue Start" type="Timer" parent="Background Clip Mask/Tongue Attack/Tongue Timers"]
-one_shot = true
-
-[node name="Tongue Creep Time" type="Timer" parent="Background Clip Mask/Tongue Attack/Tongue Timers"]
-one_shot = true
-
-[node name="Tongue Attack Time" type="Timer" parent="Background Clip Mask/Tongue Attack/Tongue Timers"]
-wait_time = 0.25
 one_shot = true
 
 [node name="Gum Frame" type="Sprite2D" parent="."]

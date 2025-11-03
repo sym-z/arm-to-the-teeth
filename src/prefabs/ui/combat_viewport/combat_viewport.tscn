@@ -1783,10 +1783,11 @@ bus = &"Player"
 [node name="Enemy Speaker" type="AudioStreamPlayer" parent="."]
 bus = &"Player"
 
-[node name="Tooth Roller" parent="." instance=ExtResource("67_tbmgk")]
+[node name="Tooth Roller" parent="." node_paths=PackedStringArray("cv") instance=ExtResource("67_tbmgk")]
 visible = false
 z_index = 1
 position = Vector2(501, 69)
+cv = NodePath("..")
 
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run" to="." method="_on_run_pressed"]

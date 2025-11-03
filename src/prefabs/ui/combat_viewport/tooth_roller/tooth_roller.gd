@@ -1,12 +1,13 @@
 extends Node2D
 ## Combat Viewport Reference
 @export var cv : MarginContainer
-
+@export var testing_mode : bool = false
 @export_category("Targets")
 @export var tooth_targets : Array[AnimatedSprite2D]
 @export var tooth_target_parent : Node2D
 @export var center_tooth : AnimatedSprite2D
 @export var shift_timer : Timer
+## How fast the teeth move
 @export var shift_interval : float = 0.25
 @export_category("Target Pool")
 var target_pool : Array[int] = []
@@ -67,15 +68,24 @@ func _ready():
 	visible = false
 	build_tooth_target_arr()
 	weight_randomness()
-	create_target_pool()
+	initialize_shift_timer()
+	init_tongue()
+	
+	if testing_mode == true:
+		begin_game(null, false)
 
 
 func begin_game(limb : Variant, head : bool):
-	attacking_limb = limb
-	is_head = head
+	if testing_mode == false:
+		attacking_limb = limb
+		is_head = head
 	visible = true
-	initialize_shift_timer()
-	init_tongue()
+	target_pool.clear()
+	create_target_pool()
+	cv.change_arm_select_vis(false)
+	shift_timer.start()
+	start_timer.start()
+	
 	
 # Builds and links tooth targets together
 func build_tooth_target_arr():
@@ -128,13 +138,13 @@ func burst(amount : int, type : int):
 func initialize_shift_timer():
 	shift_timer.wait_time = shift_interval
 	shift_timer.connect("timeout", shift_teeth)
-	shift_timer.start()
+
 func shift_teeth():
 	
 	if pool_index < target_pool.size():
 		tooth_targets[0].set_new_frame(target_pool[pool_index])
 		pool_index += 1
-	else:
+	elif testing_mode == false:
 		## Minigame finished
 		shift_timer.stop()
 		# Current Idea:
@@ -147,18 +157,21 @@ func shift_teeth():
 		print("WHIFFS: ", whiffs)
 		print("TONGUE ATTACKS: ", tongue_attacks)
 		#TODO APPLY HUNGER DEBUFF
-		player_score = floor(((0.25 * hits) - (0.25 * misses)) * attacking_limb.strength)
+		player_score = floor(((0.25 * hits) - (0.25 * whiffs)) * attacking_limb.strength)
 		enemy_score = tongue_attacks * cv.opponent.damage
 		print("PLAYER: ", player_score, " ENEMY: ", enemy_score)
-		player_results()
-		
+		enemy_results()
+	else:
+		pass
 		## ENEMY ATTACK
 		
 func player_results():
-	if player_score > 0:
+	print("player results called")
+	#visible = true
+	if player_score >= 0:
 		#TODO: HIT ENEMY
 		cv.opponent.curr_health = max(0, cv.opponent.curr_health - player_score)
-		Log.add_log_message("IT DEALT " + str(player_score) + " DAMAGE.")
+		Log.add_log_message("IT DEALT " + str(int(player_score)) + " DAMAGE.")
 		cv.refresh_temp_labels()
 		if cv.opponent.curr_health <= 0:
 			cv.create_timer(cv.pause_time, play_dead_enemy_fx)
@@ -181,7 +194,9 @@ func player_results():
 				# Only emitting here because when an arm is fully eaten the signal will fire.
 		cv.root_ui.refresh_temp_labels()
 		cv.player.stat_change.emit()
-		pass
+	game_reset()
+	
+	
 
 func enemy_results():
 	if enemy_score > 0:
@@ -197,17 +212,23 @@ func enemy_results():
 			cv.root_ui.refresh_temp_labels()
 			cv.player.stat_change.emit()
 		play_enemy_attack_fx()
-		cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+		cv.create_timer(cv.pause_time, player_results)
 	else:
-		visible = false
-		cv.show_player_turn_start()
+		#visible = false
+		#game_reset()
+		#cv.show_player_turn_start()
+		player_results()
 			
+func game_reset():
+	pool_index = 0
+	attacking_tongue = null
+	pass
 func play_hurt_player_fx():
 	#TODO: ENEMY ATTACK NOISE
 	visible = false
 	cv.player_anim.hurt_bounce()
 	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_WHIFF)
-	cv.create_timer(cv.pause_time, enemy_results)
+	cv.create_timer(cv.pause_time, cv.show_player_turn_start)
 func play_hurt_enemy_fx():
 	visible = false
 	cv.player_anim.attack_bounce()
@@ -215,7 +236,7 @@ func play_hurt_enemy_fx():
 	cv.enemy_anim.animation = "hurt"
 	cv.enemy_anim.play()
 	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_HURT)
-	cv.create_timer(cv.pause_time, enemy_results)
+	cv.create_timer(cv.pause_time, cv.show_player_turn_start)
 
 func play_dead_enemy_fx():
 	visible = false
@@ -272,34 +293,37 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action("turn_left"):
 		if event.is_action_pressed("turn_left"):
 			flicker.block_left()
-			if tongue_attack.left == attacking_tongue:
-				#print("blocked left success")
-				attacking_tongue.block()
-			else:
-				attacking_tongue.force_attack()
-				tongue_attacks += 1
+			if attacking_tongue:
+				if tongue_attack.left == attacking_tongue:
+					#print("blocked left success")
+					attacking_tongue.block()
+				else:
+					attacking_tongue.force_attack()
+					tongue_attacks += 1
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
 	elif event.is_action("turn_right"):
 		if event.is_action_pressed("turn_right"):
 			flicker.block_right()
-			if tongue_attack.right == attacking_tongue:
-				#print("blocked right success")
-				attacking_tongue.block()
-			else:
-				attacking_tongue.force_attack()
-				tongue_attacks += 1
+			if attacking_tongue:
+				if tongue_attack.right == attacking_tongue:
+					#print("blocked right success")
+					attacking_tongue.block()
+				else:
+					attacking_tongue.force_attack()
+					tongue_attacks += 1
 		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
 	elif event.is_action("move_back"):
 		if event.is_action_pressed("move_back"):
 			flicker.block_down()
-			if tongue_attack.down == attacking_tongue:
-				#print("blocked down success")
-				attacking_tongue.block()
-			else:
-				attacking_tongue.force_attack()
-				tongue_attacks += 1
+			if attacking_tongue:
+				if tongue_attack.down == attacking_tongue:
+					#print("blocked down success")
+					attacking_tongue.block()
+				else:
+					attacking_tongue.force_attack()
+					tongue_attacks += 1
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
 	
@@ -310,12 +334,12 @@ func init_tongue():
 	tongue_attack.connect("start_attack", creep_to_attack)
 	# After random time, call first tongue attack
 	start_timer.wait_time = randf_range(0.25,1.0)
-	start_timer.start()
+	
 	pass
 
 
 func tongue_trigger():
-	#print("TRIGGER")
+	print("TRIGGER")
 	#print(pool_index*shift_interval, " / " ,target_pool.size() * shift_interval)
 	var current_time : float = pool_index*shift_interval
 	var total_time : float = target_pool.size() * shift_interval

@@ -16,7 +16,7 @@ func _ready():
 
 
 func attack(attack_time : float):
-	print("IM ATTACKING")
+	#print("IM ATTACKING")
 	animation = "attack"
 	play()
 	blockable = false

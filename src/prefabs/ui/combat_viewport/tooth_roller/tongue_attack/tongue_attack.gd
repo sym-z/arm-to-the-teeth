@@ -31,7 +31,7 @@ func _ready():
 
 
 func get_random_tongue() -> AnimatedSprite2D:
-	print("getter")
+	#print("getter")
 	tongue_sprites.shuffle()
 	for tongue in tongue_sprites:
 		if tongue.is_ready == true:
