@@ -381,11 +381,13 @@
   - [x] make flick
   -[x] make finger wag
   - [x] implement sprites
-  - [ ] connect to game
+  - [x] connect to game
   - [x] Multiplier
   - [ ] Difficulty Scaling
   - [ ] Sounds for flick, hit, whiff, tongue hit, tongue block
+    - [ ] Apply the sounds that were being used for the wheel first
   - [ ] Screenshake
+    - [ ] Can be done by applying a shader to the root node for a small duration then removing it and making the children that I want to shake inherit their material from the parent
 - [x] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
