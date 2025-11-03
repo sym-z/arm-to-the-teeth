@@ -381,9 +381,10 @@
   - [x] make flick
   -[x] make finger wag
   - [x] implement sprites
-  - connect to game
-  - Multiplier
-- [ ] Groan Effects
+  - [ ] connect to game
+  - [x] Multiplier
+  - [ ] Difficulty Scaling
+- [x] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
   - Meters, COD Medal Type framing
@@ -395,4 +396,5 @@
 - [ ] Hunger shows meter
 - [ ] Number scarce stat menu
 - [ ] Change stings to be groans so you can have multiple sting types
+- [ ] Change instructions menu
 - [ ] Multi-Block

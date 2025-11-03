@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dw88egkkpye1w" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.tscn" id="5_hd4jn"]
 [ext_resource type="PackedScene" uid="uid://dyd8s5fvod4qd" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue_attack.tscn" id="6_h1jm4"]
 
-[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "creep_timer", "attack_timer", "cooldown_timer", "start_timer")]
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "cooldown_timer", "start_timer")]
 script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
@@ -20,8 +20,6 @@ hit_bg_color = Color(0, 1, 0, 1)
 whiff_bg_color = Color(1, 0, 0, 1)
 flicker = NodePath("Flicker")
 tongue_attack = NodePath("Background Clip Mask/Tongue Attack")
-creep_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Creep Time")
-attack_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Attack Time")
 cooldown_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Cooldown")
 start_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Start")
 

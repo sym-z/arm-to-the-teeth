@@ -35,11 +35,24 @@ var weights : PackedFloat32Array = []
 
 @export_category("Tongue Attack")
 @export var tongue_attack : Node2D
-@export var creep_timer : Timer
-@export var attack_timer : Timer
+@export var creep_time : float = 1.0
+@export var attack_time : float = 0.25
 @export var cooldown_timer : Timer
 @export var start_timer : Timer
+# How many times the player has been hit
+var tongue_attacks : int = 0
 var attacking_tongue : AnimatedSprite2D = null
+
+
+var hits : float = 0
+var misses : float = 0
+var whiffs : float = 0 
+
+var hit_mult : float = 1.0
+var whiff_mult : float = 1.0
+
+# Last hit read
+var last_action : TYPE = TYPE.MISS
 func _ready():
 	build_tooth_target_arr()
 	weight_randomness()
@@ -105,57 +118,87 @@ func shift_teeth():
 	if pool_index < target_pool.size():
 		tooth_targets[0].set_new_frame(target_pool[pool_index])
 		pool_index += 1
-	#else:
+	else:
 		## Minigame finished
-		#print("done")
+		shift_timer.stop()
+		# Current Idea:
+		# 1 Hit is + 0.25 * Weapon Strength
+		# 1 Whiff is - 0.25 * weapon strength
+		# if final calc is negative, hurt the attacking limb
+		# Apply # of hits from tongues * enemy strength to attacking arm
+		print("HITS: ", hits)
+		print("MISSES: ", misses)
+		print("WHIFFS: ", whiffs)
+		print("TONGUE ATTACKS", tongue_attacks)
+		var player_score = ((0.25 * hits) - (0.25 * misses)) #* player_strength
+		var enemy_score = tongue_attacks #* enemy_strength
+		print("PLAYER: ", player_score, " ENEMY: ", enemy_score)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_forward"):
 		flicker.flick()
 		match center_tooth.frame:
 			TYPE.HIT:
-				print("hit")
+				#print("hit")
 				bg.modulate = hit_bg_color
+				hits += 1 * hit_mult
+				if last_action == TYPE.HIT:
+					hit_mult += 0.25
+				else:
+					last_action = TYPE.HIT
+					whiff_mult = 1.0
+				# Add to hit mult or reset whiff mult
 			TYPE.MISS:
-				print("miss")
+				#print("miss")
 				bg.modulate = miss_bg_color
+				misses += 1 
+				# Reset both mults
+				hit_mult = 1.0
+				whiff_mult = 1.0
 			TYPE.WHIFF:
-				print("whiff")
+				#print("whiff")
 				bg.modulate = whiff_bg_color
+				whiffs += 1 * whiff_mult
+				if last_action == TYPE.WHIFF:
+					whiff_mult += 0.25
+				else:
+					last_action == TYPE.WHIFF
+					hit_mult = 1.0
+				# Reset hit mult or contribute to whiff mult
 		var frame_ref = center_tooth.frame
 		center_tooth.animation = "broken"
 		center_tooth.frame = frame_ref
 	elif event.is_action("turn_left"):
 		if event.is_action_pressed("turn_left"):
 			flicker.block_left()
-			#if attacking_tongue and attacking_tongue == tongue_attack.left and attacking_tongue.blockable == true:
-				#print("blockt left successfully")
 			if tongue_attack.left == attacking_tongue:
-				print("blocked left success")
+				#print("blocked left success")
 				attacking_tongue.block()
 			else:
 				attacking_tongue.force_attack()
-				# TODO Reset tongue
+				tongue_attacks += 1
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
 	elif event.is_action("turn_right"):
 		if event.is_action_pressed("turn_right"):
 			flicker.block_right()
 			if tongue_attack.right == attacking_tongue:
-				print("blocked right success")
+				#print("blocked right success")
 				attacking_tongue.block()
 			else:
 				attacking_tongue.force_attack()
+				tongue_attacks += 1
 		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
 	elif event.is_action("move_back"):
 		if event.is_action_pressed("move_back"):
 			flicker.block_down()
 			if tongue_attack.down == attacking_tongue:
-				print("blocked down success")
+				#print("blocked down success")
 				attacking_tongue.block()
 			else:
 				attacking_tongue.force_attack()
+				tongue_attacks += 1
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
 	
@@ -171,28 +214,29 @@ func init_tongue():
 
 
 func tongue_trigger():
-	print("TRIGGER")
+	#print("TRIGGER")
 	#print(pool_index*shift_interval, " / " ,target_pool.size() * shift_interval)
 	var current_time : float = pool_index*shift_interval
 	var total_time : float = target_pool.size() * shift_interval
 	
-	var attack_window : float = creep_timer.wait_time + attack_timer.wait_time
-	print("curr", current_time)
-	print("total", total_time)
-	print("window", attack_window)
+	var attack_window : float = creep_time + attack_time
+	#print("curr", current_time)
+	#print("total", total_time)
+	#print("window", attack_window)
 	if attack_window < total_time - current_time:
-		print("ATTEMPT")
+		#print("ATTEMPT")
 		attacking_tongue = tongue_attack.get_random_tongue()
 		if attacking_tongue:
-			attacking_tongue.creep(1.0)
+			attacking_tongue.creep(creep_time)
 		# Choose random direction
 		# Attack
 		# Start random cool down
 
 func tongue_cooldown():
-	print("cooling down")
+	#print("cooling down")
 	cooldown_timer.wait_time = randf_range(1.0,1.5)
 	cooldown_timer.start()
 	
 func creep_to_attack():
-	attacking_tongue.attack(0.25)
+	attacking_tongue.attack(attack_time)
+	tongue_attacks += 1

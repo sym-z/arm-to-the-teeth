@@ -42,13 +42,13 @@ func creep(creep_time : float):
 	visible = true
 	#TODO TWEEN
 	if tween:
-		print("killing")
+		#print("killing")
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self,"global_position", flicker_location.global_position, creep_time)
 	tween.tween_callback(creep_cleanup)
 	blockable = true
-	print("CREEPING")
+	#print("CREEPING")
 	
 	#TODO: DO THIS IN TWEEN CALLBACK
 	
@@ -66,14 +66,14 @@ func block():
 		tween.tween_property(self, "global_position", start_location.global_position, retreat_time)
 		tween.tween_callback(block_cleanup)
 		tween.play()
-		print("BLOCKED")
+		#print("BLOCKED")
 
 func block_cleanup():
 	block_done.emit()
 	reset()
 	
 func reset():
-	print("RESETTING")
+	#print("RESETTING")
 	animation = "default"
 	play()
 	blockable = false
