@@ -1,4 +1,6 @@
 extends Node2D
+## Combat Viewport Reference
+@export var cv : MarginContainer
 
 @export_category("Targets")
 @export var tooth_targets : Array[AnimatedSprite2D]
@@ -53,14 +55,28 @@ var whiff_mult : float = 1.0
 
 # Last hit read
 var last_action : TYPE = TYPE.MISS
+
+var player_score = 0
+var enemy_score = 0
+
+
+var attacking_limb
+var is_head : bool
+#TODO: TUNE DIFFICULTY PER FLOOR
 func _ready():
+	visible = false
 	build_tooth_target_arr()
 	weight_randomness()
 	create_target_pool()
-	initialize_shift_timer()
-	# TODO: maybe move up
-	init_tongue()
 
+
+func begin_game(limb : Variant, head : bool):
+	attacking_limb = limb
+	is_head = head
+	visible = true
+	initialize_shift_timer()
+	init_tongue()
+	
 # Builds and links tooth targets together
 func build_tooth_target_arr():
 	for i in range(tooth_target_parent.get_child_count()):
@@ -129,11 +145,96 @@ func shift_teeth():
 		print("HITS: ", hits)
 		print("MISSES: ", misses)
 		print("WHIFFS: ", whiffs)
-		print("TONGUE ATTACKS", tongue_attacks)
-		var player_score = ((0.25 * hits) - (0.25 * misses)) #* player_strength
-		var enemy_score = tongue_attacks #* enemy_strength
+		print("TONGUE ATTACKS: ", tongue_attacks)
+		#TODO APPLY HUNGER DEBUFF
+		player_score = floor(((0.25 * hits) - (0.25 * misses)) * attacking_limb.strength)
+		enemy_score = tongue_attacks * cv.opponent.damage
 		print("PLAYER: ", player_score, " ENEMY: ", enemy_score)
+		player_results()
+		
+		## ENEMY ATTACK
+		
+func player_results():
+	if player_score > 0:
+		#TODO: HIT ENEMY
+		cv.opponent.curr_health = max(0, cv.opponent.curr_health - player_score)
+		Log.add_log_message("IT DEALT " + str(player_score) + " DAMAGE.")
+		cv.refresh_temp_labels()
+		if cv.opponent.curr_health <= 0:
+			cv.create_timer(cv.pause_time, play_dead_enemy_fx)
+		else:
+			cv.create_timer(cv.pause_time, play_hurt_enemy_fx)
+	else:
+		if is_head == true:
+			Log.add_log_message("IT WHIFFED AND DEALTH " + str(-player_score) + " DAMAGE TO ITS HEAD.")
+			attacking_limb.damage(-player_score)
+			# Refresh root_ui's labels
+			# Check for player death.
+			cv.check_player_death()
+		else:
+			attacking_limb.condition -= -player_score
+			if attacking_limb.condition <= 0:
+				Log.add_log_message("IT WHIFFED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
+				cv.root_ui.arm_fully_eaten(attacking_limb)
+			else:
+				Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(-player_score) + " CONDITION.")
+				# Only emitting here because when an arm is fully eaten the signal will fire.
+		cv.root_ui.refresh_temp_labels()
+		cv.player.stat_change.emit()
+		pass
 
+func enemy_results():
+	if enemy_score > 0:
+		if is_head == true:
+			attacking_limb.damage(enemy_score*cv.opponent.damage)
+			cv.check_player_death()
+			cv.root_ui.refresh_temp_labels()
+			cv.player.stat_change.emit()
+		else:
+			attacking_limb.condition -= enemy_score*cv.opponent.damage
+			if attacking_limb.condition <= 0:
+				cv.root_ui.arm_fully_eaten(attacking_limb)
+			cv.root_ui.refresh_temp_labels()
+			cv.player.stat_change.emit()
+		play_enemy_attack_fx()
+		cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	else:
+		visible = false
+		cv.show_player_turn_start()
+			
+func play_hurt_player_fx():
+	#TODO: ENEMY ATTACK NOISE
+	visible = false
+	cv.player_anim.hurt_bounce()
+	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_WHIFF)
+	cv.create_timer(cv.pause_time, enemy_results)
+func play_hurt_enemy_fx():
+	visible = false
+	cv.player_anim.attack_bounce()
+	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_ATT)
+	cv.enemy_anim.animation = "hurt"
+	cv.enemy_anim.play()
+	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_HURT)
+	cv.create_timer(cv.pause_time, enemy_results)
+
+func play_dead_enemy_fx():
+	visible = false
+	cv.player_anim.attack_bounce()
+	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_CRIT)
+	cv.enemy_anim.animation = "death"
+	cv.enemy_anim.play()
+	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_DEATH)
+	cv.create_timer(cv.pause_time,cv.check_enemy_death)
+
+func play_enemy_attack_fx():
+	visible = false
+	cv.player_anim.hurt_bounce()
+	cv.show_player_turn_start()
+	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_HURT)
+	cv.enemy_anim.animation = "attack"
+	cv.enemy_anim.play()
+
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_forward"):
 		flicker.flick()

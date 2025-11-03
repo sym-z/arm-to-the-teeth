@@ -1,7 +1,8 @@
 extends MarginContainer
 
 @export var root_ui : CanvasLayer
-@export var use_wheel : bool = true
+@export var use_wheel : bool = false
+@export var use_tooth_roller : bool = true
 var player : Node
 var map : Node
 var opponent : Enemy 
@@ -22,6 +23,9 @@ var enemy_dead : bool = false
 
 @export_category("Wheel Roller")
 @export var wheel_roller : MarginContainer
+
+@export_category("Tooth Roller")
+@export var tooth_roller : Node2D
 
 @export_category("Finger React")
 @export var finger_react : MarginContainer
@@ -271,6 +275,9 @@ func refresh_arm_selections():
 	new_head_obj.input_head(player.head)
 	if use_wheel == false:
 		new_head_obj.connect("attacking_head_selected", attacking_head_selected)
+	elif use_tooth_roller == true:
+		new_head_obj.connect("attacking_head_selected", tooth_roller.begin_game)
+		pass
 	else:
 		## Method 1, parameters are bound to the function beforehand
 		new_head_obj.connect("attacking_head_selected", wheel_roller.spin_wheel.bindv([new_head_obj.head_reference, true]))
@@ -283,6 +290,9 @@ func refresh_arm_selections():
 			new_arm_obj.input_arm(arm)
 			if use_wheel == false:
 				new_arm_obj.connect("attacking_arm_selected", attacking_arm_selected)
+			elif use_tooth_roller == true:
+				new_arm_obj.connect("attacking_arm_selected", tooth_roller.begin_game)
+				pass
 			else:
 				## Method 2, attacking_arm_object handles sending the parameters to spin_wheel
 				new_arm_obj.connect("attacking_arm_selected", wheel_roller.spin_wheel)
@@ -392,7 +402,6 @@ func _on_attacking_die_roller_roll_results_ready(passed, number_rolled, dc):
 		#endregion
 	#endregion
 	#region Enemy's Turn
-
 
 # Enemy rolls to attempt to attack player
 func enemy_attack_roll():

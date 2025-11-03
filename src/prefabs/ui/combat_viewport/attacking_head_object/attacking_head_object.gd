@@ -5,7 +5,7 @@ extends PanelContainer
 var head_reference : Head
 
 # Gives the reference back to the combat viewport of the head to use for combat
-signal attacking_head_selected(h : Head)
+signal attacking_head_selected()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,4 +21,4 @@ func input_head(h : Head):
 	head_reference = h
 
 func _on_select_button_pressed():
-	attacking_head_selected.emit()
+	attacking_head_selected.emit(head_reference,true)

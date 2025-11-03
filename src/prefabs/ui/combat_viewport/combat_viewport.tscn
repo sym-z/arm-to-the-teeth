@@ -1025,7 +1025,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "finger_react", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
+[node name="Combat Viewport" type="MarginContainer" node_paths=PackedStringArray("dialog_box", "button_container", "attack_button", "run_button", "att_die_roller", "wheel_roller", "tooth_roller", "finger_react", "player_anim", "enemy_anim", "arm_selection_window", "arm_container", "attack_cancel_button", "player_damage_selection_window", "damage_limb_container", "run_direction_selection_window", "cancel_button", "up_button", "down_button", "left_button", "right_button", "temp_e_health", "temp_e_damage", "e_health_bar", "p_speaker", "e_speaker")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1040,6 +1040,7 @@ attack_button = NodePath("Dialog Box/Dialog Box Panel Container/MarginContainer/
 run_button = NodePath("Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices/Run")
 att_die_roller = NodePath("Dialog Box/Dialog Box Panel Container/Attacking Die Roller")
 wheel_roller = NodePath("Wheel Roller")
+tooth_roller = NodePath("Tooth Roller")
 finger_react = NodePath("Finger React")
 player_anim = NodePath("Player Sprite")
 enemy_anim = NodePath("Enemy Sprite")
