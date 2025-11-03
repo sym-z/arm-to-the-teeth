@@ -384,6 +384,8 @@
   - [ ] connect to game
   - [x] Multiplier
   - [ ] Difficulty Scaling
+  - [ ] Sounds for flick, hit, whiff, tongue hit, tongue block
+  - [ ] Screenshake
 - [x] Groan Effects
 - [x] Eye Shuts when map closes
 - [ ] Some way of letting the player choose the correct arm to eat, they should know an arm's power
