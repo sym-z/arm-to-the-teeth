@@ -279,6 +279,7 @@
   - [ ] Head health
 - [ ] Add padding to font and re-export
 - [x] Fleeing combat no longer re enters combat
+
 ### DONE
 - [x] Turn off arrow key input for Context menu
 - [x] Head should be in charge of tooth count
@@ -348,6 +349,9 @@
 - [x] Add some randomization to the pitch of the groans
 - [ ] Possibly use an exported array for the different sting sounds
 
+
+# BUGFIX
+- [ ] Tongue still attacks after game is up!
 ###  Goals for session after 10/22:
 - [ ] Replace Wheel Roller
   - [x] Make basic prototype sprites
