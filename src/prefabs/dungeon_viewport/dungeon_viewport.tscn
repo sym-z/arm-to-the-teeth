@@ -3235,6 +3235,7 @@ layer = -1
 
 [node name="Vision Bounds" type="AnimatedSprite2D" parent="CanvasLayer"]
 modulate = Color(0.51, 0.51, 0.51, 1)
+material = ExtResource("2_hys4q")
 position = Vector2(960, 530)
 sprite_frames = SubResource("SpriteFrames_wqhcc")
 autoplay = "default"
