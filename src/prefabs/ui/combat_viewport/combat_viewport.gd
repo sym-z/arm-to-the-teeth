@@ -527,21 +527,21 @@ func drop_loot(from_chest : bool = false):
 	if Globals.debug_combat == true:
 		loot_roll = 20
 		coin_flip = 1
-	if true:
-		curr_cell.contents = Cell.TYPE.ARM
-		# Add to map arm atlas
-		var great_arm : Arm = Arm.new()
-		great_arm.max_condition = 15 + Globals.curr_floor
-		great_arm.condition = great_arm.max_condition
-		great_arm.strength = 4 + Globals.curr_floor
-		map.arm_atlas[curr_cell.position] = great_arm
-		root_ui.mini_map.set_icon(Cell.TYPE.ARM, curr_cell.position)
-		if from_chest == false:
-			Log.add_log_message("THE ENEMY DROPPED RARE LOOT")
-		else:
-			Log.add_log_message("THE CHEST OPENS TO REVEAL RARE TREASURES")
-			# Tell the viewport to refresh, but don't allow the UI to think that the cell is empty, or allow the minimap to erase the icon at this location
-			player.item_partial_pickup.emit()
+	#if true:
+		#curr_cell.contents = Cell.TYPE.ARM
+		## Add to map arm atlas
+		#var great_arm : Arm = Arm.new()
+		#great_arm.max_condition = 15 + Globals.curr_floor
+		#great_arm.condition = great_arm.max_condition
+		#great_arm.strength = 4 + Globals.curr_floor
+		#map.arm_atlas[curr_cell.position] = great_arm
+		#root_ui.mini_map.set_icon(Cell.TYPE.ARM, curr_cell.position)
+		#if from_chest == false:
+			#Log.add_log_message("THE ENEMY DROPPED RARE LOOT")
+		#else:
+			#Log.add_log_message("THE CHEST OPENS TO REVEAL RARE TREASURES")
+			## Tell the viewport to refresh, but don't allow the UI to think that the cell is empty, or allow the minimap to erase the icon at this location
+			#player.item_partial_pickup.emit()
 	elif loot_roll >= 19 or from_chest:
 		# Rare
 		# Great Arm / 8 Teeth
