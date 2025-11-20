@@ -406,3 +406,5 @@
 - [ ] Change stings to be groans so you can have multiple sting types
 - [ ] Change instructions menu
 - [ ] Multi-Block
+- [ ] Arrows on cieling saying where you can go?
+- [ ] Gate sound inturrupted by groans

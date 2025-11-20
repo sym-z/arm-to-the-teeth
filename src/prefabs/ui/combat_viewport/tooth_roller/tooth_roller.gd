@@ -156,8 +156,10 @@ func shift_teeth():
 		print("MISSES: ", misses)
 		print("WHIFFS: ", whiffs)
 		print("TONGUE ATTACKS: ", tongue_attacks)
+		print("HIT MULT ", hit_mult )
+		print("WHIFF MULT ", whiff_mult)
 		#TODO APPLY HUNGER DEBUFF
-		player_score = floor(((0.25 * hits) - (0.25 * whiffs)) * attacking_limb.strength)
+		player_score = floor(((hits) - (whiffs)) * attacking_limb.strength)
 		enemy_score = tongue_attacks * cv.opponent.damage
 		print("PLAYER: ", player_score, " ENEMY: ", enemy_score)
 		enemy_results()
@@ -174,9 +176,11 @@ func player_results():
 		Log.add_log_message("IT DEALT " + str(int(player_score)) + " DAMAGE.")
 		cv.refresh_temp_labels()
 		if cv.opponent.curr_health <= 0:
-			cv.create_timer(cv.pause_time, play_dead_enemy_fx)
+			#cv.create_timer(cv.pause_time, play_dead_enemy_fx)
+			play_dead_enemy_fx()
 		else:
-			cv.create_timer(cv.pause_time, play_hurt_enemy_fx)
+			#cv.create_timer(cv.pause_time, play_hurt_enemy_fx)
+			play_hurt_enemy_fx()
 	else:
 		if is_head == true:
 			Log.add_log_message("IT WHIFFED AND DEALTH " + str(-player_score) + " DAMAGE TO ITS HEAD.")
@@ -220,8 +224,20 @@ func enemy_results():
 		player_results()
 			
 func game_reset():
+	print("game reset called")
 	pool_index = 0
 	attacking_tongue = null
+	cooldown_timer.stop()
+	start_timer.stop()
+	hits = 0
+	misses = 0
+	whiffs = 0
+	hit_mult = 1.0
+	whiff_mult = 1.0
+	last_action = TYPE.MISS
+	tongue_attacks = 0
+	player_score = 0
+	enemy_score = 0
 	pass
 func play_hurt_player_fx():
 	#TODO: ENEMY ATTACK NOISE
@@ -229,14 +245,20 @@ func play_hurt_player_fx():
 	cv.player_anim.hurt_bounce()
 	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_WHIFF)
 	cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+
 func play_hurt_enemy_fx():
 	visible = false
-	cv.player_anim.attack_bounce()
-	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_ATT)
-	cv.enemy_anim.animation = "hurt"
-	cv.enemy_anim.play()
-	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_HURT)
-	cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	print("PLAYIN ENEMY HURT", player_score)
+	if player_score > 0:
+		cv.player_anim.attack_bounce()
+		AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_ATT)
+		cv.enemy_anim.animation = "hurt"
+		cv.enemy_anim.play()
+		AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_HURT)
+		cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	else:
+		cv.show_player_turn_start()
+
 
 func play_dead_enemy_fx():
 	visible = false
@@ -247,13 +269,16 @@ func play_dead_enemy_fx():
 	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_DEATH)
 	cv.create_timer(cv.pause_time,cv.check_enemy_death)
 
+
 func play_enemy_attack_fx():
 	visible = false
-	cv.player_anim.hurt_bounce()
-	cv.show_player_turn_start()
-	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_HURT)
-	cv.enemy_anim.animation = "attack"
-	cv.enemy_anim.play()
+	if enemy_score > 0:
+		cv.player_anim.hurt_bounce()
+		cv.show_player_turn_start()
+		AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_HURT)
+		cv.enemy_anim.animation = "attack"
+		cv.enemy_anim.play()
+
 
 	
 func _input(event: InputEvent) -> void:
@@ -263,9 +288,9 @@ func _input(event: InputEvent) -> void:
 			TYPE.HIT:
 				#print("hit")
 				bg.modulate = hit_bg_color
-				hits += 1 * hit_mult
+				hits += 1 * log(hit_mult)
 				if last_action == TYPE.HIT:
-					hit_mult += 0.25
+					hit_mult += 1.0
 				else:
 					last_action = TYPE.HIT
 					whiff_mult = 1.0
@@ -280,9 +305,9 @@ func _input(event: InputEvent) -> void:
 			TYPE.WHIFF:
 				#print("whiff")
 				bg.modulate = whiff_bg_color
-				whiffs += 1 * whiff_mult
+				whiffs += 1 * log(whiff_mult)
 				if last_action == TYPE.WHIFF:
-					whiff_mult += 0.25
+					whiff_mult += 1.0
 				else:
 					last_action == TYPE.WHIFF
 					hit_mult = 1.0
@@ -326,7 +351,8 @@ func _input(event: InputEvent) -> void:
 					tongue_attacks += 1
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
-	
+
+
 func init_tongue():
 	cooldown_timer.connect("timeout", tongue_trigger)
 	start_timer.connect("timeout", tongue_trigger)
@@ -339,7 +365,7 @@ func init_tongue():
 
 
 func tongue_trigger():
-	print("TRIGGER")
+	#print("TRIGGER")
 	#print(pool_index*shift_interval, " / " ,target_pool.size() * shift_interval)
 	var current_time : float = pool_index*shift_interval
 	var total_time : float = target_pool.size() * shift_interval

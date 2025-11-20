@@ -269,6 +269,7 @@ func _on_player_player_spawned():
 	place_exit()
 	# Place Items
 	place_items_randomly(Cell.TYPE.TOOTH,10)
+	#place_items_randomly(Cell.TYPE.ARM,2)
 	place_items_randomly(Cell.TYPE.ARM,2)
 	# Place Enemies
 	#TODO: Factor in floor level with enemy spawns
