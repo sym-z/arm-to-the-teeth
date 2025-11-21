@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqpmlo0tckkq4"]
+
+[ext_resource type="Shader" uid="uid://bl3bygdbmxubt" path="res://shaders/flicker_hurt.gdshader" id="1_lx0wn"]
+
+[resource]
+shader = ExtResource("1_lx0wn")

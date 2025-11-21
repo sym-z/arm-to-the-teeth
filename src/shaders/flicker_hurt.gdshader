@@ -2,13 +2,12 @@ shader_type canvas_item;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	VERTEX.x += sin(TIME);
-	VERTEX.y += cos(TIME);
+	VERTEX.xy += sin(TIME * 100.0) *7.0;
 }
 
 void fragment() {
-	COLOR.rgb *= abs(sin(TIME));
 	// Called for every pixel the material is visible on.
+	COLOR.r += 50.0;
 }
 
 //void light() {

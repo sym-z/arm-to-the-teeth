@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=209 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -28,6 +28,7 @@
 [ext_resource type="Theme" uid="uid://casrwxgiyddvj" path="res://themes/viewport_header/viewport_header_margin_container.tres" id="13_xw6rm"]
 [ext_resource type="Texture2D" uid="uid://chk7uge40kles" path="res://assets/visual/ui/eye_transition/eye_transition_12.png" id="14_aoepl"]
 [ext_resource type="Theme" uid="uid://6j2no5j5cswb" path="res://themes/viewport_header/viewport_header_label.tres" id="14_gtvwi"]
+[ext_resource type="Shader" uid="uid://sfippdl8r4gq" path="res://shaders/ui_item_wiggle.gdshader" id="14_r731v"]
 [ext_resource type="PackedScene" uid="uid://cs01wd2aki26b" path="res://prefabs/ui/arm_item/arm_item.tscn" id="14_xqkvd"]
 [ext_resource type="Shader" uid="uid://dge0sb7olbj0u" path="res://shaders/teeth.gdshader" id="15_76mk3"]
 [ext_resource type="PackedScene" uid="uid://c2f1a8763qesj" path="res://prefabs/ui/mini_map/mini_map.tscn" id="15_gtvwi"]
@@ -84,6 +85,9 @@
 [ext_resource type="Shader" uid="uid://s6ncujlidhbc" path="res://shaders/viewport.gdshader" id="75_ukgtl"]
 [ext_resource type="Script" uid="uid://pb807wos3bfy" path="res://prefabs/ui/viewport_shader/viewport_shader.gd" id="76_6bp04"]
 [ext_resource type="Texture2D" uid="uid://ou7e6kd78irn" path="res://icon.svg" id="77_u5l0a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3cfc"]
+shader = ExtResource("14_r731v")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rod3w"]
 atlas = ExtResource("27_b1ex4")
@@ -677,6 +681,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nc7n"]
+shader = ExtResource("14_r731v")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5l0a"]
 atlas = ExtResource("29_3mq63")
 region = Rect2(0, 0, 112, 224)
@@ -733,6 +740,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xevvd"]
+shader = ExtResource("14_r731v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmh41"]
+shader = ExtResource("14_r731v")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4cn4"]
 atlas = ExtResource("19_38ywx")
@@ -1369,6 +1382,7 @@ vertical_alignment = 1
 
 [node name="Head" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("ShaderMaterial_p3cfc")
 position = Vector2(1677, 299)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xqkvd")
@@ -1380,6 +1394,7 @@ animation = &"overlay"
 
 [node name="Stomach" type="AnimatedSprite2D" parent="Stat Showcase/Head"]
 modulate = Color(1, 1, 1, 0.784314)
+use_parent_material = true
 position = Vector2(-10.25, 104)
 sprite_frames = SubResource("SpriteFrames_l1g0r")
 
@@ -1397,6 +1412,7 @@ sprite_frames = SubResource("SpriteFrames_l1g0r")
 
 [node name="Left Arm" type="AnimatedSprite2D" parent="Stat Showcase" node_paths=PackedStringArray("eat_icon", "mouse_field", "root_ui", "shadow")]
 modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("ShaderMaterial_2nc7n")
 position = Vector2(152, 277)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
@@ -1436,6 +1452,7 @@ flip_h = true
 
 [node name="Right Arm" type="AnimatedSprite2D" parent="Stat Showcase" node_paths=PackedStringArray("eat_icon", "mouse_field", "root_ui", "shadow")]
 modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("ShaderMaterial_xevvd")
 position = Vector2(368, 277)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
@@ -1468,6 +1485,7 @@ sprite_frames = SubResource("SpriteFrames_q0gkn")
 
 [node name="Eye" type="AnimatedSprite2D" parent="Stat Showcase" node_paths=PackedStringArray("root_ui", "mouse_field", "mini_map", "shadow")]
 modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("ShaderMaterial_qmh41")
 position = Vector2(261, 742)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_frrpa")

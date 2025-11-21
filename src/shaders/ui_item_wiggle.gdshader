@@ -7,7 +7,6 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR.rgb *= abs(sin(TIME));
 	// Called for every pixel the material is visible on.
 }
 

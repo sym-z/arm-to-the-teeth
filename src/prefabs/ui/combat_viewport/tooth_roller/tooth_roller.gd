@@ -407,4 +407,5 @@ func tongue_cooldown():
 func creep_to_attack():
 	attacking_tongue.attack(attack_time)
 	tongue_attack_speaker.play()
+	flicker.play_hurt()
 	tongue_attacks += 1
