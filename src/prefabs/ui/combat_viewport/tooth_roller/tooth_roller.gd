@@ -63,6 +63,11 @@ var enemy_score = 0
 
 var attacking_limb
 var is_head : bool
+
+@export_category("Speakers")
+@export var hit_speaker : AudioStreamPlayer
+@export var whiff_speaker : AudioStreamPlayer
+@export var tongue_attack_speaker : AudioStreamPlayer
 #TODO: TUNE DIFFICULTY PER FLOOR
 func _ready():
 	visible = false
@@ -160,6 +165,12 @@ func shift_teeth():
 		print("WHIFF MULT ", whiff_mult)
 		#TODO APPLY HUNGER DEBUFF
 		player_score = floor(((hits) - (whiffs)) * attacking_limb.strength)
+		# Make it so if the player lands at least one hit/one whiff something happens.
+		if player_score == 0:
+			if hits - whiffs > 0:
+				player_score = 1
+			elif hits - whiffs < 0:
+				player_score = -1
 		enemy_score = tongue_attacks * cv.opponent.damage
 		print("PLAYER: ", player_score, " ENEMY: ", enemy_score)
 		enemy_results()
@@ -238,6 +249,7 @@ func game_reset():
 	tongue_attacks = 0
 	player_score = 0
 	enemy_score = 0
+	bg.modulate=Color(1,1,1,1)
 	pass
 func play_hurt_player_fx():
 	#TODO: ENEMY ATTACK NOISE
@@ -288,12 +300,13 @@ func _input(event: InputEvent) -> void:
 			TYPE.HIT:
 				#print("hit")
 				bg.modulate = hit_bg_color
-				hits += 1 * log(hit_mult)
+				hits += 1 * hit_mult
 				if last_action == TYPE.HIT:
-					hit_mult += 1.0
+					hit_mult += 0.2
 				else:
 					last_action = TYPE.HIT
 					whiff_mult = 1.0
+				hit_speaker.play()
 				# Add to hit mult or reset whiff mult
 			TYPE.MISS:
 				#print("miss")
@@ -305,9 +318,9 @@ func _input(event: InputEvent) -> void:
 			TYPE.WHIFF:
 				#print("whiff")
 				bg.modulate = whiff_bg_color
-				whiffs += 1 * log(whiff_mult)
+				whiffs += 1*whiff_mult
 				if last_action == TYPE.WHIFF:
-					whiff_mult += 1.0
+					whiff_mult += 0.2
 				else:
 					last_action == TYPE.WHIFF
 					hit_mult = 1.0
@@ -324,6 +337,7 @@ func _input(event: InputEvent) -> void:
 					attacking_tongue.block()
 				else:
 					attacking_tongue.force_attack()
+					tongue_attack_speaker.play()
 					tongue_attacks += 1
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
@@ -336,6 +350,7 @@ func _input(event: InputEvent) -> void:
 					attacking_tongue.block()
 				else:
 					attacking_tongue.force_attack()
+					tongue_attack_speaker.play()
 					tongue_attacks += 1
 		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
@@ -348,6 +363,7 @@ func _input(event: InputEvent) -> void:
 					attacking_tongue.block()
 				else:
 					attacking_tongue.force_attack()
+					tongue_attack_speaker.play()
 					tongue_attacks += 1
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
@@ -390,4 +406,5 @@ func tongue_cooldown():
 	
 func creep_to_attack():
 	attacking_tongue.attack(attack_time)
+	tongue_attack_speaker.play()
 	tongue_attacks += 1

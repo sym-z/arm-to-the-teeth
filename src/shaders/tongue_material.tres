@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://yb18qg4hd48n"]
+
+[ext_resource type="Shader" uid="uid://cgxfcrrdu63sc" path="res://shaders/tongue.gdshader" id="1_cbanp"]
+
+[resource]
+shader = ExtResource("1_cbanp")
+shader_parameter/v_shake = false
+shader_parameter/intensity = 100.0
+shader_parameter/span = 1.0
+shader_parameter/saturation = 0.45
+shader_parameter/tint_speed = 8.5
+shader_parameter/attacking = true

@@ -9,6 +9,8 @@ var retreat_time : float = 0.2
 signal attack_done
 signal creep_done
 signal block_done
+
+var mat = preload("uid://yb18qg4hd48n")
 func _ready():
 	visible = false
 	play()
@@ -66,6 +68,7 @@ func block():
 		tween.tween_property(self, "global_position", start_location.global_position, retreat_time)
 		tween.tween_callback(block_cleanup)
 		tween.play()
+		material = null
 		#print("BLOCKED")
 
 func block_cleanup():
@@ -80,3 +83,7 @@ func reset():
 	visible = false
 	global_position = start_location.global_position
 	is_ready = true
+	material = mat
+
+
+	

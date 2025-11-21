@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bexnyskcp8nts"]
+[gd_scene load_steps=14 format=3 uid="uid://bexnyskcp8nts"]
 
 [ext_resource type="Texture2D" uid="uid://b8npj7ddwfvxw" path="res://assets/visual/ui/tooth_roller/tongue_0.png" id="1_aadmw"]
 [ext_resource type="Texture2D" uid="uid://cq6apr1yvw4ki" path="res://assets/visual/ui/tooth_roller/tongue_0_attack.png" id="1_bu0bf"]
+[ext_resource type="Material" uid="uid://yb18qg4hd48n" path="res://shaders/tongue_material.tres" id="1_tkam1"]
 [ext_resource type="Script" uid="uid://cdhcpy8u0jx8o" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue/tongue.gd" id="2_0f5yd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpkhl"]
@@ -74,6 +75,7 @@ animations = [{
 }]
 
 [node name="Tongue" type="AnimatedSprite2D"]
+material = ExtResource("1_tkam1")
 scale = Vector2(1, 2.5)
 sprite_frames = SubResource("SpriteFrames_lpkhl")
 offset = Vector2(0, 157.365)

@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://csef5fajydy4u"]
+[gd_scene load_steps=11 format=3 uid="uid://csef5fajydy4u"]
 
 [ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
 [ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="2_dt07e"]
 [ext_resource type="Texture2D" uid="uid://b5t0bnu3jm4wl" path="res://assets/visual/ui/tooth_roller/gum_frame_2.png" id="3_hd4jn"]
+[ext_resource type="Texture2D" uid="uid://b26mknf7oamjj" path="res://assets/visual/ui/tooth_roller/throat_0.png" id="3_r2wfk"]
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
 [ext_resource type="PackedScene" uid="uid://dw88egkkpye1w" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.tscn" id="5_hd4jn"]
 [ext_resource type="PackedScene" uid="uid://dyd8s5fvod4qd" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue_attack.tscn" id="6_h1jm4"]
+[ext_resource type="AudioStream" uid="uid://petfpb4taicy" path="res://assets/audio/finger_react/ready.mp3" id="8_j70yg"]
+[ext_resource type="AudioStream" uid="uid://datxpotjikjfm" path="res://assets/audio/finger_react/punish.mp3" id="9_kgrfj"]
+[ext_resource type="AudioStream" uid="uid://cfb1gcdow8s1t" path="res://assets/audio/finger_react/fail.mp3" id="10_fg7jy"]
 
-[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "cooldown_timer", "start_timer")]
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "cooldown_timer", "start_timer", "hit_speaker", "whiff_speaker", "tongue_attack_speaker")]
 script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
@@ -23,6 +27,9 @@ tongue_attack = NodePath("Background Clip Mask/Tongue Attack")
 creep_time = 1.5
 cooldown_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Cooldown")
 start_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Start")
+hit_speaker = NodePath("Hit Speaker")
+whiff_speaker = NodePath("Whiff Speaker")
+tongue_attack_speaker = NodePath("Tongue Attack Speaker")
 
 [node name="Temp Background" type="Sprite2D" parent="."]
 modulate = Color(0.639216, 0.639216, 0.639216, 1)
@@ -33,32 +40,29 @@ texture = ExtResource("2_dt07e")
 centered = false
 
 [node name="Background Clip Mask" type="Sprite2D" parent="."]
-clip_children = 1
-position = Vector2(7, 8)
-scale = Vector2(1.88333, 3.35555)
-texture = ExtResource("2_dt07e")
+clip_children = 2
+texture = ExtResource("3_r2wfk")
 centered = false
 
 [node name="Tongue Attack" parent="Background Clip Mask" node_paths=PackedStringArray("left_start", "down_start", "right_start", "flicker_position") instance=ExtResource("6_h1jm4")]
 clip_children = 1
 position = Vector2(-3.71682, -2.38411)
-scale = Vector2(0.530974, 0.298014)
 left_start = NodePath("Left Tongue Start")
 down_start = NodePath("Down Tongue Start")
 right_start = NodePath("Right Tongue Start")
 flicker_position = NodePath("Flicker Position")
 
 [node name="Left Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(-193, 540)
+position = Vector2(-39.2832, 609.384)
 
 [node name="Down Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(448, 1098)
+position = Vector2(444.717, 1063.38)
 
 [node name="Right Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(1126, 559)
+position = Vector2(992.717, 634.384)
 
 [node name="Flicker Position" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(455, 574)
+position = Vector2(446.717, 629.384)
 
 [node name="Tongue Timers" type="Node" parent="Background Clip Mask/Tongue Attack"]
 
@@ -397,3 +401,15 @@ scale = Vector2(0.1, 0.1)
 
 [node name="Flicker" parent="." instance=ExtResource("5_hd4jn")]
 position = Vector2(458, 545)
+
+[node name="Hit Speaker" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j70yg")
+bus = &"Tooth Roller"
+
+[node name="Whiff Speaker" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kgrfj")
+bus = &"Tooth Roller"
+
+[node name="Tongue Attack Speaker" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fg7jy")
+bus = &"Tooth Roller"

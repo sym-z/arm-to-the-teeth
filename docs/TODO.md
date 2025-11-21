@@ -344,50 +344,47 @@
 - [ ] Combat ambience
   - [ ] Ambient system mutes when you get into combat
 - [ ] Make tween look more choppy for size
-- [ ] Eye closes when map closes
+- [x] Eye closes when map closes
 - [ ] Re-mix Ambient Base to be weirder
 - [x] Add some randomization to the pitch of the groans
 - [ ] Possibly use an exported array for the different sting sounds
-
-
-# BUGFIX
-- [ ] Tongue still attacks after game is up!
-###  Goals for session after 10/22:
 - [ ] Replace Wheel Roller
-  - [x] Make basic prototype sprites
-  - [x] Implement gameplay
-  - [x] Replace sprites
-  - [x] Make the next and previous tooth set automatically based on array.
-  - [x] put a ton more teeth in
-  - [x] change the viewpoint to be from the front of the jaws and let the player see all of the incoming teeth in an upside down wide u pattern
-  - [x] make it 920x922
-  -[x] Teeth are 128x313
-  -[x] Tongue is 112 x 339
-  -[x] Hand is 150 x 200
-  - [x] make tongue attack
-    - [x] make tongue defense
-    - [x] make notif of block
-    - [x] Window of block possibility = quantity of bursts * shift time * minimum burst amount
-    - [x] Use this to do chances of spaces and other types
-      - `int rand_weighted(weights: PackedFloat32Array)`
-      - Returns a random index with non-uniform weights. Prints an error and returns -1 if the array is empty.
-        - `var rng = RandomNumberGenerator.new()`
-        - `var my_array = ["one", "two", "three", "four"]`
-        - `var weights = PackedFloat32Array([0.5, 1, 1, 2])`
-      - Prints one of the four elements in `my_array`.
-      - It is more likely to print "four", and less likely to print "one".
-      - `print(my_array[rng.rand_weighted(weights)])`
-    - [x] Make tween
-      - [x] Figure out how stop() and kill differ in case you need to stop a creep tween and start a blocking tween using the same tween
-    - [x] Make callbacks reset position
-    - [x] Allow blocking to inturrupt
-    - [x] Make incorrect blocking attack
-  - [x] make flick
-  -[x] make finger wag
-  - [x] implement sprites
-  - [x] connect to game
-  - [x] Multiplier
+  - DONE
+    - [x] Make basic prototype sprites
+    - [x] Implement gameplay
+    - [x] Replace sprites
+    - [x] Make the next and previous tooth set automatically based on array.
+    - [x] put a ton more teeth in
+    - [x] change the viewpoint to be from the front of the jaws and let the player see all of the incoming teeth in an upside down wide u pattern
+    - [x] make it 920x922
+    -[x] Teeth are 128x313
+    -[x] Tongue is 112 x 339
+    -[x] Hand is 150 x 200
+    - [x] make tongue attack
+      - [x] make tongue defense
+      - [x] make notif of block
+      - [x] Window of block possibility = quantity of bursts * shift time * minimum burst amount
+      - [x] Use this to do chances of spaces and other types
+        - `int rand_weighted(weights: PackedFloat32Array)`
+        - Returns a random index with non-uniform weights. Prints an error and returns -1 if the array is empty.
+          - `var rng = RandomNumberGenerator.new()`
+          - `var my_array = ["one", "two", "three", "four"]`
+          - `var weights = PackedFloat32Array([0.5, 1, 1, 2])`
+        - Prints one of the four elements in `my_array`.
+        - It is more likely to print "four", and less likely to print "one".
+        - `print(my_array[rng.rand_weighted(weights)])`
+      - [x] Make tween
+        - [x] Figure out how stop() and kill differ in case you need to stop a creep tween and start a blocking tween using the same tween
+      - [x] Make callbacks reset position
+      - [x] Allow blocking to inturrupt
+      - [x] Make incorrect blocking attack
+    - [x] make flick
+    -[x] make finger wag
+    - [x] implement sprites
+    - [x] connect to game
+    - [x] Multiplier
   - [ ] Difficulty Scaling
+    - [ ] Hunger speeds up teeth
   - [ ] Sounds for flick, hit, whiff, tongue hit, tongue block
     - [ ] Apply the sounds that were being used for the wheel first
   - [ ] Screenshake
@@ -405,6 +402,8 @@
 - [ ] Number scarce stat menu
 - [ ] Change stings to be groans so you can have multiple sting types
 - [ ] Change instructions menu
-- [ ] Multi-Block
+- [x] Multi-Block
 - [ ] Arrows on cieling saying where you can go?
 - [ ] Gate sound inturrupted by groans
+- [ ] Shaky UI items
+- [ ] Flicker shake and hurt shader

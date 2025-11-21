@@ -1596,7 +1596,7 @@ theme = ExtResource("7_lntee")
 text = "BACK"
 
 [node name="Log" type="CanvasLayer" parent="."]
-layer = 2
+layer = 5
 
 [node name="Log Line Window" type="PanelContainer" parent="Log"]
 z_index = 2
