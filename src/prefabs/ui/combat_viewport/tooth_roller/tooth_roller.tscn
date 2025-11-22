@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csef5fajydy4u"]
+[gd_scene load_steps=12 format=3 uid="uid://csef5fajydy4u"]
 
 [ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
 [ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="2_dt07e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
 [ext_resource type="PackedScene" uid="uid://dw88egkkpye1w" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.tscn" id="5_hd4jn"]
 [ext_resource type="PackedScene" uid="uid://dyd8s5fvod4qd" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue_attack.tscn" id="6_h1jm4"]
+[ext_resource type="Material" uid="uid://y4e7haviwsyu" path="res://shaders/tooth_impact_material.tres" id="6_tgwfr"]
 [ext_resource type="AudioStream" uid="uid://petfpb4taicy" path="res://assets/audio/finger_react/ready.mp3" id="8_j70yg"]
 [ext_resource type="AudioStream" uid="uid://datxpotjikjfm" path="res://assets/audio/finger_react/punish.mp3" id="9_kgrfj"]
 [ext_resource type="AudioStream" uid="uid://cfb1gcdow8s1t" path="res://assets/audio/finger_react/fail.mp3" id="10_fg7jy"]
@@ -73,326 +74,389 @@ one_shot = true
 one_shot = true
 
 [node name="Gum Frame" type="Sprite2D" parent="."]
+material = ExtResource("6_tgwfr")
 texture = ExtResource("3_hd4jn")
 centered = false
 
 [node name="Tooth Targets" type="Node2D" parent="."]
+material = ExtResource("6_tgwfr")
 
 [node name="Tooth Target" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(258, 516)
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target2" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(245, 514)
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target3" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(231, 513)
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target4" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(217, 513)
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target5" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(201, 512)
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target6" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(188, 509)
 rotation = 0.235853
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target7" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(170, 505)
 rotation = 0.197975
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target8" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(153, 499)
 rotation = 0.30051
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target9" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(136, 492)
 rotation = 0.349891
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target10" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(120, 485)
 rotation = 0.406384
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target11" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(100, 479)
 rotation = 0.483721
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target12" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(81, 462)
 rotation = 0.70094
 scale = Vector2(0.2, 0.2)
 
 [node name="Tooth Target13" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(62, 444)
 rotation = 0.70094
 scale = Vector2(0.2, 0.2)
 
 [node name="Tooth Target14" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(46, 426)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 
 [node name="Tooth Target15" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(33, 406)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -0.174533
 
 [node name="Tooth Target16" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(23, 379)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -0.436332
 
 [node name="Tooth Target18" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(24, 343)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -0.916298
 
 [node name="Tooth Target20" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(23, 323)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -1.17286
 
 [node name="Tooth Target21" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(28, 300)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -1.28805
 
 [node name="Tooth Target22" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(33, 289)
 rotation = 0.883656
 scale = Vector2(0.2, 0.2)
 skew = -1.46608
 
 [node name="Tooth Target23" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(51, 294)
 rotation = -1.72564
 scale = Vector2(0.2, 0.2)
 skew = 1.05941
 
 [node name="Tooth Target24" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(61, 273)
 rotation = -1.41665
 scale = Vector2(0.2, 0.2)
 skew = 0.898845
 
 [node name="Tooth Target25" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(74, 256)
 rotation = -1.12106
 scale = Vector2(0.25, 0.25)
 skew = 0.738274
 
 [node name="Tooth Target26" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(90, 241)
 rotation = -0.853502
 scale = Vector2(0.25, 0.25)
 skew = 0.275762
 
 [node name="Tooth Target27" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(112, 223)
 rotation = -0.574531
 scale = Vector2(0.25, 0.25)
 
 [node name="Tooth Target28" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(142, 208)
 rotation = -0.574531
 scale = Vector2(0.3, 0.3)
 
 [node name="Tooth Target29" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(175, 193)
 rotation = -0.574531
 scale = Vector2(0.3, 0.3)
 
 [node name="Tooth Target30" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(210, 176)
 rotation = -0.463386
 scale = Vector2(0.4, 0.4)
 
 [node name="Tooth Target31" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(256, 152)
 rotation = -0.293698
 scale = Vector2(0.5, 0.5)
 
 [node name="Tooth Target32" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(308, 130)
 rotation = -0.151173
 scale = Vector2(0.75, 0.75)
 
 [node name="Center Tooth" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
 self_modulate = Color(1.05, 1.05, 1.05, 1)
+use_parent_material = true
 position = Vector2(399, 116)
 rotation = -0.0151901
 
 [node name="Tooth Target34" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(517, 123)
 rotation = 0.0571956
 scale = Vector2(0.75, 0.75)
 
 [node name="Tooth Target35" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(614, 136)
 rotation = 0.255759
 scale = Vector2(0.5, 0.5)
 
 [node name="Tooth Target36" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(675, 163)
 rotation = 0.428877
 scale = Vector2(0.4, 0.4)
 
 [node name="Tooth Target37" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(718, 188)
 rotation = 0.428877
 scale = Vector2(0.3, 0.3)
 
 [node name="Tooth Target38" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(753, 205)
 rotation = 0.336845
 scale = Vector2(0.3, 0.3)
 
 [node name="Tooth Target39" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(793, 220)
 rotation = 0.427175
 scale = Vector2(0.25, 0.25)
 
 [node name="Tooth Target40" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(821, 242)
 rotation = 0.572788
 scale = Vector2(0.25, 0.25)
 skew = -0.261799
 
 [node name="Tooth Target41" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(853, 266)
 rotation = 1.03803
 scale = Vector2(0.25, 0.25)
 skew = -0.733038
 
 [node name="Tooth Target42" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(864, 293)
 rotation = 1.20694
 scale = Vector2(0.2, 0.2)
 skew = -0.898845
 
 [node name="Tooth Target43" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(876, 307)
 rotation = 1.38247
 scale = Vector2(0.2, 0.2)
 skew = -1.05941
 
 [node name="Tooth Target44" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(882, 358)
 rotation = -1.27813
 scale = Vector2(0.2, 0.2)
 skew = 1.46608
 
 [node name="Tooth Target45" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(880, 389)
 rotation = -1.29844
 scale = Vector2(0.2, 0.2)
 skew = 1.28805
 
 [node name="Tooth Target46" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(872, 416)
 rotation = -1.29265
 scale = Vector2(0.2, 0.2)
 skew = 1.17286
 
 [node name="Tooth Target47" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(858, 441)
 rotation = -1.08103
 scale = Vector2(0.2, 0.2)
 skew = 0.916298
 
 [node name="Tooth Target48" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(839, 461)
 rotation = -0.759176
 scale = Vector2(0.2, 0.2)
 skew = 0.436332
 
 [node name="Tooth Target49" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(822, 472)
 rotation = -0.572303
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target50" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(807, 483)
 rotation = -0.527342
 scale = Vector2(0.15, 0.15)
 
 [node name="Tooth Target51" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(796, 487)
 rotation = -0.338458
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target52" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(783, 491)
 rotation = -0.338458
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target53" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(771, 496)
 rotation = -0.338458
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target54" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(758, 500)
 rotation = -0.338458
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target55" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(746, 504)
 rotation = -0.261652
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target56" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(732, 507)
 rotation = -0.228617
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target57" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(718, 510)
 rotation = -0.169249
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target58" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(705, 512)
 rotation = -0.14434
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target59" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(693, 512)
 rotation = -0.035963
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target60" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(680, 512)
 rotation = -0.035963
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target61" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(668, 513)
 rotation = -0.035963
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target62" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(655, 514)
 rotation = -0.035963
 scale = Vector2(0.1, 0.1)
 
 [node name="Tooth Target63" parent="Tooth Targets" instance=ExtResource("4_dt07e")]
+use_parent_material = true
 position = Vector2(643, 515)
 rotation = -0.035963
 scale = Vector2(0.1, 0.1)

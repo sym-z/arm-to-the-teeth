@@ -318,7 +318,7 @@
     - [ ] It will be a creation, created from the living biomass walls of the dungeon and fighting failed creations on Its journey to ascend to a chosen organism.
 - [x] Audio Ambience
   - [x] Creepy, Groaning unsettling atmosphere
-- [ ] Texture Overhaul
+- [x] Texture Overhaul
   - [x] Make new textures
 - [ ] New arm configuration
   - [x] Click to eat
@@ -329,10 +329,8 @@
   - [ ] Clicking on head will show current stats in a numerical window that must be closed to move around
 - [ ] Enemies are "failed creations"
 - [ ] Vision bounds remake
-- [ ] Wheel sprite remake
-  - [ ] Teeth rotating in a mouth, like viewing the wheel from a side angle. Only 5 or so options are visible at any one time.
 - [x] Moving Minimizes map
-- [ ] Jiggle shader for menu items
+- [x] Jiggle shader for menu items
 - [ ] Adjust shadow sizing for menu items
 - [ ] Adjust contrast of menu items
   - [x] AUTO PICKUP
@@ -403,7 +401,7 @@
 - [ ] Change stings to be groans so you can have multiple sting types
 - [ ] Change instructions menu
 - [x] Multi-Block
-- [ ] Arrows on cieling saying where you can go?
+- [ ] Arrows on ceiling saying where you can go?
 - [ ] Gate sound inturrupted by groans
-- [ ] Shaky UI items
-- [ ] Flicker shake and hurt shader
+- [x] Shaky UI items
+- [x] Flicker shake and hurt shader

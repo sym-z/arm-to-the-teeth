@@ -2,10 +2,7 @@ shader_type canvas_item;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	VERTEX.x += sin(TIME);
-	VERTEX.y += cos(TIME);
-	VERTEX.x = VERTEX.x * max(1.,((abs(cos(TIME*2.)) + 0.01))) ;
-	VERTEX.y = VERTEX.y * max(1.,((abs(cos(TIME*2.)) + 0.01))) ;
+	VERTEX.y += sin(TIME*100.) *5.;
 }
 
 void fragment() {
