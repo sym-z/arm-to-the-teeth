@@ -212,13 +212,14 @@ func player_results():
 			# Check for player death.
 			cv.check_player_death()
 		else:
-			attacking_limb.condition -= -player_score
+			attacking_limb.condition -= -player_score 
 			if attacking_limb.condition <= 0:
 				Log.add_log_message("IT WHIFFED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
 				cv.root_ui.arm_fully_eaten(attacking_limb)
 			else:
 				Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(-player_score) + " CONDITION.")
 				# Only emitting here because when an arm is fully eaten the signal will fire.
+		play_hurt_player_fx()
 		cv.root_ui.refresh_temp_labels()
 		cv.player.stat_change.emit()
 	game_reset()
