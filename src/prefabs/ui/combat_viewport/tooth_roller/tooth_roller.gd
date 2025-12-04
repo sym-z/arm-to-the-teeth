@@ -59,7 +59,7 @@ var last_action : TYPE = TYPE.MISS
 
 var player_score = 0
 var enemy_score = 0
-
+var enemy_alive : bool = true
 
 var attacking_limb
 var is_head : bool
@@ -68,9 +68,21 @@ var is_head : bool
 @export var hit_speaker : AudioStreamPlayer
 @export var whiff_speaker : AudioStreamPlayer
 @export var tongue_attack_speaker : AudioStreamPlayer
+@export_category("Hurt Shader")
+@export var hurt_timer : Timer
+@export var gum_frame : Sprite2D
+var hurt_mat : Material = preload("uid://y4e7haviwsyu")
 #TODO: TUNE DIFFICULTY PER FLOOR
+func hurt_animation():
+	material = hurt_mat
+	pass
+func hurt_animation_cleanup():
+	tooth_target_parent.material = null
+	gum_frame.material=null
+	pass
 func _ready():
 	visible = false
+	hurt_timer.connect("timeout", hurt_animation_cleanup)
 	build_tooth_target_arr()
 	weight_randomness()
 	initialize_shift_timer()
@@ -250,13 +262,18 @@ func game_reset():
 	player_score = 0
 	enemy_score = 0
 	bg.modulate=Color(1,1,1,1)
+	if enemy_alive == true:
+		cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	else:
+		cv.create_timer(cv.pause_time,cv.check_enemy_death)
+		enemy_alive = true
 	pass
 func play_hurt_player_fx():
 	#TODO: ENEMY ATTACK NOISE
 	visible = false
 	cv.player_anim.hurt_bounce()
 	AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_WHIFF)
-	cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	#cv.create_timer(cv.pause_time, cv.show_player_turn_start)
 
 func play_hurt_enemy_fx():
 	visible = false
@@ -267,9 +284,9 @@ func play_hurt_enemy_fx():
 		cv.enemy_anim.animation = "hurt"
 		cv.enemy_anim.play()
 		AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_HURT)
-		cv.create_timer(cv.pause_time, cv.show_player_turn_start)
-	else:
-		cv.show_player_turn_start()
+		#cv.create_timer(cv.pause_time, cv.show_player_turn_start)
+	#else:
+		##cv.show_player_turn_start()
 
 
 func play_dead_enemy_fx():
@@ -279,14 +296,15 @@ func play_dead_enemy_fx():
 	cv.enemy_anim.animation = "death"
 	cv.enemy_anim.play()
 	AudioBank.play_rand(cv.e_speaker, AudioBank.BANK.E_DEATH)
-	cv.create_timer(cv.pause_time,cv.check_enemy_death)
+	enemy_alive = false
+	
 
 
 func play_enemy_attack_fx():
 	visible = false
 	if enemy_score > 0:
 		cv.player_anim.hurt_bounce()
-		cv.show_player_turn_start()
+		#cv.show_player_turn_start()
 		AudioBank.play_rand(cv.p_speaker, AudioBank.BANK.P_HURT)
 		cv.enemy_anim.animation = "attack"
 		cv.enemy_anim.play()
@@ -335,9 +353,11 @@ func _input(event: InputEvent) -> void:
 				if tongue_attack.left == attacking_tongue:
 					#print("blocked left success")
 					attacking_tongue.block()
+					attacking_tongue = null
 				else:
 					attacking_tongue.force_attack()
 					tongue_attack_speaker.play()
+					attacking_tongue = null
 					tongue_attacks += 1
 		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 			flicker.reset_animation()
@@ -348,9 +368,11 @@ func _input(event: InputEvent) -> void:
 				if tongue_attack.right == attacking_tongue:
 					#print("blocked right success")
 					attacking_tongue.block()
+					attacking_tongue = null
 				else:
 					attacking_tongue.force_attack()
 					tongue_attack_speaker.play()
+					attacking_tongue = null
 					tongue_attacks += 1
 		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 			flicker.reset_animation()
@@ -361,9 +383,11 @@ func _input(event: InputEvent) -> void:
 				if tongue_attack.down == attacking_tongue:
 					#print("blocked down success")
 					attacking_tongue.block()
+					attacking_tongue = null
 				else:
 					attacking_tongue.force_attack()
 					tongue_attack_speaker.play()
+					attacking_tongue = null
 					tongue_attacks += 1
 		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 			flicker.reset_animation()
@@ -408,4 +432,5 @@ func creep_to_attack():
 	attacking_tongue.attack(attack_time)
 	tongue_attack_speaker.play()
 	flicker.play_hurt()
+	attacking_tongue = null
 	tongue_attacks += 1
