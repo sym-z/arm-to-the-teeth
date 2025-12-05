@@ -83,6 +83,7 @@ func _ready():
 		#wheel_roller.connect("results_ready", )
 
 func _input(event):
+	#print(event)
 	if event.is_action_pressed("debug_kill"):
 		player.head.health = 0
 		check_player_death()

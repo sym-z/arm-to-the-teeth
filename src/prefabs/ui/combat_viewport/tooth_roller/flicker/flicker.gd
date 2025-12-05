@@ -17,6 +17,10 @@ func _ready():
 	flick_timer.connect("timeout", play_flick_cleanup)
 	material = null
 
+func _process(_delta):
+	if material != null:
+		print("NOW")
+
 func flick():
 	unblock()
 	animation = "flick"
@@ -57,9 +61,10 @@ func play_hurt():
 	pass
 
 func play_hurt_cleanup():
-	if flick_timer.is_stopped():
-		material = null
-	pass
+	#if hurt_timer.is_stopped():
+		#material = null
+	#pass
+	material = null
 	
 func play_flick():
 	material = flick_material
@@ -67,6 +72,7 @@ func play_flick():
 	pass
 
 func play_flick_cleanup():
-	if hurt_timer.is_stopped():
-		material = null
-	pass
+	material = null
+	#if flick_timer.is_stopped():
+		#material = null
+	#pass

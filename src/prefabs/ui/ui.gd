@@ -134,8 +134,9 @@ func _on_mini_map_mini_map_ready():
 
 func _input(event):
 	if event.is_action_pressed("open_inventory"):
-		if inventory_button.disabled == false:
-			inventory_button.pressed.emit()
+		pass
+		#if inventory_button.disabled == false:
+			#inventory_button.pressed.emit()
 	elif event.is_action_pressed("pick_up"):
 		if pickup_button.disabled == false:
 			pickup_button.pressed.emit()
@@ -288,6 +289,8 @@ func arm_fully_eaten(arm_object : Arm):
 	player.remove_arm(arm_object)
 	if player.in_combat == true:
 		combat_viewport.refresh_arm_selections()
+	else:
+		player.check_cell_content()
 	refresh_temp_labels()
 	#TODO: UPDATE ATT ARM SELECTION 
 

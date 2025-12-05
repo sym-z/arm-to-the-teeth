@@ -60,7 +60,7 @@ func give_starting_loadout():
 	#var starting_arm2 : Arm = Arm.new()
 	# TODO: Randomize
 	starting_arm.strength = 1
-	starting_arm.max_condition = 5
+	starting_arm.max_condition = 6
 	starting_arm.condition = starting_arm.max_condition
 	starting_arm.equipped = true
 	arm_count += 1
@@ -111,7 +111,9 @@ func _process(delta):
 	pass
 #region Player Movement
 func _input(event):
-	if in_combat == false and disable_movement == false:
+	if event.is_action_pressed("block_input"):
+		return
+	elif in_combat == false and disable_movement == false:
 		if event.is_action_pressed("move_forward"):
 			move()
 			move_key_pressed.emit()
@@ -140,12 +142,12 @@ func _input(event):
 				Globals.EAST:
 					facing = Globals.SOUTH
 			change_facing.emit()
-	if event.is_action_pressed("debug_add_hunger"):
+	elif event.is_action_pressed("debug_add_hunger"):
 		hunger = min(HUNGER_LEVEL.DEAD, hunger+25)
 		hunger_ticked.emit()
 		set_hunger_state()
 
-	if event.is_action_pressed("debug_sub_hunger"):
+	elif event.is_action_pressed("debug_sub_hunger"):
 		hunger = max(hunger - 25,0)
 		hunger_ticked.emit()
 		set_hunger_state()

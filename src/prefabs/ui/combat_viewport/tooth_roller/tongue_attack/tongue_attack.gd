@@ -39,8 +39,3 @@ func get_random_tongue() -> AnimatedSprite2D:
 	return null
 	#attacking_tongue = tongue_sprites[randi_range(0,tongue_sprites.size())]
 	#return attacking_tongue
-
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

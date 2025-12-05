@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://ceq7clgkyer44"]
+[gd_scene load_steps=214 format=3 uid="uid://ceq7clgkyer44"]
 
 [ext_resource type="Script" uid="uid://cloum0k0ggqel" path="res://prefabs/ui/ui.gd" id="1_gxjsb"]
 [ext_resource type="Theme" uid="uid://c4hxwvlb3lk68" path="res://themes/context_menu/margin_container/context_menu_margin_container.tres" id="2_4ieor"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://ctaigrvqpe5na" path="res://themes/reactive_stylebox/reactive_pc.gd" id="19_xqkvd"]
 [ext_resource type="Texture2D" uid="uid://yu1orgrp2bg6" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_4.png" id="20_07iut"]
 [ext_resource type="Script" uid="uid://0ds563qi8bfg" path="res://prefabs/ui/eye/eye.gd" id="20_76mk3"]
+[ext_resource type="Shader" uid="uid://d110rll23aiin" path="res://shaders/shadow_wiggle.gdshader" id="20_p3cfc"]
 [ext_resource type="Script" uid="uid://c8v5u46xqnus5" path="res://prefabs/ui/arm/arm.gd" id="20_r731v"]
 [ext_resource type="Texture2D" uid="uid://d3b8hlrwvvl4t" path="res://assets/visual/ui/gate_transition/gate_transition_1_bounce_5.png" id="21_a0gks"]
 [ext_resource type="PackedScene" uid="uid://6d4bxuhad55o" path="res://prefabs/mouse_detector_field/mouse_detector_field.tscn" id="21_lge0c"]
@@ -681,6 +682,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2244"]
+shader = ExtResource("20_p3cfc")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2nc7n"]
 shader = ExtResource("14_r731v")
 
@@ -741,8 +745,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuxg6"]
+shader = ExtResource("20_p3cfc")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xevvd"]
 shader = ExtResource("14_r731v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t8s0"]
+shader = ExtResource("20_p3cfc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmh41"]
 shader = ExtResource("14_r731v")
@@ -867,6 +877,9 @@ animations = [{
 "name": &"open",
 "speed": 15.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrubd"]
+shader = ExtResource("20_p3cfc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsq4w"]
 bg_color = Color(0.02, 0.01, 0, 0.376471)
@@ -1401,11 +1414,13 @@ sprite_frames = SubResource("SpriteFrames_l1g0r")
 [node name="Head Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)
 z_index = -1
+material = SubResource("ShaderMaterial_r2244")
 position = Vector2(1677, 299)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_xqkvd")
 
 [node name="Stomach Shadow" type="AnimatedSprite2D" parent="Stat Showcase/Head Shadow"]
+use_parent_material = true
 position = Vector2(-9.11111, 91.5556)
 scale = Vector2(0.985, 0.985)
 sprite_frames = SubResource("SpriteFrames_l1g0r")
@@ -1445,6 +1460,7 @@ texture = ExtResource("22_p3cfc")
 [node name="Left Arm Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)
 z_index = -1
+material = SubResource("ShaderMaterial_nuxg6")
 position = Vector2(152, 277)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
@@ -1479,6 +1495,7 @@ texture = ExtResource("22_p3cfc")
 [node name="Right Arm Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)
 z_index = -1
+material = SubResource("ShaderMaterial_3t8s0")
 position = Vector2(368, 277)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_q0gkn")
@@ -1509,6 +1526,7 @@ color = Color(0.8, 0, 1, 0)
 [node name="Eye Shadow" type="AnimatedSprite2D" parent="Stat Showcase"]
 modulate = Color(0, 0, 0, 0.301961)
 z_index = -1
+material = SubResource("ShaderMaterial_nrubd")
 position = Vector2(261, 742)
 scale = Vector2(4.335, 4.335)
 sprite_frames = SubResource("SpriteFrames_frrpa")

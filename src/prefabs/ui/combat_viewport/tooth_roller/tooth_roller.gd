@@ -177,6 +177,12 @@ func shift_teeth():
 		print("WHIFF MULT ", whiff_mult)
 		#TODO APPLY HUNGER DEBUFF
 		player_score = floor(((hits) - (whiffs)) * attacking_limb.strength)
+		# Cap max self and enemy damage at strength * 5
+		if player_score < 0:
+			player_score = max(player_score, -attacking_limb.strength * 5)
+		else:
+			player_score = min(player_score, attacking_limb.strength * 5)
+			
 		# Make it so if the player lands at least one hit/one whiff something happens.
 		if player_score == 0:
 			if hits - whiffs > 0:
@@ -215,7 +221,8 @@ func player_results():
 			attacking_limb.condition -= -player_score 
 			if attacking_limb.condition <= 0:
 				Log.add_log_message("IT WHIFFED ITS ATTACK AND ITS ARM WAS DAMAGED BEYOND USE.")
-				cv.root_ui.arm_fully_eaten(attacking_limb)
+				if cv.player.arm_count > 0:
+					cv.root_ui.arm_fully_eaten(attacking_limb)
 			else:
 				Log.add_log_message("IT WHIFFED ITS ATTACK GOT HURT, ARM LOST " + str(-player_score) + " CONDITION.")
 				# Only emitting here because when an arm is fully eaten the signal will fire.
@@ -229,12 +236,12 @@ func player_results():
 func enemy_results():
 	if enemy_score > 0:
 		if is_head == true:
-			attacking_limb.damage(enemy_score*cv.opponent.damage)
+			attacking_limb.damage(enemy_score)
 			cv.check_player_death()
 			cv.root_ui.refresh_temp_labels()
 			cv.player.stat_change.emit()
 		else:
-			attacking_limb.condition -= enemy_score*cv.opponent.damage
+			attacking_limb.condition -= enemy_score
 			if attacking_limb.condition <= 0:
 				cv.root_ui.arm_fully_eaten(attacking_limb)
 			cv.root_ui.refresh_temp_labels()
@@ -313,85 +320,89 @@ func play_enemy_attack_fx():
 
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_forward"):
-		flicker.flick()
-		match center_tooth.frame:
-			TYPE.HIT:
-				#print("hit")
-				bg.modulate = hit_bg_color
-				hits += 1 * hit_mult
-				if last_action == TYPE.HIT:
-					hit_mult += 0.2
-				else:
-					last_action = TYPE.HIT
-					whiff_mult = 1.0
-				hit_speaker.play()
-				# Add to hit mult or reset whiff mult
-			TYPE.MISS:
-				#print("miss")
-				bg.modulate = miss_bg_color
-				misses += 1 
-				# Reset both mults
-				hit_mult = 1.0
-				whiff_mult = 1.0
-			TYPE.WHIFF:
-				#print("whiff")
-				bg.modulate = whiff_bg_color
-				whiffs += 1*whiff_mult
-				if last_action == TYPE.WHIFF:
-					whiff_mult += 0.2
-				else:
-					last_action == TYPE.WHIFF
+	if visible == true:
+		if event.is_action_pressed("move_forward"):
+			flicker.flick()
+			match center_tooth.frame:
+				TYPE.HIT:
+					#print("hit")
+					bg.modulate = hit_bg_color
+					hits += 1 * hit_mult
+					if last_action == TYPE.HIT:
+						hit_mult += 0.2
+					else:
+						last_action = TYPE.HIT
+						whiff_mult = 1.0
+					hit_speaker.play()
+					# Add to hit mult or reset whiff mult
+				TYPE.MISS:
+					#print("miss")
+					bg.modulate = miss_bg_color
+					misses += 1 
+					# Reset both mults
 					hit_mult = 1.0
-				# Reset hit mult or contribute to whiff mult
-		var frame_ref = center_tooth.frame
-		center_tooth.animation = "broken"
-		center_tooth.frame = frame_ref
-	elif event.is_action("turn_left"):
-		if event.is_action_pressed("turn_left"):
-			flicker.block_left()
-			if attacking_tongue:
-				if tongue_attack.left == attacking_tongue:
-					#print("blocked left success")
-					attacking_tongue.block()
-					attacking_tongue = null
-				else:
-					attacking_tongue.force_attack()
-					tongue_attack_speaker.play()
-					attacking_tongue = null
-					tongue_attacks += 1
-		elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
-			flicker.reset_animation()
-	elif event.is_action("turn_right"):
-		if event.is_action_pressed("turn_right"):
-			flicker.block_right()
-			if attacking_tongue:
-				if tongue_attack.right == attacking_tongue:
-					#print("blocked right success")
-					attacking_tongue.block()
-					attacking_tongue = null
-				else:
-					attacking_tongue.force_attack()
-					tongue_attack_speaker.play()
-					attacking_tongue = null
-					tongue_attacks += 1
-		elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
-			flicker.reset_animation()
-	elif event.is_action("move_back"):
-		if event.is_action_pressed("move_back"):
-			flicker.block_down()
-			if attacking_tongue:
-				if tongue_attack.down == attacking_tongue:
-					#print("blocked down success")
-					attacking_tongue.block()
-					attacking_tongue = null
-				else:
-					attacking_tongue.force_attack()
-					tongue_attack_speaker.play()
-					attacking_tongue = null
-					tongue_attacks += 1
-		elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
-			flicker.reset_animation()
+					whiff_mult = 1.0
+				TYPE.WHIFF:
+					#print("whiff")
+					bg.modulate = whiff_bg_color
+					whiffs += 1*whiff_mult
+					if last_action == TYPE.WHIFF:
+						whiff_mult += 0.2
+					else:
+						last_action == TYPE.WHIFF
+						hit_mult = 1.0
+					# Reset hit mult or contribute to whiff mult
+			var frame_ref = center_tooth.frame
+			center_tooth.animation = "broken"
+			center_tooth.frame = frame_ref
+		elif event.is_action("turn_left"):
+			if event.is_action_pressed("turn_left"):
+				flicker.block_left()
+				if attacking_tongue:
+					if tongue_attack.left == attacking_tongue:
+						#print("blocked left success")
+						attacking_tongue.block()
+						attacking_tongue = null
+					else:
+						attacking_tongue.force_attack()
+						flicker.play_hurt()
+						tongue_attack_speaker.play()
+						attacking_tongue = null
+						tongue_attacks += 1
+			elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
+				flicker.reset_animation()
+		elif event.is_action("turn_right"):
+			if event.is_action_pressed("turn_right"):
+				flicker.block_right()
+				if attacking_tongue:
+					if tongue_attack.right == attacking_tongue:
+						#print("blocked right success")
+						attacking_tongue.block()
+						attacking_tongue = null
+					else:
+						attacking_tongue.force_attack()
+						flicker.play_hurt()
+						tongue_attack_speaker.play()
+						attacking_tongue = null
+						tongue_attacks += 1
+			elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
+				flicker.reset_animation()
+		elif event.is_action("move_back"):
+			if event.is_action_pressed("move_back"):
+				flicker.block_down()
+				if attacking_tongue:
+					if tongue_attack.down == attacking_tongue:
+						#print("blocked down success")
+						attacking_tongue.block()
+						attacking_tongue = null
+					else:
+						attacking_tongue.force_attack()
+						flicker.play_hurt()
+						tongue_attack_speaker.play()
+						attacking_tongue = null
+						tongue_attacks += 1
+			elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
+				flicker.reset_animation()
 
 
 func init_tongue():
