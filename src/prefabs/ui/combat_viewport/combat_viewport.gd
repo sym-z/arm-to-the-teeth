@@ -72,13 +72,18 @@ enum TURN {PLAYER,ENEMY}
 var curr_turn : TURN = TURN.PLAYER
 
 var pause_time : float 
+
+@export var music : AudioStreamPlayer
 func _ready():
 	pause_time = root_ui.med_battle_speed
 	root_ui.dungeon_viewport.visible = true
 	visible = false
+	music.stop()
+	root_ui.level.ambience.set_mute(false)
 	player = root_ui.player
 	map = root_ui.map
 	root_ui.eye_anim.connect("animation_finished", death_transition)
+	
 	#if use_wheel == true:
 		#wheel_roller.connect("results_ready", )
 
@@ -95,6 +100,8 @@ func begin_combat(e : Enemy, loc : Vector2i):
 		print("AT ", loc)
 	Log.add_log_message("IT HAS ENTERED COMBAT")
 	visible = true
+	music.play()
+	root_ui.level.ambience.set_mute(true)
 	root_ui.dungeon_viewport.visible = false
 	enemy_dead = false
 	show_player_turn_start()
@@ -148,6 +155,8 @@ func up_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
+		music.stop()
+		root_ui.level.ambience.set_mute(false)
 		#Log.add_log_message("IT FLED AND RAN FORWARD")
 		
 		player.in_combat = false
@@ -163,6 +172,8 @@ func down_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
+		music.stop()
+		root_ui.level.ambience.set_mute(false)
 		#Log.add_log_message("IT FLED AND RAN BACKWARD")
 		player.in_combat = false
 		player.move(-1)
@@ -177,6 +188,8 @@ func left_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
+		music.stop()
+		root_ui.level.ambience.set_mute(false)
 		#Log.add_log_message("IT FLED AND RAN TO THE LEFT")
 		player.in_combat = false
 		player.force_turn_left()
@@ -193,6 +206,8 @@ func right_button_chosen():
 	runaway_damage()
 	if player_dead == false:
 		visible = false
+		music.stop()
+		root_ui.level.ambience.set_mute(false)
 		#Log.add_log_message("IT FLED AND RAN TO THE RIGHT")
 		player.in_combat = false
 		player.force_turn_right()
@@ -616,6 +631,8 @@ func drop_loot(from_chest : bool = false):
 func combat_victory():
 	# Hide combat viewport
 	visible = false
+	music.stop()
+	root_ui.level.ambience.set_mute(false)
 	root_ui.dungeon_viewport.visible = true
 	# Get cell that combat is taking place in
 	var map_cell : Cell = map.world_map[combat_location]

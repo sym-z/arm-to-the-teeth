@@ -48,4 +48,13 @@ func start_sting_chain():
 func reset_sting_timer():
 	sting_timer.wait_time = randf_range(min_sting_interval,max_sting_interval)
 	sting_timer.start()
+	
+func set_mute(mute: bool):
+	print("CALLED WITH ", mute)
+	if mute == true:
+		base_speaker.volume_db = -80.0
+		sting_speaker.volume_db = -80.0
+	else:
+		base_speaker.volume_db = 0.0
+		sting_speaker.volume_db = 0.0
 #endregion

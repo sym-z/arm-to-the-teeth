@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ceq7clgkyer44" path="res://prefabs/ui/ui.tscn" id="6_ped82"]
 [ext_resource type="PackedScene" uid="uid://byqi4a7ukikku" path="res://prefabs/ambience_system/ambience_system.tscn" id="7_n0j1u"]
 
-[node name="Testing Level" type="Node2D"]
+[node name="Testing Level" type="Node2D" node_paths=PackedStringArray("ambience")]
 script = ExtResource("1_tt45j")
+ambience = NodePath("Ambience System")
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_634d8")]
 player = NodePath("../Player")
@@ -20,10 +21,11 @@ map = NodePath("../Map")
 ui = NodePath("../UI")
 viewport = NodePath("../Dungeon Layer/Dungeon Viewport")
 
-[node name="UI" parent="." node_paths=PackedStringArray("player", "map", "dungeon_viewport") instance=ExtResource("6_ped82")]
+[node name="UI" parent="." node_paths=PackedStringArray("player", "map", "dungeon_viewport", "level") instance=ExtResource("6_ped82")]
 player = NodePath("../Player")
 map = NodePath("../Map")
 dungeon_viewport = NodePath("../Dungeon Layer/Dungeon Viewport")
+level = NodePath("..")
 
 [node name="Background Layer" type="CanvasLayer" parent="."]
 layer = -2

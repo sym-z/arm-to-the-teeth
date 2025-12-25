@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var map : Node
 @export var dungeon_viewport : Node2D
 @export var chomp_transition : AnimatedSprite2D
+@export var level : Node2D
 
 @export_category("Context Menu Buttons")
 @export var pickup_button : Button
