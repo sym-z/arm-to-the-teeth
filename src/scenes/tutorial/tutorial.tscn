@@ -147,11 +147,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ha56g")
 custom_minimum_size = Vector2(1138.22, 0)
 layout_mode = 2
 theme = ExtResource("6_g7eoy")
-text = "Find and travel through gates to reach the highest floor you can in the ever changing maze-like dungeon. Along the way, you will fight the inhabiting creatures using only your arms as weapons. 
-
-You control \"It\", an entity capable of regenerating its life force by consuming its own arms at the cost of its teeth. Search each floor to find chests, keys, teeth, and more powerful arms. Take bites of your arms to regain health and nourish hunger. Pick up teeth to keep eating. 
+text = "You are \"It\", an entity born from the dungeon and capable of regenerating by consuming its own arms at the cost of its teeth. Find chests, teeth, and more powerful arms in the dungeon to increase your chances of survival. Take bites of your arms to regain health and nourish hunger. Pick up teeth to keep eating. 
 
 Manage Its hunger to avoid difficulties in battle, or possibly death from malnourishment. 
+
+Search the dungeon. Find the portal to the next floor. Fight failed creations using your arms as weapons. Survive.
 
 Good luck."
 horizontal_alignment = 1
@@ -183,9 +183,10 @@ S/DOWN ARROW: Move Backward
 A/LEFT ARROW: Turn Left
 D/RIGHT ARROW: Turn Right
 
----HOTKEYS:---
-TAB : Open Inventory
-SPACE: Pick Up Item"
+Click eye to open map
+Click arms to eat them
+
+Use movement keys to attack and defend against enemies."
 horizontal_alignment = 1
 autowrap_mode = 2
 
