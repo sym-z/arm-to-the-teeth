@@ -100,11 +100,13 @@ theme_override_constants/separation = 350
 
 [node name="Back" type="Button" parent="Buttons/CenterContainer/HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("4_g7eoy")
 text = "BACK"
 
 [node name="Play" type="Button" parent="Buttons/CenterContainer/HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("4_g7eoy")
 text = "PLAY"
 

@@ -72,16 +72,19 @@ theme_override_constants/separation = 60
 
 [node name="Play" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_wem23")
 text = "BEGIN"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_wem23")
 text = "INSTRUCTIONS"
 
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_wem23")
 text = "QUIT"
 

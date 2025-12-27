@@ -1628,6 +1628,7 @@ offset_right = 1028.0
 offset_bottom = 854.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme = ExtResource("7_lntee")
 text = "BACK"
 
@@ -1641,6 +1642,7 @@ offset_top = 1002.0
 offset_right = 1677.0
 offset_bottom = 1060.0
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xqkvd")
 script = ExtResource("19_xqkvd")
 
@@ -1710,6 +1712,7 @@ offset_left = 893.0
 offset_top = 855.0
 offset_right = 1029.0
 offset_bottom = 895.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("12_b6rlx")
 text = "BACK"
 

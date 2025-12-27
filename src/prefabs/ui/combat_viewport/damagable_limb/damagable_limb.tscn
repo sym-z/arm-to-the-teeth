@@ -36,6 +36,7 @@ vertical_alignment = 1
 
 [node name="Damage Button" type="Button" parent="VBox Container"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("4_eyb72")
 text = "DAMAGE"
 

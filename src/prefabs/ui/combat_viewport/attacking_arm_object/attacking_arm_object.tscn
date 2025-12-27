@@ -47,6 +47,7 @@ vertical_alignment = 1
 
 [node name="Select Button" type="Button" parent="VboxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("4_6uige")
 text = "SELECT ARM"
 

@@ -1108,12 +1108,14 @@ alignment = 1
 [node name="Attack" type="Button" parent="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_0i4k7")
 text = "ATTACK"
 
 [node name="Run" type="Button" parent="Dialog Box/Dialog Box Panel Container/MarginContainer/Button Choices"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_0i4k7")
 text = "RUN"
 
@@ -1248,6 +1250,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_0i4k7")
 text = "CANCEL"
 
@@ -1350,6 +1353,7 @@ alignment = 1
 
 [node name="Up Button" type="TextureButton" parent="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Up Container"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_l8e2f")
 texture_hover = ExtResource("22_ln2qj")
 texture_disabled = ExtResource("22_2uckp")
@@ -1362,12 +1366,14 @@ alignment = 1
 
 [node name="Left Button" type="TextureButton" parent="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("28_2nqm1")
 texture_hover = ExtResource("25_frval")
 texture_disabled = ExtResource("24_a13an")
 
 [node name="Right Button" type="TextureButton" parent="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Left Right Container"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("31_rkw3r")
 texture_hover = ExtResource("28_pcqw8")
 texture_disabled = ExtResource("26_vcyn2")
@@ -1379,6 +1385,7 @@ alignment = 1
 
 [node name="Down Button" type="TextureButton" parent="Run Direction Selection/VBoxContainer/MarginContainer/Direction Buttons/Down Container"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("34_c83l7")
 texture_hover = ExtResource("31_bhhon")
 texture_disabled = ExtResource("28_xx2gd")
@@ -1386,6 +1393,7 @@ texture_disabled = ExtResource("28_xx2gd")
 [node name="Cancel Run" type="Button" parent="Run Direction Selection/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 81
 theme_override_styles/hover = SubResource("StyleBoxFlat_rhqh6")
