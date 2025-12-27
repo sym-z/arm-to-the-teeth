@@ -1410,7 +1410,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sqhh2")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_k7xhf")
 theme_override_font_sizes/font_size = 47
-text = "FIGHT FOR YOUR LIFE"
+text = "FAILED CREATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
