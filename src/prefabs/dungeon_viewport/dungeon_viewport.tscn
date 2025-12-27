@@ -1,14 +1,10 @@
-[gd_scene load_steps=398 format=3 uid="uid://b5lskvgjumjn"]
+[gd_scene load_steps=401 format=3 uid="uid://b5lskvgjumjn"]
 
 [ext_resource type="Script" uid="uid://cdjdv4vrvn21b" path="res://prefabs/dungeon_viewport/dungeon_viewport.gd" id="1_x06gq"]
 [ext_resource type="Material" uid="uid://c7h7srpqx2vbp" path="res://shaders/d2_dim.tres" id="2_hys4q"]
-[ext_resource type="Texture2D" uid="uid://cap7mc0qhfcyn" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped1.png" id="2_rhs0v"]
 [ext_resource type="Texture2D" uid="uid://d487iunn4nvv" path="res://assets/visual/prototype_renderer/v2/d2_farthest_side_v2.png" id="3_n4cni"]
-[ext_resource type="Texture2D" uid="uid://df5ns00kkgs4l" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped2.png" id="3_qnijb"]
-[ext_resource type="Texture2D" uid="uid://u8n8ewcnggp6" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped3.png" id="4_08knw"]
 [ext_resource type="Texture2D" uid="uid://bepx25oftce6g" path="res://assets/visual/prototype_renderer/v2/d2_farther_center_v2.png" id="4_b4v8s"]
 [ext_resource type="PackedScene" uid="uid://m0ggohtumqml" path="res://prefabs/contents/contents_d2/contents_d2.tscn" id="5_2qty0"]
-[ext_resource type="Texture2D" uid="uid://b851jeeelsnis" path="res://assets/visual/ui/vision_bounds/vision_bounds_1_cropped4.png" id="5_e8g67"]
 [ext_resource type="Texture2D" uid="uid://clgnd4au02x4u" path="res://assets/visual/prototype_renderer/v2/tiling_v3/d2_farthest_side_v5.png" id="6_tms1j"]
 [ext_resource type="Texture2D" uid="uid://dws72wnf73kki" path="res://assets/visual/prototype_renderer/tiling_v4_styled/d2_farthest_side_v6.png" id="7_5csd1"]
 [ext_resource type="Texture2D" uid="uid://d1eelbtekskxj" path="res://assets/visual/prototype_renderer/v2/tiling/d2_farthest_side_v3.png" id="7_7u1fj"]
@@ -71,6 +67,8 @@
 [ext_resource type="Texture2D" uid="uid://c7nli4d6fxyr7" path="res://assets/visual/prototype_renderer/tiling_v4_styled/d0_side_v7.png" id="51_fmdd5"]
 [ext_resource type="Texture2D" uid="uid://cklsf173wnmpt" path="res://assets/visual/prototype_renderer/tiling_v4_styled/d1_side_v6.png" id="55_4qr78"]
 [ext_resource type="Texture2D" uid="uid://dcyfhii43gkhk" path="res://assets/visual/prototype_renderer/tiling_v4_styled/d0_center_v7.png" id="56_notj5"]
+[ext_resource type="Shader" uid="uid://bt53krn4cpobe" path="res://shaders/vision_bounds2.gdshader" id="68_ptq6m"]
+[ext_resource type="Texture2D" uid="uid://5brldg4sipwb" path="res://assets/visual/ui/vision_bounds_3.png" id="68_u3n7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t381n"]
 atlas = ExtResource("3_n4cni")
@@ -2932,20 +2930,39 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2srb"]
+shader = ExtResource("68_ptq6m")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyefj"]
+atlas = ExtResource("68_u3n7r")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8djav"]
+atlas = ExtResource("68_u3n7r")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwxvq"]
+atlas = ExtResource("68_u3n7r")
+region = Rect2(0, 270, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djlyd"]
+atlas = ExtResource("68_u3n7r")
+region = Rect2(480, 270, 480, 270)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wqhcc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rhs0v")
+"texture": SubResource("AtlasTexture_gyefj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qnijb")
+"texture": SubResource("AtlasTexture_8djav")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_08knw")
+"texture": SubResource("AtlasTexture_jwxvq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_e8g67")
+"texture": SubResource("AtlasTexture_djlyd")
 }],
 "loop": true,
 "name": &"default",
@@ -3234,8 +3251,10 @@ flip_h = true
 layer = -1
 
 [node name="Vision Bounds" type="AnimatedSprite2D" parent="CanvasLayer"]
-modulate = Color(0.51, 0.51, 0.51, 1)
-material = ExtResource("2_hys4q")
-position = Vector2(960, 530)
+modulate = Color(1, 0.298039, 0, 1)
+material = SubResource("ShaderMaterial_n2srb")
+position = Vector2(959, 530)
+scale = Vector2(1.86667, 2)
 sprite_frames = SubResource("SpriteFrames_wqhcc")
 autoplay = "default"
+frame_progress = 0.61269
