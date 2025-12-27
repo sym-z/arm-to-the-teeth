@@ -142,15 +142,16 @@ func _input(event):
 				Globals.EAST:
 					facing = Globals.SOUTH
 			change_facing.emit()
-	elif event.is_action_pressed("debug_add_hunger"):
-		hunger = min(HUNGER_LEVEL.DEAD, hunger+25)
-		hunger_ticked.emit()
-		set_hunger_state()
+		elif event.is_action_pressed("debug_add_hunger"):
+			hunger = min(HUNGER_LEVEL.DEAD, hunger+25)
+			print("gooob")
+			hunger_ticked.emit()
+			set_hunger_state()
 
-	elif event.is_action_pressed("debug_sub_hunger"):
-		hunger = max(hunger - 25,0)
-		hunger_ticked.emit()
-		set_hunger_state()
+		elif event.is_action_pressed("debug_sub_hunger"):
+			hunger = max(hunger - 25,0)
+			hunger_ticked.emit()
+			set_hunger_state()
 
 func force_turn_left():
 	match facing:

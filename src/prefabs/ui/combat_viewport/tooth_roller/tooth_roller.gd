@@ -100,10 +100,15 @@ func begin_game(limb : Variant, head : bool):
 	target_pool.clear()
 	create_target_pool()
 	cv.change_arm_select_vis(false)
+	hunger_effect()
 	shift_timer.start()
 	start_timer.start()
 	
-	
+func hunger_effect():
+	if cv.player.hunger_state > cv.player.HUNGER_LEVEL.STARVING:
+		shift_timer.wait_time = 0.02
+	elif cv.player.hunger_state > cv.player.HUNGER_LEVEL.HUNGRY:
+		shift_timer.wait_time = 0.03
 # Builds and links tooth targets together
 func build_tooth_target_arr():
 	for i in range(tooth_target_parent.get_child_count()):

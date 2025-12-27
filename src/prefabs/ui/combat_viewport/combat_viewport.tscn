@@ -67,7 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://cmij4h1c2gflh" path="res://assets/visual/ui/finger_react/blood_flow_0.png" id="64_1u3m5"]
 [ext_resource type="Script" uid="uid://d3b0rso0xvt1" path="res://prefabs/ui/combat_viewport/finger_react/blood_animation/blood_animation.gd" id="65_tbmgk"]
 [ext_resource type="PackedScene" uid="uid://csef5fajydy4u" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.tscn" id="67_tbmgk"]
-[ext_resource type="AudioStream" uid="uid://c01fydcu7w3xu" path="res://assets/audio/battle_music/at3_battle_0.mp3" id="68_b8x2r"]
+[ext_resource type="AudioStream" uid="uid://b8md3xbswjvpw" path="res://assets/audio/battle_music/at3_battle_0.mp3" id="68_b8x2r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5rxu"]
 atlas = ExtResource("11_rkw3r")
