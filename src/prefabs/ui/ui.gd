@@ -42,6 +42,7 @@ var arm_item_scene : PackedScene = preload("uid://cs01wd2aki26b")
 
 @export_category("Log")
 @export var log_line_label : RichTextLabel 
+@export var log_line_window : PanelContainer
 ## What holds the logs
 @export var full_log_container : VBoxContainer
 ## What holds the whole window
@@ -311,6 +312,14 @@ func change_full_log_window_visibility(new_vis : bool):
 		change_inventory_visibility(false)
 func update_log_line():
 	log_line_label.text = Log.log_messages.back()
+	var quick_tween : Tween = create_tween()
+	quick_tween.tween_property(log_line_window,"scale",Vector2(1.1,1.1), 0.1)
+	quick_tween.tween_callback(log_update_cleanup.bind(quick_tween))
+	quick_tween.play()
+func log_update_cleanup(tween: Tween):
+	tween.kill()
+	log_line_window.scale= Vector2(1,1)
+	
 func update_full_log():
 	var new_log_msg = full_log_label_scene.instantiate()
 	new_log_msg.text = Log.log_messages.back()
