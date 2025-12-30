@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwf7p0roh6mem"]
+[gd_scene load_steps=8 format=3 uid="uid://dwf7p0roh6mem"]
 
 [ext_resource type="Script" uid="uid://bwxa6hc7ywh65" path="res://scenes/death_screen/death_screen.gd" id="1_5wmoq"]
 [ext_resource type="Texture2D" uid="uid://2cmp6j6lgeg1" path="res://assets/visual/ui/tex_3.png" id="2_1loci"]
@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="3_1loci"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_ulujf"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="5_ulujf"]
+[ext_resource type="AudioStream" uid="uid://do6rq6q4aoyed" path="res://assets/audio/death_music/death_sound.mp3" id="7_yvssi"]
 
 [node name="Death Screen" type="CanvasLayer" node_paths=PackedStringArray("score_label", "retry_button", "menu_button", "quit_button", "chomp_transition")]
 script = ExtResource("1_5wmoq")
@@ -76,17 +77,25 @@ theme_override_constants/separation = 70
 
 [node name="Retry" type="Button" parent="VBoxContainer/Buttons/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_ulujf")
 text = "RETRY"
 
 [node name="Main Menu" type="Button" parent="VBoxContainer/Buttons/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_ulujf")
 text = "MAIN MENU"
 
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_ulujf")
 text = "QUIT"
 
 [node name="Chomp Transition" parent="." instance=ExtResource("5_ulujf")]
+
+[node name="Death Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yvssi")
+autoplay = true
+bus = &"Death Music"
