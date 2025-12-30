@@ -5,7 +5,7 @@ resource_name = "LowPassFilter"
 cutoff_hz = 400.0
 
 [resource]
-bus/0/volume_db = -1.91699
+bus/0/volume_db = -6.80238
 bus/1/name = &"Base Ambience"
 bus/1/solo = false
 bus/1/mute = false
@@ -30,7 +30,7 @@ bus/4/name = &"Enemy Combat"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -4.76812
+bus/4/volume_db = -9.35056
 bus/4/send = &"Master"
 bus/5/name = &"Finger SFX"
 bus/5/solo = false
@@ -56,3 +56,9 @@ bus/8/mute = false
 bus/8/bypass_fx = false
 bus/8/volume_db = 0.0
 bus/8/send = &"Master"
+bus/9/name = &"Battle Music"
+bus/9/solo = false
+bus/9/mute = false
+bus/9/bypass_fx = false
+bus/9/volume_db = -1.71923
+bus/9/send = &"Master"

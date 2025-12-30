@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://csef5fajydy4u"]
+[gd_scene load_steps=14 format=3 uid="uid://csef5fajydy4u"]
 
 [ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
 [ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="2_dt07e"]
+[ext_resource type="Shader" uid="uid://c5kiqhpudccqx" path="res://shaders/tooth_roller_bg.gdshader" id="2_tgwfr"]
 [ext_resource type="Texture2D" uid="uid://b5t0bnu3jm4wl" path="res://assets/visual/ui/tooth_roller/gum_frame_2.png" id="3_hd4jn"]
 [ext_resource type="Texture2D" uid="uid://b26mknf7oamjj" path="res://assets/visual/ui/tooth_roller/throat_0.png" id="3_r2wfk"]
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
@@ -10,8 +11,14 @@
 [ext_resource type="AudioStream" uid="uid://petfpb4taicy" path="res://assets/audio/finger_react/ready.mp3" id="8_j70yg"]
 [ext_resource type="AudioStream" uid="uid://datxpotjikjfm" path="res://assets/audio/finger_react/punish.mp3" id="9_kgrfj"]
 [ext_resource type="AudioStream" uid="uid://cfb1gcdow8s1t" path="res://assets/audio/finger_react/fail.mp3" id="10_fg7jy"]
+[ext_resource type="PackedScene" uid="uid://myq0xta4nw5f" path="res://prefabs/awareness_field/awareness_field.tscn" id="12_u8a8c"]
 
-[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "cooldown_timer", "start_timer", "hit_speaker", "whiff_speaker", "tongue_attack_speaker", "hurt_timer", "gum_frame")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8a8c"]
+shader = ExtResource("2_tgwfr")
+shader_parameter/green_tint = 1.0
+shader_parameter/red_tint = 1.0
+
+[node name="Tooth Roller" type="Node2D" node_paths=PackedStringArray("tooth_target_parent", "center_tooth", "shift_timer", "bg", "flicker", "tongue_attack", "cooldown_timer", "start_timer", "hit_speaker", "whiff_speaker", "tongue_attack_speaker", "hurt_timer", "gum_frame", "awareness_field")]
 script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
@@ -22,6 +29,7 @@ maximum_burst = 7
 bg = NodePath("Temp Background")
 hit_bg_color = Color(0, 1, 0, 1)
 whiff_bg_color = Color(1, 0, 0, 1)
+tint_change = 0.7
 flicker = NodePath("Flicker")
 tongue_attack = NodePath("Background Clip Mask/Tongue Attack")
 creep_time = 1.5
@@ -32,10 +40,12 @@ whiff_speaker = NodePath("Whiff Speaker")
 tongue_attack_speaker = NodePath("Tongue Attack Speaker")
 hurt_timer = NodePath("Hurt Timer")
 gum_frame = NodePath("Gum Frame")
+awareness_field = NodePath("Awareness Field")
 
 [node name="Temp Background" type="Sprite2D" parent="."]
 modulate = Color(0.639216, 0.639216, 0.639216, 1)
 clip_children = 2
+material = SubResource("ShaderMaterial_u8a8c")
 position = Vector2(7, 8)
 scale = Vector2(1.88333, 3.35555)
 texture = ExtResource("2_dt07e")
@@ -479,3 +489,7 @@ bus = &"Tooth Roller"
 
 [node name="Hurt Timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="Awareness Field" parent="." instance=ExtResource("12_u8a8c")]
+visible = false
+position = Vector2(448, 553)

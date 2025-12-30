@@ -25,6 +25,8 @@ var pool_index : int = 0
 @export var hit_bg_color : Color
 @export var miss_bg_color : Color
 @export var whiff_bg_color : Color
+var bg_mat : ShaderMaterial
+@export var tint_change : float = 0.2
 
 @export_category("Player Control")
 @export var flicker : AnimatedSprite2D
@@ -72,6 +74,9 @@ var is_head : bool
 @export var hurt_timer : Timer
 @export var gum_frame : Sprite2D
 var hurt_mat : Material = preload("uid://y4e7haviwsyu")
+
+@export_category("Awareness Field")
+@export var awareness_field : Node2D
 #TODO: TUNE DIFFICULTY PER FLOOR
 func hurt_animation():
 	material = hurt_mat
@@ -81,6 +86,7 @@ func hurt_animation_cleanup():
 	gum_frame.material=null
 	pass
 func _ready():
+	bg_mat = bg.material
 	visible = false
 	hurt_timer.connect("timeout", hurt_animation_cleanup)
 	build_tooth_target_arr()
@@ -96,6 +102,8 @@ func begin_game(limb : Variant, head : bool):
 	if testing_mode == false:
 		attacking_limb = limb
 		is_head = head
+	bg_mat.set_shader_parameter("red_tint",1.)
+	bg_mat.set_shader_parameter("green_tint",1.)
 	visible = true
 	target_pool.clear()
 	create_target_pool()
@@ -166,9 +174,18 @@ func shift_teeth():
 	if pool_index < target_pool.size():
 		tooth_targets[0].set_new_frame(target_pool[pool_index])
 		pool_index += 1
+		# Set awareness field
+		match center_tooth.frame:
+			TYPE.HIT:
+				awareness_field.set_top(awareness_field.STATE.HIT)
+			TYPE.MISS:
+				awareness_field.set_top(awareness_field.STATE.MISS)
+			TYPE.WHIFF:
+				awareness_field.set_top(awareness_field.STATE.WHIFF)
 	elif testing_mode == false:
 		## Minigame finished
 		shift_timer.stop()
+		awareness_field.set_top(awareness_field.STATE.MISS)
 		# Current Idea:
 		# 1 Hit is + 0.25 * Weapon Strength
 		# 1 Whiff is - 0.25 * weapon strength
@@ -331,7 +348,9 @@ func _input(event: InputEvent) -> void:
 			match center_tooth.frame:
 				TYPE.HIT:
 					#print("hit")
-					bg.modulate = hit_bg_color
+					#bg.modulate = hit_bg_color
+					bg_mat.set_shader_parameter("red_tint",1.)
+					bg_mat.set_shader_parameter("green_tint", bg_mat.get_shader_parameter("green_tint") + tint_change)
 					hits += 1 * hit_mult
 					if last_action == TYPE.HIT:
 						hit_mult += 0.2
@@ -342,14 +361,19 @@ func _input(event: InputEvent) -> void:
 					# Add to hit mult or reset whiff mult
 				TYPE.MISS:
 					#print("miss")
-					bg.modulate = miss_bg_color
+					#bg.modulate = miss_bg_color
+					bg_mat.set_shader_parameter("red_tint",1.)
+					bg_mat.set_shader_parameter("green_tint",1.)
 					misses += 1 
 					# Reset both mults
 					hit_mult = 1.0
 					whiff_mult = 1.0
 				TYPE.WHIFF:
 					#print("whiff")
-					bg.modulate = whiff_bg_color
+					#bg.modulate = whiff_bg_color
+					bg_mat.set_shader_parameter("green_tint",1.)
+					bg_mat.set_shader_parameter("red_tint", bg_mat.get_shader_parameter("red_tint") + tint_change)
+					whiff_speaker.play()
 					whiffs += 1*whiff_mult
 					if last_action == TYPE.WHIFF:
 						whiff_mult += 0.2
@@ -367,6 +391,7 @@ func _input(event: InputEvent) -> void:
 					if tongue_attack.left == attacking_tongue:
 						#print("blocked left success")
 						attacking_tongue.block()
+						awareness_field.reset_tongue_awareness()
 						attacking_tongue = null
 					else:
 						attacking_tongue.force_attack()
@@ -374,6 +399,7 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
+					awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 				flicker.reset_animation()
 		elif event.is_action("turn_right"):
@@ -390,6 +416,7 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
+					awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 				flicker.reset_animation()
 		elif event.is_action("move_back"):
@@ -406,6 +433,7 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
+					awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 				flicker.reset_animation()
 
@@ -436,6 +464,16 @@ func tongue_trigger():
 		attacking_tongue = tongue_attack.get_random_tongue()
 		if attacking_tongue:
 			attacking_tongue.creep(creep_time)
+			match attacking_tongue:
+				tongue_attack.right:
+					awareness_field.set_right(awareness_field.STATE.WHIFF)
+					pass
+				tongue_attack.down:
+					awareness_field.set_bottom(awareness_field.STATE.WHIFF)
+					pass
+				tongue_attack.left:
+					awareness_field.set_left(awareness_field.STATE.WHIFF)
+					pass
 		# Choose random direction
 		# Attack
 		# Start random cool down
@@ -450,4 +488,5 @@ func creep_to_attack():
 	tongue_attack_speaker.play()
 	flicker.play_hurt()
 	attacking_tongue = null
+	awareness_field.reset_tongue_awareness()
 	tongue_attacks += 1
