@@ -264,12 +264,16 @@ func enemy_results():
 		if is_head == true:
 			attacking_limb.damage(enemy_score)
 			cv.check_player_death()
+			Log.add_log_message("ITS HEAD TOOK " + str(enemy_score) + " DAMAGE.")
 			cv.root_ui.refresh_temp_labels()
 			cv.player.stat_change.emit()
 		else:
 			attacking_limb.condition -= enemy_score
 			if attacking_limb.condition <= 0:
 				cv.root_ui.arm_fully_eaten(attacking_limb)
+				Log.add_log_message("ITS ARM TOOK " + str(enemy_score) + " DAMAGE AND WAS DESTROYED.")
+			else:
+				Log.add_log_message("ITS ARM TOOK " + str(enemy_score) + " DAMAGE.")
 			cv.root_ui.refresh_temp_labels()
 			cv.player.stat_change.emit()
 		play_enemy_attack_fx()
