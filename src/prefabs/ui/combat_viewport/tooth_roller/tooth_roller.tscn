@@ -23,7 +23,6 @@ script = ExtResource("1_g8nkb")
 tooth_target_parent = NodePath("Tooth Targets")
 center_tooth = NodePath("Tooth Targets/Center Tooth")
 shift_timer = NodePath("Tooth Shift Interval")
-shift_interval = 0.04
 minimum_burst = 2
 maximum_burst = 7
 bg = NodePath("Temp Background")

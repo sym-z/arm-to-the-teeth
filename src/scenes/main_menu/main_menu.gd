@@ -25,3 +25,9 @@ func tutorial():
 
 func quit_game():
 	chomp_transition.close(get_tree().quit)
+
+
+func _on_relaxed_combat_toggled(toggled_on: bool) -> void:
+	Globals.relaxed_combat = toggled_on
+	#print(Globals.relaxed_combat)
+	pass # Replace with function body.

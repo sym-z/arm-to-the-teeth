@@ -8,7 +8,7 @@ extends Node2D
 @export var center_tooth : AnimatedSprite2D
 @export var shift_timer : Timer
 ## How fast the teeth move
-@export var shift_interval : float = 0.25
+@export var shift_interval : float = 0.04
 @export_category("Target Pool")
 var target_pool : Array[int] = []
 # How many frames the targets have
@@ -109,6 +109,9 @@ func begin_game(limb : Variant, head : bool):
 	create_target_pool()
 	cv.change_arm_select_vis(false)
 	hunger_effect()
+	if Globals.relaxed_combat == true:
+		shift_timer.wait_time += 0.01
+		awareness_field.visible = true
 	shift_timer.start()
 	start_timer.start()
 	
@@ -170,22 +173,23 @@ func initialize_shift_timer():
 	shift_timer.connect("timeout", shift_teeth)
 
 func shift_teeth():
-	
 	if pool_index < target_pool.size():
 		tooth_targets[0].set_new_frame(target_pool[pool_index])
 		pool_index += 1
 		# Set awareness field
-		match center_tooth.frame:
-			TYPE.HIT:
-				awareness_field.set_top(awareness_field.STATE.HIT)
-			TYPE.MISS:
-				awareness_field.set_top(awareness_field.STATE.MISS)
-			TYPE.WHIFF:
-				awareness_field.set_top(awareness_field.STATE.WHIFF)
+		if Globals.relaxed_combat == true:
+			match center_tooth.frame:
+				TYPE.HIT:
+					awareness_field.set_top(awareness_field.STATE.HIT)
+				TYPE.MISS:
+					awareness_field.set_top(awareness_field.STATE.MISS)
+				TYPE.WHIFF:
+					awareness_field.set_top(awareness_field.STATE.WHIFF)
 	elif testing_mode == false:
 		## Minigame finished
 		shift_timer.stop()
-		awareness_field.set_top(awareness_field.STATE.MISS)
+		if Globals.relaxed_combat == true:
+			awareness_field.set_top(awareness_field.STATE.MISS)
 		# Current Idea:
 		# 1 Hit is + 0.25 * Weapon Strength
 		# 1 Whiff is - 0.25 * weapon strength
@@ -391,7 +395,8 @@ func _input(event: InputEvent) -> void:
 					if tongue_attack.left == attacking_tongue:
 						#print("blocked left success")
 						attacking_tongue.block()
-						awareness_field.reset_tongue_awareness()
+						if Globals.relaxed_combat == true:
+							awareness_field.reset_tongue_awareness()
 						attacking_tongue = null
 					else:
 						attacking_tongue.force_attack()
@@ -399,7 +404,8 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
-					awareness_field.reset_tongue_awareness()
+					if Globals.relaxed_combat == true:
+						awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("turn_left") and flicker.is_blocking and flicker.block_direction == flicker.DIR.LEFT:
 				flicker.reset_animation()
 		elif event.is_action("turn_right"):
@@ -416,7 +422,8 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
-					awareness_field.reset_tongue_awareness()
+					if Globals.relaxed_combat == true:
+						awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("turn_right") and flicker.is_blocking and flicker.block_direction == flicker.DIR.RIGHT:
 				flicker.reset_animation()
 		elif event.is_action("move_back"):
@@ -433,7 +440,8 @@ func _input(event: InputEvent) -> void:
 						tongue_attack_speaker.play()
 						attacking_tongue = null
 						tongue_attacks += 1
-					awareness_field.reset_tongue_awareness()
+					if Globals.relaxed_combat == true:
+						awareness_field.reset_tongue_awareness()
 			elif event.is_action_released("move_back") and flicker.is_blocking and flicker.block_direction == flicker.DIR.DOWN:
 				flicker.reset_animation()
 
@@ -450,36 +458,28 @@ func init_tongue():
 
 
 func tongue_trigger():
-	#print("TRIGGER")
-	#print(pool_index*shift_interval, " / " ,target_pool.size() * shift_interval)
 	var current_time : float = pool_index*shift_interval
 	var total_time : float = target_pool.size() * shift_interval
 	
 	var attack_window : float = creep_time + attack_time
-	#print("curr", current_time)
-	#print("total", total_time)
-	#print("window", attack_window)
+
 	if attack_window < total_time - current_time:
-		#print("ATTEMPT")
 		attacking_tongue = tongue_attack.get_random_tongue()
 		if attacking_tongue:
 			attacking_tongue.creep(creep_time)
-			match attacking_tongue:
-				tongue_attack.right:
-					awareness_field.set_right(awareness_field.STATE.WHIFF)
-					pass
-				tongue_attack.down:
-					awareness_field.set_bottom(awareness_field.STATE.WHIFF)
-					pass
-				tongue_attack.left:
-					awareness_field.set_left(awareness_field.STATE.WHIFF)
-					pass
+			if Globals.relaxed_combat == true:
+				match attacking_tongue:
+					tongue_attack.right:
+						awareness_field.set_right(awareness_field.STATE.WHIFF)
+					tongue_attack.down:
+						awareness_field.set_bottom(awareness_field.STATE.WHIFF)
+					tongue_attack.left:
+						awareness_field.set_left(awareness_field.STATE.WHIFF)
 		# Choose random direction
 		# Attack
 		# Start random cool down
 
 func tongue_cooldown():
-	#print("cooling down")
 	cooldown_timer.wait_time = randf_range(1.0,1.5)
 	cooldown_timer.start()
 	
@@ -488,5 +488,6 @@ func creep_to_attack():
 	tongue_attack_speaker.play()
 	flicker.play_hurt()
 	attacking_tongue = null
-	awareness_field.reset_tongue_awareness()
+	if Globals.relaxed_combat == true:
+		awareness_field.reset_tongue_awareness()
 	tongue_attacks += 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vedpap325i3n"]
+[gd_scene load_steps=14 format=3 uid="uid://vedpap325i3n"]
 
 [ext_resource type="Script" uid="uid://bppfvn2t8lfpo" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="FontFile" uid="uid://btusrtqjgu407" path="res://assets/visual/ui/ui_font_1.png" id="2_uqeha"]
@@ -6,7 +6,51 @@
 [ext_resource type="StyleBox" uid="uid://c15xk3r1oe0vi" path="res://themes/general/ui_containers_transparent_no_shadow.tres" id="3_5seab"]
 [ext_resource type="Theme" uid="uid://cjx0tjkwn4x17" path="res://themes/main_menu/mm_buttons.tres" id="3_wem23"]
 [ext_resource type="Texture2D" uid="uid://dm7p3xecilppi" path="res://assets/visual/ui/logo_6.png" id="4_3ovsr"]
+[ext_resource type="Shader" uid="uid://sfippdl8r4gq" path="res://shaders/ui_item_wiggle.gdshader" id="5_x2yjq"]
 [ext_resource type="PackedScene" uid="uid://boqktneibgc51" path="res://prefabs/chomp_transition/chomp_transition.tscn" id="6_3ovsr"]
+[ext_resource type="Texture2D" uid="uid://djaplgb1nup22" path="res://assets/visual/ui/checkbox2.png" id="8_lqpn7"]
+[ext_resource type="Texture2D" uid="uid://cjc8ge2mw36uk" path="res://assets/visual/ui/checkbox1.png" id="9_qel0l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrgl4"]
+shader = ExtResource("5_x2yjq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn3lk"]
+bg_color = Color(0.4032, 0.48, 0.288, 0.376471)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ujhu"]
+bg_color = Color(0.02, 0.01, 0, 0.376471)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.98, 0.97559, 0.8918, 0.376471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0.02, 0.01, 0, 0.376471)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("play_button", "tutorial_button", "quit_button", "score_label", "chomp_transition")]
 script = ExtResource("1_uqeha")
@@ -52,6 +96,7 @@ theme_override_font_sizes/font_size = 181
 text = "ARM TO THE TEETH"
 
 [node name="Logo" type="TextureRect" parent="Header Container/CenterContainer"]
+material = SubResource("ShaderMaterial_rrgl4")
 layout_mode = 2
 texture = ExtResource("4_3ovsr")
 
@@ -61,14 +106,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 95
+theme_override_constants/margin_top = 175
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 45
 
 [node name="Play" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -87,6 +132,19 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_wem23")
 text = "QUIT"
+
+[node name="Relaxed Combat" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uqeha")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dn3lk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ujhu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dn3lk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ujhu")
+theme_override_icons/checked = ExtResource("8_lqpn7")
+theme_override_icons/unchecked = ExtResource("9_qel0l")
+text = "RELAXED COMBAT"
+alignment = 1
 
 [node name="Scores" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -108,3 +166,5 @@ theme_override_font_sizes/font_size = 61
 text = "HIGHEST FLOOR REACHED: "
 
 [node name="Chomp Transition" parent="." instance=ExtResource("6_3ovsr")]
+
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/Relaxed Combat" to="." method="_on_relaxed_combat_toggled"]

@@ -15,6 +15,8 @@ var curr_floor = 0
 # What is the highest floor the player has reached?
 var highest_floor = 0
 # Called when the node enters the scene tree for the first time.
+
+var relaxed_combat : bool = false
 func _ready():
 	pass # Replace with function body.
 
