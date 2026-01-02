@@ -9,6 +9,9 @@ var retreat_time : float = 0.2
 signal attack_done
 signal creep_done
 signal block_done
+@export var ending_scale : Vector2 = Vector2(1,1.25)
+@export var start_scale : Vector2 = Vector2(1,0.5)
+
 
 var mat = preload("uid://yb18qg4hd48n")
 func _ready():
@@ -47,7 +50,7 @@ func creep(creep_time : float):
 		#print("killing")
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(self,"global_position", flicker_location.global_position, creep_time)
+	tween.tween_property(self,"scale", ending_scale, creep_time)
 	tween.tween_callback(creep_cleanup)
 	blockable = true
 	#print("CREEPING")
@@ -65,7 +68,7 @@ func block():
 			tween.kill()
 			
 		tween = create_tween()
-		tween.tween_property(self, "global_position", start_location.global_position, retreat_time)
+		tween.tween_property(self, "scale", start_scale, retreat_time)
 		tween.tween_callback(block_cleanup)
 		tween.play()
 		material = null
@@ -81,7 +84,8 @@ func reset():
 	play()
 	blockable = false
 	visible = false
-	global_position = start_location.global_position
+	#global_position = start_location.global_position
+	scale = start_scale
 	is_ready = true
 	material = mat
 

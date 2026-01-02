@@ -76,7 +76,7 @@ animations = [{
 
 [node name="Tongue" type="AnimatedSprite2D"]
 material = ExtResource("1_tkam1")
-scale = Vector2(1, 2.5)
+scale = Vector2(1, 0.5)
 sprite_frames = SubResource("SpriteFrames_lpkhl")
-offset = Vector2(0, 157.365)
+offset = Vector2(0, -170.15)
 script = ExtResource("2_0f5yd")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://csef5fajydy4u"]
+[gd_scene load_steps=13 format=3 uid="uid://csef5fajydy4u"]
 
 [ext_resource type="Script" uid="uid://3gtvevj443ox" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_roller.gd" id="1_g8nkb"]
 [ext_resource type="Texture2D" uid="uid://dk3nexoktl1y3" path="res://assets/visual/ui/drip_texture_1.png" id="2_dt07e"]
 [ext_resource type="Shader" uid="uid://c5kiqhpudccqx" path="res://shaders/tooth_roller_bg.gdshader" id="2_tgwfr"]
 [ext_resource type="Texture2D" uid="uid://b5t0bnu3jm4wl" path="res://assets/visual/ui/tooth_roller/gum_frame_2.png" id="3_hd4jn"]
-[ext_resource type="Texture2D" uid="uid://b26mknf7oamjj" path="res://assets/visual/ui/tooth_roller/throat_0.png" id="3_r2wfk"]
 [ext_resource type="PackedScene" uid="uid://cdshv64n4dlok" path="res://prefabs/ui/combat_viewport/tooth_roller/tooth_target/tooth_target.tscn" id="4_dt07e"]
 [ext_resource type="PackedScene" uid="uid://dw88egkkpye1w" path="res://prefabs/ui/combat_viewport/tooth_roller/flicker/flicker.tscn" id="5_hd4jn"]
 [ext_resource type="PackedScene" uid="uid://dyd8s5fvod4qd" path="res://prefabs/ui/combat_viewport/tooth_roller/tongue_attack/tongue_attack.tscn" id="6_h1jm4"]
@@ -30,10 +29,10 @@ hit_bg_color = Color(0, 1, 0, 1)
 whiff_bg_color = Color(1, 0, 0, 1)
 tint_change = 0.7
 flicker = NodePath("Flicker")
-tongue_attack = NodePath("Background Clip Mask/Tongue Attack")
+tongue_attack = NodePath("Tongue Attack")
 creep_time = 1.5
-cooldown_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Cooldown")
-start_timer = NodePath("Background Clip Mask/Tongue Attack/Tongue Timers/Tongue Start")
+cooldown_timer = NodePath("Tongue Attack/Tongue Timers/Tongue Cooldown")
+start_timer = NodePath("Tongue Attack/Tongue Timers/Tongue Start")
 hit_speaker = NodePath("Hit Speaker")
 whiff_speaker = NodePath("Whiff Speaker")
 tongue_attack_speaker = NodePath("Tongue Attack Speaker")
@@ -50,12 +49,7 @@ scale = Vector2(1.88333, 3.35555)
 texture = ExtResource("2_dt07e")
 centered = false
 
-[node name="Background Clip Mask" type="Sprite2D" parent="."]
-clip_children = 2
-texture = ExtResource("3_r2wfk")
-centered = false
-
-[node name="Tongue Attack" parent="Background Clip Mask" node_paths=PackedStringArray("left_start", "down_start", "right_start", "flicker_position") instance=ExtResource("6_h1jm4")]
+[node name="Tongue Attack" parent="." node_paths=PackedStringArray("left_start", "down_start", "right_start", "flicker_position") instance=ExtResource("6_h1jm4")]
 clip_children = 1
 position = Vector2(-3.71682, -2.38411)
 left_start = NodePath("Left Tongue Start")
@@ -63,24 +57,25 @@ down_start = NodePath("Down Tongue Start")
 right_start = NodePath("Right Tongue Start")
 flicker_position = NodePath("Flicker Position")
 
-[node name="Left Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(-39.2832, 609.384)
+[node name="Left Tongue Start" type="Marker2D" parent="Tongue Attack"]
+position = Vector2(39.7168, 692.384)
+scale = Vector2(-0.308598, -2.58264)
 
-[node name="Down Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(444.717, 1063.38)
+[node name="Down Tongue Start" type="Marker2D" parent="Tongue Attack"]
+position = Vector2(442.717, 918.384)
 
-[node name="Right Tongue Start" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
-position = Vector2(992.717, 634.384)
+[node name="Right Tongue Start" type="Marker2D" parent="Tongue Attack"]
+position = Vector2(888.717, 671.384)
 
-[node name="Flicker Position" type="Marker2D" parent="Background Clip Mask/Tongue Attack"]
+[node name="Flicker Position" type="Marker2D" parent="Tongue Attack"]
 position = Vector2(446.717, 629.384)
 
-[node name="Tongue Timers" type="Node" parent="Background Clip Mask/Tongue Attack"]
+[node name="Tongue Timers" type="Node" parent="Tongue Attack"]
 
-[node name="Tongue Cooldown" type="Timer" parent="Background Clip Mask/Tongue Attack/Tongue Timers"]
+[node name="Tongue Cooldown" type="Timer" parent="Tongue Attack/Tongue Timers"]
 one_shot = true
 
-[node name="Tongue Start" type="Timer" parent="Background Clip Mask/Tongue Attack/Tongue Timers"]
+[node name="Tongue Start" type="Timer" parent="Tongue Attack/Tongue Timers"]
 one_shot = true
 
 [node name="Gum Frame" type="Sprite2D" parent="."]
