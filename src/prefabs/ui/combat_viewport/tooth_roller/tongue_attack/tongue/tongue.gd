@@ -5,7 +5,7 @@ var flicker_location : Marker2D
 var blockable : bool = false
 var tween : Tween
 var is_ready : bool = true
-var retreat_time : float = 0.2
+var retreat_time : float = 0.1
 signal attack_done
 signal creep_done
 signal block_done
