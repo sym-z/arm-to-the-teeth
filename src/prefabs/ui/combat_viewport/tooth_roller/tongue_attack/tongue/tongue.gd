@@ -31,7 +31,7 @@ func force_attack():
 	if tween:
 		tween.kill()
 	animation = "attack"
-	global_position = flicker_location.global_position
+	scale = ending_scale
 	play()
 	blockable = false
 	#TODO apply damage?
